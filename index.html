@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Construflama | Lareiras, churrasqueiras e fornos de alto padrão</title>
+  <meta name="description" content="Lareiras, churrasqueiras, coifas, parrillas e fornos de pizza de alto padrão, pensados junto com o seu projeto. Showroom em São Paulo e entrega em todo o Brasil.">
+  <meta name="theme-color" content="#2A2623">
+
+  <!-- Tipografia: Marcellus (títulos, letra de inspiração lapidar) + Hanken Grotesk (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Marca que o JS está ativo (as animações de entrada só se aplicam com JS) -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <!-- Sprite de ícones e ilustrações em traço (reutilizados via <use>) -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-chama" viewBox="0 0 24 24">
+      <path d="M12 22c-4.4 0-7-2.9-7-6.6 0-3.2 2.1-5.3 3.6-7.2.4 1.9 1.4 3 2.4 3.2-.6-3.8 1.2-7.1 4.2-9.4-.5 3.5 1.2 5.6 2.6 7.6 1 1.4 1.2 2.9 1.2 4.6 0 4.6-2.6 7.8-7 7.8Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-seta-baixo" viewBox="0 0 24 24">
+      <path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-anterior" viewBox="0 0 24 24">
+      <path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-proximo" viewBox="0 0 24 24">
+      <path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-download" viewBox="0 0 24 24">
+      <path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M12 21s-6.5-5.7-6.5-11a6.5 6.5 0 0 1 13 0c0 5.3-6.5 11-6.5 11Z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    </symbol>
+    <symbol id="i-telefone" viewBox="0 0 24 24">
+      <path d="M6.6 3.5h2.6l1.5 4.2-2 1.4a11 11 0 0 0 6.2 6.2l1.4-2 4.2 1.5v2.6A2.1 2.1 0 0 1 18.3 19.5 15.6 15.6 0 0 1 4.5 5.7 2.1 2.1 0 0 1 6.6 3.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24">
+      <path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1 0 12 3.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M9.1 7.9c.3 0 .6 0 .8.5l.8 1.9c.1.3 0 .5-.1.7l-.6.7c.6 1.2 1.6 2.2 2.9 2.9l.7-.7c.2-.2.4-.2.7-.1l1.9.8c.4.2.5.5.4.9-.2 1-1.2 1.8-2.3 1.7-3.3-.4-6.2-3.3-6.6-6.6-.1-1.2.6-2.4 1.4-2.7Z" fill="currentColor"/>
+    </symbol>
+    <!-- Ícones da faixa de confiança -->
+    <symbol id="i-anos" viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M16 9v7l5 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-entrega" viewBox="0 0 32 32">
+      <path d="M3 9h16v13H3zM19 13h5.5l4.5 5v4H19z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <circle cx="9" cy="23.5" r="2.5" fill="var(--bege-escuro)" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="24" cy="23.5" r="2.5" fill="var(--bege-escuro)" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="i-showroom" viewBox="0 0 32 32">
+      <path d="M4 28V12l12-7 12 7v16M4 28h24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M12 28v-8h8v8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M16 18.5c-1.6-.6-2-2.4-.8-3.8.2 1 .8 1.3 1.2 1-.4-1.4.3-2.5 1.3-2.9-.4 1.4.9 2 .5 3.6-.3 1.2-1.1 1.8-2.2 2.1Z" fill="currentColor"/>
+    </symbol>
+    <!-- Ilustrações das coleções (traço fino, usadas sobre os gradientes) -->
+    <symbol id="p-lareira" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M8 26h104M14 26v82h92V26"/><path d="M32 108V52h56v56"/>
+        <path d="M60 100c-9-3-11-12-5-19 1 5 4 7 6 5-2-7 2-13 7-16-2 7 5 10 3 19-1 6-5 9-11 11Z"/>
+      </g>
+    </symbol>
+    <symbol id="p-churrasqueira" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M52 8h16v22H52zM30 52l22-22h16l22 22z"/><path d="M24 52h72v56H24z"/>
+        <path d="M34 66h52M34 74h52M34 82h52"/>
+      </g>
+    </symbol>
+    <symbol id="p-coifa" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M50 6h20v36H50zM50 42 18 74h84L70 42"/><path d="M18 74v9h84v-9"/>
+        <path d="M34 98h52" stroke-dasharray="3 7" stroke-linecap="round"/>
+      </g>
+    </symbol>
+    <symbol id="p-parrilla" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M10 62h78v40H10z"/><path d="M20 70v24M30 70v24M40 70v24M50 70v24M60 70v24M70 70v24M80 70v24"/>
+        <circle cx="101" cy="38" r="10"/><path d="M101 48v54M88 102h26"/>
+      </g>
+    </symbol>
+    <symbol id="p-forno" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M14 98V76a46 46 0 0 1 92 0v22z"/><path d="M42 98V82a18 18 0 0 1 36 0v16"/>
+        <path d="M54 32V8h12v24M6 98h108"/>
+      </g>
+    </symbol>
+    <symbol id="p-tocheiro" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M60 110V54M46 54h28l-5-11H51zM44 110h32"/>
+        <path d="M60 39c-8-3-9-12-3-20 0 5 4 8 6 6 0 8 6 9 3 15-1 0-3 0-6-1Z"/>
+      </g>
+    </symbol>
+    <symbol id="p-chapeira" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M10 52h100v12H10zM20 64v36M100 64v36"/>
+        <path d="M38 42c4-6 0-10 4-16M60 42c4-6 0-10 4-16M82 42c4-6 0-10 4-16"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================================================
+       1. CABEÇALHO FIXO
+       Duas faixas no desktop: atalhos (telefone, catálogos...) e
+       barra principal com as coleções. Ao rolar, a faixa de atalhos
+       recolhe e o cabeçalho ganha fundo sólido (ver main.js).
+       ============================================================ -->
+  <header class="site-header" id="topo">
+    <div class="utility-bar">
+      <div class="container utility-bar__inner">
+        <a class="utility-bar__phone" href="tel:+551151716070">
+          <svg class="icon" aria-hidden="true"><use href="#i-telefone"/></svg>
+          (11) 5171-6070
+        </a>
+        <nav aria-label="Atalhos">
+          <ul class="utility-bar__links">
+            <li><a href="#especificadores">Catálogos</a></li>
+            <li><a href="#" data-proto="O blog será desenhado na próxima etapa do protótipo.">Blog</a></li>
+            <li><a href="#lojas">Lojas</a></li>
+            <li><a href="#especificadores">Espaço do Especificador</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container mainbar">
+      <a class="brand" href="#inicio" aria-label="Construflama, voltar ao início">
+        <svg class="brand__mark" aria-hidden="true"><use href="#i-chama"/></svg>
+        <span class="brand__name">Construflama</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Principal">
+        <ul class="nav-list">
+          <li class="nav-item has-sub">
+            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-lareiras">
+              Lareiras <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
+            </button>
+            <ul class="submenu" id="sub-lareiras">
+              <li><a href="#colecoes" data-proto>Tradicionais</a></li>
+              <li><a href="#colecoes" data-proto>A gás linear</a></li>
+              <li><a href="#colecoes" data-proto>Esculturais</a></li>
+              <li><a href="#colecoes" data-proto>Ecoflamas</a></li>
+              <li><a href="#colecoes" data-proto>Tachos</a></li>
+              <li class="submenu__all"><a href="#colecoes">Ver todas as lareiras</a></li>
+            </ul>
+          </li>
+          <li class="nav-item has-sub">
+            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-churrasqueiras">
+              Churrasqueiras <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
+            </button>
+            <ul class="submenu" id="sub-churrasqueiras">
+              <li><a href="#colecoes" data-proto>A carvão</a></li>
+              <li><a href="#colecoes" data-proto>A gás</a></li>
+              <li><a href="#colecoes" data-proto>Pré-moldadas</a></li>
+              <li><a href="#colecoes" data-proto>Acessórios</a></li>
+              <li class="submenu__all"><a href="#colecoes">Ver todas as churrasqueiras</a></li>
+            </ul>
+          </li>
+          <li class="nav-item has-sub">
+            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-coifas">
+              Coifas <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
+            </button>
+            <ul class="submenu" id="sub-coifas">
+              <li><a href="#colecoes" data-proto>De parede</a></li>
+              <li><a href="#colecoes" data-proto>De ilha</a></li>
+              <li><a href="#colecoes" data-proto>Sob medida</a></li>
+              <li class="submenu__all"><a href="#colecoes">Ver todas as coifas</a></li>
+            </ul>
+          </li>
+          <li class="nav-item has-sub">
+            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-parrillas">
+              Parrillas <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
+            </button>
+            <ul class="submenu" id="sub-parrillas">
+              <li><a href="#colecoes" data-proto>Argentinas</a></li>
+              <li><a href="#colecoes" data-proto>Com regulagem de altura</a></li>
+              <li><a href="#colecoes" data-proto>Sob medida</a></li>
+              <li class="submenu__all"><a href="#colecoes">Ver todas as parrillas</a></li>
+            </ul>
+          </li>
+          <li class="nav-item has-sub">
+            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-fornos">
+              Fornos de Pizza <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
+            </button>
+            <ul class="submenu" id="sub-fornos">
+              <li><a href="#colecoes" data-proto>A lenha</a></li>
+              <li><a href="#colecoes" data-proto>A gás</a></li>
+              <li><a href="#colecoes" data-proto>Híbridos</a></li>
+              <li class="submenu__all"><a href="#colecoes">Ver todos os fornos</a></li>
+            </ul>
+          </li>
+          <li class="nav-item has-sub">
+            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-tocheiros">
+              Tocheiros <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
+            </button>
+            <ul class="submenu" id="sub-tocheiros">
+              <li><a href="#colecoes" data-proto>A gás</a></li>
+              <li><a href="#colecoes" data-proto>A etanol</a></li>
+              <li><a href="#colecoes" data-proto>De jardim</a></li>
+              <li class="submenu__all"><a href="#colecoes">Ver todos os tocheiros</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- Links secundários: no desktop ficam na faixa de atalhos; no celular, dentro do menu -->
+        <ul class="nav-secondary">
+          <li><a href="#especificadores">Catálogos</a></li>
+          <li><a href="#" data-proto="O blog será desenhado na próxima etapa do protótipo.">Blog</a></li>
+          <li><a href="#lojas">Lojas</a></li>
+          <li><a href="#especificadores">Espaço do Especificador</a></li>
+          <li><a href="tel:+551151716070">(11) 5171-6070</a></li>
+        </ul>
+        <a class="btn btn--primary nav-cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
+      </nav>
+
+      <a class="btn btn--primary btn--sm header-cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">
+        <span class="header-cta__long">Solicitar orçamento</span><span class="header-cta__short" aria-hidden="true">Orçamento</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Abrir menu</span>
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ============================================================
+         2. HERO: a parede da sala com uma lareira linear embutida.
+         A lareira é feita só com CSS (sem imagem).
+         ============================================================ -->
+    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+      <div class="container hero__content">
+        <h1 class="hero__title" id="hero-titulo">O fogo como parte da arquitetura.</h1>
+        <p class="hero__lead">Lareiras, churrasqueiras, coifas, parrillas e fornos de alto padrão, pensados junto com o seu projeto, do primeiro desenho à primeira chama.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
+          <a class="btn btn--ghost btn--lg" href="#colecoes">Ver coleções</a>
+        </div>
+      </div>
+
+      <div class="firebox" aria-hidden="true">
+        <div class="firebox__opening">
+          <div class="flames">
+            <span class="flame" style="--x:2%;  --h:55%; --d:1.7s; --t:-.2s"></span>
+            <span class="flame" style="--x:8%;  --h:72%; --d:1.3s; --t:-.9s"></span>
+            <span class="flame" style="--x:14%; --h:64%; --d:1.9s; --t:-.4s"></span>
+            <span class="flame" style="--x:20%; --h:82%; --d:1.5s; --t:-1.1s"></span>
+            <span class="flame" style="--x:26%; --h:60%; --d:1.8s; --t:-.6s"></span>
+            <span class="flame" style="--x:32%; --h:76%; --d:1.4s; --t:-.1s"></span>
+            <span class="flame" style="--x:38%; --h:88%; --d:1.6s; --t:-.8s"></span>
+            <span class="flame" style="--x:44%; --h:70%; --d:2s;   --t:-.3s"></span>
+            <span class="flame" style="--x:50%; --h:92%; --d:1.5s; --t:-1.3s"></span>
+            <span class="flame" style="--x:56%; --h:74%; --d:1.7s; --t:-.5s"></span>
+            <span class="flame" style="--x:62%; --h:86%; --d:1.3s; --t:-1s"></span>
+            <span class="flame" style="--x:68%; --h:66%; --d:1.9s; --t:-.7s"></span>
+            <span class="flame" style="--x:74%; --h:80%; --d:1.6s; --t:-.2s"></span>
+            <span class="flame" style="--x:80%; --h:62%; --d:1.4s; --t:-1.2s"></span>
+            <span class="flame" style="--x:86%; --h:74%; --d:1.8s; --t:-.4s"></span>
+            <span class="flame" style="--x:92%; --h:58%; --d:1.5s; --t:-.9s"></span>
+          </div>
+          <div class="firebox__bed"></div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           3. FAIXA DE CONFIANÇA: a "soleira" de pedra sob a lareira
+           ============================================================ -->
+      <div class="hearth">
+        <ul class="container hearth__list">
+          <li class="hearth__item">
+            <svg class="hearth__icon" aria-hidden="true"><use href="#i-anos"/></svg>
+            Mais de 40 anos de mercado
+          </li>
+          <li class="hearth__item">
+            <svg class="hearth__icon" aria-hidden="true"><use href="#i-entrega"/></svg>
+            Entregamos em todo o Brasil
+          </li>
+          <li class="hearth__item">
+            <svg class="hearth__icon" aria-hidden="true"><use href="#i-showroom"/></svg>
+            Showroom em São Paulo
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. COLEÇÕES: grade assimétrica, Lareiras em destaque.
+         TODO: substituir os gradientes por fotos reais de ambientes
+         (mantendo o gradiente escuro por cima para o texto ficar legível).
+         ============================================================ -->
+    <section class="section collections" id="colecoes" aria-labelledby="colecoes-titulo">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 class="section-title" id="colecoes-titulo">Coleções</h2>
+          <p class="section-lead">Sete famílias de produtos para dentro e fora de casa, da sala de estar à área gourmet.</p>
+        </div>
+
+        <ul class="collection-grid" data-reveal>
+          <li class="tile tile--lareiras">
+            <!-- TODO: foto de ambiente com lareira -->
+            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Lareiras será criada na próxima etapa.">
+              <svg class="tile__art" aria-hidden="true"><use href="#p-lareira"/></svg>
+              <span class="tile__text">
+                <span class="tile__name">Lareiras</span>
+                <span class="tile__desc">A lenha, a gás e a etanol, do clássico ao escultural.</span>
+              </span>
+            </a>
+          </li>
+          <li class="tile tile--churrasqueiras">
+            <!-- TODO: foto de churrasqueira em área gourmet -->
+            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Churrasqueiras será criada na próxima etapa.">
+              <svg class="tile__art" aria-hidden="true"><use href="#p-churrasqueira"/></svg>
+              <span class="tile__text">
+                <span class="tile__name">Churrasqueiras</span>
+                <span class="tile__desc">Pré-moldadas e sob medida, a carvão ou a gás.</span>
+              </span>
+            </a>
+          </li>
+          <li class="tile tile--coifas">
+            <!-- TODO: foto de coifa de ilha -->
+            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Coifas será criada na próxima etapa.">
+              <svg class="tile__art" aria-hidden="true"><use href="#p-coifa"/></svg>
+              <span class="tile__text">
+                <span class="tile__name">Coifas</span>
+                <span class="tile__desc">De parede e de ilha, com exaustão dimensionada para o ambiente.</span>
+              </span>
+            </a>
+          </li>
+          <li class="tile tile--parrillas">
+            <!-- TODO: foto de parrilla -->
+            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Parrillas será criada na próxima etapa.">
+              <svg class="tile__art" aria-hidden="true"><use href="#p-parrilla"/></svg>
+              <span class="tile__text">
+                <span class="tile__name">Parrillas</span>
+                <span class="tile__desc">Grelhas com regulagem de altura, no estilo argentino.</span>
+              </span>
+            </a>
+          </li>
+          <li class="tile tile--fornos">
+            <!-- TODO: foto de forno de pizza -->
+            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Fornos de Pizza será criada na próxima etapa.">
+              <svg class="tile__art" aria-hidden="true"><use href="#p-forno"/></svg>
+              <span class="tile__text">
+                <span class="tile__name">Fornos de Pizza</span>
+                <span class="tile__desc">A lenha e a gás, com cúpula refratária.</span>
+              </span>
+            </a>
+          </li>
+          <li class="tile tile--tocheiros">
+            <!-- TODO: foto de tocheiro em área externa -->
+            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Tocheiros será criada na próxima etapa.">
+              <svg class="tile__art" aria-hidden="true"><use href="#p-tocheiro"/></svg>
+              <span class="tile__text">
+                <span class="tile__name">Tocheiros</span>
+                <span class="tile__desc">Chama para varandas, jardins e piscinas.</span>
+              </span>
+            </a>
+          </li>
+          <li class="tile tile--chapeiras">
+            <!-- TODO: foto de chapeira -->
+            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Chapeiras será criada na próxima etapa.">
+              <svg class="tile__art" aria-hidden="true"><use href="#p-chapeira"/></svg>
+              <span class="tile__text">
+                <span class="tile__name">Chapeiras</span>
+                <span class="tile__desc">Chapas de ferro e aço para a cozinha gourmet.</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. PRODUTOS EM DESTAQUE (carrossel)
+         TODO: nomes e descrições são ilustrativos; substituir pelo
+         catálogo real e trocar os gradientes por fotos de produto.
+         ============================================================ -->
+    <section class="section featured" id="destaques" aria-labelledby="destaques-titulo">
+      <div class="container">
+        <div class="featured__head" data-reveal>
+          <div>
+            <h2 class="section-title" id="destaques-titulo">Produtos em destaque</h2>
+            <p class="section-lead">Peças que arquitetos mais especificam com a gente.</p>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" type="button" data-carousel-prev aria-controls="carrossel-produtos">
+              <svg class="icon" aria-hidden="true"><use href="#i-anterior"/></svg>
+              <span class="sr-only">Produtos anteriores</span>
+            </button>
+            <button class="carousel-btn" type="button" data-carousel-next aria-controls="carrossel-produtos">
+              <svg class="icon" aria-hidden="true"><use href="#i-proximo"/></svg>
+              <span class="sr-only">Próximos produtos</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel" data-reveal>
+        <ul class="carousel__track" id="carrossel-produtos" tabindex="0" aria-label="Produtos em destaque. Use as setas ou arraste para ver mais.">
+          <li class="product" aria-label="1 de 7">
+            <div class="product__media product__media--a"><svg aria-hidden="true"><use href="#p-lareira"/></svg></div>
+            <p class="product__cat">Lareira a gás linear</p>
+            <h3 class="product__name">Linear 180</h3>
+            <p class="product__desc">Chama contínua de 1,80 m, vidro frontal e acendimento por controle remoto.</p>
+            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> da Linear 180</span></a>
+          </li>
+          <li class="product" aria-label="2 de 7">
+            <div class="product__media product__media--b"><svg aria-hidden="true"><use href="#p-lareira"/></svg></div>
+            <p class="product__cat">Lareira escultural</p>
+            <h3 class="product__name">Órbita suspensa</h3>
+            <p class="product__desc">Corpo em aço com giro de 360°, pensada para salas com pé-direito duplo.</p>
+            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> da Órbita suspensa</span></a>
+          </li>
+          <li class="product" aria-label="3 de 7">
+            <div class="product__media product__media--c"><svg aria-hidden="true"><use href="#p-churrasqueira"/></svg></div>
+            <p class="product__cat">Churrasqueira</p>
+            <h3 class="product__name">Gourmet de embutir</h3>
+            <p class="product__desc">Grelhas em inox com regulagem de altura por manivela.</p>
+            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> da Gourmet de embutir</span></a>
+          </li>
+          <li class="product" aria-label="4 de 7">
+            <div class="product__media product__media--d"><svg aria-hidden="true"><use href="#p-coifa"/></svg></div>
+            <p class="product__cat">Coifa de ilha</p>
+            <h3 class="product__name">Ilha em aço escovado</h3>
+            <p class="product__desc">Exaustão para cozinhas abertas, com iluminação embutida.</p>
+            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> da Ilha em aço escovado</span></a>
+          </li>
+          <li class="product" aria-label="5 de 7">
+            <div class="product__media product__media--e"><svg aria-hidden="true"><use href="#p-forno"/></svg></div>
+            <p class="product__cat">Forno de pizza</p>
+            <h3 class="product__name">Napolitano a lenha</h3>
+            <p class="product__desc">Cúpula refratária que mantém o calor por horas depois de apagado.</p>
+            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> do Napolitano a lenha</span></a>
+          </li>
+          <li class="product" aria-label="6 de 7">
+            <div class="product__media product__media--f"><svg aria-hidden="true"><use href="#p-parrilla"/></svg></div>
+            <p class="product__cat">Parrilla</p>
+            <h3 class="product__name">Argentina com braseiro</h3>
+            <p class="product__desc">Braseiro lateral e grelha em V que escoa a gordura.</p>
+            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> da Argentina com braseiro</span></a>
+          </li>
+          <li class="product" aria-label="7 de 7">
+            <div class="product__media product__media--g"><svg aria-hidden="true"><use href="#p-tocheiro"/></svg></div>
+            <p class="product__cat">Tocheiro</p>
+            <h3 class="product__name">Tocheiro de jardim</h3>
+            <p class="product__desc">Chama a gás para áreas externas, com base em aço corten.</p>
+            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> do Tocheiro de jardim</span></a>
+          </li>
+        </ul>
+        <div class="container">
+          <div class="carousel__progress" aria-hidden="true"><span class="carousel__bar"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. NA IMPRENSA
+         Nomes em texto (sem reproduzir logotipos de terceiros).
+         ============================================================ -->
+    <section class="section press" id="imprensa" aria-labelledby="imprensa-titulo">
+      <div class="container press__inner" data-reveal>
+        <div class="press__intro">
+          <h2 class="section-title" id="imprensa-titulo">Na imprensa</h2>
+          <p class="section-lead">Ambientes com nossos produtos já foram destaque em:</p>
+        </div>
+        <ul class="press__list">
+          <li>Casacor</li>
+          <li>Casa Vogue</li>
+          <li>Casa e Jardim</li>
+          <li>Veja SP</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. ARQUITETOS E ESPECIFICADORES
+         TODO: ligar cada "Baixar PDF" ao arquivo real do catálogo.
+         ============================================================ -->
+    <section class="section specifiers" id="especificadores" aria-labelledby="especificadores-titulo">
+      <div class="container specifiers__grid">
+        <div class="specifiers__intro" data-reveal>
+          <h2 class="section-title" id="especificadores-titulo">Para arquitetos e especificadores</h2>
+          <p class="section-lead">Catálogos técnicos com medidas, recuos e requisitos de exaustão para incluir nossos produtos no seu projeto. Quando a obra pede algo sob medida, a nossa equipe técnica detalha a peça com você.</p>
+          <div class="specifiers__actions">
+            <a class="btn btn--primary" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Falar com a equipe técnica</a>
+          </div>
+        </div>
+
+        <ul class="catalogs" data-reveal>
+          <li class="catalog">
+            <div>
+              <h3 class="catalog__name">Lareiras</h3>
+              <p class="catalog__desc">Modelos a lenha, a gás e a etanol, com dimensões de nicho.</p>
+            </div>
+            <a class="btn btn--light btn--sm" href="#" data-proto="Na versão final, este botão baixa o catálogo de Lareiras em PDF.">
+              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Baixar PDF<span class="sr-only"> do catálogo de Lareiras</span>
+            </a>
+          </li>
+          <li class="catalog">
+            <div>
+              <h3 class="catalog__name">Churrasqueiras e parrillas</h3>
+              <p class="catalog__desc">Plantas, cortes e opções de revestimento.</p>
+            </div>
+            <a class="btn btn--light btn--sm" href="#" data-proto="Na versão final, este botão baixa o catálogo de Churrasqueiras e parrillas em PDF.">
+              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Baixar PDF<span class="sr-only"> do catálogo de Churrasqueiras e parrillas</span>
+            </a>
+          </li>
+          <li class="catalog">
+            <div>
+              <h3 class="catalog__name">Coifas</h3>
+              <p class="catalog__desc">Vazão de exaustão por modelo e alturas de instalação.</p>
+            </div>
+            <a class="btn btn--light btn--sm" href="#" data-proto="Na versão final, este botão baixa o catálogo de Coifas em PDF.">
+              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Baixar PDF<span class="sr-only"> do catálogo de Coifas</span>
+            </a>
+          </li>
+          <li class="catalog">
+            <div>
+              <h3 class="catalog__name">Fornos, tocheiros e chapeiras</h3>
+              <p class="catalog__desc">Pesos, bases e requisitos de gás e ventilação.</p>
+            </div>
+            <a class="btn btn--light btn--sm" href="#" data-proto="Na versão final, este botão baixa o catálogo de Fornos, tocheiros e chapeiras em PDF.">
+              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Baixar PDF<span class="sr-only"> do catálogo de Fornos, tocheiros e chapeiras</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         8. LOJAS E SHOWROOM
+         ============================================================ -->
+    <section class="section stores" id="lojas" aria-labelledby="lojas-titulo">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 class="section-title" id="lojas-titulo">Lojas e showroom</h2>
+          <p class="section-lead">Venha ver as lareiras acesas e sentir o calor de cada modelo antes de decidir.</p>
+        </div>
+
+        <div class="stores__grid" data-reveal>
+          <!-- TODO: foto do showroom da R. Vitorino de Morais -->
+          <div class="stores__visual">
+            <div class="stores__visual-text">
+              <p class="stores__visual-title">Agende uma visita com a nossa equipe</p>
+              <a class="btn btn--primary" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Agendar visita</a>
+            </div>
+          </div>
+
+          <ul class="stores__list">
+            <li class="store">
+              <h3 class="store__name">Showroom</h3>
+              <p class="store__address">R. Vitorino de Morais, 331<br>São Paulo, SP</p>
+              <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=R.+Vitorino+de+Morais,+331,+S%C3%A3o+Paulo" target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Ver no mapa<span class="sr-only">: Showroom</span>
+              </a>
+            </li>
+            <li class="store">
+              <h3 class="store__name">Shopping D&amp;D</h3>
+              <p class="store__address">Av. das Nações Unidas, 12.555, Piso 0<br>São Paulo, SP</p>
+              <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+das+Na%C3%A7%C3%B5es+Unidas,+12555,+S%C3%A3o+Paulo" target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Ver no mapa<span class="sr-only">: Shopping D&amp;D</span>
+              </a>
+            </li>
+            <li class="store">
+              <h3 class="store__name">Cidade Jardim</h3>
+              <p class="store__address">Av. Magalhães de Castro, 12.000<br>São Paulo, SP</p>
+              <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Magalh%C3%A3es+de+Castro,+12000,+S%C3%A3o+Paulo" target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Ver no mapa<span class="sr-only">: Cidade Jardim</span>
+              </a>
+            </li>
+            <li class="stores__phone">
+              Atendimento em todas as lojas:
+              <a class="text-link" href="tel:+551151716070">(11) 5171-6070</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       9. RODAPÉ
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a class="brand brand--footer" href="#inicio">
+          <svg class="brand__mark" aria-hidden="true"><use href="#i-chama"/></svg>
+          <span class="brand__name">Construflama</span>
+        </a>
+        <p>Lareiras, churrasqueiras, coifas, parrillas e fornos de alto padrão. São Paulo, com entrega em todo o Brasil.</p>
+        <a class="btn btn--primary" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
+      </div>
+
+      <nav class="footer__col" aria-labelledby="rodape-colecoes">
+        <h2 class="footer__title" id="rodape-colecoes">Coleções</h2>
+        <ul>
+          <li><a href="#colecoes">Lareiras</a></li>
+          <li><a href="#colecoes">Churrasqueiras</a></li>
+          <li><a href="#colecoes">Coifas</a></li>
+          <li><a href="#colecoes">Parrillas</a></li>
+          <li><a href="#colecoes">Fornos de Pizza</a></li>
+          <li><a href="#colecoes">Tocheiros</a></li>
+          <li><a href="#colecoes">Chapeiras</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-labelledby="rodape-profissionais">
+        <h2 class="footer__title" id="rodape-profissionais">Profissionais</h2>
+        <ul>
+          <li><a href="#especificadores">Espaço do Especificador</a></li>
+          <li><a href="#especificadores">Catálogos</a></li>
+          <li><a href="#" data-proto="O blog será desenhado na próxima etapa do protótipo.">Blog</a></li>
+          <li><a href="#lojas">Lojas</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col">
+        <h2 class="footer__title">Contato</h2>
+        <ul class="footer__contact">
+          <li>
+            <a href="tel:+551151716070"><svg class="icon" aria-hidden="true"><use href="#i-telefone"/></svg> (11) 5171-6070</a>
+          </li>
+          <li>
+            <a href="https://whts.co/Construflama_com" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp</a>
+          </li>
+          <li>
+            <a href="https://instagram.com/construflama" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg> @construflama</a>
+          </li>
+        </ul>
+        <p class="footer__address">Showroom: R. Vitorino de Morais, 331, São Paulo</p>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span data-year>2026</span> Construflama. Todos os direitos reservados.</p>
+      <a class="footer__top" href="#topo">Voltar ao topo</a>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante de WhatsApp -->
+  <a class="whatsapp-float" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">
+    <svg class="whatsapp-float__icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+    <span class="whatsapp-float__label">Fale no WhatsApp</span>
+  </a>
+
+  <!-- Aviso discreto para links que ainda não existem no protótipo -->
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

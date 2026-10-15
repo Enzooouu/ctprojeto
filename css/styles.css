@@ -1,0 +1,1236 @@
+/* ==========================================================================
+   Construflama | Protótipo da home
+   Conceito: a página é uma parede de sala com uma lareira linear embutida.
+   Carvão no topo, a chama como único gesto ousado, e daí para baixo
+   travertino (bege), madeira (marrom) e brasa (laranja) só onde há ação.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Variáveis (tokens)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Laranja: brasa queimada, não laranja de aplicativo.
+     Texto claro (--sobre-laranja) sobre --laranja = 5,2:1 (AA). */
+  --laranja: #B04A17;
+  --laranja-escuro: #8E3A10;   /* hover de botões e links sobre bege: 5,9:1 */
+  --laranja-claro: #E07A3A;    /* destaque sobre fundos escuros: 5,0:1 no carvão */
+
+  /* Marrom: madeira defumada. Títulos, seções de contraste e rodapé. */
+  --marrom: #4A2E1F;
+  --marrom-escuro: #2F1D14;
+  --marrom-claro: #7A5340;
+
+  /* Cinza escuro: carvão quente. Texto, cabeçalho e o hero. */
+  --cinza-escuro: #2A2623;
+  --cinza-escuro-profundo: #1E1B19;
+  --cinza: #5E5650;            /* texto secundário sobre bege: 5,6:1 */
+
+  /* Bege: travertino. Fundo dominante. */
+  --bege: #ECE2D2;
+  --bege-claro: #F5EFE5;
+  --bege-escuro: #DCCFBA;
+
+  --sobre-laranja: #FFF9F0;    /* texto sobre o laranja */
+  --texto: var(--cinza-escuro);
+  --foco: var(--laranja-escuro); /* anel de foco em fundos claros */
+
+  /* Tipografia */
+  --fonte-titulo: "Marcellus", "Cormorant Garamond", Georgia, serif;
+  --fonte-texto: "Hanken Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Escala tipográfica (razão ~1.25, fluida nos títulos) */
+  --fs-sm: 0.875rem;
+  --fs-base: 1.0625rem;
+  --fs-md: 1.25rem;
+  --fs-lg: clamp(1.4rem, 1.1rem + 1vw, 1.75rem);
+  --fs-xl: clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
+  --fs-hero: clamp(2.6rem, 1.4rem + 5.2vw, 5.75rem);
+
+  /* Espaçamentos */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4.5rem;
+  --sp-secao: clamp(4.5rem, 3rem + 6vw, 8rem);
+  --gutter: clamp(1rem, 0.5rem + 3vw, 2.5rem);
+  --largura: 76rem;
+
+  /* Outros */
+  --raio: 3px;
+  --header-h: 4.25rem;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Base
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--bege);
+  color: var(--texto);
+  font-family: var(--fonte-texto);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.nav-open { overflow: hidden; }
+
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--marrom);
+}
+
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+img, svg { display: block; }
+
+:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 3px;
+}
+
+/* Contextos escuros usam um anel de foco mais claro */
+.site-header,
+.hero,
+.specifiers,
+.site-footer,
+.tile,
+.stores__visual,
+.whatsapp-float { --foco: var(--laranja-claro); }
+
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--sp-4);
+  top: -3rem;
+  z-index: 100;
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--bege-claro);
+  color: var(--marrom);
+  font-weight: 600;
+  border-radius: var(--raio);
+  transition: top .2s;
+}
+.skip-link:focus { top: var(--sp-3); }
+
+.container {
+  width: 100%;
+  max-width: var(--largura);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.icon { width: 1.15em; height: 1.15em; flex: none; }
+
+/* --------------------------------------------------------------------------
+   3. Botões e links
+   Todos com estados de hover, foco (via :focus-visible) e clique (:active).
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: 3rem;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--raio);
+  font-family: var(--fonte-texto);
+  font-size: 0.975rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s var(--ease), border-color .2s var(--ease),
+              color .2s var(--ease), transform .12s var(--ease), box-shadow .2s var(--ease);
+}
+.btn:active { transform: translateY(1px) scale(.98); }
+
+.btn--sm { min-height: 2.5rem; padding: 0.55rem 1rem; font-size: 0.9rem; }
+.btn--lg { min-height: 3.4rem; padding: 0.95rem 1.8rem; font-size: 1rem; }
+
+/* Primário: o único laranja "cheio" da página */
+.btn--primary {
+  background: var(--laranja);
+  color: var(--sobre-laranja);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .12) inset;
+}
+.btn--primary:hover {
+  background: var(--laranja-escuro);
+  box-shadow: 0 6px 18px -6px rgba(176, 74, 23, .6);
+}
+.btn--primary:active { background: #7A310D; box-shadow: none; }
+
+/* Fantasma: para fundos escuros */
+.btn--ghost {
+  border-color: rgba(236, 226, 210, .5);
+  color: var(--bege);
+  background: transparent;
+}
+.btn--ghost:hover { border-color: var(--bege); background: rgba(236, 226, 210, .1); }
+.btn--ghost:active { background: rgba(236, 226, 210, .18); }
+
+/* Claro: botões secundários sobre o marrom */
+.btn--light {
+  border-color: rgba(236, 226, 210, .4);
+  color: var(--bege);
+  background: rgba(236, 226, 210, .06);
+}
+.btn--light:hover { background: var(--bege); color: var(--marrom); border-color: var(--bege); }
+.btn--light:active { background: var(--bege-escuro); color: var(--marrom); }
+
+/* Link de texto (fundos claros) */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  color: var(--laranja-escuro);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  transition: color .2s, text-decoration-thickness .2s;
+}
+.text-link:hover { color: var(--marrom); text-decoration-thickness: 2px; }
+.text-link:active { color: var(--marrom-escuro); }
+
+/* --------------------------------------------------------------------------
+   4. Cabeçalho fixo
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  color: var(--bege);
+  /* Sobre o hero: transparente, com um véu escuro só para dar leitura */
+  background: linear-gradient(to bottom, rgba(30, 27, 25, .75), rgba(30, 27, 25, 0));
+  transition: background-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+
+/* Estado após rolar: carvão sólido, faixa de atalhos recolhida, mais baixo */
+.site-header.is-scrolled {
+  background: var(--cinza-escuro);
+  box-shadow: 0 1px 0 rgba(236, 226, 210, .08), 0 10px 30px -12px rgba(0, 0, 0, .5);
+}
+
+.utility-bar { display: none; }
+
+.mainbar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  height: var(--header-h);
+  transition: height .3s var(--ease);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-right: auto;
+  text-decoration: none;
+  color: var(--bege);
+  border-radius: var(--raio);
+}
+.brand__mark { width: 1.35rem; height: 1.35rem; color: var(--laranja-claro); }
+.brand__name {
+  font-family: var(--fonte-titulo);
+  font-size: 1.45rem;
+  letter-spacing: 0.02em;
+}
+.brand:hover .brand__mark { color: var(--bege); }
+
+.header-cta__long { display: none; }
+
+/* Botão hambúrguer */
+.nav-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-right: calc(var(--sp-2) * -1);
+  padding: 0;
+  border: 0;
+  border-radius: var(--raio);
+  background: transparent;
+  color: var(--bege);
+  cursor: pointer;
+  transition: background-color .2s;
+}
+.nav-toggle:hover { background: rgba(236, 226, 210, .1); }
+.nav-toggle:active { background: rgba(236, 226, 210, .18); }
+
+.nav-toggle__bars,
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  display: block;
+  width: 1.4rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform .3s var(--ease), opacity .2s;
+}
+.nav-toggle__bars { position: relative; }
+.nav-toggle__bars::before,
+.nav-toggle__bars::after { content: ""; position: absolute; left: 0; }
+.nav-toggle__bars::before { top: -7px; }
+.nav-toggle__bars::after { top: 7px; }
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::before { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::after { transform: translateY(-7px) rotate(-45deg); }
+
+/* Menu no celular: painel em tela cheia abaixo do cabeçalho */
+.site-nav {
+  position: fixed;
+  inset: var(--header-h) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+  padding: var(--sp-5) var(--gutter) var(--sp-7);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--cinza-escuro);
+  border-top: 1px solid rgba(236, 226, 210, .1);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-.75rem);
+  transition: opacity .25s var(--ease), transform .3s var(--ease), visibility 0s .3s;
+}
+.site-nav.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition: opacity .25s var(--ease), transform .3s var(--ease), visibility 0s;
+}
+
+.nav-list > .nav-item { border-bottom: 1px solid rgba(236, 226, 210, .12); }
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--sp-4) 0;
+  border: 0;
+  background: none;
+  color: var(--bege);
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: var(--raio);
+  transition: color .2s;
+}
+.nav-link:hover { color: var(--laranja-claro); }
+.nav-link:active { color: var(--bege-escuro); }
+.nav-link__chevron { transition: transform .25s var(--ease); }
+.nav-link[aria-expanded="true"] { color: var(--laranja-claro); }
+.nav-link[aria-expanded="true"] .nav-link__chevron { transform: rotate(180deg); }
+
+.submenu {
+  display: none;
+  padding: 0 0 var(--sp-4) var(--sp-4);
+  border-left: 1px solid rgba(224, 122, 58, .5);
+  margin-bottom: var(--sp-4);
+}
+.has-sub.is-open > .submenu { display: block; }
+
+.submenu a {
+  display: block;
+  padding: var(--sp-2) 0;
+  color: rgba(236, 226, 210, .85);
+  text-decoration: none;
+  border-radius: var(--raio);
+  transition: color .2s;
+}
+.submenu a:hover { color: var(--laranja-claro); }
+.submenu a:active { color: var(--bege); }
+.submenu__all a { color: var(--laranja-claro); font-weight: 600; }
+
+.nav-secondary { display: grid; gap: var(--sp-1); }
+.nav-secondary a {
+  display: block;
+  padding: var(--sp-2) 0;
+  color: rgba(236, 226, 210, .85);
+  text-decoration: none;
+  transition: color .2s;
+}
+.nav-secondary a:hover { color: var(--laranja-claro); }
+
+.nav-cta { width: 100%; }
+
+@media (min-width: 640px) {
+  .header-cta__long { display: inline; }
+  .header-cta__short { display: none; }
+}
+
+/* Desktop: faixa de atalhos + menu horizontal com submenus por hover */
+@media (min-width: 1180px) {
+  :root { --header-h: 4.5rem; }
+
+  .utility-bar {
+    display: block;
+    max-height: 2.5rem;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(236, 226, 210, .1);
+    font-size: var(--fs-sm);
+    transition: max-height .3s var(--ease), opacity .25s, border-color .3s;
+  }
+  .utility-bar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2.5rem;
+  }
+  .utility-bar a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    color: rgba(236, 226, 210, .85);
+    text-decoration: none;
+    border-radius: var(--raio);
+    transition: color .2s;
+  }
+  .utility-bar a:hover { color: var(--laranja-claro); }
+  .utility-bar__links { display: flex; gap: var(--sp-6); }
+
+  .site-header.is-scrolled .utility-bar { max-height: 0; opacity: 0; border-color: transparent; }
+  .site-header.is-scrolled .mainbar { height: 3.75rem; }
+
+  .nav-toggle,
+  .nav-secondary,
+  .nav-cta { display: none; }
+
+  .site-nav {
+    position: static;
+    flex-direction: row;
+    padding: 0;
+    overflow: visible;
+    background: none;
+    border: 0;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .nav-list { display: flex; gap: var(--sp-1); }
+  .nav-list > .nav-item { position: relative; border: 0; }
+
+  .nav-link {
+    gap: var(--sp-1);
+    padding: var(--sp-2) var(--sp-3);
+    font-family: var(--fonte-texto);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .nav-link__chevron { width: 1rem; height: 1rem; opacity: .7; }
+
+  /* Painel do submenu no desktop */
+  .submenu {
+    display: block;
+    position: absolute;
+    top: calc(100% + .6rem);
+    left: 0;
+    min-width: 15.5rem;
+    margin: 0;
+    padding: var(--sp-3) 0;
+    border: 0;
+    border-top: 2px solid var(--laranja);
+    border-radius: 0 0 var(--raio) var(--raio);
+    background: var(--bege-claro);
+    box-shadow: 0 18px 40px -16px rgba(30, 27, 25, .55);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity .2s var(--ease), transform .2s var(--ease), visibility 0s .2s;
+  }
+  /* Ponte invisível para o mouse não "cair" no vão entre botão e painel */
+  .submenu::before {
+    content: "";
+    position: absolute;
+    inset: -.8rem 0 auto;
+    height: .8rem;
+  }
+  .has-sub.is-open > .submenu {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: opacity .2s var(--ease), transform .2s var(--ease), visibility 0s;
+  }
+
+  .submenu a {
+    padding: var(--sp-2) var(--sp-5);
+    color: var(--cinza-escuro);
+    font-size: 0.95rem;
+  }
+  .submenu a:hover { color: var(--laranja-escuro); background: var(--bege); }
+  .submenu a:active { background: var(--bege-escuro); }
+  .submenu__all { margin-top: var(--sp-2); padding-top: var(--sp-2); border-top: 1px solid var(--bege-escuro); }
+  .submenu__all a { color: var(--laranja-escuro); }
+}
+
+/* --------------------------------------------------------------------------
+   5. Hero: parede de reboco em carvão + lareira linear
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: var(--bege);
+  background-color: var(--cinza-escuro);
+  /* Textura de reboco (ruído SVG) + o brilho que a lareira lança na parede */
+  background-image:
+    radial-gradient(ellipse 70% 45% at 50% 100%, rgba(224, 122, 58, .2), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .9  0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    linear-gradient(to bottom, var(--cinza-escuro-profundo), var(--cinza-escuro) 60%);
+  overflow: hidden;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  padding-top: calc(var(--header-h) + clamp(3rem, 2rem + 5vw, 6.5rem));
+  padding-bottom: clamp(2.5rem, 2rem + 2.5vw, 4rem);
+}
+
+.hero__title {
+  max-width: 10.5em;
+  color: var(--bege-claro);
+  font-size: var(--fs-hero);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+
+.hero__lead {
+  max-width: 34rem;
+  margin-top: var(--sp-5);
+  color: rgba(236, 226, 210, .82);
+  font-size: var(--fs-md);
+  line-height: 1.55;
+}
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-top: var(--sp-6);
+}
+
+@media (min-width: 560px) {
+  .hero__actions { flex-direction: row; flex-wrap: wrap; }
+}
+
+/* A lareira: moldura de aço, interior escuro, chamas e leito de brasas */
+.firebox {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 2 * var(--gutter), var(--largura) - 2 * var(--gutter));
+  margin-inline: auto;
+}
+
+.firebox__opening {
+  position: relative;
+  height: clamp(88px, 6vw + 60px, 190px);
+  overflow: hidden;
+  border: 5px solid #3B3531;           /* moldura em aço escurecido */
+  border-bottom-width: 0;
+  background:
+    radial-gradient(ellipse 60% 120% at 50% 110%, rgba(176, 74, 23, .45), transparent 70%),
+    linear-gradient(to bottom, #0E0A08, #1A120E);
+  box-shadow:
+    inset 0 14px 30px rgba(0, 0, 0, .85),
+    0 0 80px -10px rgba(224, 122, 58, .35);
+}
+
+.flames {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 100%;
+}
+
+/* Cada chama é uma "língua": base larga e quente, ponta estreita e translúcida */
+.flame {
+  position: absolute;
+  bottom: 8%;
+  left: var(--x);
+  width: 6.5%;
+  height: var(--h);
+  border-radius: 50% 50% 46% 46% / 100% 100% 12% 12%;
+  background: radial-gradient(ellipse 50% 100% at 50% 100%,
+              #FFF1CF 0%, #FFC777 16%, #F08A3A 38%, #C9561C 60%, rgba(176, 74, 23, 0) 82%);
+  filter: blur(3px);
+  mix-blend-mode: screen;
+  transform-origin: 50% 100%;
+  opacity: .95;
+}
+/* Núcleo mais claro e mais baixo, que dá profundidade à chama */
+.flame::after {
+  content: "";
+  position: absolute;
+  left: 30%;
+  bottom: 0;
+  width: 40%;
+  height: 45%;
+  border-radius: 50% 50% 40% 40% / 100% 100% 10% 10%;
+  background: radial-gradient(ellipse 50% 100% at 50% 100%, rgba(255, 246, 225, .9), rgba(255, 199, 119, 0) 80%);
+}
+
+/* Leito de vidro/brasas: uma linha incandescente irregular */
+.firebox__bed {
+  position: absolute;
+  inset: auto 0 0;
+  height: 10%;
+  background:
+    radial-gradient(ellipse 12% 80% at 14% 30%, rgba(255, 199, 119, .55), transparent),
+    radial-gradient(ellipse 10% 80% at 41% 40%, rgba(255, 199, 119, .45), transparent),
+    radial-gradient(ellipse 14% 80% at 68% 30%, rgba(255, 199, 119, .55), transparent),
+    radial-gradient(ellipse 9% 80% at 90% 40%, rgba(255, 199, 119, .4), transparent),
+    linear-gradient(to top, #2A1710, #7A3412 70%, #B04A17);
+  box-shadow: 0 -4px 16px rgba(244, 167, 87, .5);
+}
+
+/* Movimento das chamas e acendimento: só para quem não pediu menos movimento */
+@media (prefers-reduced-motion: no-preference) {
+  .flame { animation: flicker var(--d) ease-in-out var(--t) infinite alternate; }
+  .flames { animation: ignite 1.8s var(--ease) .2s both; }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 55% 35% at 50% 100%, rgba(244, 167, 87, .12), transparent 70%);
+    animation: glow 3.2s ease-in-out infinite alternate;
+  }
+  .hero__title,
+  .hero__lead,
+  .hero__actions { animation: rise .9s var(--ease) both; }
+  .hero__lead { animation-delay: .12s; }
+  .hero__actions { animation-delay: .24s; }
+}
+
+@keyframes flicker {
+  0%   { transform: scale(1, .86) translateX(0); opacity: .85; }
+  45%  { transform: scale(.9, 1.06) translateX(6%); opacity: 1; }
+  100% { transform: scale(1.06, .94) translateX(-5%); opacity: .9; }
+}
+@keyframes ignite {
+  0%   { transform: scaleY(0); opacity: 0; }
+  40%  { opacity: 1; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+@keyframes glow {
+  from { opacity: .55; }
+  to   { opacity: 1; }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* --------------------------------------------------------------------------
+   6. Faixa de confiança: a soleira de travertino sob a lareira
+   -------------------------------------------------------------------------- */
+.hearth {
+  position: relative;
+  z-index: 1;
+  background: var(--bege-escuro);
+  color: var(--marrom);
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, .25) inset;
+}
+
+.hearth__list {
+  display: grid;
+  gap: var(--sp-3);
+  padding-block: var(--sp-5);
+}
+
+.hearth__item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.hearth__icon { width: 2rem; height: 2rem; flex: none; color: var(--marrom-claro); }
+
+@media (min-width: 768px) {
+  .hearth__list { grid-template-columns: repeat(3, 1fr); gap: 0; padding-block: var(--sp-6); }
+  .hearth__item { justify-content: center; padding-inline: var(--sp-4); }
+  .hearth__item + .hearth__item { border-left: 1px solid rgba(74, 46, 31, .2); }
+}
+
+/* --------------------------------------------------------------------------
+   7. Seções genéricas
+   -------------------------------------------------------------------------- */
+.section { padding-block: var(--sp-secao); }
+
+.section-head {
+  display: grid;
+  gap: var(--sp-4);
+  margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+}
+
+.section-title { font-size: var(--fs-xl); }
+
+.section-lead {
+  max-width: 36rem;
+  color: var(--cinza);
+  font-size: var(--fs-md);
+  line-height: 1.55;
+}
+
+@media (min-width: 900px) {
+  .section-head {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: var(--sp-7);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. Coleções: grade assimétrica
+   -------------------------------------------------------------------------- */
+.collection-grid {
+  display: grid;
+  gap: var(--sp-3);
+  grid-template-columns: 1fr;
+}
+
+.tile {
+  position: relative;
+  min-height: 14rem;
+  border-radius: var(--raio);
+  overflow: hidden;
+  /* TODO: trocar --material por uma foto (background-image) quando houver */
+  background: var(--material);
+  color: var(--bege-claro);
+}
+
+.tile__link {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--sp-5);
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--raio);
+}
+.tile__link:focus-visible { outline-offset: -6px; }
+
+/* Véu escuro para garantir leitura do texto (vale também para fotos futuras) */
+.tile__link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(30, 20, 14, .78) 0%, rgba(30, 20, 14, .2) 55%, transparent);
+  transition: opacity .3s;
+}
+
+/* Celular: desenho pequeno no canto superior, longe do texto */
+.tile__art {
+  position: absolute;
+  top: var(--sp-4);
+  right: var(--sp-4);
+  width: 6.5rem;
+  height: auto;
+  aspect-ratio: 1;
+  color: rgba(245, 239, 229, .32);
+  transition: color .35s var(--ease), transform .5s var(--ease);
+}
+
+.tile__text { position: relative; display: grid; gap: var(--sp-1); max-width: 30ch; }
+
+.tile__name {
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-lg);
+  line-height: 1.15;
+}
+
+.tile__desc {
+  color: rgba(245, 239, 229, .85);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* Hover/foco: o traço "esquenta" e sobe um pouco */
+.tile__link:hover .tile__art,
+.tile__link:focus-visible .tile__art {
+  color: rgba(244, 167, 87, .7);
+  transform: translateY(-4px);
+}
+.tile__link:active .tile__art { color: rgba(244, 167, 87, .9); }
+
+/* Materiais de cada coleção (todos na paleta) */
+.tile--lareiras {
+  --material:
+    radial-gradient(ellipse 80% 55% at 30% 100%, rgba(224, 122, 58, .55), transparent 70%),
+    linear-gradient(160deg, #3A2B23 0%, #2A2623 55%, #1E1B19 100%);
+}
+.tile--churrasqueiras { --material: linear-gradient(150deg, #7A5340, #4A2E1F); }
+.tile--coifas { --material: linear-gradient(160deg, #6E6660 0%, #4B4440 50%, #2A2623 100%); }
+.tile--parrillas {
+  --material:
+    radial-gradient(ellipse 70% 60% at 85% 100%, rgba(224, 122, 58, .4), transparent 70%),
+    linear-gradient(140deg, #8E3A10, #4A2E1F 80%);
+}
+.tile--fornos { --material: linear-gradient(150deg, #9A6448 0%, #6B3E28 55%, #4A2E1F 100%); }
+.tile--tocheiros {
+  --material:
+    radial-gradient(circle at 70% 25%, rgba(244, 167, 87, .45), transparent 45%),
+    linear-gradient(170deg, #2F1D14, #1E1B19);
+}
+.tile--chapeiras { --material: linear-gradient(155deg, #57504B, #33201A); }
+
+@media (min-width: 640px) {
+  .collection-grid { grid-template-columns: repeat(2, 1fr); }
+  .tile { min-height: 15rem; }
+  .tile--lareiras { grid-column: span 2; min-height: 22rem; }
+  .tile__art { top: 12%; right: 6%; width: 40%; max-width: 12rem; }
+}
+
+@media (min-width: 1024px) {
+  .collection-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 15rem;
+  }
+  .tile { min-height: 0; }
+  .tile--lareiras { grid-column: span 2; grid-row: span 2; min-height: 0; }
+  .tile--parrillas,
+  .tile--fornos { grid-column: span 2; }
+  .tile__art { top: 10%; width: 44%; }
+  .tile--lareiras .tile__art { top: 14%; width: 50%; max-width: 18rem; color: rgba(245, 239, 229, .28); }
+  .tile--lareiras .tile__name { font-size: var(--fs-xl); }
+}
+
+/* --------------------------------------------------------------------------
+   9. Produtos em destaque: carrossel
+   -------------------------------------------------------------------------- */
+.featured { background: var(--bege-claro); }
+
+.featured__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-5);
+  margin-bottom: clamp(2rem, 1.5rem + 2vw, 3rem);
+}
+.featured__head .section-lead { margin-top: var(--sp-3); }
+
+.carousel-controls { display: none; gap: var(--sp-2); }
+
+.carousel-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 1px solid var(--marrom);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--marrom);
+  cursor: pointer;
+  transition: background-color .2s, color .2s, transform .12s, opacity .2s;
+}
+.carousel-btn .icon { width: 1.3rem; height: 1.3rem; }
+.carousel-btn:hover:not(:disabled) { background: var(--marrom); color: var(--bege-claro); }
+.carousel-btn:active:not(:disabled) { transform: scale(.94); }
+.carousel-btn:disabled { opacity: .35; cursor: default; }
+
+@media (min-width: 640px) {
+  .carousel-controls { display: flex; }
+}
+
+.carousel__track {
+  --peek: var(--gutter);
+  display: flex;
+  gap: var(--sp-4);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  /* Alinha o primeiro card com o container e deixa os próximos "espiando" */
+  padding-inline: max(var(--gutter), (100% - var(--largura)) / 2 + var(--gutter));
+  scroll-padding-inline: max(var(--gutter), (100% - var(--largura)) / 2 + var(--gutter));
+  padding-bottom: var(--sp-2);
+  scrollbar-width: none;
+  cursor: grab;
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+.carousel__track:focus-visible { outline-offset: -3px; }
+.carousel__track.is-dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+.carousel__track.is-dragging a { pointer-events: none; }
+
+.product {
+  position: relative; /* prende os textos .sr-only dentro do carrossel */
+  flex: 0 0 82%;
+  max-width: 22rem;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 640px) { .product { flex-basis: 44%; } }
+@media (min-width: 1024px) { .product { flex-basis: calc((min(100vw, var(--largura)) - 2 * var(--gutter) - 3 * var(--sp-4)) / 3.25); max-width: none; } }
+
+.product__media {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  margin-bottom: var(--sp-4);
+  border-radius: var(--raio);
+  color: rgba(74, 46, 31, .55);
+  /* TODO: foto do produto. Gradientes de travertino até lá. */
+  background: var(--fundo);
+}
+.product__media svg { width: 42%; height: auto; aspect-ratio: 1; }
+.product__media--a { --fundo: radial-gradient(ellipse at 50% 85%, rgba(224, 122, 58, .35), transparent 60%), linear-gradient(160deg, #E4D7C3, #CDBBA0); }
+.product__media--b { --fundo: linear-gradient(160deg, #DCCFBA, #BFA88A); }
+.product__media--c { --fundo: linear-gradient(160deg, #E8DCCA, #D2BFA4); }
+.product__media--d { --fundo: linear-gradient(160deg, #DDD5CB, #BDB3A7); }
+.product__media--e { --fundo: radial-gradient(ellipse at 50% 80%, rgba(176, 74, 23, .28), transparent 60%), linear-gradient(160deg, #E2CDB4, #C9A889); }
+.product__media--f { --fundo: linear-gradient(160deg, #E6D9C6, #CDB79B); }
+.product__media--g { --fundo: radial-gradient(circle at 50% 30%, rgba(224, 122, 58, .3), transparent 50%), linear-gradient(160deg, #DFD2BF, #C4AF93); }
+
+.product__cat { color: var(--cinza); font-size: var(--fs-sm); }
+.product__name { margin-top: var(--sp-1); font-size: var(--fs-lg); }
+.product__desc { margin-top: var(--sp-2); color: var(--cinza-escuro); font-size: 0.975rem; }
+
+.product__cta {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: var(--sp-4);
+  color: var(--laranja-escuro);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  border-radius: var(--raio);
+  transition: color .2s, text-decoration-thickness .2s;
+}
+.product__cta:hover { color: var(--marrom); text-decoration-thickness: 2px; }
+.product__cta:active { color: var(--marrom-escuro); }
+
+/* Barra de progresso do carrossel */
+.carousel__progress {
+  position: relative;
+  height: 2px;
+  margin-top: var(--sp-6);
+  background: var(--bege-escuro);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.carousel__bar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--progresso, 30%);
+  left: var(--inicio, 0%);
+  background: var(--marrom);
+  border-radius: 2px;
+  transition: left .15s linear;
+}
+
+/* --------------------------------------------------------------------------
+   10. Na imprensa
+   -------------------------------------------------------------------------- */
+.press { padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem); }
+
+.press__inner { display: grid; gap: var(--sp-6); }
+.press__intro { display: grid; gap: var(--sp-3); }
+
+.press__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4) clamp(1.5rem, 1rem + 3vw, 4rem);
+  align-items: baseline;
+}
+.press__list li {
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-lg);
+  color: var(--marrom-claro);
+  line-height: 1.2;
+}
+
+/* Desktop: os quatro nomes numa linha só, separados por filetes */
+@media (min-width: 900px) {
+  .press__intro { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: var(--sp-7); }
+  .press__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    padding-top: var(--sp-6);
+    border-top: 1px solid var(--bege-escuro);
+  }
+  .press__list li { font-size: clamp(1.5rem, 0.9rem + 1.2vw, 2.1rem); text-align: center; }
+  .press__list li + li { border-left: 1px solid var(--bege-escuro); }
+}
+
+/* --------------------------------------------------------------------------
+   11. Arquitetos e especificadores (seção de contraste em marrom)
+   -------------------------------------------------------------------------- */
+.specifiers {
+  background: var(--marrom);
+  color: var(--bege);
+}
+.specifiers .section-title { color: var(--bege-claro); }
+.specifiers .section-lead { color: rgba(236, 226, 210, .85); }
+
+.specifiers__grid { display: grid; gap: var(--sp-7); }
+.specifiers__intro { display: grid; gap: var(--sp-5); align-content: start; }
+.specifiers__actions { margin-top: var(--sp-2); }
+
+.catalogs { border-top: 1px solid rgba(236, 226, 210, .2); }
+
+.catalog {
+  display: grid;
+  gap: var(--sp-3);
+  padding-block: var(--sp-5);
+  border-bottom: 1px solid rgba(236, 226, 210, .2);
+}
+.catalog .btn { justify-self: start; }
+.catalog__name { color: var(--bege-claro); font-size: var(--fs-lg); }
+.catalog__desc { margin-top: var(--sp-1); color: rgba(236, 226, 210, .8); font-size: 0.975rem; }
+
+@media (min-width: 640px) {
+  .catalog { grid-template-columns: 1fr auto; align-items: center; gap: var(--sp-5); }
+}
+
+@media (min-width: 1024px) {
+  .specifiers__grid { grid-template-columns: 1fr 1.15fr; gap: clamp(3rem, 6vw, 6rem); }
+  .specifiers__intro { position: sticky; top: calc(var(--header-h) + 2rem); }
+}
+
+/* --------------------------------------------------------------------------
+   12. Lojas e showroom
+   -------------------------------------------------------------------------- */
+.stores__grid { display: grid; gap: var(--sp-6); }
+
+.stores__visual {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 20rem;
+  padding: var(--sp-5);
+  border-radius: var(--raio);
+  color: var(--bege-claro);
+  /* TODO: foto do showroom. Até lá, um ambiente sugerido por luz quente. */
+  background:
+    linear-gradient(to top, rgba(30, 20, 14, .8), transparent 65%),
+    radial-gradient(ellipse 45% 30% at 32% 32%, rgba(244, 167, 87, .5), transparent 70%),
+    linear-gradient(to bottom, #3A2B23 0 50%, #4A2E1F 50% 100%);
+  overflow: hidden;
+}
+/* Um "nicho de lareira" sugerido na parede do showroom */
+.stores__visual::before {
+  content: "";
+  position: absolute;
+  top: 24%;
+  left: 12%;
+  width: 40%;
+  height: 11%;
+  background: linear-gradient(to top, #F4A757, #8E3A10 60%, #1A120E);
+  border: 3px solid #3B3531;
+  box-shadow: 0 0 60px rgba(244, 167, 87, .35);
+}
+.stores__visual-text { position: relative; display: grid; gap: var(--sp-4); justify-items: start; }
+.stores__visual-title { font-family: var(--fonte-titulo); font-size: var(--fs-lg); max-width: 18ch; line-height: 1.2; }
+
+.stores__list { display: grid; }
+
+.store {
+  display: grid;
+  gap: var(--sp-2);
+  padding-block: var(--sp-5);
+  border-bottom: 1px solid var(--bege-escuro);
+}
+.store:first-child { padding-top: 0; }
+.store__name { font-size: var(--fs-lg); }
+.store__address { color: var(--cinza-escuro); }
+.store .text-link { justify-self: start; }
+
+.stores__phone { padding-top: var(--sp-5); color: var(--cinza); }
+
+@media (min-width: 900px) {
+  .stores__grid { grid-template-columns: 1.1fr 1fr; gap: clamp(2.5rem, 5vw, 5rem); }
+  .stores__visual { min-height: 100%; padding: var(--sp-6); }
+}
+
+/* --------------------------------------------------------------------------
+   13. Rodapé
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background: var(--marrom-escuro);
+  color: rgba(236, 226, 210, .85);
+  font-size: 0.975rem;
+}
+
+.footer__grid {
+  display: grid;
+  gap: var(--sp-7) var(--sp-6);
+  padding-block: var(--sp-8) var(--sp-7);
+}
+
+.brand--footer { margin-right: 0; }
+.footer__brand { display: grid; gap: var(--sp-4); justify-items: start; max-width: 22rem; }
+
+.footer__title {
+  margin-bottom: var(--sp-4);
+  color: var(--bege-claro);
+  font-size: var(--fs-md);
+}
+
+.footer__col li + li { margin-top: var(--sp-2); }
+
+.footer__col a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  color: rgba(236, 226, 210, .85);
+  text-decoration: none;
+  border-radius: var(--raio);
+  transition: color .2s;
+}
+.footer__col a:hover { color: var(--laranja-claro); text-decoration: underline; text-underline-offset: .25em; }
+.footer__col a:active { color: var(--bege-claro); }
+
+.footer__address { margin-top: var(--sp-4); color: rgba(236, 226, 210, .75); }
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding-block: var(--sp-5) calc(var(--sp-5) + 4.5rem); /* espaço para o botão flutuante */
+  border-top: 1px solid rgba(236, 226, 210, .14);
+  font-size: var(--fs-sm);
+  color: rgba(236, 226, 210, .75);
+}
+.footer__top { color: inherit; border-radius: var(--raio); }
+.footer__top:hover { color: var(--laranja-claro); }
+
+@media (min-width: 640px) {
+  .footer__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .footer__grid { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; }
+  .footer__bottom { padding-bottom: var(--sp-5); }
+}
+
+/* --------------------------------------------------------------------------
+   14. Botão flutuante de WhatsApp
+   -------------------------------------------------------------------------- */
+.whatsapp-float {
+  position: fixed;
+  right: clamp(1rem, 2.5vw, 2rem);
+  bottom: clamp(1rem, 2.5vw, 2rem);
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  height: 3.5rem;
+  min-width: 3.5rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+  background: var(--laranja);
+  color: var(--sobre-laranja);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 28px -8px rgba(47, 29, 20, .6);
+  transition: background-color .2s, transform .15s var(--ease), box-shadow .2s;
+}
+.whatsapp-float__icon { width: 1.5rem; height: 1.5rem; flex: none; }
+.whatsapp-float__label {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width .35s var(--ease), margin .35s var(--ease);
+}
+.whatsapp-float:hover,
+.whatsapp-float:focus-visible { background: var(--laranja-escuro); }
+.whatsapp-float:hover .whatsapp-float__label,
+.whatsapp-float:focus-visible .whatsapp-float__label { max-width: 10rem; margin-left: var(--sp-2); }
+.whatsapp-float:active { transform: scale(.95); }
+/* O rótulo fica sempre no DOM, então o botão tem nome acessível mesmo recolhido */
+
+/* --------------------------------------------------------------------------
+   15. Aviso (toast) dos links ainda não criados no protótipo
+   -------------------------------------------------------------------------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 5.5rem; /* acima do botão de WhatsApp */
+  z-index: 60;
+  max-width: min(28rem, calc(100% - 2rem));
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: var(--raio);
+  background: var(--cinza-escuro);
+  color: var(--bege-claro);
+  font-size: 0.95rem;
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, .5);
+  transform: translate(-50%, 1rem);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s, transform .25s var(--ease), visibility 0s .25s;
+}
+.toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  transition: opacity .25s, transform .25s var(--ease), visibility 0s;
+}
+
+/* --------------------------------------------------------------------------
+   16. Entrada ao rolar (só com JS ativo e sem pedido de menos movimento)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .8s var(--ease), transform .8s var(--ease);
+  }
+  .js [data-reveal].is-visible { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
