@@ -63,7 +63,8 @@ var CATEGORIAS = [
   {
     nome: 'Tocheiros', slug: 'tocheiros', visual: 'tocheiros', ilustracao: 'p-tocheiro', prefixo: 'Modelos ',
     subcategorias: [
-      { nome: 'A gás', slug: 'a-gas' }
+      { nome: 'A gás', slug: 'a-gas' },
+      { nome: 'Sob medida', slug: 'sob-medida' }
     ]
   },
   {
@@ -368,8 +369,8 @@ var DEPOIMENTOS = [
       estrela.appendChild(cheio);
       container.appendChild(estrela);
     }
-    container.setAttribute('role', 'img');
-    container.setAttribute('aria-label', 'Nota ' + formatarNota(nota) + ' de 5');
+    // A nota já é lida no número grande ao lado; as estrelas são só visuais
+    container.setAttribute('aria-hidden', 'true');
   }
 
   (function montarAvaliacoes() {
@@ -377,8 +378,9 @@ var DEPOIMENTOS = [
     if (!track) return;
 
     montarEstrelas(document.querySelector('[data-reviews-stars]'), NOTA_GOOGLE);
+    document.querySelector('[data-reviews-score]').textContent = formatarNota(NOTA_GOOGLE);
     document.querySelector('[data-reviews-count]').textContent =
-      formatarNota(NOTA_GOOGLE) + ' · ' + TOTAL_AVALIACOES.toLocaleString('pt-BR') + ' avaliações no Google';
+      TOTAL_AVALIACOES.toLocaleString('pt-BR') + ' avaliações no Google';
 
     DEPOIMENTOS.forEach(function (dep, i) {
       var li = el('li', 'review');

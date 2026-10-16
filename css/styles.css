@@ -1076,8 +1076,15 @@ img, svg { display: block; }
   margin-bottom: clamp(2rem, 1.5rem + 2vw, 3rem);
 }
 
-/* Resumo: estrelas + "4,5 · 149 avaliações no Google" */
-.reviews__summary { display: grid; gap: var(--sp-2); justify-items: start; }
+/* Resumo: nota em destaque (4,5 grande) e, ao lado, estrelas + quantidade */
+.reviews__summary { display: flex; align-items: center; gap: var(--sp-4); }
+.reviews__score {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(3.5rem, 2.6rem + 3vw, 5rem);
+  line-height: .9;
+  color: var(--marrom);
+}
+.reviews__meta { display: grid; gap: var(--sp-2); }
 .reviews__count { color: var(--marrom); font-weight: 600; font-size: var(--fs-base); }
 
 /* Estrelas: contorno + preenchimento recortado pela largura (permite meia estrela).
