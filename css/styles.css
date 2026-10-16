@@ -362,6 +362,7 @@ img, svg { display: block; }
   font-family: var(--fonte-titulo);
   font-size: 1.4rem;
   text-align: left;
+  text-decoration: none; /* vale para o link direto (coleção sem submenu) */
   cursor: pointer;
   border-radius: var(--raio);
   transition: color .2s;
@@ -392,15 +393,23 @@ img, svg { display: block; }
 .submenu a:active { color: var(--bege); }
 .submenu__all a { color: var(--laranja-claro); font-weight: 600; }
 
-.nav-secondary { display: grid; gap: var(--sp-1); }
-.nav-secondary a {
-  display: block;
+/* Atalhos (Blog, Lojas, Espaço do Especificador, telefone).
+   Um só bloco no HTML: no celular fica dentro do menu, no desktop na faixa superior. */
+.quick-links,
+.quick-links__list { display: grid; gap: var(--sp-1); }
+.quick-links__phone { order: 2; } /* no menu mobile o telefone vem por último */
+.quick-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
   padding: var(--sp-2) 0;
   color: rgba(236, 226, 210, .85);
   text-decoration: none;
+  border-radius: var(--raio);
   transition: color .2s;
 }
-.nav-secondary a:hover { color: var(--laranja-claro); }
+.quick-links a:hover { color: var(--laranja-claro); }
+.quick-links a:active { color: var(--bege-claro); }
 
 .nav-cta { width: 100%; }
 
@@ -427,23 +436,21 @@ img, svg { display: block; }
     justify-content: space-between;
     height: 2.5rem;
   }
-  .utility-bar a {
-    display: inline-flex;
+  .utility-bar .quick-links {
+    display: flex;
     align-items: center;
-    gap: var(--sp-2);
-    color: rgba(236, 226, 210, .85);
-    text-decoration: none;
-    border-radius: var(--raio);
-    transition: color .2s;
+    justify-content: space-between;
+    width: 100%;
   }
-  .utility-bar a:hover { color: var(--laranja-claro); }
-  .utility-bar__links { display: flex; gap: var(--sp-6); }
+  .utility-bar .quick-links__phone { order: 0; }
+  .utility-bar .quick-links__list { display: flex; gap: var(--sp-6); }
+  .utility-bar .quick-links a { padding: 0; }
 
   .site-header.is-scrolled .utility-bar { max-height: 0; opacity: 0; border-color: transparent; }
   .site-header.is-scrolled .mainbar { height: 3.75rem; }
 
   .nav-toggle,
-  .nav-secondary,
+  .nav-atalhos,
   .nav-cta { display: none; }
 
   .site-nav {
@@ -459,7 +466,7 @@ img, svg { display: block; }
     transition: none;
   }
 
-  .nav-list { display: flex; gap: var(--sp-1); }
+  .nav-list { display: flex; align-items: center; gap: var(--sp-1); } /* alinha o link direto (sem seta) aos botões */
   .nav-list > .nav-item { position: relative; border: 0; }
 
   .nav-link {
@@ -929,6 +936,7 @@ img, svg { display: block; }
 @media (min-width: 1024px) { .product { flex-basis: calc((min(100vw, var(--largura)) - 2 * var(--gutter) - 3 * var(--sp-4)) / 3.25); max-width: none; } }
 
 .product__media {
+  position: relative;
   display: grid;
   place-items: center;
   aspect-ratio: 4 / 3;
@@ -1068,19 +1076,19 @@ img, svg { display: block; }
   margin-bottom: clamp(2rem, 1.5rem + 2vw, 3rem);
 }
 
-/* Resumo: nota grande + estrelas + quantidade */
-.reviews__summary { display: flex; align-items: center; gap: var(--sp-4); }
-.reviews__score {
-  font-family: var(--fonte-titulo);
-  font-size: clamp(2.6rem, 2rem + 2vw, 3.5rem);
-  line-height: 1;
-  color: var(--marrom);
-}
-.reviews__count { margin-top: var(--sp-1); color: var(--cinza); font-size: 0.975rem; }
+/* Resumo: estrelas + "4,5 · 149 avaliações no Google" */
+.reviews__summary { display: grid; gap: var(--sp-2); justify-items: start; }
+.reviews__count { color: var(--marrom); font-weight: 600; font-size: var(--fs-base); }
 
-.stars { display: flex; gap: 2px; color: var(--laranja); }
-.stars svg { width: 1.15rem; height: 1.15rem; fill: none; }
-.stars .is-full { fill: currentColor; }
+/* Estrelas: contorno + preenchimento recortado pela largura (permite meia estrela).
+   O laranja aparece só aqui na seção. */
+.stars { --star: 1.15rem; display: flex; gap: 3px; color: var(--laranja); }
+.stars--lg { --star: 1.6rem; }
+.star { position: relative; width: var(--star); height: var(--star); flex: none; }
+.star svg { position: absolute; top: 0; left: 0; width: var(--star); height: var(--star); }
+.star__outline { fill: none; }
+.star__fill { position: absolute; inset: 0 auto 0 0; overflow: hidden; }
+.star__solid { fill: currentColor; }
 
 .reviews__controls { justify-content: flex-end; margin-bottom: var(--sp-4); }
 .reviews__controls[hidden] { display: none; }
@@ -1111,14 +1119,15 @@ img, svg { display: block; }
   padding: var(--sp-6) var(--sp-5) var(--sp-5);
   border-radius: var(--raio);
   background: var(--bege);
-  border-top: 2px solid var(--laranja);
+  border-top: 2px solid var(--marrom-claro);
 }
 
-/* Aspas de abertura em laranja: o detalhe de cor do card */
+/* Aspas de abertura em marrom suave (o laranja fica só nas estrelas) */
 .review__quote {
   width: 2rem;
   height: 1.5rem; /* proporção do viewBox 32×24 */
-  color: var(--laranja);
+  color: var(--marrom-claro);
+  opacity: .55;
 }
 
 .review__text {
@@ -1129,21 +1138,25 @@ img, svg { display: block; }
 }
 
 .review__author { margin-top: auto; padding-top: var(--sp-4); border-top: 1px solid var(--bege-escuro); }
-.review__name { font-family: var(--fonte-titulo); font-size: var(--fs-md); color: var(--marrom); }
-.review__project { color: var(--cinza); font-size: var(--fs-sm); }
+.review__name { display: block; font-family: var(--fonte-titulo); font-size: var(--fs-md); color: var(--marrom); }
+.review__project { display: block; margin-top: var(--sp-1); color: var(--cinza); font-size: var(--fs-sm); }
 
-/* Etiqueta discreta que identifica conteúdo de exemplo */
-.review__tag {
+/* Etiqueta discreta que identifica conteúdo de exemplo
+   (usada nos depoimentos e nos produtos provisórios) */
+.tag-exemplo {
   position: absolute;
   top: var(--sp-4);
   right: var(--sp-4);
   padding: 0.1rem 0.55rem;
   border: 1px solid var(--cinza);
   border-radius: 999px;
-  color: var(--cinza);
+  background: rgba(245, 239, 229, .7);
+  color: var(--cinza-escuro);
   font-size: 0.78rem;
   font-weight: 600;
+  line-height: 1.5;
 }
+.product__media .tag-exemplo { top: var(--sp-3); right: var(--sp-3); }
 
 .reviews__footer { margin-top: var(--sp-6); }
 

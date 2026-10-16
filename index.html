@@ -127,19 +127,22 @@
        ============================================================ -->
   <header class="site-header" id="topo">
     <div class="utility-bar">
-      <div class="container utility-bar__inner">
-        <a class="utility-bar__phone" href="tel:+551151716070">
-          <svg class="icon" aria-hidden="true"><use href="#i-telefone"/></svg>
-          (11) 5171-6070
-        </a>
-        <nav aria-label="Atalhos">
-          <ul class="utility-bar__links">
-            <li><a href="#especificadores">Catálogos</a></li>
-            <li><a href="#" data-proto="O blog será desenhado na próxima etapa do protótipo.">Blog</a></li>
-            <li><a href="#lojas">Lojas</a></li>
-            <li><a href="#especificadores">Espaço do Especificador</a></li>
-          </ul>
-        </nav>
+      <div class="container utility-bar__inner" data-atalhos-desktop>
+        <!-- Atalhos: um único bloco no HTML. No desktop fica nesta faixa;
+             no celular, js/main.js move o mesmo bloco para dentro do menu. -->
+        <div class="quick-links" data-atalhos>
+          <a class="quick-links__phone" href="tel:+551151716070">
+            <svg class="icon" aria-hidden="true"><use href="#i-telefone"/></svg>
+            (11) 5171-6070
+          </a>
+          <nav aria-label="Atalhos">
+            <ul class="quick-links__list">
+              <li><a href="#" data-proto="O blog será desenhado na próxima etapa do protótipo.">Blog</a></li>
+              <li><a href="#lojas">Lojas</a></li>
+              <li><a href="#especificadores">Espaço do Especificador</a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
 
@@ -150,97 +153,11 @@
       </a>
 
       <nav class="site-nav" id="site-nav" aria-label="Principal">
-        <ul class="nav-list">
-          <li class="nav-item has-sub">
-            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-lareiras">
-              Lareiras <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
-            </button>
-            <ul class="submenu" id="sub-lareiras">
-              <li><a href="#colecoes" data-proto>Tradicionais</a></li>
-              <li><a href="#colecoes" data-proto>A gás linear</a></li>
-              <li><a href="#colecoes" data-proto>Esculturais</a></li>
-              <li><a href="#colecoes" data-proto>Ecoflamas</a></li>
-              <li><a href="#colecoes" data-proto>Tachos</a></li>
-              <li class="submenu__all"><a href="#colecoes">Ver todas as lareiras</a></li>
-            </ul>
-          </li>
-          <li class="nav-item has-sub">
-            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-churrasqueiras">
-              Churrasqueiras <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
-            </button>
-            <ul class="submenu" id="sub-churrasqueiras">
-              <li><a href="#colecoes" data-proto>A carvão</a></li>
-              <li><a href="#colecoes" data-proto>A gás</a></li>
-              <li><a href="#colecoes" data-proto>Pré-moldadas</a></li>
-              <li><a href="#colecoes" data-proto>Acessórios</a></li>
-              <li class="submenu__all"><a href="#colecoes">Ver todas as churrasqueiras</a></li>
-            </ul>
-          </li>
-          <li class="nav-item has-sub">
-            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-coifas">
-              Coifas <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
-            </button>
-            <ul class="submenu" id="sub-coifas">
-              <li><a href="#colecoes" data-proto>De parede</a></li>
-              <li><a href="#colecoes" data-proto>De ilha</a></li>
-              <li><a href="#colecoes" data-proto>Sob medida</a></li>
-              <li class="submenu__all"><a href="#colecoes">Ver todas as coifas</a></li>
-            </ul>
-          </li>
-          <li class="nav-item has-sub">
-            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-parrillas">
-              Parrillas <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
-            </button>
-            <ul class="submenu" id="sub-parrillas">
-              <li><a href="#colecoes" data-proto>Argentinas</a></li>
-              <li><a href="#colecoes" data-proto>Com regulagem de altura</a></li>
-              <li><a href="#colecoes" data-proto>Sob medida</a></li>
-              <li class="submenu__all"><a href="#colecoes">Ver todas as parrillas</a></li>
-            </ul>
-          </li>
-          <li class="nav-item has-sub">
-            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-fornos">
-              Fornos de Pizza <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
-            </button>
-            <ul class="submenu" id="sub-fornos">
-              <li><a href="#colecoes" data-proto>A lenha</a></li>
-              <li><a href="#colecoes" data-proto>A gás</a></li>
-              <li><a href="#colecoes" data-proto>Híbridos</a></li>
-              <li class="submenu__all"><a href="#colecoes">Ver todos os fornos</a></li>
-            </ul>
-          </li>
-          <li class="nav-item has-sub">
-            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-tocheiros">
-              Tocheiros <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
-            </button>
-            <ul class="submenu" id="sub-tocheiros">
-              <li><a href="#colecoes" data-proto>A gás</a></li>
-              <li><a href="#colecoes" data-proto>A etanol</a></li>
-              <li><a href="#colecoes" data-proto>De jardim</a></li>
-              <li class="submenu__all"><a href="#colecoes">Ver todos os tocheiros</a></li>
-            </ul>
-          </li>
-          <li class="nav-item has-sub">
-            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-chapeiras">
-              Chapeiras <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
-            </button>
-            <ul class="submenu submenu--end" id="sub-chapeiras">
-              <li><a href="#colecoes" data-proto>De ferro fundido</a></li>
-              <li><a href="#colecoes" data-proto>De aço</a></li>
-              <li><a href="#colecoes" data-proto>De embutir</a></li>
-              <li class="submenu__all"><a href="#colecoes">Ver todas as chapeiras</a></li>
-            </ul>
-          </li>
-        </ul>
+        <!-- Coleções e subcategorias: geradas por js/main.js a partir de CATEGORIAS -->
+        <ul class="nav-list" data-menu-colecoes></ul>
 
-        <!-- Links secundários: no desktop ficam na faixa de atalhos; no celular, dentro do menu -->
-        <ul class="nav-secondary">
-          <li><a href="#especificadores">Catálogos</a></li>
-          <li><a href="#" data-proto="O blog será desenhado na próxima etapa do protótipo.">Blog</a></li>
-          <li><a href="#lojas">Lojas</a></li>
-          <li><a href="#especificadores">Espaço do Especificador</a></li>
-          <li><a href="tel:+551151716070">(11) 5171-6070</a></li>
-        </ul>
+        <!-- No celular, os atalhos (data-atalhos) entram aqui -->
+        <div class="nav-atalhos" data-atalhos-mobile></div>
         <a class="btn btn--primary nav-cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
       </nav>
 
@@ -328,78 +245,9 @@
           <p class="section-lead">Sete famílias de produtos para dentro e fora de casa, da sala de estar à área gourmet.</p>
         </div>
 
-        <ul class="collection-grid" data-reveal>
-          <li class="tile tile--lareiras">
-            <!-- TODO: foto de ambiente com lareira -->
-            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Lareiras será criada na próxima etapa.">
-              <svg class="tile__art" aria-hidden="true"><use href="#p-lareira"/></svg>
-              <span class="tile__text">
-                <span class="tile__name">Lareiras</span>
-                <span class="tile__desc">A lenha, a gás e a etanol, do clássico ao escultural.</span>
-              </span>
-            </a>
-          </li>
-          <li class="tile tile--churrasqueiras">
-            <!-- TODO: foto de churrasqueira em área gourmet -->
-            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Churrasqueiras será criada na próxima etapa.">
-              <svg class="tile__art" aria-hidden="true"><use href="#p-churrasqueira"/></svg>
-              <span class="tile__text">
-                <span class="tile__name">Churrasqueiras</span>
-                <span class="tile__desc">Pré-moldadas e sob medida, a carvão ou a gás.</span>
-              </span>
-            </a>
-          </li>
-          <li class="tile tile--coifas">
-            <!-- TODO: foto de coifa de ilha -->
-            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Coifas será criada na próxima etapa.">
-              <svg class="tile__art" aria-hidden="true"><use href="#p-coifa"/></svg>
-              <span class="tile__text">
-                <span class="tile__name">Coifas</span>
-                <span class="tile__desc">De parede e de ilha, com exaustão dimensionada para o ambiente.</span>
-              </span>
-            </a>
-          </li>
-          <li class="tile tile--parrillas">
-            <!-- TODO: foto de parrilla -->
-            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Parrillas será criada na próxima etapa.">
-              <svg class="tile__art" aria-hidden="true"><use href="#p-parrilla"/></svg>
-              <span class="tile__text">
-                <span class="tile__name">Parrillas</span>
-                <span class="tile__desc">Grelhas com regulagem de altura, no estilo argentino.</span>
-              </span>
-            </a>
-          </li>
-          <li class="tile tile--fornos">
-            <!-- TODO: foto de forno de pizza -->
-            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Fornos de Pizza será criada na próxima etapa.">
-              <svg class="tile__art" aria-hidden="true"><use href="#p-forno"/></svg>
-              <span class="tile__text">
-                <span class="tile__name">Fornos de Pizza</span>
-                <span class="tile__desc">A lenha e a gás, com cúpula refratária.</span>
-              </span>
-            </a>
-          </li>
-          <li class="tile tile--tocheiros">
-            <!-- TODO: foto de tocheiro em área externa -->
-            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Tocheiros será criada na próxima etapa.">
-              <svg class="tile__art" aria-hidden="true"><use href="#p-tocheiro"/></svg>
-              <span class="tile__text">
-                <span class="tile__name">Tocheiros</span>
-                <span class="tile__desc">Chama para varandas, jardins e piscinas.</span>
-              </span>
-            </a>
-          </li>
-          <li class="tile tile--chapeiras">
-            <!-- TODO: foto de chapeira -->
-            <a class="tile__link" href="#colecoes" data-proto="A página da coleção Chapeiras será criada na próxima etapa.">
-              <svg class="tile__art" aria-hidden="true"><use href="#p-chapeira"/></svg>
-              <span class="tile__text">
-                <span class="tile__name">Chapeiras</span>
-                <span class="tile__desc">Chapas de ferro e aço para a cozinha gourmet.</span>
-              </span>
-            </a>
-          </li>
-        </ul>
+        <!-- Cards gerados por js/main.js a partir de CATEGORIAS.
+             TODO: substituir os gradientes por fotos reais de ambientes. -->
+        <ul class="collection-grid" data-grade-colecoes data-reveal></ul>
       </div>
     </section>
 
@@ -430,55 +278,7 @@
 
       <div class="carousel" data-reveal>
         <ul class="carousel__track" id="carrossel-produtos" data-carousel-track tabindex="0" aria-label="Produtos em destaque. Use as setas ou arraste para ver mais.">
-          <li class="product" aria-label="1 de 7">
-            <div class="product__media product__media--a"><svg aria-hidden="true"><use href="#p-lareira"/></svg></div>
-            <p class="product__cat">Lareira a gás linear</p>
-            <h3 class="product__name">Linear 180</h3>
-            <p class="product__desc">Chama contínua de 1,80 m, vidro frontal e acendimento por controle remoto.</p>
-            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> da Linear 180</span></a>
-          </li>
-          <li class="product" aria-label="2 de 7">
-            <div class="product__media product__media--b"><svg aria-hidden="true"><use href="#p-lareira"/></svg></div>
-            <p class="product__cat">Lareira escultural</p>
-            <h3 class="product__name">Órbita suspensa</h3>
-            <p class="product__desc">Corpo em aço com giro de 360°, pensada para salas com pé-direito duplo.</p>
-            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> da Órbita suspensa</span></a>
-          </li>
-          <li class="product" aria-label="3 de 7">
-            <div class="product__media product__media--c"><svg aria-hidden="true"><use href="#p-churrasqueira"/></svg></div>
-            <p class="product__cat">Churrasqueira</p>
-            <h3 class="product__name">Gourmet de embutir</h3>
-            <p class="product__desc">Grelhas em inox com regulagem de altura por manivela.</p>
-            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> da Gourmet de embutir</span></a>
-          </li>
-          <li class="product" aria-label="4 de 7">
-            <div class="product__media product__media--d"><svg aria-hidden="true"><use href="#p-coifa"/></svg></div>
-            <p class="product__cat">Coifa de ilha</p>
-            <h3 class="product__name">Ilha em aço escovado</h3>
-            <p class="product__desc">Exaustão para cozinhas abertas, com iluminação embutida.</p>
-            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> da Ilha em aço escovado</span></a>
-          </li>
-          <li class="product" aria-label="5 de 7">
-            <div class="product__media product__media--e"><svg aria-hidden="true"><use href="#p-forno"/></svg></div>
-            <p class="product__cat">Forno de pizza</p>
-            <h3 class="product__name">Napolitano a lenha</h3>
-            <p class="product__desc">Cúpula refratária que mantém o calor por horas depois de apagado.</p>
-            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> do Napolitano a lenha</span></a>
-          </li>
-          <li class="product" aria-label="6 de 7">
-            <div class="product__media product__media--f"><svg aria-hidden="true"><use href="#p-parrilla"/></svg></div>
-            <p class="product__cat">Parrilla</p>
-            <h3 class="product__name">Argentina com braseiro</h3>
-            <p class="product__desc">Braseiro lateral e grelha em V que escoa a gordura.</p>
-            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> da Argentina com braseiro</span></a>
-          </li>
-          <li class="product" aria-label="7 de 7">
-            <div class="product__media product__media--g"><svg aria-hidden="true"><use href="#p-tocheiro"/></svg></div>
-            <p class="product__cat">Tocheiro</p>
-            <h3 class="product__name">Tocheiro de jardim</h3>
-            <p class="product__desc">Chama a gás para áreas externas, com base em aço corten.</p>
-            <a class="product__cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Pedir orçamento<span class="sr-only"> do Tocheiro de jardim</span></a>
-          </li>
+          <!-- Cards gerados por js/main.js a partir de PRODUTOS (exemplos provisórios) -->
         </ul>
         <div class="container">
           <div class="carousel__progress" aria-hidden="true"><span class="carousel__bar" data-carousel-bar></span></div>
@@ -513,69 +313,32 @@
       <div class="container specifiers__grid">
         <div class="specifiers__intro" data-reveal>
           <h2 class="section-title" id="especificadores-titulo">Para arquitetos e especificadores</h2>
-          <p class="section-lead">Catálogos técnicos com medidas, recuos e requisitos de exaustão para incluir nossos produtos no seu projeto. Quando a obra pede algo sob medida, a nossa equipe técnica detalha a peça com você.</p>
+          <p class="section-lead">Catálogos técnicos com medidas e informações de instalação para incluir nossos produtos no seu projeto. Para detalhar a instalação, a nossa equipe técnica acompanha a obra com você.</p>
           <div class="specifiers__actions">
             <a class="btn btn--primary" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Falar com a equipe técnica</a>
           </div>
         </div>
 
-        <ul class="catalogs" data-reveal>
-          <li class="catalog">
-            <div>
-              <h3 class="catalog__name">Lareiras</h3>
-              <p class="catalog__desc">Modelos a lenha, a gás e a etanol, com dimensões de nicho.</p>
-            </div>
-            <a class="btn btn--light btn--sm" href="#" data-proto="Na versão final, este botão baixa o catálogo de Lareiras em PDF.">
-              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Baixar PDF<span class="sr-only"> do catálogo de Lareiras</span>
-            </a>
-          </li>
-          <li class="catalog">
-            <div>
-              <h3 class="catalog__name">Churrasqueiras e parrillas</h3>
-              <p class="catalog__desc">Plantas, cortes e opções de revestimento.</p>
-            </div>
-            <a class="btn btn--light btn--sm" href="#" data-proto="Na versão final, este botão baixa o catálogo de Churrasqueiras e parrillas em PDF.">
-              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Baixar PDF<span class="sr-only"> do catálogo de Churrasqueiras e parrillas</span>
-            </a>
-          </li>
-          <li class="catalog">
-            <div>
-              <h3 class="catalog__name">Coifas</h3>
-              <p class="catalog__desc">Vazão de exaustão por modelo e alturas de instalação.</p>
-            </div>
-            <a class="btn btn--light btn--sm" href="#" data-proto="Na versão final, este botão baixa o catálogo de Coifas em PDF.">
-              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Baixar PDF<span class="sr-only"> do catálogo de Coifas</span>
-            </a>
-          </li>
-          <li class="catalog">
-            <div>
-              <h3 class="catalog__name">Fornos, tocheiros e chapeiras</h3>
-              <p class="catalog__desc">Pesos, bases e requisitos de gás e ventilação.</p>
-            </div>
-            <a class="btn btn--light btn--sm" href="#" data-proto="Na versão final, este botão baixa o catálogo de Fornos, tocheiros e chapeiras em PDF.">
-              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Baixar PDF<span class="sr-only"> do catálogo de Fornos, tocheiros e chapeiras</span>
-            </a>
-          </li>
-        </ul>
+        <!-- Lista gerada por js/main.js a partir de CATALOGOS.
+             TODO: ligar cada "Baixar PDF" ao arquivo real do catálogo. -->
+        <ul class="catalogs" data-catalogos data-reveal></ul>
       </div>
     </section>
 
     <!-- ============================================================
          8. AVALIAÇÕES
-         O conteúdo (nota, quantidade e depoimentos) vem do objeto
-         AVALIACOES no topo de js/main.js. Aqui fica só a estrutura.
+         Nota, quantidade e depoimentos vêm de NOTA_GOOGLE, TOTAL_AVALIACOES
+         e DEPOIMENTOS, no topo de js/main.js. Aqui fica só a estrutura.
          ============================================================ -->
     <section class="section reviews" id="avaliacoes" aria-labelledby="avaliacoes-titulo" data-carousel>
       <div class="container">
         <div class="reviews__head" data-reveal>
           <h2 class="section-title" id="avaliacoes-titulo">O que dizem nossos clientes</h2>
 
+          <!-- Preenchido por js/main.js com NOTA_GOOGLE e TOTAL_AVALIACOES -->
           <div class="reviews__summary">
-            <p class="reviews__score" data-reviews-score>[Nota]</p>
-            <div>
-              <div class="stars" data-reviews-stars></div>
-              <p class="reviews__count" data-reviews-count>[Quantidade] avaliações no Google</p>
-            </div>
+            <div class="stars stars--lg" data-reviews-stars></div>
+            <p class="reviews__count" data-reviews-count></p>
           </div>
         </div>
 
@@ -592,7 +355,7 @@
       </div>
 
       <ul class="reviews__track" id="carrossel-avaliacoes" data-carousel-track data-reveal tabindex="0" aria-label="Depoimentos de clientes. No celular, use as setas ou arraste para ver mais.">
-        <!-- Cards gerados por js/main.js a partir de AVALIACOES.depoimentos -->
+        <!-- Cards gerados por js/main.js a partir de DEPOIMENTOS -->
       </ul>
 
       <div class="container reviews__footer">
@@ -662,28 +425,20 @@
           <svg class="brand__mark" aria-hidden="true"><use href="#i-chama"/></svg>
           <span class="brand__name">Construflama</span>
         </a>
-        <p>Lareiras, churrasqueiras, coifas, parrillas e fornos de alto padrão. São Paulo, com entrega em todo o Brasil.</p>
+        <p>Lareiras, churrasqueiras, coifas, parrillas, fornos de pizza, tocheiros e chapeiras. Showroom em São Paulo e entrega em todo o Brasil.</p>
         <a class="btn btn--primary" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
       </div>
 
       <nav class="footer__col" aria-labelledby="rodape-colecoes">
         <h2 class="footer__title" id="rodape-colecoes">Coleções</h2>
-        <ul>
-          <li><a href="#colecoes">Lareiras</a></li>
-          <li><a href="#colecoes">Churrasqueiras</a></li>
-          <li><a href="#colecoes">Coifas</a></li>
-          <li><a href="#colecoes">Parrillas</a></li>
-          <li><a href="#colecoes">Fornos de Pizza</a></li>
-          <li><a href="#colecoes">Tocheiros</a></li>
-          <li><a href="#colecoes">Chapeiras</a></li>
-        </ul>
+        <!-- Gerado por js/main.js a partir de CATEGORIAS -->
+        <ul data-rodape-colecoes></ul>
       </nav>
 
       <nav class="footer__col" aria-labelledby="rodape-profissionais">
         <h2 class="footer__title" id="rodape-profissionais">Profissionais</h2>
         <ul>
           <li><a href="#especificadores">Espaço do Especificador</a></li>
-          <li><a href="#especificadores">Catálogos</a></li>
           <li><a href="#" data-proto="O blog será desenhado na próxima etapa do protótipo.">Blog</a></li>
           <li><a href="#lojas">Lojas</a></li>
         </ul>

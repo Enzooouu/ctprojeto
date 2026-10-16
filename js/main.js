@@ -1,56 +1,407 @@
 /* ==========================================================================
    Construflama | Protótipo da home
-   Interações: cabeçalho ao rolar, menu mobile, submenus, carrosséis,
-   avaliações, animações de entrada e avisos de links ainda não criados.
+   1) Dados (no topo, para editar sem mexer no layout)
+   2) Montagem das partes geradas a partir dos dados
+   3) Interações: cabeçalho, menu mobile, submenus, carrosséis,
+      animações de entrada e avisos de links ainda não criados.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   DADOS DAS AVALIAÇÕES (edite só aqui; o layout se ajusta sozinho)
+   CATEGORIAS: fonte única de coleções e subcategorias.
+   Daqui saem o menu do cabeçalho (desktop e mobile), a grade de coleções,
+   a lista do rodapé, os catálogos e as categorias dos produtos.
+   Qualquer filtro ou aba futura deve ler daqui também.
 
-   TODO: substituir pelos depoimentos REAIS, vindos das avaliações públicas
-   da Construflama no Google ou de clientes que autorizaram por escrito o uso
-   do nome e do texto. Não publicar nomes, notas ou textos inventados.
-
-   - nota: número de 0 a 5 (ex.: 4.8). Enquanto for texto, as estrelas
-     aparecem vazias e o valor é exibido como está.
-   - quantidade: número de avaliações (ex.: 132).
-   - linkGoogle: link do perfil com as avaliações (hoje "#").
-   - exemplo: true mostra a etiqueta "Exemplo" no card. Use false nos reais.
+   - slug: identificador (vira a âncora #colecao-<slug>)
+   - visual: classe de cor do card e ilustração (ver styles.css e o sprite)
+   - prefixo: começo da frase do card, antes da lista de subcategorias
+   - subcategorias: { nome, slug, marca? } (marca: true mantém a inicial
+     maiúscula no meio da frase, como em "Ecoflamas")
+   Com uma única subcategoria, o item do menu vira link direto (sem submenu).
    -------------------------------------------------------------------------- */
-var AVALIACOES = {
-  nota: '[Nota]',
-  quantidade: '[Quantidade]',
-  linkGoogle: '#', // TODO: link real das avaliações no Google
-  depoimentos: [
-    {
-      texto: '[Depoimento real do cliente aqui]',
-      nome: '[Nome do cliente]',
-      projeto: '[Tipo de projeto, cidade]', // ex.: Residência, São Paulo
-      nota: '[Nota]',
-      exemplo: true
-    },
-    {
-      texto: '[Depoimento real do cliente aqui]',
-      nome: '[Nome do cliente]',
-      projeto: '[Tipo de projeto, cidade]',
-      nota: '[Nota]',
-      exemplo: true
-    },
-    {
-      texto: '[Depoimento real do cliente aqui]',
-      nome: '[Nome do cliente]',
-      projeto: '[Tipo de projeto, cidade]',
-      nota: '[Nota]',
-      exemplo: true
-    }
-  ]
-};
+var CATEGORIAS = [
+  {
+    nome: 'Lareiras', slug: 'lareiras', visual: 'lareiras', ilustracao: 'p-lareira', prefixo: '',
+    subcategorias: [
+      { nome: 'Tradicionais', slug: 'tradicionais' },
+      { nome: 'A gás linear', slug: 'a-gas-linear' },
+      { nome: 'Esculturais', slug: 'esculturais' },
+      { nome: 'Ecoflamas', slug: 'ecoflamas', marca: true }
+    ]
+  },
+  {
+    nome: 'Churrasqueiras', slug: 'churrasqueiras', visual: 'churrasqueiras', ilustracao: 'p-churrasqueira', prefixo: '',
+    subcategorias: [
+      { nome: 'A carvão', slug: 'a-carvao' },
+      { nome: 'A gás', slug: 'a-gas' },
+      { nome: 'Híbrida', slug: 'hibrida' },
+      { nome: 'Acessórios', slug: 'acessorios' }
+    ]
+  },
+  {
+    nome: 'Coifas', slug: 'coifas', visual: 'coifas', ilustracao: 'p-coifa', prefixo: 'Para ',
+    subcategorias: [
+      { nome: 'Churrasqueira', slug: 'churrasqueira' },
+      { nome: 'Cozinha', slug: 'cozinha' },
+      { nome: 'Parrilla', slug: 'parrilla' }
+    ]
+  },
+  {
+    nome: 'Parrillas', slug: 'parrillas', visual: 'parrillas', ilustracao: 'p-parrilla', prefixo: 'Linhas ',
+    subcategorias: [
+      { nome: 'Profissional', slug: 'profissional' },
+      { nome: 'Residencial', slug: 'residencial' }
+    ]
+  },
+  {
+    nome: 'Fornos de Pizza', slug: 'fornos-de-pizza', visual: 'fornos', ilustracao: 'p-forno', prefixo: '',
+    subcategorias: [
+      { nome: 'A lenha', slug: 'a-lenha' },
+      { nome: 'Portátil', slug: 'portatil' }
+    ]
+  },
+  {
+    nome: 'Tocheiros', slug: 'tocheiros', visual: 'tocheiros', ilustracao: 'p-tocheiro', prefixo: 'Modelos ',
+    subcategorias: [
+      { nome: 'A gás', slug: 'a-gas' }
+    ]
+  },
+  {
+    nome: 'Chapeiras', slug: 'chapeiras', visual: 'chapeiras', ilustracao: 'p-chapeira', prefixo: '',
+    subcategorias: [
+      { nome: 'A gás', slug: 'a-gas' },
+      { nome: 'Elétrica', slug: 'eletrica' }
+    ]
+  }
+];
+
+/* --------------------------------------------------------------------------
+   PRODUTOS em destaque (carrossel).
+   TODO: estes são EXEMPLOS PROVISÓRIOS, só para mostrar o layout. Serão
+   trocados pelos produtos reais (nome, foto e link). categoria e
+   subcategoria usam os slugs de CATEGORIAS; combinações que não existirem
+   lá são ignoradas e avisadas no console.
+   - fundo: letra do gradiente provisório (product__media--a ... --g)
+   -------------------------------------------------------------------------- */
+var PRODUTOS = [
+  { nome: 'Lareira a gás linear', categoria: 'lareiras', subcategoria: 'a-gas-linear', fundo: 'a', exemplo: true },
+  { nome: 'Lareira escultural', categoria: 'lareiras', subcategoria: 'esculturais', fundo: 'b', exemplo: true },
+  { nome: 'Churrasqueira híbrida', categoria: 'churrasqueiras', subcategoria: 'hibrida', fundo: 'c', exemplo: true },
+  { nome: 'Coifa para cozinha', categoria: 'coifas', subcategoria: 'cozinha', fundo: 'd', exemplo: true },
+  { nome: 'Forno de pizza a lenha', categoria: 'fornos-de-pizza', subcategoria: 'a-lenha', fundo: 'e', exemplo: true },
+  { nome: 'Parrilla residencial', categoria: 'parrillas', subcategoria: 'residencial', fundo: 'f', exemplo: true },
+  { nome: 'Tocheiro a gás', categoria: 'tocheiros', subcategoria: 'a-gas', fundo: 'g', exemplo: true },
+  { nome: 'Chapeira elétrica', categoria: 'chapeiras', subcategoria: 'eletrica', fundo: 'b', exemplo: true }
+];
+
+/* --------------------------------------------------------------------------
+   CATALOGOS para download (seção do especificador). Cada catálogo junta
+   uma ou mais categorias; a descrição é montada com as subcategorias.
+   TODO: preencher "arquivo" com o caminho do PDF real de cada catálogo.
+   -------------------------------------------------------------------------- */
+var CATALOGOS = [
+  { titulo: 'Lareiras', categorias: ['lareiras'], arquivo: '' },
+  { titulo: 'Churrasqueiras e parrillas', categorias: ['churrasqueiras', 'parrillas'], arquivo: '' },
+  { titulo: 'Coifas', categorias: ['coifas'], arquivo: '' },
+  { titulo: 'Fornos de pizza, tocheiros e chapeiras', categorias: ['fornos-de-pizza', 'tocheiros', 'chapeiras'], arquivo: '' }
+];
+
+/* --------------------------------------------------------------------------
+   AVALIAÇÕES NO GOOGLE
+   Nota e quantidade reais (atualize aqui quando mudarem).
+   -------------------------------------------------------------------------- */
+var NOTA_GOOGLE = 4.5;
+var TOTAL_AVALIACOES = 149;
+
+/* TODO: copiar os depoimentos de avaliações REAIS do Google (texto e nome
+   como aparecem lá) ou de clientes que autorizaram o uso. Não inventar
+   nomes, frases ou notas. Ao colar um real, troque exemplo para false:
+   a etiqueta "Exemplo" some do card. */
+var DEPOIMENTOS = [
+  { texto: '[Depoimento real do Google aqui]', autor: '[Nome do cliente]', tipoProjeto: '[Tipo de projeto]', exemplo: true },
+  { texto: '[Depoimento real do Google aqui]', autor: '[Nome do cliente]', tipoProjeto: '[Tipo de projeto]', exemplo: true },
+  { texto: '[Depoimento real do Google aqui]', autor: '[Nome do cliente]', tipoProjeto: '[Tipo de projeto]', exemplo: true }
+];
 
 (function () {
   'use strict';
 
   var desktopQuery = window.matchMedia('(min-width: 1180px)');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* ------------------------------------------------------------------------
+     A. Utilitários de montagem (textContent em tudo: dados nunca viram HTML)
+     ------------------------------------------------------------------------ */
+  var SVG_NS = 'http://www.w3.org/2000/svg';
+
+  function el(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function icone(id, className) {
+    var svg = document.createElementNS(SVG_NS, 'svg');
+    var use = document.createElementNS(SVG_NS, 'use');
+    svg.setAttribute('aria-hidden', 'true');
+    if (className) svg.setAttribute('class', className);
+    use.setAttribute('href', '#' + id);
+    svg.appendChild(use);
+    return svg;
+  }
+
+  function srOnly(text) { return el('span', 'sr-only', text); }
+
+  function ancoraColecao(cat) { return '#colecao-' + cat.slug; }
+
+  function buscarCategoria(slug) {
+    return CATEGORIAS.filter(function (c) { return c.slug === slug; })[0];
+  }
+
+  // "a, b e c", com a inicial minúscula (exceto nomes de linha, como Ecoflamas)
+  function listarSubcategorias(cat) {
+    var nomes = cat.subcategorias.map(function (s) {
+      return s.marca ? s.nome : s.nome.charAt(0).toLowerCase() + s.nome.slice(1);
+    });
+    return nomes.length > 1 ? nomes.slice(0, -1).join(', ') + ' e ' + nomes[nomes.length - 1] : nomes[0];
+  }
+
+  // Frase curta do card: só cita subcategorias que existem nos dados
+  function descricaoCategoria(cat) {
+    var frase = cat.prefixo + listarSubcategorias(cat);
+    return frase.charAt(0).toUpperCase() + frase.slice(1) + '.';
+  }
+
+  function linkProvisorio(texto, mensagem, href) {
+    var a = el('a', null, texto);
+    a.href = href || '#';
+    a.setAttribute('data-proto', mensagem);
+    return a;
+  }
+
+  /* ------------------------------------------------------------------------
+     B. Menu de coleções (cabeçalho; o mesmo <ul> vira o painel mobile)
+     ------------------------------------------------------------------------ */
+  (function montarMenu() {
+    var lista = document.querySelector('[data-menu-colecoes]');
+    if (!lista) return;
+    var comSub = CATEGORIAS.filter(function (c) { return c.subcategorias.length > 1; });
+    var ultimaComSub = comSub[comSub.length - 1];
+
+    CATEGORIAS.forEach(function (cat) {
+      var li = el('li', 'nav-item');
+
+      // Uma subcategoria só: link direto para a coleção, sem submenu
+      if (cat.subcategorias.length <= 1) {
+        var link = el('a', 'nav-link', cat.nome);
+        link.href = ancoraColecao(cat);
+        li.appendChild(link);
+        lista.appendChild(li);
+        return;
+      }
+
+      var id = 'sub-' + cat.slug;
+      li.classList.add('has-sub');
+
+      var botao = el('button', 'nav-link', cat.nome + ' ');
+      botao.type = 'button';
+      botao.setAttribute('aria-expanded', 'false');
+      botao.setAttribute('aria-controls', id);
+      botao.appendChild(icone('i-seta-baixo', 'icon nav-link__chevron'));
+
+      // O submenu da última coluna abre para a esquerda (não cobre o botão de orçamento)
+      var sub = el('ul', 'submenu' + (cat === ultimaComSub ? ' submenu--end' : ''));
+      sub.id = id;
+      cat.subcategorias.forEach(function (s) {
+        var item = el('li');
+        item.appendChild(linkProvisorio(s.nome,
+          'A página "' + cat.nome + ': ' + s.nome + '" será criada na próxima etapa.',
+          ancoraColecao(cat)));
+        sub.appendChild(item);
+      });
+      var todos = el('li', 'submenu__all');
+      var linkTodos = el('a', null, 'Ver toda a coleção');
+      linkTodos.href = ancoraColecao(cat);
+      linkTodos.appendChild(srOnly(' de ' + cat.nome));
+      todos.appendChild(linkTodos);
+      sub.appendChild(todos);
+
+      li.appendChild(botao);
+      li.appendChild(sub);
+      lista.appendChild(li);
+    });
+  })();
+
+  /* ------------------------------------------------------------------------
+     C. Grade de coleções
+     TODO: quando houver fotos, aplicar como background-image no .tile
+     (o véu escuro do CSS mantém o texto legível).
+     ------------------------------------------------------------------------ */
+  (function montarGrade() {
+    var grade = document.querySelector('[data-grade-colecoes]');
+    if (!grade) return;
+
+    CATEGORIAS.forEach(function (cat) {
+      var li = el('li', 'tile tile--' + cat.visual);
+      li.id = 'colecao-' + cat.slug;
+
+      var link = linkProvisorio('', 'A página da coleção ' + cat.nome + ' será criada na próxima etapa.', ancoraColecao(cat));
+      link.className = 'tile__link';
+      link.appendChild(icone(cat.ilustracao, 'tile__art'));
+
+      var texto = el('span', 'tile__text');
+      texto.appendChild(el('span', 'tile__name', cat.nome));
+      texto.appendChild(el('span', 'tile__desc', descricaoCategoria(cat)));
+      link.appendChild(texto);
+
+      li.appendChild(link);
+      grade.appendChild(li);
+    });
+  })();
+
+  /* ------------------------------------------------------------------------
+     D. Coleções no rodapé
+     ------------------------------------------------------------------------ */
+  (function montarRodape() {
+    var lista = document.querySelector('[data-rodape-colecoes]');
+    if (!lista) return;
+    CATEGORIAS.forEach(function (cat) {
+      var li = el('li');
+      var a = el('a', null, cat.nome);
+      a.href = ancoraColecao(cat);
+      li.appendChild(a);
+      lista.appendChild(li);
+    });
+  })();
+
+  /* ------------------------------------------------------------------------
+     E. Produtos em destaque (carrossel)
+     ------------------------------------------------------------------------ */
+  (function montarProdutos() {
+    var track = document.getElementById('carrossel-produtos');
+    if (!track) return;
+
+    var validos = PRODUTOS.filter(function (p) {
+      var cat = buscarCategoria(p.categoria);
+      var ok = cat && cat.subcategorias.some(function (s) { return s.slug === p.subcategoria; });
+      if (!ok) console.warn('Produto ignorado (categoria/subcategoria inexistente):', p.nome);
+      return ok;
+    });
+
+    validos.forEach(function (p, i) {
+      var cat = buscarCategoria(p.categoria);
+      var li = el('li', 'product');
+      li.setAttribute('aria-label', (i + 1) + ' de ' + validos.length);
+
+      // TODO: foto do produto no lugar do gradiente provisório
+      var media = el('div', 'product__media product__media--' + p.fundo);
+      media.appendChild(icone(cat.ilustracao));
+      if (p.exemplo) media.appendChild(el('span', 'tag-exemplo', 'Exemplo'));
+      li.appendChild(media);
+
+      li.appendChild(el('p', 'product__cat', cat.nome));
+      li.appendChild(el('h3', 'product__name', p.nome));
+
+      var cta = el('a', 'product__cta', 'Pedir orçamento');
+      cta.href = 'https://whts.co/Construflama_com';
+      cta.target = '_blank';
+      cta.rel = 'noopener';
+      cta.appendChild(srOnly(': ' + p.nome));
+      li.appendChild(cta);
+
+      track.appendChild(li);
+    });
+  })();
+
+  /* ------------------------------------------------------------------------
+     F. Catálogos (seção do especificador)
+     ------------------------------------------------------------------------ */
+  (function montarCatalogos() {
+    var lista = document.querySelector('[data-catalogos]');
+    if (!lista) return;
+
+    CATALOGOS.forEach(function (catalogo) {
+      var cats = catalogo.categorias.map(buscarCategoria).filter(Boolean);
+      var li = el('li', 'catalog');
+
+      var info = el('div');
+      info.appendChild(el('h3', 'catalog__name', catalogo.titulo));
+      // Uma categoria: mesma frase do card da grade. Várias: "Nome: subcategorias."
+      info.appendChild(el('p', 'catalog__desc', cats.length === 1
+        ? descricaoCategoria(cats[0])
+        : cats.map(function (c) { return c.nome + ': ' + listarSubcategorias(c) + '.'; }).join(' ')));
+      li.appendChild(info);
+
+      var botao = catalogo.arquivo
+        ? el('a', 'btn btn--light btn--sm')
+        : linkProvisorio('', 'Na versão final, este botão baixa o catálogo de ' + catalogo.titulo + ' em PDF.');
+      botao.className = 'btn btn--light btn--sm';
+      if (catalogo.arquivo) { botao.href = catalogo.arquivo; botao.setAttribute('download', ''); }
+      botao.appendChild(icone('i-download', 'icon'));
+      botao.appendChild(document.createTextNode(' Baixar PDF'));
+      botao.appendChild(srOnly(' do catálogo de ' + catalogo.titulo));
+      li.appendChild(botao);
+
+      lista.appendChild(li);
+    });
+  })();
+
+  /* ------------------------------------------------------------------------
+     G. Avaliações: resumo (estrelas com meia estrela) e cards
+     ------------------------------------------------------------------------ */
+  function formatarNota(nota) {
+    return nota.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  }
+
+  // Cinco estrelas preenchidas em passos de meia estrela (4,5 = 4 cheias + 1 meia)
+  function montarEstrelas(container, nota) {
+    container.textContent = '';
+    var arredondada = Math.round(nota * 2) / 2;
+    for (var i = 0; i < 5; i++) {
+      var fracao = Math.max(0, Math.min(1, arredondada - i));
+      var estrela = el('span', 'star');
+      estrela.appendChild(icone('i-estrela', 'star__outline'));
+      var cheio = el('span', 'star__fill');
+      cheio.style.width = (fracao * 100) + '%';
+      cheio.appendChild(icone('i-estrela', 'star__solid'));
+      estrela.appendChild(cheio);
+      container.appendChild(estrela);
+    }
+    container.setAttribute('role', 'img');
+    container.setAttribute('aria-label', 'Nota ' + formatarNota(nota) + ' de 5');
+  }
+
+  (function montarAvaliacoes() {
+    var track = document.getElementById('carrossel-avaliacoes');
+    if (!track) return;
+
+    montarEstrelas(document.querySelector('[data-reviews-stars]'), NOTA_GOOGLE);
+    document.querySelector('[data-reviews-count]').textContent =
+      formatarNota(NOTA_GOOGLE) + ' · ' + TOTAL_AVALIACOES.toLocaleString('pt-BR') + ' avaliações no Google';
+
+    DEPOIMENTOS.forEach(function (dep, i) {
+      var li = el('li', 'review');
+      li.setAttribute('aria-label', (i + 1) + ' de ' + DEPOIMENTOS.length);
+      if (dep.exemplo) li.appendChild(el('span', 'tag-exemplo', 'Exemplo'));
+      li.appendChild(icone('i-aspas', 'review__quote'));
+      li.appendChild(el('blockquote', 'review__text', dep.texto));
+
+      var autor = el('p', 'review__author');
+      autor.appendChild(el('span', 'review__name', dep.autor));
+      autor.appendChild(el('span', 'review__project', dep.tipoProjeto));
+      li.appendChild(autor);
+
+      track.appendChild(li);
+    });
+  })();
+
+  // TODO: enquanto o link do Google (no HTML) for "#", avisa em vez de abrir uma aba vazia
+  var reviewsLink = document.querySelector('[data-reviews-link]');
+  if (reviewsLink && reviewsLink.getAttribute('href') === '#') {
+    reviewsLink.setAttribute('data-proto', 'Na versão final, este botão abre as avaliações da Construflama no Google.');
+    reviewsLink.removeAttribute('target');
+  }
 
   /* ------------------------------------------------------------------------
      1. Cabeçalho: muda de aspecto depois de rolar um pouco
@@ -119,10 +470,24 @@ var AVALIACOES = {
     }
   });
 
+  // Atalhos: um único bloco no HTML, colocado na faixa superior (desktop)
+  // ou dentro do painel do menu (celular). Assim nenhum link fica duplicado.
+  var atalhos = document.querySelector('[data-atalhos]');
+  var atalhosDesktop = document.querySelector('[data-atalhos-desktop]');
+  var atalhosMobile = document.querySelector('[data-atalhos-mobile]');
+
+  function posicionarAtalhos() {
+    if (!atalhos || !atalhosDesktop || !atalhosMobile) return;
+    var destino = desktopQuery.matches ? atalhosDesktop : atalhosMobile;
+    if (atalhos.parentNode !== destino) destino.appendChild(atalhos);
+  }
+  posicionarAtalhos();
+
   // Ao passar para o desktop, garante que o painel mobile seja fechado
   desktopQuery.addEventListener('change', function (e) {
     if (e.matches && nav.classList.contains('is-open')) setMenu(false);
     closeAllSubmenus();
+    posicionarAtalhos();
   });
 
   /* ------------------------------------------------------------------------
@@ -189,108 +554,7 @@ var AVALIACOES = {
   });
 
   /* ------------------------------------------------------------------------
-     4. Avaliações: monta o resumo e os cards a partir de AVALIACOES
-        (textContent em tudo, então os dados nunca viram HTML)
-     ------------------------------------------------------------------------ */
-  var SVG_NS = 'http://www.w3.org/2000/svg';
-
-  function isNumero(valor) {
-    return typeof valor === 'number' && isFinite(valor);
-  }
-
-  function formatarNota(nota) {
-    return isNumero(nota)
-      ? nota.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
-      : String(nota);
-  }
-
-  function criarIcone(id, className) {
-    var svg = document.createElementNS(SVG_NS, 'svg');
-    var use = document.createElementNS(SVG_NS, 'use');
-    svg.setAttribute('aria-hidden', 'true');
-    if (className) svg.setAttribute('class', className);
-    use.setAttribute('href', '#' + id);
-    svg.appendChild(use);
-    return svg;
-  }
-
-  // Cinco estrelas; cheias até a nota arredondada (vazias se a nota for texto)
-  function preencherEstrelas(container, nota) {
-    var cheias = isNumero(nota) ? Math.round(nota) : 0;
-    container.textContent = '';
-    for (var i = 0; i < 5; i++) {
-      container.appendChild(criarIcone('i-estrela', i < cheias ? 'is-full' : ''));
-    }
-    var label = document.createElement('span');
-    label.className = 'sr-only';
-    label.textContent = 'Nota ' + formatarNota(nota) + ' de 5';
-    container.appendChild(label);
-  }
-
-  function criarCard(dep, indice, total) {
-    var li = document.createElement('li');
-    li.className = 'review';
-    li.setAttribute('aria-label', (indice + 1) + ' de ' + total);
-
-    if (dep.exemplo) {
-      var tag = document.createElement('span');
-      tag.className = 'review__tag';
-      tag.textContent = 'Exemplo';
-      li.appendChild(tag);
-    }
-
-    li.appendChild(criarIcone('i-aspas', 'review__quote'));
-
-    var estrelas = document.createElement('div');
-    estrelas.className = 'stars';
-    preencherEstrelas(estrelas, dep.nota);
-    li.appendChild(estrelas);
-
-    var texto = document.createElement('blockquote');
-    texto.className = 'review__text';
-    texto.textContent = dep.texto;
-    li.appendChild(texto);
-
-    var autor = document.createElement('p');
-    autor.className = 'review__author';
-    var nome = document.createElement('span');
-    nome.className = 'review__name';
-    nome.textContent = dep.nome;
-    var projeto = document.createElement('span');
-    projeto.className = 'review__project';
-    projeto.textContent = dep.projeto;
-    autor.appendChild(nome);
-    autor.appendChild(document.createElement('br'));
-    autor.appendChild(projeto);
-    li.appendChild(autor);
-
-    return li;
-  }
-
-  (function montarAvaliacoes() {
-    var track = document.getElementById('carrossel-avaliacoes');
-    if (!track || typeof AVALIACOES === 'undefined') return;
-
-    document.querySelector('[data-reviews-score]').textContent = formatarNota(AVALIACOES.nota);
-    preencherEstrelas(document.querySelector('[data-reviews-stars]'), AVALIACOES.nota);
-    var qtd = AVALIACOES.quantidade;
-    document.querySelector('[data-reviews-count]').textContent =
-      (isNumero(qtd) ? qtd.toLocaleString('pt-BR') : qtd) + ' avaliações no Google';
-    document.querySelector('[data-reviews-link]').setAttribute('href', AVALIACOES.linkGoogle || '#');
-
-    var lista = AVALIACOES.depoimentos || [];
-    lista.forEach(function (dep, i) { track.appendChild(criarCard(dep, i, lista.length)); });
-  })();
-
-  // Enquanto o link do Google for "#", avisa em vez de abrir uma aba vazia
-  var reviewsLink = document.querySelector('[data-reviews-link]');
-  if (reviewsLink && reviewsLink.getAttribute('href') === '#') {
-    reviewsLink.setAttribute('data-proto', 'Na versão final, este botão abre as avaliações da Construflama no Google.');
-    reviewsLink.removeAttribute('target');
-  }
-
-  /* ------------------------------------------------------------------------
-     5. Carrosséis (produtos e avaliações): setas, arrasto com mouse e barra
+     4. Carrosséis (produtos e avaliações): setas, arrasto com mouse e barra
         de progresso. No celular o arrasto é o rolar nativo (com scroll-snap).
         Cada carrossel é um [data-carousel] com [data-carousel-track],
         [data-carousel-prev], [data-carousel-next] e, opcionalmente,
@@ -388,7 +652,7 @@ var AVALIACOES = {
   Array.prototype.forEach.call(document.querySelectorAll('[data-carousel]'), initCarousel);
 
   /* ------------------------------------------------------------------------
-     6. Animações de entrada ao rolar (respeita prefers-reduced-motion via CSS)
+     5. Animações de entrada ao rolar (respeita prefers-reduced-motion via CSS)
      ------------------------------------------------------------------------ */
   var revealEls = document.querySelectorAll('[data-reveal]');
 
@@ -407,7 +671,7 @@ var AVALIACOES = {
   }
 
   /* ------------------------------------------------------------------------
-     7. Links ainda não criados neste protótipo: aviso discreto em vez de
+     6. Links ainda não criados neste protótipo: aviso discreto em vez de
         página quebrada. TODO: remover quando as páginas existirem.
      ------------------------------------------------------------------------ */
   var toast = document.querySelector('.toast');
@@ -424,7 +688,7 @@ var AVALIACOES = {
   });
 
   /* ------------------------------------------------------------------------
-     8. Ano atual no rodapé
+     7. Ano atual no rodapé
      ------------------------------------------------------------------------ */
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = String(new Date().getFullYear());
