@@ -32,6 +32,12 @@
     <symbol id="i-proximo" viewBox="0 0 24 24">
       <path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+    <symbol id="i-estrela" viewBox="0 0 24 24">
+      <path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-aspas" viewBox="0 0 32 24">
+      <path d="M0 24V14C0 6.5 4 1.6 11.5 0l1.3 3.2C8.6 4.6 6.6 7.4 6.4 11H13v13Zm19 0V14c0-7.5 4-12.4 11.5-14l1.3 3.2c-4.2 1.4-6.2 4.2-6.4 7.8H32v13Z" fill="currentColor"/>
+    </symbol>
     <symbol id="i-download" viewBox="0 0 24 24">
       <path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
@@ -214,6 +220,17 @@
               <li class="submenu__all"><a href="#colecoes">Ver todos os tocheiros</a></li>
             </ul>
           </li>
+          <li class="nav-item has-sub">
+            <button class="nav-link" type="button" aria-expanded="false" aria-controls="sub-chapeiras">
+              Chapeiras <svg class="icon nav-link__chevron" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
+            </button>
+            <ul class="submenu submenu--end" id="sub-chapeiras">
+              <li><a href="#colecoes" data-proto>De ferro fundido</a></li>
+              <li><a href="#colecoes" data-proto>De aço</a></li>
+              <li><a href="#colecoes" data-proto>De embutir</a></li>
+              <li class="submenu__all"><a href="#colecoes">Ver todas as chapeiras</a></li>
+            </ul>
+          </li>
         </ul>
 
         <!-- Links secundários: no desktop ficam na faixa de atalhos; no celular, dentro do menu -->
@@ -391,7 +408,7 @@
          TODO: nomes e descrições são ilustrativos; substituir pelo
          catálogo real e trocar os gradientes por fotos de produto.
          ============================================================ -->
-    <section class="section featured" id="destaques" aria-labelledby="destaques-titulo">
+    <section class="section featured" id="destaques" aria-labelledby="destaques-titulo" data-carousel>
       <div class="container">
         <div class="featured__head" data-reveal>
           <div>
@@ -412,7 +429,7 @@
       </div>
 
       <div class="carousel" data-reveal>
-        <ul class="carousel__track" id="carrossel-produtos" tabindex="0" aria-label="Produtos em destaque. Use as setas ou arraste para ver mais.">
+        <ul class="carousel__track" id="carrossel-produtos" data-carousel-track tabindex="0" aria-label="Produtos em destaque. Use as setas ou arraste para ver mais.">
           <li class="product" aria-label="1 de 7">
             <div class="product__media product__media--a"><svg aria-hidden="true"><use href="#p-lareira"/></svg></div>
             <p class="product__cat">Lareira a gás linear</p>
@@ -464,7 +481,7 @@
           </li>
         </ul>
         <div class="container">
-          <div class="carousel__progress" aria-hidden="true"><span class="carousel__bar"></span></div>
+          <div class="carousel__progress" aria-hidden="true"><span class="carousel__bar" data-carousel-bar></span></div>
         </div>
       </div>
     </section>
@@ -544,7 +561,48 @@
     </section>
 
     <!-- ============================================================
-         8. LOJAS E SHOWROOM
+         8. AVALIAÇÕES
+         O conteúdo (nota, quantidade e depoimentos) vem do objeto
+         AVALIACOES no topo de js/main.js. Aqui fica só a estrutura.
+         ============================================================ -->
+    <section class="section reviews" id="avaliacoes" aria-labelledby="avaliacoes-titulo" data-carousel>
+      <div class="container">
+        <div class="reviews__head" data-reveal>
+          <h2 class="section-title" id="avaliacoes-titulo">O que dizem nossos clientes</h2>
+
+          <div class="reviews__summary">
+            <p class="reviews__score" data-reviews-score>[Nota]</p>
+            <div>
+              <div class="stars" data-reviews-stars></div>
+              <p class="reviews__count" data-reviews-count>[Quantidade] avaliações no Google</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reviews__controls carousel-controls" data-carousel-controls>
+          <button class="carousel-btn" type="button" data-carousel-prev aria-controls="carrossel-avaliacoes">
+            <svg class="icon" aria-hidden="true"><use href="#i-anterior"/></svg>
+            <span class="sr-only">Avaliações anteriores</span>
+          </button>
+          <button class="carousel-btn" type="button" data-carousel-next aria-controls="carrossel-avaliacoes">
+            <svg class="icon" aria-hidden="true"><use href="#i-proximo"/></svg>
+            <span class="sr-only">Próximas avaliações</span>
+          </button>
+        </div>
+      </div>
+
+      <ul class="reviews__track" id="carrossel-avaliacoes" data-carousel-track data-reveal tabindex="0" aria-label="Depoimentos de clientes. No celular, use as setas ou arraste para ver mais.">
+        <!-- Cards gerados por js/main.js a partir de AVALIACOES.depoimentos -->
+      </ul>
+
+      <div class="container reviews__footer">
+        <!-- TODO: trocar href="#" pelo link real do perfil da Construflama no Google (avaliações) -->
+        <a class="btn btn--outline" href="#" data-reviews-link target="_blank" rel="noopener">Ver todas as avaliações no Google</a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         9. LOJAS E SHOWROOM
          ============================================================ -->
     <section class="section stores" id="lojas" aria-labelledby="lojas-titulo">
       <div class="container">
@@ -595,7 +653,7 @@
   </main>
 
   <!-- ============================================================
-       9. RODAPÉ
+       10. RODAPÉ
        ============================================================ -->
   <footer class="site-footer">
     <div class="container footer__grid">

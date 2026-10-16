@@ -1,8 +1,51 @@
 /* ==========================================================================
    Construflama | Protótipo da home
-   Interações: cabeçalho ao rolar, menu mobile, submenus, carrossel,
-   animações de entrada e avisos de links ainda não criados.
+   Interações: cabeçalho ao rolar, menu mobile, submenus, carrosséis,
+   avaliações, animações de entrada e avisos de links ainda não criados.
    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   DADOS DAS AVALIAÇÕES (edite só aqui; o layout se ajusta sozinho)
+
+   TODO: substituir pelos depoimentos REAIS, vindos das avaliações públicas
+   da Construflama no Google ou de clientes que autorizaram por escrito o uso
+   do nome e do texto. Não publicar nomes, notas ou textos inventados.
+
+   - nota: número de 0 a 5 (ex.: 4.8). Enquanto for texto, as estrelas
+     aparecem vazias e o valor é exibido como está.
+   - quantidade: número de avaliações (ex.: 132).
+   - linkGoogle: link do perfil com as avaliações (hoje "#").
+   - exemplo: true mostra a etiqueta "Exemplo" no card. Use false nos reais.
+   -------------------------------------------------------------------------- */
+var AVALIACOES = {
+  nota: '[Nota]',
+  quantidade: '[Quantidade]',
+  linkGoogle: '#', // TODO: link real das avaliações no Google
+  depoimentos: [
+    {
+      texto: '[Depoimento real do cliente aqui]',
+      nome: '[Nome do cliente]',
+      projeto: '[Tipo de projeto, cidade]', // ex.: Residência, São Paulo
+      nota: '[Nota]',
+      exemplo: true
+    },
+    {
+      texto: '[Depoimento real do cliente aqui]',
+      nome: '[Nome do cliente]',
+      projeto: '[Tipo de projeto, cidade]',
+      nota: '[Nota]',
+      exemplo: true
+    },
+    {
+      texto: '[Depoimento real do cliente aqui]',
+      nome: '[Nome do cliente]',
+      projeto: '[Tipo de projeto, cidade]',
+      nota: '[Nota]',
+      exemplo: true
+    }
+  ]
+};
+
 (function () {
   'use strict';
 
@@ -146,18 +189,123 @@
   });
 
   /* ------------------------------------------------------------------------
-     4. Carrossel de produtos: setas, arrasto com mouse e barra de progresso.
-        No celular o arrasto é o rolar nativo (com scroll-snap).
+     4. Avaliações: monta o resumo e os cards a partir de AVALIACOES
+        (textContent em tudo, então os dados nunca viram HTML)
      ------------------------------------------------------------------------ */
-  var track = document.querySelector('.carousel__track');
+  var SVG_NS = 'http://www.w3.org/2000/svg';
 
-  if (track) {
-    var prev = document.querySelector('[data-carousel-prev]');
-    var next = document.querySelector('[data-carousel-next]');
-    var bar = document.querySelector('.carousel__bar');
+  function isNumero(valor) {
+    return typeof valor === 'number' && isFinite(valor);
+  }
+
+  function formatarNota(nota) {
+    return isNumero(nota)
+      ? nota.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+      : String(nota);
+  }
+
+  function criarIcone(id, className) {
+    var svg = document.createElementNS(SVG_NS, 'svg');
+    var use = document.createElementNS(SVG_NS, 'use');
+    svg.setAttribute('aria-hidden', 'true');
+    if (className) svg.setAttribute('class', className);
+    use.setAttribute('href', '#' + id);
+    svg.appendChild(use);
+    return svg;
+  }
+
+  // Cinco estrelas; cheias até a nota arredondada (vazias se a nota for texto)
+  function preencherEstrelas(container, nota) {
+    var cheias = isNumero(nota) ? Math.round(nota) : 0;
+    container.textContent = '';
+    for (var i = 0; i < 5; i++) {
+      container.appendChild(criarIcone('i-estrela', i < cheias ? 'is-full' : ''));
+    }
+    var label = document.createElement('span');
+    label.className = 'sr-only';
+    label.textContent = 'Nota ' + formatarNota(nota) + ' de 5';
+    container.appendChild(label);
+  }
+
+  function criarCard(dep, indice, total) {
+    var li = document.createElement('li');
+    li.className = 'review';
+    li.setAttribute('aria-label', (indice + 1) + ' de ' + total);
+
+    if (dep.exemplo) {
+      var tag = document.createElement('span');
+      tag.className = 'review__tag';
+      tag.textContent = 'Exemplo';
+      li.appendChild(tag);
+    }
+
+    li.appendChild(criarIcone('i-aspas', 'review__quote'));
+
+    var estrelas = document.createElement('div');
+    estrelas.className = 'stars';
+    preencherEstrelas(estrelas, dep.nota);
+    li.appendChild(estrelas);
+
+    var texto = document.createElement('blockquote');
+    texto.className = 'review__text';
+    texto.textContent = dep.texto;
+    li.appendChild(texto);
+
+    var autor = document.createElement('p');
+    autor.className = 'review__author';
+    var nome = document.createElement('span');
+    nome.className = 'review__name';
+    nome.textContent = dep.nome;
+    var projeto = document.createElement('span');
+    projeto.className = 'review__project';
+    projeto.textContent = dep.projeto;
+    autor.appendChild(nome);
+    autor.appendChild(document.createElement('br'));
+    autor.appendChild(projeto);
+    li.appendChild(autor);
+
+    return li;
+  }
+
+  (function montarAvaliacoes() {
+    var track = document.getElementById('carrossel-avaliacoes');
+    if (!track || typeof AVALIACOES === 'undefined') return;
+
+    document.querySelector('[data-reviews-score]').textContent = formatarNota(AVALIACOES.nota);
+    preencherEstrelas(document.querySelector('[data-reviews-stars]'), AVALIACOES.nota);
+    var qtd = AVALIACOES.quantidade;
+    document.querySelector('[data-reviews-count]').textContent =
+      (isNumero(qtd) ? qtd.toLocaleString('pt-BR') : qtd) + ' avaliações no Google';
+    document.querySelector('[data-reviews-link]').setAttribute('href', AVALIACOES.linkGoogle || '#');
+
+    var lista = AVALIACOES.depoimentos || [];
+    lista.forEach(function (dep, i) { track.appendChild(criarCard(dep, i, lista.length)); });
+  })();
+
+  // Enquanto o link do Google for "#", avisa em vez de abrir uma aba vazia
+  var reviewsLink = document.querySelector('[data-reviews-link]');
+  if (reviewsLink && reviewsLink.getAttribute('href') === '#') {
+    reviewsLink.setAttribute('data-proto', 'Na versão final, este botão abre as avaliações da Construflama no Google.');
+    reviewsLink.removeAttribute('target');
+  }
+
+  /* ------------------------------------------------------------------------
+     5. Carrosséis (produtos e avaliações): setas, arrasto com mouse e barra
+        de progresso. No celular o arrasto é o rolar nativo (com scroll-snap).
+        Cada carrossel é um [data-carousel] com [data-carousel-track],
+        [data-carousel-prev], [data-carousel-next] e, opcionalmente,
+        [data-carousel-bar] e [data-carousel-controls].
+     ------------------------------------------------------------------------ */
+  function initCarousel(root) {
+    var track = root.querySelector('[data-carousel-track]');
+    var prev = root.querySelector('[data-carousel-prev]');
+    var next = root.querySelector('[data-carousel-next]');
+    var bar = root.querySelector('[data-carousel-bar]');
+    var controls = root.querySelector('[data-carousel-controls]');
+    if (!track || !prev || !next) return;
 
     function step() {
-      var card = track.querySelector('.product');
+      var card = track.firstElementChild;
       var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
       return card ? card.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
     }
@@ -166,21 +314,25 @@
       track.scrollBy({ left: direction * step(), behavior: reduceMotion.matches ? 'auto' : 'smooth' });
     }
 
-    function updateCarousel() {
+    function update() {
       var max = track.scrollWidth - track.clientWidth;
-      var ratio = max > 0 ? track.scrollLeft / max : 0;
-      var visible = track.scrollWidth > 0 ? track.clientWidth / track.scrollWidth : 1;
+      // Sem nada para rolar (ex.: avaliações em grade no desktop), some com as setas
+      if (controls) controls.hidden = max <= 2;
       prev.disabled = track.scrollLeft <= 2;
       next.disabled = track.scrollLeft >= max - 2;
-      bar.style.setProperty('--progresso', (visible * 100) + '%');
-      bar.style.setProperty('--inicio', (ratio * (1 - visible) * 100) + '%');
+      if (bar) {
+        var ratio = max > 0 ? track.scrollLeft / max : 0;
+        var visible = track.scrollWidth > 0 ? track.clientWidth / track.scrollWidth : 1;
+        bar.style.setProperty('--progresso', (visible * 100) + '%');
+        bar.style.setProperty('--inicio', (ratio * (1 - visible) * 100) + '%');
+      }
     }
 
     prev.addEventListener('click', function () { scrollByCards(-1); });
     next.addEventListener('click', function () { scrollByCards(1); });
-    track.addEventListener('scroll', updateCarousel, { passive: true });
-    window.addEventListener('resize', updateCarousel);
-    updateCarousel();
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
 
     // Setas do teclado quando o carrossel está focado
     track.addEventListener('keydown', function (event) {
@@ -196,6 +348,7 @@
 
     track.addEventListener('pointerdown', function (event) {
       if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      if (track.scrollWidth <= track.clientWidth) return;
       dragging = true;
       moved = false;
       startX = event.clientX;
@@ -232,8 +385,10 @@
     track.addEventListener('dragstart', function (event) { event.preventDefault(); });
   }
 
+  Array.prototype.forEach.call(document.querySelectorAll('[data-carousel]'), initCarousel);
+
   /* ------------------------------------------------------------------------
-     5. Animações de entrada ao rolar (respeita prefers-reduced-motion via CSS)
+     6. Animações de entrada ao rolar (respeita prefers-reduced-motion via CSS)
      ------------------------------------------------------------------------ */
   var revealEls = document.querySelectorAll('[data-reveal]');
 
@@ -252,7 +407,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     6. Links ainda não criados neste protótipo: aviso discreto em vez de
+     7. Links ainda não criados neste protótipo: aviso discreto em vez de
         página quebrada. TODO: remover quando as páginas existirem.
      ------------------------------------------------------------------------ */
   var toast = document.querySelector('.toast');
@@ -269,7 +424,7 @@
   });
 
   /* ------------------------------------------------------------------------
-     7. Ano atual no rodapé
+     8. Ano atual no rodapé
      ------------------------------------------------------------------------ */
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = String(new Date().getFullYear());

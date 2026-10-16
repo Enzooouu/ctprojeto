@@ -214,6 +214,15 @@ img, svg { display: block; }
 .btn--light:hover { background: var(--bege); color: var(--marrom); border-color: var(--bege); }
 .btn--light:active { background: var(--bege-escuro); color: var(--marrom); }
 
+/* Contorno: secundário sobre fundos claros */
+.btn--outline {
+  border-color: var(--marrom);
+  color: var(--marrom);
+  background: transparent;
+}
+.btn--outline:hover { background: var(--marrom); color: var(--bege-claro); }
+.btn--outline:active { background: var(--marrom-escuro); border-color: var(--marrom-escuro); color: var(--bege-claro); }
+
 /* Link de texto (fundos claros) */
 .text-link {
   display: inline-flex;
@@ -459,8 +468,12 @@ img, svg { display: block; }
     font-family: var(--fonte-texto);
     font-size: 0.95rem;
     font-weight: 500;
+    white-space: nowrap;
   }
   .nav-link__chevron { width: 1rem; height: 1rem; opacity: .7; }
+
+  /* O último submenu (Chapeiras) abre alinhado à direita para não invadir o botão */
+  .submenu--end { left: auto; right: 0; }
 
   /* Painel do submenu no desktop */
   .submenu {
@@ -504,6 +517,15 @@ img, svg { display: block; }
   .submenu a:active { background: var(--bege-escuro); }
   .submenu__all { margin-top: var(--sp-2); padding-top: var(--sp-2); border-top: 1px solid var(--bege-escuro); }
   .submenu__all a { color: var(--laranja-escuro); }
+}
+
+/* Sete coleções + botão numa linha só: espaçamento e fonte um pouco menores.
+   Vale para todo o desktop, porque o contêiner para de crescer em 76rem. */
+@media (min-width: 1180px) {
+  .mainbar { gap: var(--sp-3); }
+  .nav-list { gap: 0; }
+  .nav-link { padding-inline: 0.5rem; font-size: 0.9rem; }
+  .brand__name { font-size: 1.3rem; }
 }
 
 /* --------------------------------------------------------------------------
@@ -855,7 +877,7 @@ img, svg { display: block; }
 }
 .featured__head .section-lead { margin-top: var(--sp-3); }
 
-.carousel-controls { display: none; gap: var(--sp-2); }
+.carousel-controls { display: flex; flex: none; gap: var(--sp-2); }
 
 .carousel-btn {
   display: inline-grid;
@@ -874,10 +896,6 @@ img, svg { display: block; }
 .carousel-btn:hover:not(:disabled) { background: var(--marrom); color: var(--bege-claro); }
 .carousel-btn:active:not(:disabled) { transform: scale(.94); }
 .carousel-btn:disabled { opacity: .35; cursor: default; }
-
-@media (min-width: 640px) {
-  .carousel-controls { display: flex; }
-}
 
 .carousel__track {
   --peek: var(--gutter);
@@ -1038,7 +1056,121 @@ img, svg { display: block; }
 }
 
 /* --------------------------------------------------------------------------
-   12. Lojas e showroom
+   12. Avaliações
+   Celular/tablet: carrossel com scroll-snap (setas + arrasto nativo).
+   Desktop: os três cards lado a lado, sem carrossel.
+   -------------------------------------------------------------------------- */
+.reviews { background: var(--bege-claro); }
+
+.reviews__head {
+  display: grid;
+  gap: var(--sp-5);
+  margin-bottom: clamp(2rem, 1.5rem + 2vw, 3rem);
+}
+
+/* Resumo: nota grande + estrelas + quantidade */
+.reviews__summary { display: flex; align-items: center; gap: var(--sp-4); }
+.reviews__score {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.6rem, 2rem + 2vw, 3.5rem);
+  line-height: 1;
+  color: var(--marrom);
+}
+.reviews__count { margin-top: var(--sp-1); color: var(--cinza); font-size: 0.975rem; }
+
+.stars { display: flex; gap: 2px; color: var(--laranja); }
+.stars svg { width: 1.15rem; height: 1.15rem; fill: none; }
+.stars .is-full { fill: currentColor; }
+
+.reviews__controls { justify-content: flex-end; margin-bottom: var(--sp-4); }
+.reviews__controls[hidden] { display: none; }
+
+.reviews__track {
+  display: flex;
+  gap: var(--sp-4);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  padding-inline: max(var(--gutter), (100% - var(--largura)) / 2 + var(--gutter));
+  scroll-padding-inline: max(var(--gutter), (100% - var(--largura)) / 2 + var(--gutter));
+  padding-bottom: var(--sp-2);
+  scrollbar-width: none;
+}
+.reviews__track::-webkit-scrollbar { display: none; }
+.reviews__track:focus-visible { outline-offset: -3px; }
+.reviews__track.is-dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+
+.review {
+  position: relative;
+  flex: 0 0 85%;
+  max-width: 24rem;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-6) var(--sp-5) var(--sp-5);
+  border-radius: var(--raio);
+  background: var(--bege);
+  border-top: 2px solid var(--laranja);
+}
+
+/* Aspas de abertura em laranja: o detalhe de cor do card */
+.review__quote {
+  width: 2rem;
+  height: 1.5rem; /* proporção do viewBox 32×24 */
+  color: var(--laranja);
+}
+
+.review__text {
+  margin: 0;
+  color: var(--cinza-escuro);
+  font-size: var(--fs-md);
+  line-height: 1.55;
+}
+
+.review__author { margin-top: auto; padding-top: var(--sp-4); border-top: 1px solid var(--bege-escuro); }
+.review__name { font-family: var(--fonte-titulo); font-size: var(--fs-md); color: var(--marrom); }
+.review__project { color: var(--cinza); font-size: var(--fs-sm); }
+
+/* Etiqueta discreta que identifica conteúdo de exemplo */
+.review__tag {
+  position: absolute;
+  top: var(--sp-4);
+  right: var(--sp-4);
+  padding: 0.1rem 0.55rem;
+  border: 1px solid var(--cinza);
+  border-radius: 999px;
+  color: var(--cinza);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.reviews__footer { margin-top: var(--sp-6); }
+
+@media (min-width: 640px) {
+  .review { flex-basis: 46%; }
+}
+
+@media (min-width: 900px) {
+  .reviews__head { grid-template-columns: 1fr auto; align-items: end; }
+}
+
+@media (min-width: 1024px) {
+  .reviews__controls { display: none; }
+  .reviews__track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-5);
+    overflow: visible;
+    max-width: var(--largura);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .review { max-width: none; }
+}
+
+/* --------------------------------------------------------------------------
+   13. Lojas e showroom
    -------------------------------------------------------------------------- */
 .stores__grid { display: grid; gap: var(--sp-6); }
 
@@ -1093,7 +1225,7 @@ img, svg { display: block; }
 }
 
 /* --------------------------------------------------------------------------
-   13. Rodapé
+   14. Rodapé
    -------------------------------------------------------------------------- */
 .site-footer {
   background: var(--marrom-escuro);
@@ -1154,7 +1286,7 @@ img, svg { display: block; }
 }
 
 /* --------------------------------------------------------------------------
-   14. Botão flutuante de WhatsApp
+   15. Botão flutuante de WhatsApp
    -------------------------------------------------------------------------- */
 .whatsapp-float {
   position: fixed;
@@ -1189,7 +1321,7 @@ img, svg { display: block; }
 /* O rótulo fica sempre no DOM, então o botão tem nome acessível mesmo recolhido */
 
 /* --------------------------------------------------------------------------
-   15. Aviso (toast) dos links ainda não criados no protótipo
+   16. Aviso (toast) dos links ainda não criados no protótipo
    -------------------------------------------------------------------------- */
 .toast {
   position: fixed;
@@ -1216,7 +1348,7 @@ img, svg { display: block; }
 }
 
 /* --------------------------------------------------------------------------
-   16. Entrada ao rolar (só com JS ativo e sem pedido de menos movimento)
+   17. Entrada ao rolar (só com JS ativo e sem pedido de menos movimento)
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: no-preference) {
   .js [data-reveal] {
