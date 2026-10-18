@@ -398,7 +398,7 @@ var DEPOIMENTOS = [
     });
   })();
 
-  // TODO: enquanto o link do Google (no HTML) for "#", avisa em vez de abrir uma aba vazia
+  // Se o link do Google (no HTML) voltar a ser "#", avisa em vez de abrir uma aba vazia
   var reviewsLink = document.querySelector('[data-reviews-link]');
   if (reviewsLink && reviewsLink.getAttribute('href') === '#') {
     reviewsLink.setAttribute('data-proto', 'Na versão final, este botão abre as avaliações da Construflama no Google.');
