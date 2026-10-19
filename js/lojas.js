@@ -6,11 +6,9 @@
    Campos:
    - nome, endereco (linha da rua), complemento (bairro/cidade)
    - consulta: texto que o Google Maps usa para achar o lugar (mapa embutido
-     e botão "Como chegar")
+     ao lado da lista e botão "Como chegar")
    - horario: TODO preencher com o horário real. Enquanto horarioExemplo for
      true, aparece marcado como "Exemplo".
-   - mapa: posição do ponto no mapa ilustrado (x, y no desenho de 400 × 300).
-     Posições aproximadas, a partir das coordenadas reais; o mapa é fora de escala.
    - imagem / textoAlternativo: foto da loja (vazio = gradiente provisório)
    - fundo: letra do gradiente provisório (a, b ou c)
    ========================================================================== */
@@ -24,7 +22,6 @@ var LOJAS = [
     complemento: 'Chácara Santo Antônio, São Paulo, SP',
     consulta: 'Construflama Showroom, R. Vitorino de Morais, 331, São Paulo, SP',
     horario: '[Horário de funcionamento]', horarioExemplo: true,
-    mapa: { x: 201, y: 252 },
     imagem: '', textoAlternativo: '', fundo: 'a'
   },
   {
@@ -36,7 +33,6 @@ var LOJAS = [
     complemento: 'São Paulo, SP',
     consulta: 'Shopping D&D, Av. das Nações Unidas, 12555, São Paulo, SP',
     horario: '[Horário de funcionamento]', horarioExemplo: true,
-    mapa: { x: 214, y: 96 },
     imagem: '', textoAlternativo: '', fundo: 'b'
   },
   {
@@ -48,7 +44,6 @@ var LOJAS = [
     complemento: 'São Paulo, SP',
     consulta: 'Shopping Cidade Jardim, Av. Magalhães de Castro, 12000, São Paulo, SP',
     horario: '[Horário de funcionamento]', horarioExemplo: true,
-    mapa: { x: 168, y: 40 },
     imagem: '', textoAlternativo: '', fundo: 'c'
   }
 ];

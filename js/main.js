@@ -584,16 +584,15 @@ var DEPOIMENTOS = [
   })();
 
   /* ------------------------------------------------------------------------
-     E2. Lojas e showroom: lista em abas + mapa ilustrado + foto + mapa do Google
-         - Dados em LOJAS (js/lojas.js). Escolher uma loja (na lista ou no
-           ponto do mapa ilustrado) troca a foto, os detalhes e o mapa.
+     E2. Lojas e showroom: lista em abas + foto com detalhes + mapa do Google
+         - Dados em LOJAS (js/lojas.js). Escolher uma loja na lista troca a
+           foto, os detalhes e o mapa do Google.
          - O mapa do Google só carrega quando a seção se aproxima da tela.
      ------------------------------------------------------------------------ */
   (function montarLojas() {
     var raiz = document.querySelector('[data-lojas]');
     if (!raiz || typeof LOJAS === 'undefined' || !LOJAS.length) return;
     var lista = raiz.querySelector('[data-lojas-lista]');
-    var pinos = raiz.querySelector('[data-lojas-pinos]');
     var fotos = raiz.querySelector('[data-lojas-fotos]');
     var detalhes = raiz.querySelector('[data-lojas-detalhes]');
     var iframe = raiz.querySelector('[data-lojas-iframe]');
@@ -634,26 +633,6 @@ var DEPOIMENTOS = [
       abas[novo].focus();
     });
 
-    // Pontos no mapa ilustrado (mouse/toque; pelo teclado, usa-se a lista)
-    var SVG = 'http://www.w3.org/2000/svg';
-    var marcadores = LOJAS.map(function (l, i) {
-      var g = document.createElementNS(SVG, 'g');
-      g.setAttribute('class', 'lojas__pino' + (l.destaque ? ' lojas__pino--destaque' : ''));
-      g.setAttribute('transform', 'translate(' + l.mapa.x + ' ' + l.mapa.y + ')');
-      g.setAttribute('aria-hidden', 'true');
-      var halo = document.createElementNS(SVG, 'circle'); halo.setAttribute('class', 'lojas__pino-halo'); halo.setAttribute('r', l.destaque ? 20 : 16);
-      var ponto = document.createElementNS(SVG, 'circle'); ponto.setAttribute('class', 'lojas__pino-ponto'); ponto.setAttribute('r', l.destaque ? 8 : 6.5);
-      var nome = document.createElementNS(SVG, 'text'); nome.setAttribute('class', 'lojas__pino-nome');
-      nome.setAttribute('x', l.mapa.x > 300 ? -14 : 14); nome.setAttribute('y', 5);
-      if (l.mapa.x > 300) nome.setAttribute('text-anchor', 'end');
-      nome.textContent = l.nome;
-      var alvo = document.createElementNS(SVG, 'circle'); alvo.setAttribute('class', 'lojas__pino-alvo'); alvo.setAttribute('r', 22); // área de clique confortável
-      g.appendChild(halo); g.appendChild(ponto); g.appendChild(nome); g.appendChild(alvo);
-      g.addEventListener('click', function () { selecionar(i); });
-      pinos.appendChild(g);
-      return g;
-    });
-
     // Camadas de foto (uma por loja; a ativa aparece por cima com transição)
     var camadas = LOJAS.map(function (l) {
       var c = el('div', 'lojas__camada lojas__camada--' + (l.fundo || 'a'));
@@ -661,9 +640,7 @@ var DEPOIMENTOS = [
         var img = el('img');
         img.src = l.imagem; img.alt = l.textoAlternativo || ''; img.loading = 'lazy'; img.decoding = 'async';
         c.appendChild(img);
-      } else {
-        c.appendChild(icone('i-showroom-desenho', 'lojas__desenho')); // TODO: foto real da loja
-      }
+      } // sem foto: fica o degradê quente da loja (TODO: foto real em js/lojas.js)
       fotos.insertBefore(c, detalhes);
       return c;
     });
@@ -675,7 +652,6 @@ var DEPOIMENTOS = [
     function montarDetalhes(l) {
       detalhes.textContent = '';
       var topo = el('div', 'lojas__detalhes-topo');
-      if (l.etiqueta) topo.appendChild(el('span', 'lojas__etiqueta lojas__etiqueta--clara', l.etiqueta));
       topo.appendChild(el('h3', 'lojas__nome', l.nome));
       detalhes.appendChild(topo);
 
@@ -725,7 +701,6 @@ var DEPOIMENTOS = [
         b.tabIndex = ativa ? 0 : -1;               // só a aba ativa entra no Tab
       });
       raiz.querySelector('[data-lojas-painel]').setAttribute('aria-labelledby', abas[i].id);
-      marcadores.forEach(function (g, j) { g.classList.toggle('is-ativo', j === i); });
       camadas.forEach(function (c, j) { c.classList.toggle('is-ativa', j === i); });
       // Detalhes: saem, trocam de conteúdo e entram de novo (troca gradual)
       detalhes.classList.add('is-trocando');
