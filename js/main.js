@@ -1159,6 +1159,22 @@ var DEPOIMENTOS = [
   });
 
   /* ------------------------------------------------------------------------
+     6b. "Voltar ao topo": sobe até o início da página (suave, ou direto para
+         quem pediu menos movimento) e leva o foco do teclado para o logo.
+         Sem JS, o link #inicio já leva ao topo.
+     ------------------------------------------------------------------------ */
+  var voltarTopo = document.querySelector('[data-voltar-topo]');
+  if (voltarTopo) {
+    voltarTopo.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      var logo = document.querySelector('.site-header .brand');
+      if (logo) logo.focus({ preventScroll: true });
+      if (history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+    });
+  }
+
+  /* ------------------------------------------------------------------------
      7. Ano atual no rodapé
      ------------------------------------------------------------------------ */
   var year = document.querySelector('[data-year]');
