@@ -240,14 +240,14 @@
          ============================================================ -->
     <section class="section collections" id="colecoes" aria-labelledby="colecoes-titulo">
       <div class="container">
-        <div class="section-head" data-reveal>
+        <div class="section-head" data-reveal="stagger">
           <h2 class="section-title" id="colecoes-titulo">Coleções</h2>
           <p class="section-lead">Sete famílias de produtos para dentro e fora de casa, da sala de estar à área gourmet.</p>
         </div>
 
         <!-- Cards gerados por js/main.js a partir de CATEGORIAS.
              TODO: substituir os gradientes por fotos reais de ambientes. -->
-        <ul class="collection-grid" data-grade-colecoes data-reveal></ul>
+        <ul class="collection-grid" data-grade-colecoes data-reveal="stagger"></ul>
       </div>
     </section>
 
@@ -258,7 +258,7 @@
          ============================================================ -->
     <section class="section featured" id="destaques" aria-labelledby="destaques-titulo" data-carousel>
       <div class="container">
-        <div class="featured__head" data-reveal>
+        <div class="featured__head" data-reveal="stagger">
           <div>
             <h2 class="section-title" id="destaques-titulo">Produtos em destaque</h2>
             <p class="section-lead">Peças que arquitetos mais especificam com a gente.</p>
@@ -276,8 +276,8 @@
         </div>
       </div>
 
-      <div class="carousel" data-reveal>
-        <ul class="carousel__track" id="carrossel-produtos" data-carousel-track tabindex="0" aria-label="Produtos em destaque. Use as setas ou arraste para ver mais.">
+      <div class="carousel">
+        <ul class="carousel__track" id="carrossel-produtos" data-carousel-track data-reveal="stagger" tabindex="0" aria-label="Produtos em destaque. Use as setas ou arraste para ver mais.">
           <!-- Cards gerados por js/main.js a partir de PRODUTOS (exemplos provisórios) -->
         </ul>
         <div class="container">
@@ -291,12 +291,12 @@
          Nomes em texto (sem reproduzir logotipos de terceiros).
          ============================================================ -->
     <section class="section press" id="imprensa" aria-labelledby="imprensa-titulo">
-      <div class="container press__inner" data-reveal>
+      <div class="container press__inner" data-reveal="stagger">
         <div class="press__intro">
           <h2 class="section-title" id="imprensa-titulo">Na imprensa</h2>
           <p class="section-lead">Ambientes com nossos produtos já foram destaque em:</p>
         </div>
-        <ul class="press__list">
+        <ul class="press__list" data-reveal="stagger">
           <li>Casacor</li>
           <li>Casa Vogue</li>
           <li>Casa e Jardim</li>
@@ -311,7 +311,7 @@
          ============================================================ -->
     <section class="section specifiers" id="especificadores" aria-labelledby="especificadores-titulo">
       <div class="container specifiers__grid">
-        <div class="specifiers__intro" data-reveal>
+        <div class="specifiers__intro" data-reveal="stagger">
           <h2 class="section-title" id="especificadores-titulo">Para arquitetos e especificadores</h2>
           <p class="section-lead">Catálogos técnicos com medidas e informações de instalação para incluir nossos produtos no seu projeto. Para detalhar a instalação, a nossa equipe técnica acompanha a obra com você.</p>
           <div class="specifiers__actions">
@@ -321,7 +321,7 @@
 
         <!-- Lista gerada por js/main.js a partir de CATALOGOS.
              TODO: ligar cada "Baixar PDF" ao arquivo real do catálogo. -->
-        <ul class="catalogs" data-catalogos data-reveal></ul>
+        <ul class="catalogs" data-catalogos data-reveal="stagger"></ul>
       </div>
     </section>
 
@@ -332,7 +332,7 @@
          ============================================================ -->
     <section class="section reviews" id="avaliacoes" aria-labelledby="avaliacoes-titulo" data-carousel>
       <div class="container">
-        <div class="reviews__head" data-reveal>
+        <div class="reviews__head" data-reveal="stagger">
           <h2 class="section-title" id="avaliacoes-titulo">O que dizem nossos clientes</h2>
 
           <!-- Preenchido por js/main.js com NOTA_GOOGLE e TOTAL_AVALIACOES -->
@@ -357,7 +357,7 @@
         </div>
       </div>
 
-      <ul class="reviews__track" id="carrossel-avaliacoes" data-carousel-track data-reveal tabindex="0" aria-label="Depoimentos de clientes. No celular, use as setas ou arraste para ver mais.">
+      <ul class="reviews__track" id="carrossel-avaliacoes" data-carousel-track data-reveal="stagger" tabindex="0" aria-label="Depoimentos de clientes. No celular, use as setas ou arraste para ver mais.">
         <!-- Cards gerados por js/main.js a partir de DEPOIMENTOS -->
       </ul>
 
@@ -372,12 +372,12 @@
          ============================================================ -->
     <section class="section stores" id="lojas" aria-labelledby="lojas-titulo">
       <div class="container">
-        <div class="section-head" data-reveal>
+        <div class="section-head" data-reveal="stagger">
           <h2 class="section-title" id="lojas-titulo">Lojas e showroom</h2>
           <p class="section-lead">Venha ver as lareiras acesas e sentir o calor de cada modelo antes de decidir.</p>
         </div>
 
-        <div class="stores__grid" data-reveal>
+        <div class="stores__grid" data-reveal="stagger">
           <!-- TODO: foto do showroom da R. Vitorino de Morais -->
           <div class="stores__visual">
             <div class="stores__visual-text">
@@ -386,7 +386,7 @@
             </div>
           </div>
 
-          <ul class="stores__list">
+          <ul class="stores__list" data-reveal="stagger">
             <li class="store">
               <h3 class="store__name">Showroom</h3>
               <p class="store__address">R. Vitorino de Morais, 331<br>São Paulo, SP</p>

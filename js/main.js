@@ -187,11 +187,13 @@ var DEPOIMENTOS = [
   (function montarMenu() {
     var lista = document.querySelector('[data-menu-colecoes]');
     if (!lista) return;
+    var ordem = 0;
     var comSub = CATEGORIAS.filter(function (c) { return c.subcategorias.length > 1; });
     var ultimaComSub = comSub[comSub.length - 1];
 
     CATEGORIAS.forEach(function (cat) {
       var li = el('li', 'nav-item');
+      li.style.setProperty('--i', ordem++); // cascata ao abrir o menu mobile
 
       // Uma subcategoria só: link direto para a coleção, sem submenu
       if (cat.subcategorias.length <= 1) {
@@ -228,6 +230,7 @@ var DEPOIMENTOS = [
       todos.appendChild(linkTodos);
       sub.appendChild(todos);
 
+      Array.prototype.forEach.call(sub.children, function (item, n) { item.style.setProperty('--i', n); });
       li.appendChild(botao);
       li.appendChild(sub);
       lista.appendChild(li);
@@ -364,7 +367,8 @@ var DEPOIMENTOS = [
       var estrela = el('span', 'star');
       estrela.appendChild(icone('i-estrela', 'star__outline'));
       var cheio = el('span', 'star__fill');
-      cheio.style.width = (fracao * 100) + '%';
+      cheio.style.setProperty('--fill', (fracao * 100) + '%');
+      cheio.style.setProperty('--i', i);
       cheio.appendChild(icone('i-estrela', 'star__solid'));
       estrela.appendChild(cheio);
       container.appendChild(estrela);
@@ -378,7 +382,26 @@ var DEPOIMENTOS = [
     if (!track) return;
 
     montarEstrelas(document.querySelector('[data-reviews-stars]'), NOTA_GOOGLE);
-    document.querySelector('[data-reviews-score]').textContent = formatarNota(NOTA_GOOGLE);
+    var placar = document.querySelector('[data-reviews-score]');
+    placar.textContent = formatarNota(NOTA_GOOGLE);
+
+    // Contagem 0,0 → nota (só com movimento permitido; o valor final já está no HTML)
+    var cabecaAvaliacoes = document.querySelector('.reviews__head');
+    if (cabecaAvaliacoes && !reduceMotion.matches && 'IntersectionObserver' in window) {
+      placar.textContent = formatarNota(0);
+      cabecaAvaliacoes.addEventListener('revelado', function () {
+        var inicio = null;
+        var duracao = 1200;
+        function passo(t) {
+          if (inicio === null) inicio = t;
+          var k = Math.min(1, (t - inicio) / duracao);
+          var suave = 1 - Math.pow(1 - k, 3); // desacelera no fim
+          placar.textContent = formatarNota(Math.round(NOTA_GOOGLE * suave * 10) / 10);
+          if (k < 1) window.requestAnimationFrame(passo);
+        }
+        window.requestAnimationFrame(passo);
+      }, { once: true });
+    }
     document.querySelector('[data-reviews-count]').textContent =
       TOTAL_AVALIACOES.toLocaleString('pt-BR') + ' avaliações no Google';
 
@@ -409,10 +432,33 @@ var DEPOIMENTOS = [
      1. Cabeçalho: muda de aspecto depois de rolar um pouco
      ------------------------------------------------------------------------ */
   var header = document.querySelector('.site-header');
+  var heroContent = document.querySelector('.hero__content');
   var ticking = false;
+  var lastY = window.scrollY;
 
   function updateHeader() {
-    header.classList.toggle('is-scrolled', window.scrollY > 24);
+    var y = window.scrollY;
+    header.classList.toggle('is-scrolled', y > 24);
+
+    // Esconde ao descer e mostra ao subir, mas nunca com menu, submenu ou foco no cabeçalho
+    var ocupado = document.body.classList.contains('nav-open') ||
+      header.querySelector(':focus-visible') || // só foco de teclado (clique não prende)
+      header.querySelector('.has-sub.is-open');
+    if (ocupado || y < window.innerHeight * 0.6) {
+      header.classList.remove('is-hidden');
+    } else if (y > lastY + 6) {
+      header.classList.add('is-hidden');
+    } else if (y < lastY - 6) {
+      header.classList.remove('is-hidden');
+    }
+    lastY = y;
+
+    // Parallax leve: o texto do hero sobe mais devagar e esmaece ao rolar
+    if (heroContent && !reduceMotion.matches && y < window.innerHeight) {
+      var p = y / window.innerHeight;
+      heroContent.style.transform = 'translate3d(0,' + (y * 0.18).toFixed(1) + 'px,0)';
+      heroContent.style.opacity = String(Math.max(0, 1 - p * 1.3).toFixed(3));
+    }
     ticking = false;
   }
 
@@ -658,18 +704,34 @@ var DEPOIMENTOS = [
      ------------------------------------------------------------------------ */
   var revealEls = document.querySelectorAll('[data-reveal]');
 
+  // Em data-reveal="stagger", cada filho ganha um índice (--i) que vira atraso
+  // no CSS. Limitado a 8 para a fila não ficar lenta em listas longas.
+  Array.prototype.forEach.call(document.querySelectorAll('[data-reveal="stagger"]'), function (grupo) {
+    Array.prototype.forEach.call(grupo.children, function (filho, i) {
+      filho.style.setProperty('--i', Math.min(i, 8));
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.hearth__item'), function (item, i) {
+    item.style.setProperty('--i', i);
+  });
+
+  function revelar(el) {
+    el.classList.add('is-visible');
+    el.dispatchEvent(new CustomEvent('revelado'));
+  }
+
   if ('IntersectionObserver' in window && !reduceMotion.matches) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
+          revelar(entry.target);
           observer.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
     revealEls.forEach(function (el) { observer.observe(el); });
   } else {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    revealEls.forEach(revelar);
   }
 
   /* ------------------------------------------------------------------------
