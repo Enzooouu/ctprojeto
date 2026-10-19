@@ -996,9 +996,11 @@ img, svg { display: block; }
   --escala: 1;
   transform: translate3d(calc(var(--x, 0px) + var(--arrasto, 0px)), 0, 0) scale(var(--escala));
   /* Só transform e opacity: o navegador anima na placa de vídeo, sem redesenhar */
+  /* Cor e posição mudam juntas, no mesmo tempo e na mesma curva:
+     o bloco vai ganhando (ou perdendo) cor aos poucos durante o deslize */
   transition:
-    transform 1.1s cubic-bezier(.65, 0, .25, 1),   /* acelera e desacelera: deslize sem tranco */
-    opacity .9s var(--ease-out);
+    transform 1.1s cubic-bezier(.65, 0, .25, 1),
+    opacity 1.1s cubic-bezier(.65, 0, .25, 1);
   will-change: transform;
   user-select: none;
 }
@@ -1009,12 +1011,15 @@ img, svg { display: block; }
 .destaque__slide[data-pos="proximo"] {
   --escala: .88;
   z-index: 1;
-  cursor: pointer;                   /* o esmaecido vem do véu (sem filter, que pesa) */
+  opacity: .45;                      /* pontas esmaecidas (sem filter, que pesa) */
+  cursor: pointer;
 }
 /* As pontas encolhem a partir do lado de dentro: a parte visível na borda se mantém */
 .destaque__slide[data-pos="anterior"] { transform-origin: 100% 50%; }
 .destaque__slide[data-pos="proximo"] { transform-origin: 0% 50%; }
 .destaque__slide[data-pos="oculto"] { --escala: .82; opacity: 0; pointer-events: none; }
+.destaque__slide[data-pos="anterior"]:hover,
+.destaque__slide[data-pos="proximo"]:hover { opacity: .65; transition-duration: 1.1s, .3s; }
 
 /* Brilho laranja atrás da imagem ativa: camada fixa no lugar do slide ativo
    (as imagens passam por cima dele; não se move, então não pesa na troca) */
@@ -1046,34 +1051,6 @@ img, svg { display: block; }
   box-shadow: 0 34px 70px -38px rgba(47, 29, 20, .75);
 }
 
-/* Véus: as pontas se dissolvem na cor do fundo em direção à borda da tela.
-   Cada véu cobre só a faixa visível da ponta (--d-ponta). */
-.destaque__veu {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  opacity: 0;
-  transition: opacity .35s ease-out;          /* ao virar ativo, o véu sai na hora */
-  pointer-events: none;
-  will-change: opacity;
-}
-.destaque__veu--esq {   /* para a ponta da esquerda: mais forte na borda da tela */
-  background: linear-gradient(to right,
-    rgba(245, 239, 229, .92) calc(100% - var(--d-ponta)),
-    rgba(245, 239, 229, .35) 100%);
-}
-.destaque__veu--dir {   /* para a ponta da direita */
-  background: linear-gradient(to left,
-    rgba(245, 239, 229, .92) calc(100% - var(--d-ponta)),
-    rgba(245, 239, 229, .35) 100%);
-}
-.destaque__slide[data-pos="anterior"] .destaque__veu--esq,
-.destaque__slide[data-pos="proximo"] .destaque__veu--dir {
-  opacity: 1;
-  transition: opacity .7s var(--ease-out) .6s;   /* só depois que o slide chega à borda */
-}
-.destaque__slide[data-pos="anterior"]:hover .destaque__veu--esq,
-.destaque__slide[data-pos="proximo"]:hover .destaque__veu--dir { opacity: .7; transition-delay: 0s; }
 
 /* Camada da imagem: zoom lento (Ken Burns) enquanto o slide está ativo.
    Feito com transição para voltar suave quando o slide sai. */

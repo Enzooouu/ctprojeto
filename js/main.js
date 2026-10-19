@@ -274,6 +274,7 @@ var DEPOIMENTOS = [
           conjunto imagem + legenda fica centralizado.
         - Troca sozinho a cada 15 s; pausa com mouse em cima, foco do teclado,
           aba em segundo plano, arrasto ou carrossel fora da tela.
+          (O mouse em cima NÃO pausa.)
      ------------------------------------------------------------------------ */
   (function carrosselDestaque() {
     var raiz = document.querySelector('[data-destaque]');
@@ -335,9 +336,6 @@ var DEPOIMENTOS = [
       }
       midia.appendChild(imagem);
       if (p.exemplo) midia.appendChild(el('span', 'tag-exemplo', 'Exemplo'));
-      // Véus: dissolvem as pontas na borda da tela (um para cada lado)
-      midia.appendChild(el('span', 'destaque__veu destaque__veu--esq'));
-      midia.appendChild(el('span', 'destaque__veu destaque__veu--dir'));
       li.appendChild(midia);
       lista.appendChild(li);
       slides.push(li);
@@ -444,7 +442,6 @@ var DEPOIMENTOS = [
     }
 
     function ir(novo, origem) {
-      pausas.mouse = false; // a imagem ativa mudou; o próximo movimento do mouse reavalia
       // Marca a troca em andamento (o brilho apaga enquanto as imagens deslizam)
       raiz.classList.add('is-trocando');
       clearTimeout(timerTroca);
@@ -484,22 +481,15 @@ var DEPOIMENTOS = [
     });
 
     // --- Pausas ----------------------------------------------------------------
-    var pausas = { mouse: false, foco: false, aba: document.hidden, arrasto: false, foraDaTela: false };
+    var pausas = { foco: false, aba: document.hidden, arrasto: false, foraDaTela: false };
     function focoDeTeclado(alvo) {
       try { return alvo.matches(':focus-visible'); } catch (err) { return true; }
     }
     function pausado() {
-      return pausas.mouse || pausas.foco || pausas.aba || pausas.arrasto || pausas.foraDaTela;
+      return pausas.foco || pausas.aba || pausas.arrasto || pausas.foraDaTela;
     }
     var regiaoControles = [raiz, btnAnterior.parentNode];
-    // Mouse pausa só em cima do que importa: imagem ativa, legenda, traços e setas.
-    // (Antes, qualquer ponto da faixa da seção pausava, e o carrossel parecia travado.)
-    var ZONA_PAUSA = '.destaque__slide[data-pos="atual"], .destaque__legendas, .destaque__navegacao, .carousel-controls';
     regiaoControles.forEach(function (r) {
-      r.addEventListener('pointermove', function (e) {
-        if (e.pointerType === 'mouse') pausas.mouse = !!e.target.closest(ZONA_PAUSA);
-      });
-      r.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') pausas.mouse = false; });
       // Só o foco de TECLADO pausa (:focus-visible); clicar numa seta não congela o avanço
       r.addEventListener('focusin', function (e) { pausas.foco = focoDeTeclado(e.target); });
       r.addEventListener('focusout', function (e) {
