@@ -220,18 +220,32 @@
            3. FAIXA DE CONFIANÇA: a "soleira" de pedra sob a lareira
            ============================================================ -->
       <div class="hearth">
+        <!-- Cada item: palavra principal grande + complemento. O texto completo
+             fica para leitores de tela; a versão visual é só apresentação. -->
         <ul class="container hearth__list">
           <li class="hearth__item">
-            <svg class="hearth__icon" aria-hidden="true"><use href="#i-anos"/></svg>
-            Mais de 40 anos de mercado
+            <span class="hearth__icone" aria-hidden="true"><svg class="hearth__icon"><use href="#i-anos"/></svg></span>
+            <span class="sr-only">Mais de 40 anos de mercado</span>
+            <span class="hearth__texto" aria-hidden="true">
+              <span class="hearth__destaque">+<span data-hearth-anos>40</span> anos</span>
+              <span class="hearth__rotulo">de mercado</span>
+            </span>
           </li>
           <li class="hearth__item">
-            <svg class="hearth__icon" aria-hidden="true"><use href="#i-entrega"/></svg>
-            Entregamos em todo o Brasil
+            <span class="hearth__icone" aria-hidden="true"><svg class="hearth__icon"><use href="#i-entrega"/></svg></span>
+            <span class="sr-only">Entregamos em todo o Brasil</span>
+            <span class="hearth__texto" aria-hidden="true">
+              <span class="hearth__destaque">Todo o Brasil</span>
+              <span class="hearth__rotulo">com entrega</span>
+            </span>
           </li>
           <li class="hearth__item">
-            <svg class="hearth__icon" aria-hidden="true"><use href="#i-showroom"/></svg>
-            Showroom em São Paulo
+            <span class="hearth__icone" aria-hidden="true"><svg class="hearth__icon"><use href="#i-showroom"/></svg></span>
+            <span class="sr-only">Showroom em São Paulo</span>
+            <span class="hearth__texto" aria-hidden="true">
+              <span class="hearth__destaque">São Paulo</span>
+              <span class="hearth__rotulo">com showroom e lojas</span>
+            </span>
           </li>
         </ul>
       </div>
