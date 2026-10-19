@@ -1405,6 +1405,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
   opacity: .55;
 }
 
+.review__text p + p { margin-top: var(--sp-3); }
 .review__text {
   margin: 0;
   color: var(--cinza-escuro);

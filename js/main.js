@@ -97,14 +97,30 @@ var CATALOGOS = [
 var NOTA_GOOGLE = 4.5;
 var TOTAL_AVALIACOES = 149;
 
-/* TODO: copiar os depoimentos de avaliações REAIS do Google (texto e nome
-   como aparecem lá) ou de clientes que autorizaram o uso. Não inventar
-   nomes, frases ou notas. Ao colar um real, troque exemplo para false:
-   a etiqueta "Exemplo" some do card. */
+/* DEPOIMENTOS reais, copiados do perfil da Construflama no Google
+   (texto e nome exatamente como aparecem lá; não editar o conteúdo).
+   - texto: use \n para separar parágrafos
+   - detalhe: linha abaixo do nome (perfil do avaliador no Google)
+   - exemplo: true mostra a etiqueta "Exemplo" (use só em conteúdo provisório) */
 var DEPOIMENTOS = [
-  { texto: '[Depoimento real do Google aqui]', autor: '[Nome do cliente]', tipoProjeto: '[Tipo de projeto]', exemplo: true },
-  { texto: '[Depoimento real do Google aqui]', autor: '[Nome do cliente]', tipoProjeto: '[Tipo de projeto]', exemplo: true },
-  { texto: '[Depoimento real do Google aqui]', autor: '[Nome do cliente]', tipoProjeto: '[Tipo de projeto]', exemplo: true }
+  {
+    texto: 'Parrillas de extrema qualidade, muito bonitas que dá até dó de usar, agora falando de qualidade do produto e inquestionável tudo muito bem feito.',
+    autor: 'Icaro Macier',
+    detalhe: 'Local Guide · 45 avaliações no Google',
+    exemplo: false
+  },
+  {
+    texto: 'Recebi o modelo Trio Chess e fiquei encantada com a praticidade: veio tudo prontinho, com o álcool, super fácil de acender e o melhor… até com o vento que estava batendo forte, o fogo se manteve firme!\nAlém da experiência sensorial, o visual é incrível — deixou o ambiente super aconchegante, moderno e lindo! Foi a cereja do bolo na produção da Casa 🏠',
+    autor: 'Daniela Colnaghi',
+    detalhe: 'Local Guide · 52 avaliações no Google',
+    exemplo: false
+  },
+  {
+    texto: 'Tive uma excelente experiência com a empresa durante a CASACOR São Paulo. Uma equipe comprometida, organizada e muito atenta aos detalhes, conseguiram entregar tudo com qualidade e dentro de um prazo curto. Além do cuidado com o produto, destacam-se pela postura colaborativa durante o evento e no pós. Recomendo como parceira de confiança!',
+    autor: 'Clarice Alves',
+    detalhe: '5 avaliações no Google',
+    exemplo: false
+  }
 ];
 
 (function () {
@@ -817,11 +833,14 @@ var DEPOIMENTOS = [
       li.setAttribute('aria-label', (i + 1) + ' de ' + DEPOIMENTOS.length);
       if (dep.exemplo) li.appendChild(el('span', 'tag-exemplo', 'Exemplo'));
       li.appendChild(icone('i-aspas', 'review__quote'));
-      li.appendChild(el('blockquote', 'review__text', dep.texto));
+      // Um <p> por parágrafo (\n no texto)
+      var citacao = el('blockquote', 'review__text');
+      String(dep.texto).split('\n').forEach(function (par) { citacao.appendChild(el('p', null, par)); });
+      li.appendChild(citacao);
 
       var autor = el('p', 'review__author');
       autor.appendChild(el('span', 'review__name', dep.autor));
-      autor.appendChild(el('span', 'review__project', dep.tipoProjeto));
+      if (dep.detalhe) autor.appendChild(el('span', 'review__project', dep.detalhe));
       li.appendChild(autor);
 
       track.appendChild(li);
