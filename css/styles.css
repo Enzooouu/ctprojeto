@@ -995,10 +995,10 @@ img, svg { display: block; }
   pointer-events: auto;              /* ...só as imagens e a legenda recebem clique */
   --escala: 1;
   transform: translate3d(calc(var(--x, 0px) + var(--arrasto, 0px)), 0, 0) scale(var(--escala));
+  /* Só transform e opacity: o navegador anima na placa de vídeo, sem redesenhar */
   transition:
     transform 1.1s cubic-bezier(.65, 0, .25, 1),   /* acelera e desacelera: deslize sem tranco */
-    opacity .9s var(--ease-out),
-    filter .9s var(--ease-out);
+    opacity .9s var(--ease-out);
   will-change: transform;
   user-select: none;
 }
@@ -1009,26 +1009,33 @@ img, svg { display: block; }
 .destaque__slide[data-pos="proximo"] {
   --escala: .88;
   z-index: 1;
-  filter: saturate(.75);
-  cursor: pointer;
+  cursor: pointer;                   /* o esmaecido vem do véu (sem filter, que pesa) */
 }
 /* As pontas encolhem a partir do lado de dentro: a parte visível na borda se mantém */
 .destaque__slide[data-pos="anterior"] { transform-origin: 100% 50%; }
 .destaque__slide[data-pos="proximo"] { transform-origin: 0% 50%; }
 .destaque__slide[data-pos="oculto"] { --escala: .82; opacity: 0; pointer-events: none; }
 
-/* Brilho laranja atrás da imagem ativa */
-.destaque__slide::before {
+/* Brilho laranja atrás da imagem ativa: camada fixa no lugar do slide ativo
+   (as imagens passam por cima dele; não se move, então não pesa na troca) */
+.destaque__brilho {
+  position: absolute;
+  top: var(--respiro);
+  left: var(--d-margem);
+  width: var(--d-w);
+  aspect-ratio: 16 / 10;
+  pointer-events: none;
+  will-change: transform;            /* camada própria: não é redesenhado quando as imagens passam */
+  transition: opacity .8s var(--ease-out);
+}
+/* Durante a troca o brilho apaga (não fica uma mancha solta no espaço vazio) e reacende ao chegar */
+.destaque.is-trocando .destaque__brilho { opacity: 0; transition-duration: .2s; }
+.destaque__brilho::before {
   content: "";
   position: absolute;
   inset: -16% -10%;
-  z-index: -1;
   background: radial-gradient(closest-side, rgba(224, 122, 58, .42), rgba(176, 74, 23, .12) 60%, transparent);
-  opacity: 0;
-  transition: opacity 1.4s var(--ease-out);
-  pointer-events: none;
 }
-.destaque__slide[data-pos="atual"]::before { opacity: 1; }
 
 .destaque__midia {
   position: absolute;
@@ -1048,6 +1055,7 @@ img, svg { display: block; }
   opacity: 0;
   transition: opacity .35s ease-out;          /* ao virar ativo, o véu sai na hora */
   pointer-events: none;
+  will-change: opacity;
 }
 .destaque__veu--esq {   /* para a ponta da esquerda: mais forte na borda da tela */
   background: linear-gradient(to right,
@@ -1081,6 +1089,13 @@ img, svg { display: block; }
   transform: scale(1.08) translate3d(-1.2%, -.8%, 0);
   transition: transform 15s linear;
 }
+/* A imagem que sai fica com o zoom onde estava enquanto desliza para a ponta... */
+.destaque__slide[data-pos="anterior"] .destaque__imagem {
+  transform: scale(1.08) translate3d(-1.2%, -.8%, 0);
+  transition: none;
+}
+/* ...e só volta ao tamanho normal quando já está invisível */
+.destaque__slide[data-pos="oculto"] .destaque__imagem { transition: none; }
 .destaque__imagem img { width: 100%; height: 100%; object-fit: cover; }
 .destaque__ilustracao { width: 34%; height: auto; aspect-ratio: 1; color: rgba(245, 239, 229, .55); }
 .destaque__midia .tag-exemplo { top: var(--sp-4); right: var(--sp-4); z-index: 3; transition: opacity .6s var(--ease-out); }
@@ -1125,6 +1140,8 @@ img, svg { display: block; }
   transform-origin: 0 50%;
 }
 .destaque.sem-automatico .destaque__progresso { visibility: hidden; }
+.destaque__progresso span { transition: opacity .3s; }
+.destaque.is-pausado .destaque__progresso span { opacity: .45; }  /* pausado: a barra esmaece */
 
 /* Traços + contador, alinhados à imagem */
 .destaque__navegacao {

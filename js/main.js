@@ -306,6 +306,7 @@ var DEPOIMENTOS = [
     // Com menos produtos, a lista de slides é repetida; legendas e traços usam só os reais.
     var n = m * Math.ceil(5 / m);
     var atual = 0;       // índice "virtual": cresce ou diminui sem limite
+    var timerTroca = null;
     var anunciar = false;
 
     // --- Montagem -----------------------------------------------------------
@@ -443,6 +444,11 @@ var DEPOIMENTOS = [
     }
 
     function ir(novo, origem) {
+      pausas.mouse = false; // a imagem ativa mudou; o próximo movimento do mouse reavalia
+      // Marca a troca em andamento (o brilho apaga enquanto as imagens deslizam)
+      raiz.classList.add('is-trocando');
+      clearTimeout(timerTroca);
+      timerTroca = setTimeout(function () { raiz.classList.remove('is-trocando'); }, 850);
       // Direção da troca: a legenda nova entra pelo lado de onde vem o slide
       raiz.dataset.direcao = novo >= atual ? 'proximo' : 'anterior';
       atual = novo;
@@ -486,8 +492,13 @@ var DEPOIMENTOS = [
       return pausas.mouse || pausas.foco || pausas.aba || pausas.arrasto || pausas.foraDaTela;
     }
     var regiaoControles = [raiz, btnAnterior.parentNode];
+    // Mouse pausa só em cima do que importa: imagem ativa, legenda, traços e setas.
+    // (Antes, qualquer ponto da faixa da seção pausava, e o carrossel parecia travado.)
+    var ZONA_PAUSA = '.destaque__slide[data-pos="atual"], .destaque__legendas, .destaque__navegacao, .carousel-controls';
     regiaoControles.forEach(function (r) {
-      r.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') pausas.mouse = true; });
+      r.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'mouse') pausas.mouse = !!e.target.closest(ZONA_PAUSA);
+      });
       r.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') pausas.mouse = false; });
       // Só o foco de TECLADO pausa (:focus-visible); clicar numa seta não congela o avanço
       r.addEventListener('focusin', function (e) { pausas.foco = focoDeTeclado(e.target); });
