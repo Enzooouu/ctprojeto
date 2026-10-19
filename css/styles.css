@@ -943,103 +943,255 @@ img, svg { display: block; }
 .carousel-btn:active:not(:disabled) { transform: scale(.94); }
 .carousel-btn:disabled { opacity: .35; cursor: default; }
 
-.carousel__track {
-  --peek: var(--gutter);
-  display: flex;
-  gap: var(--sp-4);
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  /* Alinha o primeiro card com o container e deixa os próximos "espiando" */
-  padding-inline: max(var(--gutter), (100% - var(--largura)) / 2 + var(--gutter));
-  scroll-padding-inline: max(var(--gutter), (100% - var(--largura)) / 2 + var(--gutter));
-  padding-bottom: var(--sp-2);
-  scrollbar-width: none;
-  cursor: grab;
-}
-.carousel__track::-webkit-scrollbar { display: none; }
-.carousel__track:focus-visible { outline-offset: -3px; }
-.carousel__track.is-dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
-.carousel__track.is-dragging a { pointer-events: none; }
-
-.product {
-  position: relative; /* prende os textos .sr-only dentro do carrossel */
-  flex: 0 0 82%;
-  max-width: 22rem;
-  scroll-snap-align: start;
-  display: flex;
-  flex-direction: column;
-}
-
-@media (min-width: 640px) { .product { flex-basis: 44%; } }
-@media (min-width: 1024px) { .product { flex-basis: calc((min(100vw, var(--largura)) - 2 * var(--gutter) - 3 * var(--sp-4)) / 3.25); max-width: none; } }
-
-.product__media {
+/* Carrossel de destaque
+   Desktop: imagem ativa no centro-esquerda (58% do contêiner) e legenda num
+   painel à direita. O painel cobre parte da imagem seguinte, cuja ponta
+   aparece na borda direita; a ponta da anterior aparece na borda esquerda.
+   Celular: imagem em cima, legenda embaixo, pontas menores nas laterais. */
+.destaque {
+  --gap: clamp(.75rem, 2vw, 1.5rem);
+  --larg-midia: .58;                 /* fração do contêiner ocupada pela imagem */
+  --peek: 0px;                       /* recuo extra para as pontas (celular) */
+  --respiro: 3rem;                   /* espaço para o brilho não ser cortado */
+  /* início do contêiner e largura útil, medidos no palco (largura total) */
+  --inicio: max(var(--gutter), calc((100% - var(--largura)) / 2 + var(--gutter)));
+  --util: calc(min(100%, var(--largura)) - 2 * var(--gutter));
   position: relative;
+  border-radius: var(--raio);
+}
+.destaque:focus-visible { outline: 3px solid var(--foco); outline-offset: -3px; }
+
+.destaque__palco {
+  position: relative;
+  padding-block: var(--respiro);
+  margin-block: calc(var(--respiro) * -1);
+  overflow-x: clip;                  /* corta as imagens laterais sem criar rolagem */
+  touch-action: pan-y;               /* o dedo rola a página na vertical e arrasta na horizontal */
+  pointer-events: none;              /* a folga do brilho não cobre setas nem traços... */
+}
+.destaque__slide { pointer-events: auto; } /* ...só as imagens e a legenda recebem clique */
+
+/* Trilho dos slides: mesma largura do palco, alinhado ao topo da imagem */
+.destaque__slides {
+  position: absolute;
+  top: var(--respiro);
+  left: 0;
+  right: 0;
+  height: 0;
+}
+
+.destaque__slide {
+  position: absolute;
+  top: 0;
+  left: calc(var(--inicio) + var(--peek));
+  width: calc((var(--util) - 2 * var(--peek)) * var(--larg-midia));
+  aspect-ratio: 16 / 10;
+  --escala: 1;
+  transform:
+    translate3d(calc(var(--o, 0) * (100% + var(--gap)) + var(--arrasto, 0px)), 0, 0)
+    scale(var(--escala));
+  transition:
+    transform 1s var(--ease-out),
+    opacity .9s var(--ease-out),
+    filter .9s var(--ease-out);
+  will-change: transform;
+  user-select: none;
+}
+/* Durante o arrasto o slide segue o dedo, sem atraso */
+.destaque__slides.is-arrastando .destaque__slide { transition: none; }
+
+.destaque__slide[data-pos="atual"] { z-index: 2; }
+.destaque__slide[data-pos="anterior"],
+.destaque__slide[data-pos="proximo"] {
+  --escala: .9;
+  z-index: 1;
+  opacity: .5;
+  filter: saturate(.7) brightness(.92);
+  cursor: pointer;
+}
+/* As pontas encolhem a partir do lado de dentro: a parte visível na borda se mantém */
+.destaque__slide[data-pos="anterior"] { transform-origin: 100% 50%; }
+.destaque__slide[data-pos="proximo"] { transform-origin: 0% 50%; }
+.destaque__slide[data-pos="anterior"]:hover,
+.destaque__slide[data-pos="proximo"]:hover { opacity: .72; }
+.destaque__slide[data-pos="oculto"] { --escala: .85; opacity: 0; pointer-events: none; }
+
+/* Brilho laranja atrás da imagem ativa */
+.destaque__slide::before {
+  content: "";
+  position: absolute;
+  inset: -14% -8%;
+  z-index: -1;
+  background: radial-gradient(closest-side, rgba(224, 122, 58, .42), rgba(176, 74, 23, .12) 60%, transparent);
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-out);
+  pointer-events: none;
+}
+.destaque__slide[data-pos="atual"]::before { opacity: 1; }
+
+.destaque__midia {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: var(--raio);
+  background: var(--fundo);
+  box-shadow: 0 30px 60px -34px rgba(47, 29, 20, .7);
+}
+
+/* Camada da imagem: zoom lento (Ken Burns) enquanto o slide está ativo.
+   Feito com transição para voltar suave quando o slide sai. */
+.destaque__imagem {
+  position: absolute;
+  inset: 0;
   display: grid;
   place-items: center;
-  aspect-ratio: 4 / 3;
-  margin-bottom: var(--sp-4);
-  border-radius: var(--raio);
-  color: rgba(74, 46, 31, .55);
-  /* TODO: foto do produto. Gradientes de travertino até lá. */
-  background: var(--fundo);
+  transform: scale(1);
+  transition: transform 1.2s var(--ease-out);
 }
-.product__media { overflow: hidden; transition: box-shadow .6s var(--ease-out); }
-.product__media svg {
-  width: 42%;
-  height: auto;
-  aspect-ratio: 1;
-  transition: transform .9s var(--ease-out), color .4s;
+.destaque__slide[data-pos="atual"] .destaque__imagem {
+  transform: scale(1.08) translate3d(-1.2%, -.8%, 0);
+  transition: transform 15s linear;
 }
-.product:hover .product__media,
-.product:focus-within .product__media { box-shadow: 0 18px 40px -24px rgba(74, 46, 31, .55); }
-.product:hover .product__media svg,
-.product:focus-within .product__media svg { transform: translateY(-6px) scale(1.04); color: var(--marrom); }
-.product__media--a { --fundo: radial-gradient(ellipse at 50% 85%, rgba(224, 122, 58, .35), transparent 60%), linear-gradient(160deg, #E4D7C3, #CDBBA0); }
-.product__media--b { --fundo: linear-gradient(160deg, #DCCFBA, #BFA88A); }
-.product__media--c { --fundo: linear-gradient(160deg, #E8DCCA, #D2BFA4); }
-.product__media--d { --fundo: linear-gradient(160deg, #DDD5CB, #BDB3A7); }
-.product__media--e { --fundo: radial-gradient(ellipse at 50% 80%, rgba(176, 74, 23, .28), transparent 60%), linear-gradient(160deg, #E2CDB4, #C9A889); }
-.product__media--f { --fundo: linear-gradient(160deg, #E6D9C6, #CDB79B); }
-.product__media--g { --fundo: radial-gradient(circle at 50% 30%, rgba(224, 122, 58, .3), transparent 50%), linear-gradient(160deg, #DFD2BF, #C4AF93); }
+.destaque__imagem img { width: 100%; height: 100%; object-fit: cover; }
+.destaque__ilustracao { width: 34%; height: auto; aspect-ratio: 1; color: rgba(245, 239, 229, .55); }
+.destaque__midia .tag-exemplo { top: var(--sp-4); right: var(--sp-4); }
+/* Nas pontas a etiqueta some (fica só a imagem esmaecida) */
+.destaque__midia .tag-exemplo { transition: opacity .6s var(--ease-out); }
+.destaque__slide:not([data-pos="atual"]) .tag-exemplo { opacity: 0; }
 
-.product__cat { color: var(--cinza); font-size: var(--fs-sm); }
-.product__name { margin-top: var(--sp-1); font-size: var(--fs-lg); }
-.product__desc { margin-top: var(--sp-2); color: var(--cinza-escuro); font-size: 0.975rem; }
+/* Imagens provisórias (TODO: trocar pelo campo "imagem" de cada produto) */
+.destaque__midia--a { --fundo: radial-gradient(ellipse 70% 55% at 45% 100%, rgba(224, 122, 58, .6), transparent 70%), linear-gradient(160deg, #3A2B23, #2A2623 55%, #1E1B19); }
+.destaque__midia--b { --fundo: radial-gradient(ellipse 60% 60% at 70% 90%, rgba(176, 74, 23, .5), transparent 70%), linear-gradient(150deg, #7A5340, #4A2E1F 70%); }
+.destaque__midia--c { --fundo: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(224, 122, 58, .45), transparent 70%), linear-gradient(160deg, #6B3E28, #33201A); }
+.destaque__midia--d { --fundo: radial-gradient(ellipse 60% 50% at 50% 95%, rgba(224, 122, 58, .3), transparent 70%), linear-gradient(160deg, #6E6660, #3B3531 60%, #2A2623); }
+.destaque__midia--e { --fundo: radial-gradient(ellipse 55% 55% at 50% 80%, rgba(244, 167, 87, .5), transparent 70%), linear-gradient(150deg, #9A6448, #6B3E28 55%, #4A2E1F); }
+.destaque__midia--f { --fundo: radial-gradient(ellipse 70% 55% at 80% 100%, rgba(224, 122, 58, .45), transparent 70%), linear-gradient(140deg, #8E3A10, #4A2E1F 80%); }
+.destaque__midia--g { --fundo: radial-gradient(circle at 60% 35%, rgba(244, 167, 87, .45), transparent 45%), linear-gradient(170deg, #2F1D14, #1E1B19); }
 
-.product__cta {
-  align-self: flex-start;
-  margin-top: auto;
-  padding-top: var(--sp-4);
-  color: var(--laranja-escuro);
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.3em;
-  border-radius: var(--raio);
-  transition: color .2s, text-decoration-thickness .2s;
-}
-.product__cta:hover { color: var(--marrom); text-decoration-thickness: 2px; }
-.product__cta:active { color: var(--marrom-escuro); }
-
-/* Barra de progresso do carrossel */
-.carousel__progress {
+/* Grade por cima do trilho: área da imagem (com a barra) + legenda */
+.destaque__grade {
   position: relative;
-  height: 2px;
-  margin-top: var(--sp-6);
-  background: var(--bege-escuro);
-  border-radius: 2px;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: calc(var(--larg-midia) * 100%) 1fr;
+  column-gap: var(--gap);
+  pointer-events: none;              /* cliques passam para os slides... */
+}
+.destaque__legendas { pointer-events: auto; } /* ...menos na legenda */
+
+.destaque__espaco { aspect-ratio: 16 / 10; }
+
+/* Barra de progresso de 15 s, logo abaixo da imagem */
+.destaque__progresso {
+  height: 3px;
+  margin-top: var(--sp-4);
+  border-radius: 3px;
+  background: rgba(74, 46, 31, .14);
   overflow: hidden;
 }
-.carousel__bar {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: var(--progresso, 30%);
-  left: var(--inicio, 0%);
-  background: var(--marrom);
-  border-radius: 2px;
-  transition: left .15s linear;
+.destaque__progresso span {
+  display: block;
+  height: 100%;
+  background: var(--laranja);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+.destaque.sem-automatico .destaque__progresso { visibility: hidden; }
+
+/* Painel da legenda: cobre parte da imagem seguinte, com boa leitura */
+.destaque__legendas {
+  display: grid;
+  align-items: center;
+  margin-bottom: calc(var(--sp-4) + 3px); /* alinha com a altura da imagem (sem a barra) */
+  padding: clamp(1.5rem, 1rem + 2vw, 3rem);
+  border-radius: var(--raio);
+  background: rgba(245, 239, 229, .93);
+  -webkit-backdrop-filter: blur(10px) saturate(.8);
+  backdrop-filter: blur(10px) saturate(.8);
+  box-shadow: -24px 0 40px -28px rgba(47, 29, 20, .35);
+}
+
+/* Todas as legendas ocupam a mesma célula; só a ativa aparece */
+.destaque__legenda {
+  grid-area: 1 / 1;
+  display: grid;
+  justify-items: start;
+  gap: var(--sp-3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 16px, 0);
+  transition: opacity .45s var(--ease-out), transform .6s var(--ease-out), visibility 0s .6s;
+}
+.destaque__legenda.is-ativa {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity .7s var(--ease-out) .3s, transform .9s var(--ease-out) .3s, visibility 0s;
+}
+
+.destaque__cat { color: var(--cinza); font-size: var(--fs-sm); font-weight: 600; }
+.destaque__nome {
+  font-size: clamp(2rem, 1.3rem + 2.4vw, 3.25rem);
+  line-height: 1.05;
+  color: var(--marrom);
+}
+.destaque__desc { max-width: 32ch; color: var(--cinza-escuro); font-size: var(--fs-md); line-height: 1.5; }
+.destaque__cta { margin-top: var(--sp-3); }
+
+/* Indicadores (traços) */
+.destaque__indicadores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-5);
+}
+.destaque__traco {
+  display: inline-grid;
+  align-items: center;
+  height: 1.75rem;                   /* área de toque confortável */
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--raio);
+}
+.destaque__traco span {
+  display: block;
+  width: 1.5rem;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--bege-escuro);
+  transition: width .5s var(--ease-out), background-color .3s;
+}
+.destaque__traco:hover span { background: var(--marrom-claro); }
+.destaque__traco:active span { background: var(--marrom); }
+.destaque__traco[aria-current="true"] span { width: 2.75rem; background: var(--marrom); }
+
+/* Celular e tablet: imagem em cima, legenda embaixo, pontas menores nas laterais */
+@media (max-width: 899px) {
+  .destaque {
+    --larg-midia: 1;
+    --peek: clamp(1rem, 4vw, 2rem);
+    --gap: .6rem;
+    --respiro: 2rem;
+  }
+  .destaque__grade { grid-template-columns: 1fr; }
+  .destaque__quadro { margin-inline: var(--peek); }
+  .destaque__legendas {
+    margin: var(--sp-5) 0 0;
+    padding: 0;
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
+  .destaque__slide[data-pos="anterior"],
+  .destaque__slide[data-pos="proximo"] { --escala: .84; }
+  .destaque__indicadores { justify-content: center; }
+}
+/* Celular estreito: setas abaixo do texto de apoio, para o texto não espremer */
+@media (max-width: 559px) {
+  .featured__head { flex-direction: column; align-items: flex-start; }
 }
 
 /* --------------------------------------------------------------------------
@@ -1207,7 +1359,7 @@ img, svg { display: block; }
 .review__project { display: block; margin-top: var(--sp-1); color: var(--cinza); font-size: var(--fs-sm); }
 
 /* Etiqueta discreta que identifica conteúdo de exemplo
-   (usada nos depoimentos e nos produtos provisórios) */
+   (usada nos depoimentos e nos produtos do carrossel de destaque) */
 .tag-exemplo {
   position: absolute;
   top: var(--sp-4);
@@ -1221,7 +1373,7 @@ img, svg { display: block; }
   font-weight: 600;
   line-height: 1.5;
 }
-.product__media .tag-exemplo { top: var(--sp-3); right: var(--sp-3); }
+
 
 .reviews__footer { margin-top: var(--sp-6); }
 

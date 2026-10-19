@@ -76,24 +76,7 @@ var CATEGORIAS = [
   }
 ];
 
-/* --------------------------------------------------------------------------
-   PRODUTOS em destaque (carrossel).
-   TODO: estes são EXEMPLOS PROVISÓRIOS, só para mostrar o layout. Serão
-   trocados pelos produtos reais (nome, foto e link). categoria e
-   subcategoria usam os slugs de CATEGORIAS; combinações que não existirem
-   lá são ignoradas e avisadas no console.
-   - fundo: letra do gradiente provisório (product__media--a ... --g)
-   -------------------------------------------------------------------------- */
-var PRODUTOS = [
-  { nome: 'Lareira a gás linear', categoria: 'lareiras', subcategoria: 'a-gas-linear', fundo: 'a', exemplo: true },
-  { nome: 'Lareira escultural', categoria: 'lareiras', subcategoria: 'esculturais', fundo: 'b', exemplo: true },
-  { nome: 'Churrasqueira híbrida', categoria: 'churrasqueiras', subcategoria: 'hibrida', fundo: 'c', exemplo: true },
-  { nome: 'Coifa para cozinha', categoria: 'coifas', subcategoria: 'cozinha', fundo: 'd', exemplo: true },
-  { nome: 'Forno de pizza a lenha', categoria: 'fornos-de-pizza', subcategoria: 'a-lenha', fundo: 'e', exemplo: true },
-  { nome: 'Parrilla residencial', categoria: 'parrillas', subcategoria: 'residencial', fundo: 'f', exemplo: true },
-  { nome: 'Tocheiro a gás', categoria: 'tocheiros', subcategoria: 'a-gas', fundo: 'g', exemplo: true },
-  { nome: 'Chapeira elétrica', categoria: 'chapeiras', subcategoria: 'eletrica', fundo: 'b', exemplo: true }
-];
+/* PRODUTOS fica em js/produtos.js (carregado antes deste arquivo). */
 
 /* --------------------------------------------------------------------------
    CATALOGOS para download (seção do especificador). Cada catálogo junta
@@ -280,42 +263,248 @@ var DEPOIMENTOS = [
   })();
 
   /* ------------------------------------------------------------------------
-     E. Produtos em destaque (carrossel)
+     E. Produtos em destaque: carrossel grande com loop infinito
+        - Slides vêm de PRODUTOS (js/produtos.js), só os com destaque: true.
+        - Cada slide recebe uma posição relativa ao atual (--o: -2 a +2):
+          0 = ativo, -1/+1 = pontas visíveis nas bordas, ±2 = escondidos.
+          Como os escondidos trocam de lado já invisíveis, o loop continua
+          sempre na mesma direção, sem "rebobinar" e sem salto.
+        - Troca sozinho a cada 15 s; pausa com mouse em cima, foco do teclado,
+          aba em segundo plano, arrasto ou carrossel fora da tela.
      ------------------------------------------------------------------------ */
-  (function montarProdutos() {
-    var track = document.getElementById('carrossel-produtos');
-    if (!track) return;
+  (function carrosselDestaque() {
+    var raiz = document.querySelector('[data-destaque]');
+    if (!raiz) return;
+    var lista = raiz.querySelector('[data-destaque-slides]');
+    var palco = raiz.querySelector('.destaque__palco');
+    var caixaLegendas = raiz.querySelector('[data-destaque-legendas]');
+    var caixaIndicadores = raiz.querySelector('[data-destaque-indicadores]');
+    var barra = raiz.querySelector('[data-destaque-barra]');
+    var btnAnterior = document.querySelector('[data-destaque-anterior]');
+    var btnProximo = document.querySelector('[data-destaque-proximo]');
+    var DURACAO = 15000; // ms por slide
+    var LINK_ORCAMENTO = 'https://whts.co/Construflama_com';
 
-    var validos = PRODUTOS.filter(function (p) {
+    // Produtos em destaque com categoria/subcategoria válidas
+    var itens = PRODUTOS.filter(function (p) {
+      if (!p.destaque) return false;
       var cat = buscarCategoria(p.categoria);
       var ok = cat && cat.subcategorias.some(function (s) { return s.slug === p.subcategoria; });
       if (!ok) console.warn('Produto ignorado (categoria/subcategoria inexistente):', p.nome);
       return ok;
     });
+    if (!itens.length) { raiz.closest('section').hidden = true; return; }
 
-    validos.forEach(function (p, i) {
+    var m = itens.length;
+    // O loop sem salto precisa de 5 slides (anterior, atual, próximo e 2 escondidos).
+    // Com menos produtos, a lista de slides é repetida; legendas e traços usam só os reais.
+    var n = m * Math.ceil(5 / m);
+    var atual = 0;       // índice "virtual": cresce ou diminui sem limite
+    var anunciar = false;
+
+    // --- Montagem -----------------------------------------------------------
+    var slides = [];
+    for (var k = 0; k < n; k++) {
+      var p = itens[k % m];
       var cat = buscarCategoria(p.categoria);
-      var li = el('li', 'product');
-      li.setAttribute('aria-label', (i + 1) + ' de ' + validos.length);
+      var li = el('li', 'destaque__slide');
+      li.setAttribute('aria-roledescription', 'slide');
+      li.setAttribute('aria-label', ((k % m) + 1) + ' de ' + m + ': ' + p.nome);
 
-      // TODO: foto do produto no lugar do gradiente provisório
-      var media = el('div', 'product__media product__media--' + p.fundo);
-      media.appendChild(icone(cat.ilustracao));
-      if (p.exemplo) media.appendChild(el('span', 'tag-exemplo', 'Exemplo'));
-      li.appendChild(media);
+      var midia = el('div', 'destaque__midia destaque__midia--' + (p.fundo || 'a'));
+      var imagem = el('div', 'destaque__imagem');
+      if (p.imagem) {
+        // Foto real: recortada na proporção fixa do slide (16:10)
+        var img = el('img');
+        img.src = p.imagem;
+        img.alt = p.textoAlternativo || p.nome;
+        img.width = 1600; img.height = 1000;
+        img.decoding = 'async';
+        if (k > 1) img.loading = 'lazy';
+        imagem.appendChild(img);
+      } else {
+        // TODO: trocar pelo campo "imagem" quando houver foto do produto
+        imagem.appendChild(icone(cat.ilustracao, 'destaque__ilustracao'));
+      }
+      midia.appendChild(imagem);
+      if (p.exemplo) midia.appendChild(el('span', 'tag-exemplo', 'Exemplo'));
+      li.appendChild(midia);
+      lista.appendChild(li);
+      slides.push(li);
+    }
 
-      li.appendChild(el('p', 'product__cat', cat.nome));
-      li.appendChild(el('h3', 'product__name', p.nome));
-
-      var cta = el('a', 'product__cta', 'Pedir orçamento');
-      cta.href = 'https://whts.co/Construflama_com';
+    var legendas = itens.map(function (p) {
+      var cat = buscarCategoria(p.categoria);
+      var div = el('div', 'destaque__legenda');
+      div.appendChild(el('p', 'destaque__cat', cat.nome));
+      div.appendChild(el('h3', 'destaque__nome', p.nome));
+      if (p.descricao) div.appendChild(el('p', 'destaque__desc', p.descricao));
+      var cta = el('a', 'btn btn--primary destaque__cta', 'Pedir orçamento');
+      cta.href = LINK_ORCAMENTO;
       cta.target = '_blank';
       cta.rel = 'noopener';
       cta.appendChild(srOnly(': ' + p.nome));
-      li.appendChild(cta);
-
-      track.appendChild(li);
+      div.appendChild(cta);
+      caixaLegendas.appendChild(div);
+      return div;
     });
+
+    var tracos = itens.map(function (p, j) {
+      var b = el('button', 'destaque__traco');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Mostrar ' + p.nome);
+      b.appendChild(el('span'));
+      b.addEventListener('click', function () { irPara(j); });
+      caixaIndicadores.appendChild(b);
+      return b;
+    });
+
+    // --- Posicionamento ------------------------------------------------------
+    function mod(a, b) { return ((a % b) + b) % b; }
+
+    function posicionar() {
+      slides.forEach(function (s, i) {
+        var o = mod(i - atual, n);
+        if (o > n / 2) o -= n;                       // menor distância até o atual
+        var oc = Math.max(-2, Math.min(2, o));       // escondidos ficam logo além das pontas
+        s.style.setProperty('--o', oc);
+        s.dataset.pos = o === 0 ? 'atual' : o === -1 ? 'anterior' : o === 1 ? 'proximo' : 'oculto';
+        s.setAttribute('aria-hidden', o === 0 ? 'false' : 'true');
+      });
+      var real = mod(atual, m);
+      legendas.forEach(function (l, j) {
+        var ativa = j === real;
+        l.classList.toggle('is-ativa', ativa);
+        l.inert = !ativa;                              // sem foco/leitura nas legendas ocultas
+        l.setAttribute('aria-hidden', String(!ativa));
+      });
+      tracos.forEach(function (b, j) {
+        if (j === real) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+      });
+      // Só anuncia a troca para leitores de tela quando foi a pessoa que mudou
+      caixaLegendas.setAttribute('aria-live', anunciar ? 'polite' : 'off');
+    }
+
+    function ir(novo, origem) {
+      atual = novo;
+      anunciar = origem !== 'auto';
+      decorrido = 0;
+      posicionar();
+    }
+    function proximo(origem) { ir(atual + 1, origem || 'usuario'); }
+    function anterior() { ir(atual - 1, 'usuario'); }
+    // Traço clicado: vai pelo caminho mais curto (do último para o primeiro, segue em frente)
+    function irPara(j) {
+      var d = mod(j - mod(atual, m), m);
+      if (d > m / 2) d -= m;
+      if (d !== 0) ir(atual + d, 'usuario');
+    }
+
+    btnAnterior.addEventListener('click', anterior);
+    btnProximo.addEventListener('click', function () { proximo(); });
+
+    // Clique nas pontas visíveis leva ao slide anterior/seguinte
+    lista.addEventListener('click', function (e) {
+      if (arrastou) return;
+      var s = e.target.closest('.destaque__slide');
+      if (!s) return;
+      if (s.dataset.pos === 'anterior') anterior();
+      else if (s.dataset.pos === 'proximo') proximo();
+    });
+
+    // Teclado: setas esquerda/direita com o foco em qualquer parte do carrossel
+    raiz.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); proximo(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); anterior(); }
+    });
+
+    // --- Pausas ----------------------------------------------------------------
+    var pausas = { mouse: false, foco: false, aba: document.hidden, arrasto: false, foraDaTela: false };
+    function focoDeTeclado(alvo) {
+      try { return alvo.matches(':focus-visible'); } catch (err) { return true; }
+    }
+    function pausado() {
+      return pausas.mouse || pausas.foco || pausas.aba || pausas.arrasto || pausas.foraDaTela;
+    }
+    var regiaoControles = [raiz, btnAnterior.parentNode];
+    regiaoControles.forEach(function (r) {
+      r.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') pausas.mouse = true; });
+      r.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') pausas.mouse = false; });
+      // Só o foco de TECLADO pausa (:focus-visible); clicar numa seta não congela o avanço
+      r.addEventListener('focusin', function (e) { pausas.foco = focoDeTeclado(e.target); });
+      r.addEventListener('focusout', function (e) {
+        var destino = e.relatedTarget;
+        pausas.foco = !!destino && regiaoControles.some(function (x) { return x.contains(destino); }) && focoDeTeclado(destino);
+      });
+    });
+    document.addEventListener('visibilitychange', function () { pausas.aba = document.hidden; });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { pausas.foraDaTela = !e.isIntersecting; });
+      }, { threshold: 0.25 }).observe(palco);
+    }
+
+    // --- Avanço automático + barra de progresso -------------------------------
+    var decorrido = 0;
+    var anteriorT = null;
+    var automatico = !reduceMotion.matches;
+    raiz.classList.toggle('sem-automatico', !automatico);
+
+    function quadro(t) {
+      var dt = anteriorT === null ? 0 : Math.min(t - anteriorT, 100); // limita saltos (ex.: aba voltando)
+      anteriorT = t;
+      var parado = pausado();
+      if (!parado) {
+        decorrido += dt;
+        if (decorrido >= DURACAO) proximo('auto');
+      }
+      barra.style.transform = 'scaleX(' + Math.min(1, decorrido / DURACAO).toFixed(4) + ')';
+      raiz.classList.toggle('is-pausado', parado);
+      window.requestAnimationFrame(quadro);
+    }
+
+    // --- Arrastar (dedo no celular; mouse também funciona) -----------------------
+    var inicioX = 0, inicioY = 0, dx = 0, arrastando = false, arrastou = false, ponteiro = null;
+
+    palco.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0 || e.target.closest('a, button, .destaque__legendas')) return;
+      ponteiro = e.pointerId;
+      inicioX = e.clientX; inicioY = e.clientY; dx = 0;
+      arrastando = false; arrastou = false;
+    });
+    palco.addEventListener('pointermove', function (e) {
+      if (e.pointerId !== ponteiro) return;
+      dx = e.clientX - inicioX;
+      var dy = e.clientY - inicioY;
+      if (!arrastando) {
+        if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)) return; // gesto vertical = rolar a página
+        arrastando = true;
+        pausas.arrasto = true;
+        lista.classList.add('is-arrastando');
+        try { palco.setPointerCapture(e.pointerId); } catch (err) { /* ok */ }
+      }
+      lista.style.setProperty('--arrasto', dx + 'px');
+    });
+    function soltar() {
+      if (ponteiro === null) return;
+      ponteiro = null;
+      if (!arrastando) return;
+      arrastando = false;
+      arrastou = true;                       // ignora o "click" que vem logo depois
+      setTimeout(function () { arrastou = false; }, 0);
+      pausas.arrasto = false;
+      lista.classList.remove('is-arrastando');
+      lista.style.setProperty('--arrasto', '0px');
+      var limite = Math.min(80, palco.clientWidth * 0.12);
+      if (dx <= -limite) proximo();
+      else if (dx >= limite) anterior();
+    }
+    palco.addEventListener('pointerup', soltar);
+    palco.addEventListener('pointercancel', soltar);
+    palco.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+    posicionar();
+    if (automatico) window.requestAnimationFrame(quadro);
   })();
 
   /* ------------------------------------------------------------------------

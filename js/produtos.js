@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Construflama | Dados dos produtos
+   Carregado antes de main.js. A home usa os produtos com destaque: true no
+   carrossel "Produtos em destaque" (ordem do array = ordem dos slides).
+
+   TODO: estes são EXEMPLOS PROVISÓRIOS, só para mostrar o layout. Serão
+   trocados pelos produtos reais (nome, descrição, foto e link).
+
+   Campos:
+   - nome: nome do produto (título do slide)
+   - categoria / subcategoria: slugs de CATEGORIAS (main.js). Combinações que
+     não existirem lá são ignoradas e avisadas no console.
+   - descricao: frase curta da legenda. Sem especificações técnicas.
+   - destaque: true para aparecer no carrossel da home
+   - imagem: caminho da foto do produto (ex.: 'img/produtos/linear-180.jpg').
+     Vazio = usa o gradiente provisório + ilustração da categoria. A foto é
+     recortada na proporção fixa do slide (16:10), então o layout não pula.
+   - textoAlternativo: descrição da foto para leitores de tela (quando houver)
+   - fundo: letra do gradiente provisório (a a g), usado enquanto não há foto
+   - exemplo: true mostra a etiqueta "Exemplo" (use false nos produtos reais)
+   ========================================================================== */
+var PRODUTOS = [
+  {
+    nome: 'Lareira a gás linear', categoria: 'lareiras', subcategoria: 'a-gas-linear',
+    descricao: 'Da linha A gás linear, para projetos que tratam o fogo como parte da parede.',
+    destaque: true, imagem: '', textoAlternativo: '', fundo: 'a', exemplo: true
+  },
+  {
+    nome: 'Lareira escultural', categoria: 'lareiras', subcategoria: 'esculturais',
+    descricao: 'Da linha Esculturais, para quando a lareira é a peça central do ambiente.',
+    destaque: true, imagem: '', textoAlternativo: '', fundo: 'b', exemplo: true
+  },
+  {
+    nome: 'Churrasqueira híbrida', categoria: 'churrasqueiras', subcategoria: 'hibrida',
+    descricao: 'Da linha Híbrida, para áreas gourmet pensadas junto com o projeto.',
+    destaque: true, imagem: '', textoAlternativo: '', fundo: 'c', exemplo: true
+  },
+  {
+    nome: 'Coifa para cozinha', categoria: 'coifas', subcategoria: 'cozinha',
+    descricao: 'Da linha Cozinha, desenhada para acompanhar a arquitetura do ambiente.',
+    destaque: true, imagem: '', textoAlternativo: '', fundo: 'd', exemplo: true
+  },
+  {
+    nome: 'Forno de pizza a lenha', categoria: 'fornos-de-pizza', subcategoria: 'a-lenha',
+    descricao: 'Da linha A lenha, para fazer do forno o ponto de encontro da casa.',
+    destaque: true, imagem: '', textoAlternativo: '', fundo: 'e', exemplo: true
+  },
+  {
+    nome: 'Parrilla residencial', categoria: 'parrillas', subcategoria: 'residencial',
+    descricao: 'Da linha Residencial, para levar a parrilla à área gourmet de casa.',
+    destaque: true, imagem: '', textoAlternativo: '', fundo: 'f', exemplo: true
+  },
+  {
+    nome: 'Tocheiro a gás', categoria: 'tocheiros', subcategoria: 'a-gas',
+    descricao: 'Da linha A gás, para varandas e áreas externas.',
+    destaque: false, imagem: '', textoAlternativo: '', fundo: 'g', exemplo: true
+  },
+  {
+    nome: 'Chapeira elétrica', categoria: 'chapeiras', subcategoria: 'eletrica',
+    descricao: 'Da linha Elétrica, para a cozinha gourmet.',
+    destaque: false, imagem: '', textoAlternativo: '', fundo: 'b', exemplo: true
+  }
+];

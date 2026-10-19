@@ -256,7 +256,7 @@
          TODO: nomes e descrições são ilustrativos; substituir pelo
          catálogo real e trocar os gradientes por fotos de produto.
          ============================================================ -->
-    <section class="section featured" id="destaques" aria-labelledby="destaques-titulo" data-carousel>
+    <section class="section featured" id="destaques" aria-labelledby="destaques-titulo">
       <div class="container">
         <div class="featured__head" data-reveal="stagger">
           <div>
@@ -264,24 +264,36 @@
             <p class="section-lead">Peças que arquitetos mais especificam com a gente.</p>
           </div>
           <div class="carousel-controls">
-            <button class="carousel-btn" type="button" data-carousel-prev aria-controls="carrossel-produtos">
+            <button class="carousel-btn" type="button" data-destaque-anterior aria-controls="destaque-slides">
               <svg class="icon" aria-hidden="true"><use href="#i-anterior"/></svg>
-              <span class="sr-only">Produtos anteriores</span>
+              <span class="sr-only">Produto anterior</span>
             </button>
-            <button class="carousel-btn" type="button" data-carousel-next aria-controls="carrossel-produtos">
+            <button class="carousel-btn" type="button" data-destaque-proximo aria-controls="destaque-slides">
               <svg class="icon" aria-hidden="true"><use href="#i-proximo"/></svg>
-              <span class="sr-only">Próximos produtos</span>
+              <span class="sr-only">Próximo produto</span>
             </button>
           </div>
         </div>
       </div>
 
-      <div class="carousel">
-        <ul class="carousel__track" id="carrossel-produtos" data-carousel-track data-reveal="stagger" tabindex="0" aria-label="Produtos em destaque. Use as setas ou arraste para ver mais.">
-          <!-- Cards gerados por js/main.js a partir de PRODUTOS (exemplos provisórios) -->
-        </ul>
+      <!-- Carrossel de destaque. Slides, legendas e indicadores são gerados por
+           js/main.js a partir de PRODUTOS (js/produtos.js), só os com destaque: true.
+           Troca sozinho a cada 15 s; pausa com mouse em cima, foco do teclado ou aba oculta. -->
+      <div class="destaque" data-destaque data-reveal tabindex="0"
+           role="region" aria-roledescription="carrossel" aria-labelledby="destaques-titulo">
+        <div class="destaque__palco">
+          <ul class="destaque__slides" id="destaque-slides" data-destaque-slides></ul>
+          <div class="container destaque__grade">
+            <div class="destaque__quadro">
+              <!-- Reserva a área da imagem ativa (16:10) para o layout não pular -->
+              <div class="destaque__espaco" aria-hidden="true"></div>
+              <div class="destaque__progresso" aria-hidden="true"><span data-destaque-barra></span></div>
+            </div>
+            <div class="destaque__legendas" data-destaque-legendas></div>
+          </div>
+        </div>
         <div class="container">
-          <div class="carousel__progress" aria-hidden="true"><span class="carousel__bar" data-carousel-bar></span></div>
+          <div class="destaque__indicadores" data-destaque-indicadores role="group" aria-label="Escolher produto"></div>
         </div>
       </div>
     </section>
@@ -479,6 +491,7 @@
   <!-- Aviso discreto para links que ainda não existem no protótipo -->
   <div class="toast" role="status" aria-live="polite"></div>
 
+  <script src="js/produtos.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>
