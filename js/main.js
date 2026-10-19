@@ -1137,23 +1137,6 @@ var DEPOIMENTOS = [
       filho.style.setProperty('--i', Math.min(i, 8));
     });
   });
-  // Soleira: "+40 anos" conta de 0 a 40 junto com a entrada dos itens
-  var anos = document.querySelector('[data-hearth-anos]');
-  if (anos && !reduceMotion.matches) {
-    var alvoAnos = parseInt(anos.textContent, 10) || 40;   // o número vem do HTML
-    anos.textContent = '0';
-    setTimeout(function () {
-      var inicio = null;
-      function passo(t) {
-        if (inicio === null) inicio = t;
-        var k = Math.min(1, (t - inicio) / 1400);
-        anos.textContent = String(Math.round(alvoAnos * (1 - Math.pow(1 - k, 3)))); // desacelera no fim
-        if (k < 1) window.requestAnimationFrame(passo);
-      }
-      window.requestAnimationFrame(passo);
-    }, 1300);                                                // depois que a lareira acende
-  }
-
   Array.prototype.forEach.call(document.querySelectorAll('.hearth__item'), function (item, i) {
     item.style.setProperty('--i', i);
   });
