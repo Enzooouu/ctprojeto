@@ -265,16 +265,22 @@ var DEPOIMENTOS = [
   /* ------------------------------------------------------------------------
      E. Produtos em destaque: carrossel grande com loop infinito
         - Slides vêm de PRODUTOS (js/produtos.js), só os com destaque: true.
-        - Cada slide recebe uma posição relativa ao atual (--o: -2 a +2):
-          0 = ativo, -1/+1 = pontas visíveis nas bordas, ±2 = escondidos.
-          Como os escondidos trocam de lado já invisíveis, o loop continua
-          sempre na mesma direção, sem "rebobinar" e sem salto.
+        - Cada slide recebe uma posição relativa ao atual: ativo, anterior,
+          próximo (pontas visíveis nas bordas) ou escondido. Como os
+          escondidos trocam de lado já invisíveis, o loop continua sempre na
+          mesma direção, sem "rebobinar" e sem salto.
+        - Geometria simétrica, medida em pixels na largura real do palco:
+          as pontas esquerda e direita têm sempre a mesma largura e o
+          conjunto imagem + legenda fica centralizado.
         - Troca sozinho a cada 15 s; pausa com mouse em cima, foco do teclado,
           aba em segundo plano, arrasto ou carrossel fora da tela.
      ------------------------------------------------------------------------ */
   (function carrosselDestaque() {
     var raiz = document.querySelector('[data-destaque]');
     if (!raiz) return;
+    var secao = raiz.closest('section');
+    var numero = raiz.querySelector('[data-destaque-numero]');
+    var total = raiz.querySelector('[data-destaque-total]');
     var lista = raiz.querySelector('[data-destaque-slides]');
     var palco = raiz.querySelector('.destaque__palco');
     var caixaLegendas = raiz.querySelector('[data-destaque-legendas]');
@@ -328,6 +334,9 @@ var DEPOIMENTOS = [
       }
       midia.appendChild(imagem);
       if (p.exemplo) midia.appendChild(el('span', 'tag-exemplo', 'Exemplo'));
+      // Véus: dissolvem as pontas na borda da tela (um para cada lado)
+      midia.appendChild(el('span', 'destaque__veu destaque__veu--esq'));
+      midia.appendChild(el('span', 'destaque__veu destaque__veu--dir'));
       li.appendChild(midia);
       lista.appendChild(li);
       slides.push(li);
@@ -339,12 +348,20 @@ var DEPOIMENTOS = [
       div.appendChild(el('p', 'destaque__cat', cat.nome));
       div.appendChild(el('h3', 'destaque__nome', p.nome));
       if (p.descricao) div.appendChild(el('p', 'destaque__desc', p.descricao));
+      var acoes = el('div', 'destaque__acoes');
       var cta = el('a', 'btn btn--primary destaque__cta', 'Pedir orçamento');
       cta.href = LINK_ORCAMENTO;
       cta.target = '_blank';
       cta.rel = 'noopener';
       cta.appendChild(srOnly(': ' + p.nome));
-      div.appendChild(cta);
+      acoes.appendChild(cta);
+      var verColecao = el('a', 'text-link destaque__colecao', 'Ver a coleção');
+      verColecao.href = ancoraColecao(cat);
+      verColecao.appendChild(srOnly(' de ' + cat.nome));
+      acoes.appendChild(verColecao);
+      div.appendChild(acoes);
+      // Índice de cascata: categoria, nome, descrição e botões entram em sequência
+      Array.prototype.forEach.call(div.children, function (filho, i) { filho.style.setProperty('--i', i); });
       caixaLegendas.appendChild(div);
       return div;
     });
@@ -359,6 +376,46 @@ var DEPOIMENTOS = [
       return b;
     });
 
+    if (total) total.textContent = String(m);
+
+    // --- Geometria ----------------------------------------------------------
+    // Mede o palco e calcula: largura do conteúdo (imagem + legenda), margem
+    // lateral e largura da imagem. A ponta visível de cada lado = margem - gap.
+    var g = { sw: 0, gap: 24, margem: 0, conteudo: 0, w: 0, peek: 0 };
+
+    function medir() {
+      var sw = lista.clientWidth;                       // largura real (sem a barra de rolagem)
+      var celular = sw < 900;
+      var gutter = Math.min(40, Math.max(16, 8 + sw * 0.03)); // mesmo --gutter do CSS
+      var gap = celular ? 10 : Math.round(Math.min(28, Math.max(16, sw * 0.016)));
+      var conteudo;
+      if (celular) {
+        var pontaMin = Math.min(30, Math.max(14, sw * 0.045));
+        conteudo = sw - 2 * (pontaMin + gap);
+      } else {
+        // Alinha à grade do site (contêiner) e, em telas muito largas, cresce até 1400px
+        var conteiner = Math.min(sw, 1216) - 2 * gutter;
+        conteudo = Math.max(conteiner, Math.min(sw - 2 * (220 + gap), 1400));
+        conteudo = Math.min(conteudo, sw - 2 * (64 + gap)); // ponta mínima de 64px de cada lado
+      }
+      var margem = (sw - conteudo) / 2;
+      g = { sw: sw, gap: gap, margem: margem, conteudo: conteudo,
+            w: Math.round(celular ? conteudo : conteudo * 0.6), peek: margem - gap };
+      // As mesmas medidas valem para o título da seção e para a grade (imagem + legenda)
+      secao.style.setProperty('--d-margem', margem + 'px');
+      secao.style.setProperty('--d-conteudo', conteudo + 'px');
+      secao.style.setProperty('--d-w', g.w + 'px');
+      secao.style.setProperty('--d-gap', gap + 'px');
+      secao.style.setProperty('--d-ponta', g.peek + 'px');
+    }
+
+    function xDaPosicao(o) {
+      if (o === 0) return g.margem;                                  // ativo
+      if (o === -1) return g.margem - g.gap - g.w;                   // ponta esquerda (mostra g.peek)
+      if (o === 1) return g.sw - g.peek;                             // ponta direita (mostra g.peek)
+      return o < 0 ? g.margem - g.gap - g.w * 1.45 : g.sw + g.w * 0.15; // escondidos, fora da tela
+    }
+
     // --- Posicionamento ------------------------------------------------------
     function mod(a, b) { return ((a % b) + b) % b; }
 
@@ -366,11 +423,11 @@ var DEPOIMENTOS = [
       slides.forEach(function (s, i) {
         var o = mod(i - atual, n);
         if (o > n / 2) o -= n;                       // menor distância até o atual
-        var oc = Math.max(-2, Math.min(2, o));       // escondidos ficam logo além das pontas
-        s.style.setProperty('--o', oc);
+        s.style.setProperty('--x', xDaPosicao(o) + 'px');
         s.dataset.pos = o === 0 ? 'atual' : o === -1 ? 'anterior' : o === 1 ? 'proximo' : 'oculto';
         s.setAttribute('aria-hidden', o === 0 ? 'false' : 'true');
       });
+      if (numero) numero.textContent = String(mod(atual, m) + 1);
       var real = mod(atual, m);
       legendas.forEach(function (l, j) {
         var ativa = j === real;
@@ -386,6 +443,8 @@ var DEPOIMENTOS = [
     }
 
     function ir(novo, origem) {
+      // Direção da troca: a legenda nova entra pelo lado de onde vem o slide
+      raiz.dataset.direcao = novo >= atual ? 'proximo' : 'anterior';
       atual = novo;
       anunciar = origem !== 'auto';
       decorrido = 0;
@@ -503,7 +562,23 @@ var DEPOIMENTOS = [
     palco.addEventListener('pointercancel', soltar);
     palco.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
+    // Primeira medição sem animação (os slides já nascem no lugar)
+    lista.classList.add('is-arrastando');
+    medir();
     posicionar();
+    lista.getBoundingClientRect();
+    lista.classList.remove('is-arrastando');
+
+    // Ao redimensionar, remede e reposiciona sem animar
+    var timerMedida = null;
+    window.addEventListener('resize', function () {
+      lista.classList.add('is-arrastando');
+      medir();
+      posicionar();
+      clearTimeout(timerMedida);
+      timerMedida = setTimeout(function () { lista.classList.remove('is-arrastando'); }, 120);
+    });
+
     if (automatico) window.requestAnimationFrame(quadro);
   })();
 

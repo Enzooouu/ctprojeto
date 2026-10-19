@@ -234,30 +234,14 @@
     </section>
 
     <!-- ============================================================
-         4. COLEÇÕES: grade assimétrica, Lareiras em destaque.
-         TODO: substituir os gradientes por fotos reais de ambientes
-         (mantendo o gradiente escuro por cima para o texto ficar legível).
-         ============================================================ -->
-    <section class="section collections" id="colecoes" aria-labelledby="colecoes-titulo">
-      <div class="container">
-        <div class="section-head" data-reveal="stagger">
-          <h2 class="section-title" id="colecoes-titulo">Coleções</h2>
-          <p class="section-lead">Sete famílias de produtos para dentro e fora de casa, da sala de estar à área gourmet.</p>
-        </div>
-
-        <!-- Cards gerados por js/main.js a partir de CATEGORIAS.
-             TODO: substituir os gradientes por fotos reais de ambientes. -->
-        <ul class="collection-grid" data-grade-colecoes data-reveal="stagger"></ul>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         5. PRODUTOS EM DESTAQUE (carrossel)
-         TODO: nomes e descrições são ilustrativos; substituir pelo
-         catálogo real e trocar os gradientes por fotos de produto.
+         4. PRODUTOS EM DESTAQUE: carrossel grande, logo depois do hero.
+         Slides, legendas, traços e contador são gerados por js/main.js a
+         partir de PRODUTOS (js/produtos.js), só os com destaque: true.
+         Geometria simétrica: as pontas das imagens anterior e seguinte têm
+         sempre a mesma largura dos dois lados, em qualquer tela.
          ============================================================ -->
     <section class="section featured" id="destaques" aria-labelledby="destaques-titulo">
-      <div class="container">
+      <div class="destaque-largura">
         <div class="featured__head" data-reveal="stagger">
           <div>
             <h2 class="section-title" id="destaques-titulo">Produtos em destaque</h2>
@@ -276,25 +260,42 @@
         </div>
       </div>
 
-      <!-- Carrossel de destaque. Slides, legendas e indicadores são gerados por
-           js/main.js a partir de PRODUTOS (js/produtos.js), só os com destaque: true.
-           Troca sozinho a cada 15 s; pausa com mouse em cima, foco do teclado ou aba oculta. -->
+      <!-- Troca sozinho a cada 15 s; pausa com mouse em cima, foco do teclado ou aba oculta -->
       <div class="destaque" data-destaque data-reveal tabindex="0"
            role="region" aria-roledescription="carrossel" aria-labelledby="destaques-titulo">
         <div class="destaque__palco">
           <ul class="destaque__slides" id="destaque-slides" data-destaque-slides></ul>
-          <div class="container destaque__grade">
+          <div class="destaque-largura destaque__grade">
             <div class="destaque__quadro">
               <!-- Reserva a área da imagem ativa (16:10) para o layout não pular -->
               <div class="destaque__espaco" aria-hidden="true"></div>
               <div class="destaque__progresso" aria-hidden="true"><span data-destaque-barra></span></div>
+              <div class="destaque__navegacao">
+                <div class="destaque__indicadores" data-destaque-indicadores role="group" aria-label="Escolher produto"></div>
+                <p class="destaque__contador" aria-hidden="true"><span data-destaque-numero>1</span><span class="destaque__total" data-destaque-total></span></p>
+              </div>
             </div>
             <div class="destaque__legendas" data-destaque-legendas></div>
           </div>
         </div>
-        <div class="container">
-          <div class="destaque__indicadores" data-destaque-indicadores role="group" aria-label="Escolher produto"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. COLEÇÕES: grade assimétrica, Lareiras em destaque.
+         TODO: substituir os gradientes por fotos reais de ambientes
+         (mantendo o gradiente escuro por cima para o texto ficar legível).
+         ============================================================ -->
+    <section class="section collections" id="colecoes" aria-labelledby="colecoes-titulo">
+      <div class="container">
+        <div class="section-head" data-reveal="stagger">
+          <h2 class="section-title" id="colecoes-titulo">Coleções</h2>
+          <p class="section-lead">Sete famílias de produtos para dentro e fora de casa, da sala de estar à área gourmet.</p>
         </div>
+
+        <!-- Cards gerados por js/main.js a partir de CATEGORIAS.
+             TODO: substituir os gradientes por fotos reais de ambientes. -->
+        <ul class="collection-grid" data-grade-colecoes data-reveal="stagger"></ul>
       </div>
     </section>
 
