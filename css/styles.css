@@ -119,7 +119,7 @@ img, svg { display: block; }
 .specifiers,
 .site-footer,
 .tile,
-.stores__visual,
+.lojas__foto,
 .whatsapp-float { --foco: var(--laranja-claro); }
 
 .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
@@ -1452,57 +1452,232 @@ img, svg { display: block; }
 
 /* --------------------------------------------------------------------------
    13. Lojas e showroom
+   Desktop: [mapa ilustrado + lista de lojas] | [painel: foto com detalhes + mapa do Google]
+   Celular: mapa ilustrado, lista, foto, detalhes e mapa, um embaixo do outro.
    -------------------------------------------------------------------------- */
-.stores__grid { display: grid; gap: var(--sp-6); }
+.lojas {
+  display: grid;
+  gap: var(--sp-6);
+  align-items: start;
+}
+@media (min-width: 960px) {
+  .lojas { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 4vw, 4rem); }
+}
 
-.stores__visual {
+.lojas__lado { display: grid; gap: var(--sp-5); }
+
+/* Mapa ilustrado (fora de escala), nas cores do site */
+.lojas__mapa {
   position: relative;
-  display: flex;
-  align-items: flex-end;
-  min-height: 20rem;
-  padding: var(--sp-5);
+  margin: 0;
   border-radius: var(--raio);
-  color: var(--bege-claro);
-  /* TODO: foto do showroom. Até lá, um ambiente sugerido por luz quente. */
   background:
-    linear-gradient(to top, rgba(30, 20, 14, .8), transparent 65%),
-    radial-gradient(ellipse 45% 30% at 32% 32%, rgba(244, 167, 87, .5), transparent 70%),
-    linear-gradient(to bottom, #3A2B23 0 50%, #4A2E1F 50% 100%);
+    radial-gradient(ellipse 60% 50% at 52% 82%, rgba(224, 122, 58, .14), transparent 70%),
+    var(--bege-claro);
+  box-shadow: inset 0 0 0 1px var(--bege-escuro);
   overflow: hidden;
 }
-/* Um "nicho de lareira" sugerido na parede do showroom */
-.stores__visual::before {
+.lojas__mapa svg { width: 100%; height: auto; }
+.lojas__ruas path { fill: none; stroke: rgba(74, 46, 31, .12); stroke-width: 1.2; }
+.lojas__rio { fill: none; stroke: var(--bege-escuro); stroke-width: 16; stroke-linecap: round; }
+.lojas__marginal { fill: none; stroke: rgba(74, 46, 31, .22); stroke-width: 1.4; stroke-dasharray: 6 5; }
+.lojas__rio-nome { font: 500 10.5px var(--fonte-texto); fill: var(--marrom-claro); letter-spacing: .04em; }
+.lojas__norte path { fill: var(--marrom-claro); }
+.lojas__norte text { font: 600 10px var(--fonte-texto); fill: var(--marrom-claro); }
+.lojas__mapa-nota {
+  position: absolute;
+  left: var(--sp-3);
+  bottom: var(--sp-2);
+  color: var(--cinza);
+  font-size: .75rem;
+}
+
+/* Pontos das lojas */
+.lojas__pino { cursor: pointer; }
+.lojas__pino-alvo { fill: transparent; }
+.lojas__pino-ponto { fill: var(--marrom); stroke: var(--bege-claro); stroke-width: 2.5; transition: fill .4s var(--ease-out); }
+.lojas__pino-halo {
+  fill: rgba(176, 74, 23, .22);
+  transform: scale(.3);
+  opacity: 0;
+  transition: transform .6s var(--ease-out), opacity .6s var(--ease-out);
+}
+.lojas__pino-nome { font: 600 11.5px var(--fonte-texto); fill: var(--marrom); paint-order: stroke; stroke: var(--bege-claro); stroke-width: 4px; stroke-linejoin: round; }
+.lojas__pino:hover .lojas__pino-ponto { fill: var(--laranja-escuro); }
+.lojas__pino.is-ativo .lojas__pino-ponto { fill: var(--laranja); }
+.lojas__pino.is-ativo .lojas__pino-halo { transform: scale(1); opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .lojas__pino.is-ativo .lojas__pino-halo { animation: pulsoPino 2.4s ease-in-out .6s infinite; }
+}
+@keyframes pulsoPino {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .45; transform: scale(1.25); }
+}
+
+/* Lista de lojas (abas) */
+.lojas__lista { display: grid; gap: var(--sp-2); }
+.lojas__aba {
+  position: relative;
+  display: grid;
+  gap: var(--sp-1);
+  width: 100%;
+  padding: var(--sp-4) var(--sp-5);
+  border: 1px solid var(--bege-escuro);
+  border-radius: var(--raio);
+  background: transparent;
+  color: var(--cinza-escuro);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color .35s var(--ease-out), border-color .35s var(--ease-out), box-shadow .35s var(--ease-out);
+}
+/* filete de brasa à esquerda, que cresce na loja selecionada */
+.lojas__aba::before {
   content: "";
   position: absolute;
-  top: 24%;
-  left: 12%;
-  width: 40%;
-  height: 11%;
-  background: linear-gradient(to top, #F4A757, #8E3A10 60%, #1A120E);
-  border: 3px solid #3B3531;
-  box-shadow: 0 0 60px rgba(244, 167, 87, .35);
+  left: -1px; top: -1px; bottom: -1px;
+  width: 3px;
+  border-radius: var(--raio) 0 0 var(--raio);
+  background: var(--laranja);
+  transform: scaleY(0);
+  transition: transform .45s var(--ease-out);
 }
-.stores__visual-text { position: relative; display: grid; gap: var(--sp-4); justify-items: start; }
-.stores__visual-title { font-family: var(--fonte-titulo); font-size: var(--fs-lg); max-width: 18ch; line-height: 1.2; }
+.lojas__aba:hover { background: rgba(245, 239, 229, .7); border-color: rgba(74, 46, 31, .25); }
+.lojas__aba:active { background: var(--bege-claro); }
+.lojas__aba[aria-selected="true"] {
+  background: var(--bege-claro);
+  border-color: rgba(74, 46, 31, .2);
+  box-shadow: 0 14px 30px -22px rgba(47, 29, 20, .55);
+}
+.lojas__aba[aria-selected="true"]::before { transform: scaleY(1); }
+.lojas__aba-topo { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3); }
+.lojas__aba-nome { font-family: var(--fonte-titulo); font-size: var(--fs-lg); color: var(--marrom); line-height: 1.15; }
+.lojas__aba-endereco { color: var(--cinza); font-size: .95rem; }
+/* leve destaque do showroom */
+.lojas__aba--destaque .lojas__aba-nome { font-size: clamp(1.55rem, 1.2rem + 1.1vw, 2rem); }
 
-.stores__list { display: grid; }
+.lojas__etiqueta {
+  padding: .1rem .55rem;
+  border-radius: 999px;
+  background: rgba(176, 74, 23, .1);
+  color: var(--laranja-escuro);
+  font-size: .78rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.lojas__etiqueta--clara { background: rgba(245, 239, 229, .16); color: var(--bege-claro); }
 
-.store {
+.lojas__atendimento { color: var(--cinza); }
+
+/* Painel da loja selecionada */
+.lojas__painel {
   display: grid;
-  gap: var(--sp-2);
-  padding-block: var(--sp-5);
-  border-bottom: 1px solid var(--bege-escuro);
+  gap: var(--sp-4);
+  border-radius: var(--raio);
+  outline: none;
 }
-.store:first-child { padding-top: 0; }
-.store__name { font-size: var(--fs-lg); }
-.store__address { color: var(--cinza-escuro); }
-.store .text-link { justify-self: start; }
 
-.stores__phone { padding-top: var(--sp-5); color: var(--cinza); }
+/* Foto (provisória) com os detalhes por cima */
+.lojas__foto {
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-height: clamp(20rem, 30vw, 24rem);
+  padding-top: 8.5rem;               /* faixa do alto reservada ao desenho/foto, longe do texto */
+  border-radius: var(--raio);
+  overflow: hidden;
+  color: var(--bege-claro);
+  --foco: var(--laranja-claro);
+  isolation: isolate;
+}
+.lojas__camada {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  display: grid;
+  place-items: center start;
+  background: var(--fundo);
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity .9s var(--ease-out), transform 1.6s var(--ease-out);
+}
+.lojas__camada.is-ativa { opacity: 1; transform: none; }
+.lojas__camada img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.lojas__desenho {
+  position: absolute;
+  top: 1.25rem;
+  right: clamp(1.25rem, 1rem + 1.5vw, 2.25rem);
+  width: auto;
+  height: 6.5rem;
+  aspect-ratio: 16 / 10;
+  color: rgba(245, 239, 229, .32);
+}
+/* véu escuro de baixo para cima: garante leitura dos detalhes (também sobre fotos reais) */
+.lojas__foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, rgba(30, 20, 14, .88) 0%, rgba(30, 20, 14, .55) 45%, rgba(30, 20, 14, .05) 80%);
+  pointer-events: none;
+}
+.lojas__camada--a { --fundo: radial-gradient(ellipse 45% 35% at 30% 40%, rgba(244, 167, 87, .45), transparent 70%), linear-gradient(to bottom, #3A2B23 0 58%, #4A2E1F 58% 100%); }
+.lojas__camada--b { --fundo: radial-gradient(ellipse 50% 40% at 70% 35%, rgba(224, 122, 58, .35), transparent 70%), linear-gradient(160deg, #6E6660, #3B3531 60%, #2A2623); }
+.lojas__camada--c { --fundo: radial-gradient(ellipse 50% 40% at 40% 30%, rgba(244, 167, 87, .35), transparent 70%), linear-gradient(150deg, #7A5340, #4A2E1F 70%); }
 
-@media (min-width: 900px) {
-  .stores__grid { grid-template-columns: 1.1fr 1fr; gap: clamp(2.5rem, 5vw, 5rem); }
-  .stores__visual { min-height: 100%; padding: var(--sp-6); }
+.lojas__detalhes {
+  display: grid;
+  gap: var(--sp-4);
+  padding: clamp(1.25rem, 1rem + 1.5vw, 2.25rem);
+  transition: opacity .25s ease-out, transform .25s ease-out;
+}
+.lojas__detalhes.is-trocando { opacity: 0; transform: translate3d(0, 8px, 0); }
+@media (prefers-reduced-motion: no-preference) {
+  .lojas__detalhes:not(.is-trocando) > * { animation: rise .7s var(--ease-out) both; }
+  .lojas__detalhes:not(.is-trocando) > :nth-child(2) { animation-delay: .07s; }
+  .lojas__detalhes:not(.is-trocando) > :nth-child(3) { animation-delay: .14s; }
+}
+.lojas__detalhes-topo { display: grid; gap: var(--sp-2); justify-items: start; }
+.lojas__nome { color: var(--bege-claro); font-size: clamp(1.9rem, 1.3rem + 2vw, 2.8rem); }
+.lojas__info { display: grid; gap: var(--sp-3); }
+.lojas__info li { display: flex; align-items: flex-start; flex-wrap: wrap; gap: var(--sp-3); color: rgba(245, 239, 229, .92); }
+.lojas__info .icon { margin-top: .2em; color: var(--laranja-claro); }
+.lojas__info-sub { color: rgba(245, 239, 229, .72); font-size: .95rem; }
+.lojas__tag { position: static; background: rgba(245, 239, 229, .85); }
+.lojas__acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
+
+/* Mapa do Google da loja selecionada */
+.lojas__gmaps {
+  position: relative;
+  aspect-ratio: 16 / 7;
+  min-height: 14rem;
+  border-radius: var(--raio);
+  overflow: hidden;
+  background: var(--bege-escuro);
+}
+.lojas__gmaps iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  opacity: 0;
+  transition: opacity .6s var(--ease-out);
+}
+.lojas__gmaps.is-carregado iframe { opacity: 1; }
+.lojas__gmaps-aviso {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--cinza);
+  font-size: .95rem;
+}
+.lojas__gmaps.is-carregado .lojas__gmaps-aviso { visibility: hidden; }
+
+@media (max-width: 559px) {
+  .lojas__acoes .btn { flex: 1 1 auto; }
+  .lojas__gmaps { aspect-ratio: 4 / 3; }
 }
 
 /* --------------------------------------------------------------------------

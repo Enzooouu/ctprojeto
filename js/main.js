@@ -584,6 +584,173 @@ var DEPOIMENTOS = [
   })();
 
   /* ------------------------------------------------------------------------
+     E2. Lojas e showroom: lista em abas + mapa ilustrado + foto + mapa do Google
+         - Dados em LOJAS (js/lojas.js). Escolher uma loja (na lista ou no
+           ponto do mapa ilustrado) troca a foto, os detalhes e o mapa.
+         - O mapa do Google só carrega quando a seção se aproxima da tela.
+     ------------------------------------------------------------------------ */
+  (function montarLojas() {
+    var raiz = document.querySelector('[data-lojas]');
+    if (!raiz || typeof LOJAS === 'undefined' || !LOJAS.length) return;
+    var lista = raiz.querySelector('[data-lojas-lista]');
+    var pinos = raiz.querySelector('[data-lojas-pinos]');
+    var fotos = raiz.querySelector('[data-lojas-fotos]');
+    var detalhes = raiz.querySelector('[data-lojas-detalhes]');
+    var iframe = raiz.querySelector('[data-lojas-iframe]');
+    var atendimento = raiz.querySelector('[data-lojas-atendimento]');
+    var gmaps = raiz.querySelector('.lojas__gmaps');
+    var mapaLiberado = false;      // vira true quando a seção chega perto da tela
+    var atual = -1;
+
+    function urlMapa(l) { return 'https://maps.google.com/maps?q=' + encodeURIComponent(l.consulta) + '&z=16&output=embed'; }
+    function urlRota(l) { return 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(l.consulta); }
+
+    // Abas da lista
+    var abas = LOJAS.map(function (l, i) {
+      var b = el('button', 'lojas__aba' + (l.destaque ? ' lojas__aba--destaque' : ''));
+      b.type = 'button';
+      b.id = 'loja-aba-' + l.id;
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-controls', 'lojas-painel');
+      var topo = el('span', 'lojas__aba-topo');
+      topo.appendChild(el('span', 'lojas__aba-nome', l.nome));
+      if (l.etiqueta) topo.appendChild(el('span', 'lojas__etiqueta', l.etiqueta));
+      b.appendChild(topo);
+      b.appendChild(el('span', 'lojas__aba-endereco', l.endereco));
+      b.addEventListener('click', function () { selecionar(i); });
+      lista.appendChild(b);
+      return b;
+    });
+
+    // Teclado nas abas: setas, Home e End (padrão de abas acessíveis)
+    lista.addEventListener('keydown', function (e) {
+      var i = abas.indexOf(document.activeElement);
+      if (i < 0) return;
+      var novo = { ArrowDown: i + 1, ArrowRight: i + 1, ArrowUp: i - 1, ArrowLeft: i - 1, Home: 0, End: abas.length - 1 }[e.key];
+      if (novo === undefined) return;
+      e.preventDefault();
+      novo = (novo + abas.length) % abas.length;
+      selecionar(novo);
+      abas[novo].focus();
+    });
+
+    // Pontos no mapa ilustrado (mouse/toque; pelo teclado, usa-se a lista)
+    var SVG = 'http://www.w3.org/2000/svg';
+    var marcadores = LOJAS.map(function (l, i) {
+      var g = document.createElementNS(SVG, 'g');
+      g.setAttribute('class', 'lojas__pino' + (l.destaque ? ' lojas__pino--destaque' : ''));
+      g.setAttribute('transform', 'translate(' + l.mapa.x + ' ' + l.mapa.y + ')');
+      g.setAttribute('aria-hidden', 'true');
+      var halo = document.createElementNS(SVG, 'circle'); halo.setAttribute('class', 'lojas__pino-halo'); halo.setAttribute('r', l.destaque ? 20 : 16);
+      var ponto = document.createElementNS(SVG, 'circle'); ponto.setAttribute('class', 'lojas__pino-ponto'); ponto.setAttribute('r', l.destaque ? 8 : 6.5);
+      var nome = document.createElementNS(SVG, 'text'); nome.setAttribute('class', 'lojas__pino-nome');
+      nome.setAttribute('x', l.mapa.x > 300 ? -14 : 14); nome.setAttribute('y', 5);
+      if (l.mapa.x > 300) nome.setAttribute('text-anchor', 'end');
+      nome.textContent = l.nome;
+      var alvo = document.createElementNS(SVG, 'circle'); alvo.setAttribute('class', 'lojas__pino-alvo'); alvo.setAttribute('r', 22); // área de clique confortável
+      g.appendChild(halo); g.appendChild(ponto); g.appendChild(nome); g.appendChild(alvo);
+      g.addEventListener('click', function () { selecionar(i); });
+      pinos.appendChild(g);
+      return g;
+    });
+
+    // Camadas de foto (uma por loja; a ativa aparece por cima com transição)
+    var camadas = LOJAS.map(function (l) {
+      var c = el('div', 'lojas__camada lojas__camada--' + (l.fundo || 'a'));
+      if (l.imagem) {
+        var img = el('img');
+        img.src = l.imagem; img.alt = l.textoAlternativo || ''; img.loading = 'lazy'; img.decoding = 'async';
+        c.appendChild(img);
+      } else {
+        c.appendChild(icone('i-showroom-desenho', 'lojas__desenho')); // TODO: foto real da loja
+      }
+      fotos.insertBefore(c, detalhes);
+      return c;
+    });
+
+    atendimento.textContent = 'Atendimento em todas as lojas: ';
+    var tel = el('a', 'text-link', LOJAS_TELEFONE); tel.href = LOJAS_TELEFONE_LINK;
+    atendimento.appendChild(tel);
+
+    function montarDetalhes(l) {
+      detalhes.textContent = '';
+      var topo = el('div', 'lojas__detalhes-topo');
+      if (l.etiqueta) topo.appendChild(el('span', 'lojas__etiqueta lojas__etiqueta--clara', l.etiqueta));
+      topo.appendChild(el('h3', 'lojas__nome', l.nome));
+      detalhes.appendChild(topo);
+
+      var info = el('ul', 'lojas__info');
+      var linha = function (iconeId, texto, extra) {
+        var li = el('li');
+        li.appendChild(icone(iconeId, 'icon'));
+        var t = el('span', null, texto);
+        if (extra) { t.appendChild(document.createElement('br')); t.appendChild(el('span', 'lojas__info-sub', extra)); }
+        li.appendChild(t);
+        return li;
+      };
+      info.appendChild(linha('i-pin', l.endereco, l.complemento));
+      var h = linha('i-relogio', l.horario);
+      if (l.horarioExemplo) h.appendChild(el('span', 'tag-exemplo lojas__tag', 'Exemplo')); // TODO: horário real
+      info.appendChild(h);
+      detalhes.appendChild(info);
+
+      var acoes = el('div', 'lojas__acoes');
+      var rota = el('a', 'btn btn--primary', 'Como chegar');
+      rota.href = urlRota(l); rota.target = '_blank'; rota.rel = 'noopener';
+      rota.appendChild(srOnly(': ' + l.nome));
+      var visita = el('a', 'btn btn--ghost', 'Agendar visita');
+      visita.href = LOJAS_WHATSAPP; visita.target = '_blank'; visita.rel = 'noopener';
+      visita.appendChild(srOnly(' no ' + l.nome));
+      acoes.appendChild(rota); acoes.appendChild(visita);
+      detalhes.appendChild(acoes);
+    }
+
+    function carregarMapa() {
+      if (!mapaLiberado || atual < 0) return;
+      var l = LOJAS[atual];
+      var url = urlMapa(l);
+      if (iframe.getAttribute('src') === url) return;
+      gmaps.classList.remove('is-carregado');
+      iframe.title = 'Mapa do Google: ' + l.nome;
+      iframe.setAttribute('src', url);
+    }
+    iframe.addEventListener('load', function () { if (iframe.getAttribute('src')) gmaps.classList.add('is-carregado'); });
+
+    function selecionar(i) {
+      if (i === atual) return;
+      atual = i;
+      abas.forEach(function (b, j) {
+        var ativa = j === i;
+        b.setAttribute('aria-selected', String(ativa));
+        b.tabIndex = ativa ? 0 : -1;               // só a aba ativa entra no Tab
+      });
+      raiz.querySelector('[data-lojas-painel]').setAttribute('aria-labelledby', abas[i].id);
+      marcadores.forEach(function (g, j) { g.classList.toggle('is-ativo', j === i); });
+      camadas.forEach(function (c, j) { c.classList.toggle('is-ativa', j === i); });
+      // Detalhes: saem, trocam de conteúdo e entram de novo (troca gradual)
+      detalhes.classList.add('is-trocando');
+      clearTimeout(detalhes._t);
+      detalhes._t = setTimeout(function () {
+        montarDetalhes(LOJAS[i]);
+        detalhes.classList.remove('is-trocando');
+      }, detalhes.childElementCount && !reduceMotion.matches ? 220 : 0);
+      carregarMapa();
+    }
+
+    // Começa pela loja com destaque (o showroom)
+    var inicial = Math.max(0, LOJAS.findIndex(function (l) { return l.destaque; }));
+    selecionar(inicial);
+
+    // Libera o mapa do Google quando a seção chega perto (não pesa no início da página)
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function (es) {
+        if (es.some(function (e) { return e.isIntersecting; })) { mapaLiberado = true; carregarMapa(); obs.disconnect(); }
+      }, { rootMargin: '400px 0px' });
+      obs.observe(raiz);
+    } else { mapaLiberado = true; carregarMapa(); }
+  })();
+
+  /* ------------------------------------------------------------------------
      F. Catálogos (seção do especificador)
      ------------------------------------------------------------------------ */
   (function montarCatalogos() {
