@@ -284,7 +284,7 @@ img, svg { display: block; }
   font-size: 1.45rem;
   letter-spacing: 0.02em;
 }
-.brand:hover .brand__mark { color: var(--bege); }
+a.brand:hover .brand__mark { color: var(--bege); }
 
 .header-cta__long { display: none; }
 
