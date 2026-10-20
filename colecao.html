@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Título e descrição definitivos vêm de CATEGORIAS (js/main.js) -->
+  <title>Coleção | Construflama</title>
+  <meta name="description" content="Coleções Construflama de alto padrão. Showroom em São Paulo e entrega em todo o Brasil.">
+  <meta name="theme-color" content="#2A2623">
+
+  <!-- Tipografia: Marcellus (títulos, letra de inspiração lapidar) + Hanken Grotesk (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Cinzel:wght@400;500&family=Unbounded:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Marca que o JS está ativo (as animações de entrada só se aplicam com JS) -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-pagina-colecao>
+
+  <!-- Sprite de ícones e ilustrações em traço (reutilizados via <use>) -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-chama" viewBox="0 0 24 24">
+      <path d="M12 22c-4.4 0-7-2.9-7-6.6 0-3.2 2.1-5.3 3.6-7.2.4 1.9 1.4 3 2.4 3.2-.6-3.8 1.2-7.1 4.2-9.4-.5 3.5 1.2 5.6 2.6 7.6 1 1.4 1.2 2.9 1.2 4.6 0 4.6-2.6 7.8-7 7.8Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-seta-baixo" viewBox="0 0 24 24">
+      <path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-anterior" viewBox="0 0 24 24">
+      <path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-proximo" viewBox="0 0 24 24">
+      <path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-estrela" viewBox="0 0 24 24">
+      <path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3-4.6-4.4 6.3-.9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-aspas" viewBox="0 0 32 24">
+      <path d="M0 24V14C0 6.5 4 1.6 11.5 0l1.3 3.2C8.6 4.6 6.6 7.4 6.4 11H13v13Zm19 0V14c0-7.5 4-12.4 11.5-14l1.3 3.2c-4.2 1.4-6.2 4.2-6.4 7.8H32v13Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-download" viewBox="0 0 24 24">
+      <path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-relogio" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M12 21s-6.5-5.7-6.5-11a6.5 6.5 0 0 1 13 0c0 5.3-6.5 11-6.5 11Z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    </symbol>
+    <symbol id="i-telefone" viewBox="0 0 24 24">
+      <path d="M6.6 3.5h2.6l1.5 4.2-2 1.4a11 11 0 0 0 6.2 6.2l1.4-2 4.2 1.5v2.6A2.1 2.1 0 0 1 18.3 19.5 15.6 15.6 0 0 1 4.5 5.7 2.1 2.1 0 0 1 6.6 3.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24">
+      <path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1 0 12 3.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M9.1 7.9c.3 0 .6 0 .8.5l.8 1.9c.1.3 0 .5-.1.7l-.6.7c.6 1.2 1.6 2.2 2.9 2.9l.7-.7c.2-.2.4-.2.7-.1l1.9.8c.4.2.5.5.4.9-.2 1-1.2 1.8-2.3 1.7-3.3-.4-6.2-3.3-6.6-6.6-.1-1.2.6-2.4 1.4-2.7Z" fill="currentColor"/>
+    </symbol>
+    <!-- Ícones da faixa de confiança -->
+    <symbol id="i-anos" viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M16 9v7l5 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-entrega" viewBox="0 0 32 32">
+      <path d="M3 9h16v13H3zM19 13h5.5l4.5 5v4H19z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <circle cx="9" cy="23.5" r="2.5" fill="var(--bege-escuro)" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="24" cy="23.5" r="2.5" fill="var(--bege-escuro)" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="i-showroom" viewBox="0 0 32 32">
+      <path d="M4 28V12l12-7 12 7v16M4 28h24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M12 28v-8h8v8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M16 18.5c-1.6-.6-2-2.4-.8-3.8.2 1 .8 1.3 1.2 1-.4-1.4.3-2.5 1.3-2.9-.4 1.4.9 2 .5 3.6-.3 1.2-1.1 1.8-2.2 2.1Z" fill="currentColor"/>
+    </symbol>
+    <!-- Ilustrações das coleções (traço fino, usadas sobre os gradientes) -->
+    <symbol id="p-lareira" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M8 26h104M14 26v82h92V26"/><path d="M32 108V52h56v56"/>
+        <path d="M60 100c-9-3-11-12-5-19 1 5 4 7 6 5-2-7 2-13 7-16-2 7 5 10 3 19-1 6-5 9-11 11Z"/>
+      </g>
+    </symbol>
+    <symbol id="p-churrasqueira" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M52 8h16v22H52zM30 52l22-22h16l22 22z"/><path d="M24 52h72v56H24z"/>
+        <path d="M34 66h52M34 74h52M34 82h52"/>
+      </g>
+    </symbol>
+    <symbol id="p-coifa" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M50 6h20v36H50zM50 42 18 74h84L70 42"/><path d="M18 74v9h84v-9"/>
+        <path d="M34 98h52" stroke-dasharray="3 7" stroke-linecap="round"/>
+      </g>
+    </symbol>
+    <symbol id="p-parrilla" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M10 62h78v40H10z"/><path d="M20 70v24M30 70v24M40 70v24M50 70v24M60 70v24M70 70v24M80 70v24"/>
+        <circle cx="101" cy="38" r="10"/><path d="M101 48v54M88 102h26"/>
+      </g>
+    </symbol>
+    <symbol id="p-forno" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M14 98V76a46 46 0 0 1 92 0v22z"/><path d="M42 98V82a18 18 0 0 1 36 0v16"/>
+        <path d="M54 32V8h12v24M6 98h108"/>
+      </g>
+    </symbol>
+    <symbol id="p-tocheiro" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+        <path d="M60 110V54M46 54h28l-5-11H51zM44 110h32"/>
+        <path d="M60 39c-8-3-9-12-3-20 0 5 4 8 6 6 0 8 6 9 3 15-1 0-3 0-6-1Z"/>
+      </g>
+    </symbol>
+    <symbol id="p-chapeira" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M10 52h100v12H10zM20 64v36M100 64v36"/>
+        <path d="M38 42c4-6 0-10 4-16M60 42c4-6 0-10 4-16M82 42c4-6 0-10 4-16"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================================================
+       1. CABEÇALHO FIXO
+       Duas faixas no desktop: atalhos (telefone, catálogos...) e
+       barra principal com as coleções. Ao rolar, a faixa de atalhos
+       recolhe e o cabeçalho ganha fundo sólido (ver main.js).
+       ============================================================ -->
+  <header class="site-header" id="topo">
+    <div class="utility-bar">
+      <div class="container utility-bar__inner" data-atalhos-desktop>
+        <!-- Atalhos: um único bloco no HTML. No desktop fica nesta faixa;
+             no celular, js/main.js move o mesmo bloco para dentro do menu. -->
+        <div class="quick-links" data-atalhos>
+          <a class="quick-links__phone" href="tel:+551151716070">
+            <svg class="icon" aria-hidden="true"><use href="#i-telefone"/></svg>
+            <span class="alto">(11) 5171-6070</span>
+          </a>
+          <nav aria-label="Atalhos">
+            <ul class="quick-links__list">
+              <li><a href="#" data-proto="O blog será desenhado na próxima etapa do protótipo."><span class="alto">Blog</span></a></li>
+              <li><a href="index.html#lojas"><span class="alto">Lojas</span></a></li>
+              <li><a href="index.html#especificadores"><span class="alto">Espaço do Especificador</span></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mainbar">
+      <a class="brand" href="index.html" aria-label="Construflama, página inicial">
+        <svg class="brand__mark" aria-hidden="true"><use href="#i-chama"/></svg>
+        <span class="brand__name">Construflama</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Principal">
+        <!-- Coleções e subcategorias: geradas por js/main.js a partir de CATEGORIAS -->
+        <ul class="nav-list" data-menu-colecoes></ul>
+
+        <!-- No celular, os atalhos (data-atalhos) entram aqui -->
+        <div class="nav-atalhos" data-atalhos-mobile></div>
+        <a class="btn btn--primary nav-cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
+      </nav>
+
+      <a class="btn btn--primary btn--sm header-cta" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">
+        <span class="header-cta__long">Solicitar orçamento</span><span class="header-cta__short" aria-hidden="true">Orçamento</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Abrir menu</span>
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       PÁGINA DE COLEÇÃO: modelo único para todas as coleções.
+       O conteúdo é montado por js/main.js (montarPaginaColecao) a partir
+       de CATEGORIAS e PRODUTOS, conforme o ?c= do endereço.
+       Cabeçalho e rodapé são os mesmos de index.html.
+       ============================================================ -->
+  <main id="conteudo">
+
+    <!-- 1. Topo: foto da coleção, nome e frase -->
+    <section class="col-hero" aria-labelledby="col-titulo">
+      <img class="col-hero__foto" data-colecao-foto alt="" decoding="async" fetchpriority="high">
+      <div class="container col-hero__conteudo">
+        <nav class="migalhas" aria-label="Você está em">
+          <ol>
+            <li><a href="index.html">Início</a></li>
+            <li><span aria-current="page" data-colecao-migalha>Coleção</span></li>
+          </ol>
+        </nav>
+        <h1 class="col-hero__titulo" id="col-titulo" data-colecao-nome>Coleção</h1>
+        <p class="col-hero__lead" data-colecao-desc></p>
+        <div class="hero__actions col-hero__acoes" data-so-colecao>
+          <a class="btn btn--primary btn--lg" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
+          <a class="btn btn--ghost btn--lg" href="#linhas">Ver as linhas</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Atalhos para cada linha (gerados a partir das subcategorias) -->
+    <nav class="col-atalhos" aria-label="Linhas da coleção" data-so-colecao>
+      <ul class="container col-atalhos__lista" data-colecao-atalhos></ul>
+    </nav>
+
+    <!-- 3. Linhas: um bloco por subcategoria, com foto, frase e produtos -->
+    <section class="section col-linhas" id="linhas" aria-labelledby="linhas-titulo" data-so-colecao>
+      <div class="container">
+        <div class="section-head" data-reveal="stagger">
+          <h2 class="section-title" id="linhas-titulo">Linhas</h2>
+          <p class="section-lead">Escolha a linha que combina com o seu projeto. Cada modelo pode ser visto aceso no showroom.</p>
+        </div>
+        <div class="col-linhas__lista" data-colecao-linhas></div>
+      </div>
+    </section>
+
+    <!-- 4. Catálogo desta coleção (de CATALOGOS)
+         TODO: ligar o "Baixar PDF" ao arquivo real do catálogo. -->
+    <section class="section specifiers col-catalogo" aria-labelledby="catalogo-titulo" data-so-colecao>
+      <div class="container specifiers__grid">
+        <div class="specifiers__intro" data-reveal="stagger">
+          <h2 class="section-title" id="catalogo-titulo">Catálogo técnico</h2>
+          <p class="section-lead">Medidas e informações de instalação para incluir os modelos no seu projeto.</p>
+        </div>
+        <ul class="catalogs" data-catalogos data-reveal="stagger"></ul>
+      </div>
+    </section>
+
+    <!-- 5. Outras coleções (mesmos cards da home, sem a coleção atual) -->
+    <section class="section collections" id="colecoes" aria-labelledby="outras-titulo" data-so-colecao>
+      <div class="container">
+        <div class="section-head" data-reveal="stagger">
+          <h2 class="section-title" id="outras-titulo">Outras coleções</h2>
+        </div>
+        <ul class="collection-grid collection-grid--outras" data-grade-colecoes data-reveal="stagger"></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       10. RODAPÉ
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <!-- Marca sem link: o logo do cabeçalho e o "Voltar ao topo" já levam ao início -->
+        <p class="brand brand--footer">
+          <svg class="brand__mark" aria-hidden="true"><use href="#i-chama"/></svg>
+          <span class="brand__name">Construflama</span>
+        </p>
+        <p>Lareiras, churrasqueiras, coifas, parrillas, fornos de pizza, tocheiros e chapeiras. Showroom em São Paulo e entrega em todo o Brasil.</p>
+        <a class="btn btn--primary" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
+      </div>
+
+      <nav class="footer__col" aria-labelledby="rodape-colecoes">
+        <h2 class="footer__title" id="rodape-colecoes">Coleções</h2>
+        <!-- Gerado por js/main.js a partir de CATEGORIAS -->
+        <ul data-rodape-colecoes></ul>
+      </nav>
+
+      <nav class="footer__col" aria-labelledby="rodape-profissionais">
+        <h2 class="footer__title" id="rodape-profissionais">Profissionais</h2>
+        <ul>
+          <li><a href="index.html#especificadores">Espaço do Especificador</a></li>
+          <li><a href="#" data-proto="O blog será desenhado na próxima etapa do protótipo.">Blog</a></li>
+          <li><a href="index.html#lojas">Lojas</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col">
+        <h2 class="footer__title">Contato</h2>
+        <ul class="footer__contact">
+          <li>
+            <a href="tel:+551151716070"><svg class="icon" aria-hidden="true"><use href="#i-telefone"/></svg> (11) 5171-6070</a>
+          </li>
+          <li>
+            <a href="https://whts.co/Construflama_com" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp</a>
+          </li>
+          <li>
+            <a href="https://instagram.com/construflama" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg> @construflama</a>
+          </li>
+        </ul>
+        <p class="footer__address">Showroom: R. Vitorino de Morais, 331, São Paulo</p>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span data-year>2026</span> Construflama. Todos os direitos reservados.</p>
+      <a class="footer__top" href="#conteudo" data-voltar-topo>Voltar ao topo</a>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante de WhatsApp -->
+  <a class="whatsapp-float" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">
+    <svg class="whatsapp-float__icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+    <span class="whatsapp-float__label">Fale no WhatsApp</span>
+  </a>
+
+  <!-- Aviso discreto para links que ainda não existem no protótipo -->
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/produtos.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

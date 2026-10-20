@@ -18,6 +18,11 @@
    - imagem (opcional): foto do card da grade de coleções. Vazio = degradê
      + ilustração em traço. foco: ponto da foto que fica sempre visível
      quando ela é recortada (CSS object-position, ex.: '45% 60%')
+   - pagina: true quando a coleção já tem página própria (colecao.html?c=slug).
+     Sem isso, os links da coleção mostram o aviso de "próxima etapa".
+   - Em cada subcategoria (usados na página da coleção):
+     descricao: frase curta da linha (TODO enquanto vazia: aparece marcada
+     como exemplo); imagem / textoAlternativo / foco: foto da linha.
    - subcategorias: { nome, slug, marca? } (marca: true mantém a inicial
      maiúscula no meio da frase, como em "Ecoflamas")
    Com uma única subcategoria, o item do menu vira link direto (sem submenu).
@@ -26,11 +31,13 @@ var CATEGORIAS = [
   {
     nome: 'Lareiras', slug: 'lareiras', visual: 'lareiras', ilustracao: 'p-lareira', prefixo: '',
     imagem: 'img/colecoes/lareiras.webp', foco: '50% 65%',
+    pagina: true,
+    // TODO: foto e frase de cada linha (o usuário vai enviar)
     subcategorias: [
-      { nome: 'Tradicionais', slug: 'tradicionais' },
-      { nome: 'A gás linear', slug: 'a-gas-linear' },
-      { nome: 'Esculturais', slug: 'esculturais' },
-      { nome: 'Ecoflamas', slug: 'ecoflamas', marca: true }
+      { nome: 'Tradicionais', slug: 'tradicionais', descricao: '', imagem: '', textoAlternativo: '' },
+      { nome: 'A gás linear', slug: 'a-gas-linear', descricao: '', imagem: '', textoAlternativo: '' },
+      { nome: 'Esculturais', slug: 'esculturais', descricao: '', imagem: '', textoAlternativo: '' },
+      { nome: 'Ecoflamas', slug: 'ecoflamas', marca: true, descricao: '', imagem: '', textoAlternativo: '' }
     ]
   },
   {
@@ -167,7 +174,18 @@ var DEPOIMENTOS = [
   // Texto do menu que, no desktop, aparece esticado na vertical (ver .alto no CSS)
   function textoAlto(text) { return el('span', 'alto', text); }
 
-  function ancoraColecao(cat) { return '#colecao-' + cat.slug; }
+  // Página de coleção (colecao.html?c=slug) ou, nas outras páginas, a home
+  var NA_PAGINA_COLECAO = document.body.hasAttribute('data-pagina-colecao');
+  var SLUG_ATUAL = NA_PAGINA_COLECAO ? new URLSearchParams(location.search).get('c') : null;
+
+  // Coleção com página própria leva até ela; as outras, ao card da home
+  function ancoraColecao(cat) {
+    if (cat.pagina) return 'colecao.html?c=' + cat.slug;
+    return (NA_PAGINA_COLECAO ? 'index.html' : '') + '#colecao-' + cat.slug;
+  }
+
+  // Linha dentro da página da coleção (âncora #linha-slug)
+  function ancoraLinha(cat, s) { return 'colecao.html?c=' + cat.slug + '#linha-' + s.slug; }
 
   function buscarCategoria(slug) {
     return CATEGORIAS.filter(function (c) { return c.slug === slug; })[0];
@@ -233,9 +251,15 @@ var DEPOIMENTOS = [
       sub.id = id;
       cat.subcategorias.forEach(function (s) {
         var item = el('li');
-        var link = linkProvisorio('',
-          'A página "' + cat.nome + ': ' + s.nome + '" será criada na próxima etapa.',
-          ancoraColecao(cat));
+        var link;
+        if (cat.pagina) {
+          link = el('a');
+          link.href = ancoraLinha(cat, s);
+        } else {
+          link = linkProvisorio('',
+            'A página "' + cat.nome + ': ' + s.nome + '" será criada na próxima etapa.',
+            ancoraColecao(cat));
+        }
         link.appendChild(textoAlto(s.nome));
         item.appendChild(link);
         sub.appendChild(item);
@@ -245,6 +269,7 @@ var DEPOIMENTOS = [
       linkTodos.appendChild(textoAlto('Ver toda a coleção'));
       linkTodos.href = ancoraColecao(cat);
       linkTodos.appendChild(srOnly(' de ' + cat.nome));
+      if (cat.slug === SLUG_ATUAL) linkTodos.setAttribute('aria-current', 'page');
       todos.appendChild(linkTodos);
       sub.appendChild(todos);
 
@@ -265,6 +290,7 @@ var DEPOIMENTOS = [
     if (!grade) return;
 
     CATEGORIAS.forEach(function (cat) {
+      if (cat.slug === SLUG_ATUAL) return; // na página da coleção, só as outras
       var li = el('li', 'tile tile--' + cat.visual + (cat.imagem ? ' tile--foto' : ''));
       li.id = 'colecao-' + cat.slug;
 
@@ -279,7 +305,10 @@ var DEPOIMENTOS = [
         li.appendChild(foto);
       }
 
-      var link = linkProvisorio('', 'A página da coleção ' + cat.nome + ' será criada na próxima etapa.', ancoraColecao(cat));
+      var link = cat.pagina
+        ? el('a')
+        : linkProvisorio('', 'A página da coleção ' + cat.nome + ' será criada na próxima etapa.');
+      link.href = cat.pagina ? ancoraColecao(cat) : '#colecao-' + cat.slug;
       link.className = 'tile__link';
       if (!cat.imagem) link.appendChild(icone(cat.ilustracao, 'tile__art'));
 
@@ -303,8 +332,136 @@ var DEPOIMENTOS = [
       var li = el('li');
       var a = el('a', null, cat.nome);
       a.href = ancoraColecao(cat);
+      if (cat.slug === SLUG_ATUAL) a.setAttribute('aria-current', 'page');
       li.appendChild(a);
       lista.appendChild(li);
+    });
+  })();
+
+  /* ------------------------------------------------------------------------
+     D2. Página de coleção (colecao.html?c=slug)
+         Tudo sai de CATEGORIAS e PRODUTOS: topo com a foto da coleção,
+         atalhos para cada linha, um bloco por linha (foto, frase, produtos
+         e orçamento), catálogo e as outras coleções.
+     ------------------------------------------------------------------------ */
+  (function montarPaginaColecao() {
+    if (!NA_PAGINA_COLECAO) return;
+    var WHATSAPP = 'https://whts.co/Construflama_com';
+    var cat = SLUG_ATUAL ? buscarCategoria(SLUG_ATUAL) : null;
+    var titulo = document.querySelector('[data-colecao-nome]');
+    var lead = document.querySelector('[data-colecao-desc]');
+
+    // Endereço sem coleção válida: avisa e oferece o caminho de volta
+    if (!cat || !cat.pagina) {
+      document.title = 'Coleção não encontrada | Construflama';
+      titulo.textContent = 'Coleção não encontrada';
+      lead.textContent = 'Este endereço não corresponde a uma coleção. Veja todas as coleções na página inicial.';
+      document.querySelectorAll('[data-so-colecao]').forEach(function (n) { n.hidden = true; });
+      return;
+    }
+
+    document.title = cat.nome + ' | Construflama';
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', cat.nome + ' Construflama: ' + listarSubcategorias(cat) + '. Showroom em São Paulo e entrega em todo o Brasil.');
+
+    titulo.textContent = cat.nome;
+    lead.textContent = descricaoCategoria(cat);
+    var migalha = document.querySelector('[data-colecao-migalha]');
+    if (migalha) migalha.textContent = cat.nome;
+
+    var foto = document.querySelector('[data-colecao-foto]');
+    if (foto && cat.imagem) {
+      foto.src = cat.imagem;
+      if (cat.foco) foto.style.objectPosition = cat.foco;
+    } else if (foto) {
+      foto.remove();
+    }
+
+    // Atalhos (um por linha) logo abaixo do topo
+    var atalhos = document.querySelector('[data-colecao-atalhos]');
+    var linhas = document.querySelector('[data-colecao-linhas]');
+    var produtos = typeof PRODUTOS === 'undefined' ? [] : PRODUTOS;
+
+    cat.subcategorias.forEach(function (s, n) {
+      var idLinha = 'linha-' + s.slug;
+
+      var item = el('li');
+      var atalho = el('a', 'col-atalho', s.nome);
+      atalho.href = '#' + idLinha;
+      item.appendChild(atalho);
+      atalhos.appendChild(item);
+
+      var bloco = el('article', 'col-linha');
+      bloco.id = idLinha;
+      bloco.setAttribute('aria-labelledby', idLinha + '-titulo');
+      bloco.setAttribute('data-reveal', 'stagger');
+
+      // Foto da linha (TODO enquanto vazia: material da coleção + ilustração)
+      var midia = el('div', 'col-linha__midia material--' + cat.visual);
+      if (s.imagem) {
+        var img = el('img', 'col-linha__foto');
+        img.src = s.imagem;
+        img.alt = s.textoAlternativo || '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        if (s.foco) img.style.objectPosition = s.foco;
+        midia.appendChild(img);
+      } else {
+        midia.classList.add('col-linha__midia--vazia');
+        midia.appendChild(icone(cat.ilustracao, 'col-linha__arte'));
+        midia.appendChild(el('span', 'tag-exemplo', 'Foto em breve'));
+      }
+      bloco.appendChild(midia);
+
+      var texto = el('div', 'col-linha__texto');
+      var num = el('p', 'col-linha__num', String(n + 1).padStart(2, '0') + ' / ' + String(cat.subcategorias.length).padStart(2, '0'));
+      num.setAttribute('aria-hidden', 'true');
+      texto.appendChild(num);
+      var h = el('h3', 'col-linha__nome', s.nome);
+      h.id = idLinha + '-titulo';
+      texto.appendChild(h);
+
+      var desc = el('p', 'col-linha__desc');
+      if (s.descricao) {
+        desc.textContent = s.descricao;
+      } else {
+        desc.textContent = '[Frase curta sobre a linha] '; // TODO: texto real da linha
+        desc.appendChild(el('span', 'tag-exemplo col-linha__tag', 'Exemplo'));
+      }
+      texto.appendChild(desc);
+
+      // Produtos reais desta linha (os de exemplo ficam de fora)
+      var daLinha = produtos.filter(function (p) {
+        return p.categoria === cat.slug && p.subcategoria === s.slug && !p.exemplo;
+      });
+      if (daLinha.length) {
+        var lista = el('ul', 'col-produtos');
+        lista.setAttribute('aria-label', 'Modelos da linha ' + s.nome);
+        daLinha.forEach(function (p) {
+          var li = el('li', 'col-produto');
+          if (p.imagem) {
+            var mini = el('img', 'col-produto__foto');
+            mini.src = p.imagem;
+            mini.alt = p.textoAlternativo || '';
+            mini.loading = 'lazy';
+            mini.decoding = 'async';
+            li.appendChild(mini);
+          }
+          li.appendChild(el('p', 'col-produto__nome', p.nome));
+          lista.appendChild(li);
+        });
+        texto.appendChild(lista);
+      }
+
+      var cta = el('a', 'btn btn--primary col-linha__cta', 'Pedir orçamento');
+      cta.href = WHATSAPP;
+      cta.target = '_blank';
+      cta.rel = 'noopener';
+      cta.appendChild(srOnly(': ' + cat.nome + ', linha ' + s.nome));
+      texto.appendChild(cta);
+
+      bloco.appendChild(texto);
+      linhas.appendChild(bloco);
     });
   })();
 
@@ -780,6 +937,7 @@ var DEPOIMENTOS = [
     if (!lista) return;
 
     CATALOGOS.forEach(function (catalogo) {
+      if (SLUG_ATUAL && catalogo.categorias.indexOf(SLUG_ATUAL) < 0) return;
       var cats = catalogo.categorias.map(buscarCategoria).filter(Boolean);
       var li = el('li', 'catalog');
 
