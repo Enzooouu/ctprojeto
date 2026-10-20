@@ -55,9 +55,12 @@ var PRODUTOS = [
     destaque: true, imagem: '', textoAlternativo: '', fundo: 'f', exemplo: true
   },
   {
-    nome: 'Tocheiro a gás', categoria: 'tocheiros', subcategoria: 'a-gas',
-    descricao: 'Da linha A gás, para varandas e áreas externas.',
-    destaque: false, imagem: '', textoAlternativo: '', fundo: 'g', exemplo: true
+    nome: 'Tocheiro a álcool com mesa redonda', categoria: 'tocheiros', subcategoria: 'a-alcool',
+    // TODO: legenda provisória escrita para o protótipo; revisar com a Construflama
+    descricao: 'Fogo de verdade no centro da roda de conversa. Com chama a álcool e tampo de mesa, o tocheiro reúne calor, luz e apoio em uma peça só, para jardins, varandas e áreas externas.',
+    destaque: true, imagem: 'img/produtos/tocheiro-a-alcool-mesa-redonda.webp',
+    textoAlternativo: 'Mesa redonda marrom com queimador circular metálico no centro, entre poltronas de corda com almofadas laranja, numa área externa com plantas e paredes laranja.',
+    fundo: 'g', exemplo: false
   },
   {
     nome: 'Chapeira elétrica', categoria: 'chapeiras', subcategoria: 'eletrica',
