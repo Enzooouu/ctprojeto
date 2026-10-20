@@ -25,6 +25,7 @@
 var CATEGORIAS = [
   {
     nome: 'Lareiras', slug: 'lareiras', visual: 'lareiras', ilustracao: 'p-lareira', prefixo: '',
+    imagem: 'img/colecoes/lareiras.webp', foco: '50% 65%',
     subcategorias: [
       { nome: 'Tradicionais', slug: 'tradicionais' },
       { nome: 'A gás linear', slug: 'a-gas-linear' },

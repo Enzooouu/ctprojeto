@@ -948,6 +948,8 @@ a.brand:hover .brand__mark { color: var(--bege); }
     linear-gradient(170deg, #2F1D14, #1E1B19);
 }
 .tile--chapeiras { --material: linear-gradient(155deg, #57504B, #33201A); }
+/* Celular: Lareiras é a coleção principal, card mais alto (chama acima do texto) */
+.tile--lareiras { min-height: 18rem; }
 
 @media (min-width: 640px) {
   .collection-grid { grid-template-columns: repeat(2, 1fr); }
