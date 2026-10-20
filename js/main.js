@@ -68,6 +68,7 @@ var CATEGORIAS = [
   },
   {
     nome: 'Tocheiros', slug: 'tocheiros', visual: 'tocheiros', ilustracao: 'p-tocheiro', prefixo: 'Modelos ',
+    imagem: 'img/colecoes/tocheiros.webp', foco: '50% 40%',
     subcategorias: [
       { nome: 'A gás', slug: 'a-gas' },
       { nome: 'A álcool', slug: 'a-alcool' }
