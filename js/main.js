@@ -77,6 +77,8 @@ var CATEGORIAS = [
   },
   {
     nome: 'Chapeiras', slug: 'chapeiras', visual: 'chapeiras', ilustracao: 'p-chapeira', prefixo: '',
+    // Foto de estúdio: fundo branco trocado por fundo carvão, produto no alto
+    imagem: 'img/colecoes/chapeiras.webp', foco: '50% 35%',
     subcategorias: [
       { nome: 'A gás', slug: 'a-gas' },
       { nome: 'Elétrica', slug: 'eletrica' }
