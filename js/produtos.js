@@ -69,8 +69,11 @@ var PRODUTOS = [
     fundo: 'g', exemplo: false
   },
   {
-    nome: 'Chapeira elétrica', categoria: 'chapeiras', subcategoria: 'eletrica',
-    descricao: 'Da linha Elétrica, para a cozinha gourmet.',
-    destaque: false, imagem: '', textoAlternativo: '', fundo: 'b', exemplo: true
+    nome: 'Chapeira a gás', categoria: 'chapeiras', subcategoria: 'a-gas',
+    descricao: 'As chapeiras Construflama são perfeitas para espaços gourmets em casas e apartamentos, e excelentes companhias para as churrasqueiras e coifas Construflama.',
+    // Foto de estúdio: o fundo branco original foi trocado por um fundo carvão
+    destaque: true, imagem: 'img/produtos/chapeira-a-gas.webp',
+    textoAlternativo: 'Chapeira metálica de embutir com chapa retangular e botão de controle preto, vista de frente sobre fundo escuro.',
+    fundo: 'b', exemplo: false
   }
 ];
