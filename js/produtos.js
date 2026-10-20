@@ -26,9 +26,11 @@ var PRODUTOS = [
     destaque: true, imagem: '', textoAlternativo: '', fundo: 'a', exemplo: true
   },
   {
-    nome: 'Lareira escultural', categoria: 'lareiras', subcategoria: 'esculturais',
-    descricao: 'Da linha Esculturais, para quando a lareira é a peça central do ambiente.',
-    destaque: true, imagem: '', textoAlternativo: '', fundo: 'b', exemplo: true
+    nome: 'Lareira cone', categoria: 'lareiras', subcategoria: 'esculturais',
+    descricao: 'A elegância é um estilo de vida, que se manifesta em atitudes, comportamentos e valores. Está mais próxima da simplicidade e do aconchego que ajuda a criar bons momentos. A lareira escultural Construflama traz um toque de elegância ao ambiente.',
+    destaque: true, imagem: 'img/produtos/lareira-cone.webp',
+    textoAlternativo: 'Lareira suspensa preta em formato de cone sobre uma base clara com lenha, no centro de uma sala com estantes de madeira, tapete e sofá claro.',
+    fundo: 'b', exemplo: false
   },
   {
     nome: 'Churrasqueira premium híbrida', categoria: 'churrasqueiras', subcategoria: 'hibrida',
