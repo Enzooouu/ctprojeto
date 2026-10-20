@@ -23,7 +23,7 @@ var PRODUTOS = [
   {
     nome: 'Lareira a gás linear', categoria: 'lareiras', subcategoria: 'a-gas-linear',
     descricao: 'Da linha A gás linear, para projetos que tratam o fogo como parte da parede.',
-    destaque: true, imagem: '', textoAlternativo: '', fundo: 'a', exemplo: true
+    destaque: false, imagem: '', textoAlternativo: '', fundo: 'a', exemplo: true
   },
   {
     nome: 'Lareira cone', categoria: 'lareiras', subcategoria: 'esculturais',
