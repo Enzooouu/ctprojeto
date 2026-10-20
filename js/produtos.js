@@ -31,9 +31,11 @@ var PRODUTOS = [
     destaque: true, imagem: '', textoAlternativo: '', fundo: 'b', exemplo: true
   },
   {
-    nome: 'Churrasqueira híbrida', categoria: 'churrasqueiras', subcategoria: 'hibrida',
-    descricao: 'Da linha Híbrida, para áreas gourmet pensadas junto com o projeto.',
-    destaque: true, imagem: '', textoAlternativo: '', fundo: 'c', exemplo: true
+    nome: 'Churrasqueira premium híbrida', categoria: 'churrasqueiras', subcategoria: 'hibrida',
+    descricao: 'Com a Churrasqueira Híbrida Construflama, você tem o poder de escolher entre o sabor clássico do carvão e a praticidade do sistema a gás, tudo em um único equipamento de alto desempenho. Em uma estrutura inovadora, a tradição e a tecnologia se encontram, oferecendo o melhor de dois mundos para o seu churrasco.',
+    destaque: true, imagem: 'img/produtos/churrasqueira-premium-hibrida.webp',
+    textoAlternativo: 'Churrasqueira com laterais de vidro, grelhas e espetos metálicos, embutida numa parede revestida de pedra clara com veios, sob uma coifa do mesmo revestimento.',
+    fundo: 'c', exemplo: false
   },
   {
     nome: 'Coifa para cozinha', categoria: 'coifas', subcategoria: 'cozinha',

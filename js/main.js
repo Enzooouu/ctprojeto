@@ -408,13 +408,14 @@ var DEPOIMENTOS = [
 
     function medir() {
       var sw = lista.clientWidth;                       // largura real (sem a barra de rolagem)
-      var celular = sw < 900;
+      var celular = sw < 1100;                      // igual ao CSS (max-width: 1099px)
       var gutter = Math.min(40, Math.max(16, 8 + sw * 0.03)); // mesmo --gutter do CSS
       var gap = celular ? 10 : Math.round(Math.min(28, Math.max(16, sw * 0.016)));
       var conteudo;
       if (celular) {
         var pontaMin = Math.min(30, Math.max(14, sw * 0.045));
-        conteudo = sw - 2 * (pontaMin + gap);
+        // Em tablets a imagem empilhada não passa de 760px (senão toma a tela toda)
+        conteudo = Math.min(sw - 2 * (pontaMin + gap), 760);
       } else {
         // Alinha à grade do site (contêiner) e, em telas muito largas, cresce até 1400px
         var conteiner = Math.min(sw, 1216) - 2 * gutter;
