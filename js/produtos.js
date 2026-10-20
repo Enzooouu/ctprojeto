@@ -38,9 +38,11 @@ var PRODUTOS = [
     fundo: 'c', exemplo: false
   },
   {
-    nome: 'Coifa para cozinha', categoria: 'coifas', subcategoria: 'cozinha',
-    descricao: 'Da linha Cozinha, desenhada para acompanhar a arquitetura do ambiente.',
-    destaque: true, imagem: '', textoAlternativo: '', fundo: 'd', exemplo: true
+    nome: 'Coifa piramidal cozinha', categoria: 'coifas', subcategoria: 'cozinha',
+    descricao: 'A Construflama produz coifas com um design moderno e funcionalidade perfeita. Com um excelente poder de exaustão, além de fácil limpeza e materiais de primeira linha. Uma combinação de elegância e qualidade para projetos especiais.',
+    destaque: true, imagem: 'img/produtos/coifa-piramidal-cozinha.webp',
+    textoAlternativo: 'Coifa preta em formato de pirâmide sobre uma ilha com cooktop, numa cozinha integrada à sala com estantes de livros, cortinas claras e luminária de palha.',
+    fundo: 'd', exemplo: false
   },
   {
     nome: 'Forno de pizza', categoria: 'fornos-de-pizza', subcategoria: 'a-lenha',
