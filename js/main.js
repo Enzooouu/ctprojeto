@@ -64,7 +64,7 @@ var CATEGORIAS = [
     nome: 'Tocheiros', slug: 'tocheiros', visual: 'tocheiros', ilustracao: 'p-tocheiro', prefixo: 'Modelos ',
     subcategorias: [
       { nome: 'A gás', slug: 'a-gas' },
-      { nome: 'Sob medida', slug: 'sob-medida' }
+      { nome: 'A álcool', slug: 'a-alcool' }
     ]
   },
   {
