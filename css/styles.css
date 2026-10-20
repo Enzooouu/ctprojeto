@@ -288,6 +288,7 @@ img, svg { display: block; }
 }
 a.brand:hover .brand__mark { color: var(--bege); }
 
+.header-cta { white-space: nowrap; flex: none; }
 .header-cta__long { display: none; }
 
 /* Botão hambúrguer */
@@ -388,6 +389,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
 .submenu a {
   display: block;
   padding: var(--sp-2) 0;
+  font-family: var(--fonte-titulo);
   color: rgba(236, 226, 210, .85);
   text-decoration: none;
   border-radius: var(--raio);
@@ -395,7 +397,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
 }
 .submenu a:hover { color: var(--laranja-claro); }
 .submenu a:active { color: var(--bege); }
-.submenu__all a { color: var(--laranja-claro); font-weight: 600; }
+.submenu__all a { color: var(--laranja-claro); font-weight: 500; }
 
 /* Atalhos (Blog, Lojas, Espaço do Especificador, telefone).
    Um só bloco no HTML: no celular fica dentro do menu, no desktop na faixa superior. */
@@ -410,6 +412,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
   color: rgba(236, 226, 210, .85);
   text-decoration: none;
   border-radius: var(--raio);
+  font-family: var(--fonte-titulo);
   transition: color .2s;
 }
 .quick-links a:hover { color: var(--laranja-claro); }
@@ -477,7 +480,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
   }
   .utility-bar .quick-links__phone { order: 0; }
   .utility-bar .quick-links__list { display: flex; gap: var(--sp-6); }
-  .utility-bar .quick-links a { padding: 0; }
+  .utility-bar .quick-links a { padding: 0; font-size: 0.8rem; }
 
   .site-header.is-scrolled .utility-bar { max-height: 0; opacity: 0; border-color: transparent; }
   .site-header.is-scrolled .mainbar { height: 3.75rem; }
@@ -505,9 +508,9 @@ a.brand:hover .brand__mark { color: var(--bege); }
   .nav-link {
     gap: var(--sp-1);
     padding: var(--sp-2) var(--sp-3);
-    font-family: var(--fonte-texto);
-    font-size: 0.95rem;
-    font-weight: 500;
+    font-family: var(--fonte-titulo);
+    font-size: 0.85rem;
+    font-weight: 400;
     white-space: nowrap;
   }
   .nav-link__chevron { width: 1rem; height: 1rem; opacity: .7; }
@@ -551,7 +554,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
   .submenu a {
     padding: var(--sp-2) var(--sp-5);
     color: var(--cinza-escuro);
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
   .submenu a:hover { color: var(--laranja-escuro); background: var(--bege); }
   .submenu a:active { background: var(--bege-escuro); }
@@ -564,8 +567,15 @@ a.brand:hover .brand__mark { color: var(--bege); }
 @media (min-width: 1180px) {
   .mainbar { gap: var(--sp-3); }
   .nav-list { gap: 0; }
-  .nav-link { padding-inline: 0.5rem; font-size: 0.9rem; }
+  .nav-link { padding-inline: 0.35rem; font-size: 0.75rem; }
+  .nav-link__chevron { width: .85rem; height: .85rem; }
   .brand__name { font-size: 1.3rem; }
+}
+/* Logo acima do ponto de virada: um pouco mais de aperto para o botão caber */
+@media (min-width: 1180px) and (max-width: 1279px) {
+  .mainbar { gap: var(--sp-2); }
+  .brand__name { font-size: 1.15rem; }
+  .nav-link { padding-inline: 0.25rem; }
 }
 
 /* --------------------------------------------------------------------------
