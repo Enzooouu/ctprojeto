@@ -153,6 +153,9 @@ var DEPOIMENTOS = [
 
   function srOnly(text) { return el('span', 'sr-only', text); }
 
+  // Texto do menu que, no desktop, aparece esticado na vertical (ver .alto no CSS)
+  function textoAlto(text) { return el('span', 'alto', text); }
+
   function ancoraColecao(cat) { return '#colecao-' + cat.slug; }
 
   function buscarCategoria(slug) {
@@ -196,7 +199,8 @@ var DEPOIMENTOS = [
 
       // Uma subcategoria só: link direto para a coleção, sem submenu
       if (cat.subcategorias.length <= 1) {
-        var link = el('a', 'nav-link', cat.nome);
+        var link = el('a', 'nav-link');
+        link.appendChild(textoAlto(cat.nome));
         link.href = ancoraColecao(cat);
         li.appendChild(link);
         lista.appendChild(li);
@@ -206,7 +210,8 @@ var DEPOIMENTOS = [
       var id = 'sub-' + cat.slug;
       li.classList.add('has-sub');
 
-      var botao = el('button', 'nav-link', cat.nome + ' ');
+      var botao = el('button', 'nav-link');
+      botao.appendChild(textoAlto(cat.nome));
       botao.type = 'button';
       botao.setAttribute('aria-expanded', 'false');
       botao.setAttribute('aria-controls', id);
@@ -217,13 +222,16 @@ var DEPOIMENTOS = [
       sub.id = id;
       cat.subcategorias.forEach(function (s) {
         var item = el('li');
-        item.appendChild(linkProvisorio(s.nome,
+        var link = linkProvisorio('',
           'A página "' + cat.nome + ': ' + s.nome + '" será criada na próxima etapa.',
-          ancoraColecao(cat)));
+          ancoraColecao(cat));
+        link.appendChild(textoAlto(s.nome));
+        item.appendChild(link);
         sub.appendChild(item);
       });
       var todos = el('li', 'submenu__all');
-      var linkTodos = el('a', null, 'Ver toda a coleção');
+      var linkTodos = el('a');
+      linkTodos.appendChild(textoAlto('Ver toda a coleção'));
       linkTodos.href = ancoraColecao(cat);
       linkTodos.appendChild(srOnly(' de ' + cat.nome));
       todos.appendChild(linkTodos);

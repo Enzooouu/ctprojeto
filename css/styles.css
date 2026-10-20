@@ -570,6 +570,10 @@ a.brand:hover .brand__mark { color: var(--bege); }
   .nav-link { padding-inline: 0.35rem; font-size: 0.75rem; }
   .nav-link__chevron { width: .85rem; height: .85rem; }
   .brand__name { font-size: 1.3rem; }
+
+  /* Atalhos, menu e submenus: Unbounded esticada na vertical (a fonte não tem
+     versão estreita). Só o texto estica; caixas, ícones e setas ficam iguais. */
+  .alto { display: inline-block; transform: scaleY(1.2); }
 }
 /* Logo acima do ponto de virada: um pouco mais de aperto para o botão caber */
 @media (min-width: 1180px) and (max-width: 1279px) {
