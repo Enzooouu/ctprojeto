@@ -41,9 +41,11 @@ var PRODUTOS = [
     destaque: true, imagem: '', textoAlternativo: '', fundo: 'd', exemplo: true
   },
   {
-    nome: 'Forno de pizza a lenha', categoria: 'fornos-de-pizza', subcategoria: 'a-lenha',
-    descricao: 'Da linha A lenha, para fazer do forno o ponto de encontro da casa.',
-    destaque: true, imagem: '', textoAlternativo: '', fundo: 'e', exemplo: true
+    nome: 'Forno de pizza', categoria: 'fornos-de-pizza', subcategoria: 'a-lenha',
+    descricao: 'Quem já curtiu com a família e os amigos produzir uma das paixões nacionais sabe como é incrível a experiência do preparo. Presença constante em espaços gourmet, o forno a lenha reúne todo o charme e tradição também de outras influências da cozinha brasileira.',
+    destaque: true, imagem: 'img/produtos/forno-de-pizza-a-lenha.webp',
+    textoAlternativo: 'Forno a lenha branco, em formato de cúpula, com porta preta, sobre a bancada de uma área gourmet com parede de tijolinhos e luminária de corda.',
+    fundo: 'e', exemplo: false
   },
   {
     nome: 'Parrilla residencial', categoria: 'parrillas', subcategoria: 'residencial',
