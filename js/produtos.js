@@ -55,8 +55,10 @@ var PRODUTOS = [
   },
   {
     nome: 'Parrilla residencial', categoria: 'parrillas', subcategoria: 'residencial',
-    descricao: 'Da linha Residencial, para levar a parrilla à área gourmet de casa.',
-    destaque: true, imagem: '', textoAlternativo: '', fundo: 'f', exemplo: true
+    descricao: 'Quando o sabor é o centro das atenções, nada melhor do que um churrasco preparado numa tradicional parrilla. Imagine poder levar essa tradição para dentro de sua casa com toque profissional e toda a praticidade que você precisa.',
+    destaque: true, imagem: 'img/produtos/parrilla-residencial.webp',
+    textoAlternativo: 'Parrilla metálica com grelha, manivela de roda e cesto de lenha acesa com o logotipo Construflama, numa área externa com parede de tijolos e plantas.',
+    fundo: 'f', exemplo: false
   },
   {
     nome: 'Tocheiro a álcool com mesa redonda', categoria: 'tocheiros', subcategoria: 'a-alcool',
