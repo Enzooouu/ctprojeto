@@ -341,13 +341,12 @@ var DEPOIMENTOS = [
 
   /* ------------------------------------------------------------------------
      D2. Página de coleção (colecao.html?c=slug)
-         Tudo sai de CATEGORIAS e PRODUTOS: topo com a foto da coleção,
-         atalhos para cada linha, um bloco por linha (foto, frase, produtos
-         e orçamento), catálogo e as outras coleções.
+         Tudo sai de CATEGORIAS: topo com a foto da coleção, atalhos para
+         cada linha, um bloco por linha (foto, frase e "Ver todos os
+         modelos"), catálogo e as outras coleções.
      ------------------------------------------------------------------------ */
   (function montarPaginaColecao() {
     if (!NA_PAGINA_COLECAO) return;
-    var WHATSAPP = 'https://whts.co/Construflama_com';
     var cat = SLUG_ATUAL ? buscarCategoria(SLUG_ATUAL) : null;
     var titulo = document.querySelector('[data-colecao-nome]');
     var lead = document.querySelector('[data-colecao-desc]');
@@ -381,8 +380,7 @@ var DEPOIMENTOS = [
     // Atalhos (um por linha) logo abaixo do topo
     var atalhos = document.querySelector('[data-colecao-atalhos]');
     var linhas = document.querySelector('[data-colecao-linhas]');
-    var produtos = typeof PRODUTOS === 'undefined' ? [] : PRODUTOS;
-
+    
     cat.subcategorias.forEach(function (s, n) {
       var idLinha = 'linha-' + s.slug;
 
@@ -431,35 +429,13 @@ var DEPOIMENTOS = [
       }
       texto.appendChild(desc);
 
-      // Produtos reais desta linha (os de exemplo ficam de fora)
-      var daLinha = produtos.filter(function (p) {
-        return p.categoria === cat.slug && p.subcategoria === s.slug && !p.exemplo;
-      });
-      if (daLinha.length) {
-        var lista = el('ul', 'col-produtos');
-        lista.setAttribute('aria-label', 'Modelos da linha ' + s.nome);
-        daLinha.forEach(function (p) {
-          var li = el('li', 'col-produto');
-          if (p.imagem) {
-            var mini = el('img', 'col-produto__foto');
-            mini.src = p.imagem;
-            mini.alt = p.textoAlternativo || '';
-            mini.loading = 'lazy';
-            mini.decoding = 'async';
-            li.appendChild(mini);
-          }
-          li.appendChild(el('p', 'col-produto__nome', p.nome));
-          lista.appendChild(li);
-        });
-        texto.appendChild(lista);
-      }
-
-      var cta = el('a', 'btn btn--primary col-linha__cta', 'Pedir orçamento');
-      cta.href = WHATSAPP;
-      cta.target = '_blank';
-      cta.rel = 'noopener';
-      cta.appendChild(srOnly(': ' + cat.nome + ', linha ' + s.nome));
-      texto.appendChild(cta);
+      // TODO: página com todos os modelos da linha (próxima etapa)
+      var verTodos = linkProvisorio('Ver todos os modelos',
+        'A página com todos os modelos da linha ' + s.nome + ' será criada na próxima etapa.',
+        '#' + idLinha);
+      verTodos.className = 'btn btn--primary col-linha__cta';
+      verTodos.appendChild(srOnly(' da linha ' + s.nome));
+      texto.appendChild(verTodos);
 
       bloco.appendChild(texto);
       linhas.appendChild(bloco);

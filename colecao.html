@@ -180,7 +180,7 @@
   <!-- ============================================================
        PÁGINA DE COLEÇÃO: modelo único para todas as coleções.
        O conteúdo é montado por js/main.js (montarPaginaColecao) a partir
-       de CATEGORIAS e PRODUTOS, conforme o ?c= do endereço.
+       de CATEGORIAS, conforme o ?c= do endereço.
        Cabeçalho e rodapé são os mesmos de index.html.
        ============================================================ -->
   <main id="conteudo">
@@ -209,7 +209,7 @@
       <ul class="container col-atalhos__lista" data-colecao-atalhos></ul>
     </nav>
 
-    <!-- 3. Linhas: um bloco por subcategoria, com foto, frase e produtos -->
+    <!-- 3. Linhas: um bloco por subcategoria, com foto, frase e "Ver todos os modelos" -->
     <section class="section col-linhas" id="linhas" aria-labelledby="linhas-titulo" data-so-colecao>
       <div class="container">
         <div class="section-head" data-reveal="stagger">
@@ -305,7 +305,6 @@
   <!-- Aviso discreto para links que ainda não existem no protótipo -->
   <div class="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/produtos.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>
