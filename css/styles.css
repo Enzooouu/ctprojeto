@@ -35,15 +35,16 @@
   --foco: var(--laranja-escuro); /* anel de foco em fundos claros */
 
   /* Tipografia */
-  --fonte-titulo: "Marcellus", "Cormorant Garamond", Georgia, serif;
+  --fonte-destaque: "Cinzel", "Cormorant Garamond", Georgia, serif; /* título do topo e logo */
+  --fonte-titulo: "Unbounded", "Segoe UI", system-ui, sans-serif;  /* demais títulos */
   --fonte-texto: "Hanken Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
 
   /* Escala tipográfica (razão ~1.25, fluida nos títulos) */
   --fs-sm: 0.875rem;
   --fs-base: 1.0625rem;
   --fs-md: 1.25rem;
-  --fs-lg: clamp(1.4rem, 1.1rem + 1vw, 1.75rem);
-  --fs-xl: clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
+  --fs-lg: clamp(1.2rem, 1rem + .7vw, 1.45rem);   /* Unbounded é larga: escala menor */
+  --fs-xl: clamp(1.65rem, 1.2rem + 1.8vw, 2.6rem);
   --fs-hero: clamp(2.6rem, 1.4rem + 5.2vw, 5.75rem);
 
   /* Espaçamentos */
@@ -99,7 +100,8 @@ h1, h2, h3 {
   margin: 0;
   font-family: var(--fonte-titulo);
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
   color: var(--marrom);
 }
 
@@ -280,7 +282,7 @@ img, svg { display: block; }
 }
 .brand__mark { width: 1.35rem; height: 1.35rem; color: var(--laranja-claro); }
 .brand__name {
-  font-family: var(--fonte-titulo);
+  font-family: var(--fonte-destaque);
   font-size: 1.45rem;
   letter-spacing: 0.02em;
 }
@@ -592,6 +594,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
 
 .hero__title {
   max-width: 10.5em;
+  font-family: var(--fonte-destaque);
   color: var(--bege-claro);
   font-size: var(--fs-hero);
   line-height: 1.02;
@@ -758,7 +761,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
   align-items: center;
   gap: var(--sp-3);
   font-family: var(--fonte-titulo);
-  font-size: clamp(1.1rem, .85rem + .45vw, 1.3rem);
+  font-size: clamp(1rem, .9rem + .25vw, 1.12rem); /* Unbounded é larga */
   line-height: 1.2;
   color: var(--marrom);
   text-wrap: balance;                /* se precisar quebrar (tablet), quebra equilibrado */
@@ -771,7 +774,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
   .hearth__item { justify-content: center; padding-inline: var(--sp-4); }
   .hearth__item + .hearth__item { border-left: 1px solid rgba(74, 46, 31, .18); }
 }
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
   .hearth__item { white-space: nowrap; }  /* computador: cada frase numa linha só */
 }
 
