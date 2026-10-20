@@ -596,7 +596,9 @@ a.brand:hover .brand__mark { color: var(--bege); }
   max-width: 10.5em;
   font-family: var(--fonte-destaque);
   color: var(--bege-claro);
-  font-size: var(--fs-hero);
+  /* Sempre em duas linhas ("O fogo como parte / da arquitetura."): no celular
+     a letra acompanha a largura da tela; "O fogo como parte" mede ~10,25em. */
+  font-size: min(var(--fs-hero), calc((100vw - 2 * var(--gutter)) / 10.6));
   line-height: 1.02;
   letter-spacing: -0.01em;
 }
