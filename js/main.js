@@ -37,7 +37,8 @@ var CATEGORIAS = [
       { nome: 'Tradicionais', slug: 'tradicionais', descricao: '', imagem: '', textoAlternativo: '' },
       { nome: 'A gás linear', slug: 'a-gas-linear', descricao: '', imagem: '', textoAlternativo: '' },
       { nome: 'Esculturais', slug: 'esculturais', descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'Ecoflamas', slug: 'ecoflamas', marca: true, descricao: '', imagem: '', textoAlternativo: '' }
+      { nome: 'Ecoflamas', slug: 'ecoflamas', marca: true, descricao: '', imagem: '', textoAlternativo: '' },
+      { nome: 'Tachos', slug: 'tachos', descricao: '', imagem: '', textoAlternativo: '' }
     ]
   },
   {
