@@ -15,6 +15,9 @@
    - slug: identificador (vira a âncora #colecao-<slug>)
    - visual: classe de cor do card e ilustração (ver styles.css e o sprite)
    - prefixo: começo da frase do card, antes da lista de subcategorias
+   - imagem (opcional): foto do card da grade de coleções. Vazio = degradê
+     + ilustração em traço. foco: ponto da foto que fica sempre visível
+     quando ela é recortada (CSS object-position, ex.: '45% 60%')
    - subcategorias: { nome, slug, marca? } (marca: true mantém a inicial
      maiúscula no meio da frase, como em "Ecoflamas")
    Com uma única subcategoria, o item do menu vira link direto (sem submenu).
@@ -31,6 +34,7 @@ var CATEGORIAS = [
   },
   {
     nome: 'Churrasqueiras', slug: 'churrasqueiras', visual: 'churrasqueiras', ilustracao: 'p-churrasqueira', prefixo: '',
+    imagem: 'img/colecoes/churrasqueiras.webp', foco: '45% 55%',
     subcategorias: [
       { nome: 'A carvão', slug: 'a-carvao' },
       { nome: 'A gás', slug: 'a-gas' },
@@ -246,20 +250,31 @@ var DEPOIMENTOS = [
 
   /* ------------------------------------------------------------------------
      C. Grade de coleções
-     TODO: quando houver fotos, aplicar como background-image no .tile
-     (o véu escuro do CSS mantém o texto legível).
+     Com foto (campo imagem), o card mostra a foto; sem foto, o degradê da
+     coleção e a ilustração em traço. O véu escuro mantém o texto legível.
      ------------------------------------------------------------------------ */
   (function montarGrade() {
     var grade = document.querySelector('[data-grade-colecoes]');
     if (!grade) return;
 
     CATEGORIAS.forEach(function (cat) {
-      var li = el('li', 'tile tile--' + cat.visual);
+      var li = el('li', 'tile tile--' + cat.visual + (cat.imagem ? ' tile--foto' : ''));
       li.id = 'colecao-' + cat.slug;
+
+      if (cat.imagem) {
+        // Decorativa: o nome da coleção já está no texto do link
+        var foto = el('img', 'tile__foto');
+        foto.src = cat.imagem;
+        foto.alt = '';
+        foto.loading = 'lazy';
+        foto.decoding = 'async';
+        if (cat.foco) foto.style.objectPosition = cat.foco;
+        li.appendChild(foto);
+      }
 
       var link = linkProvisorio('', 'A página da coleção ' + cat.nome + ' será criada na próxima etapa.', ancoraColecao(cat));
       link.className = 'tile__link';
-      link.appendChild(icone(cat.ilustracao, 'tile__art'));
+      if (!cat.imagem) link.appendChild(icone(cat.ilustracao, 'tile__art'));
 
       var texto = el('span', 'tile__text');
       texto.appendChild(el('span', 'tile__name', cat.nome));

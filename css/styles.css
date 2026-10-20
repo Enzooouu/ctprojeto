@@ -839,8 +839,8 @@ a.brand:hover .brand__mark { color: var(--bege); }
   color: var(--bege-claro);
   isolation: isolate;
 }
-/* Camada do material (TODO: trocar --material por uma foto quando houver).
-   Separada do card para poder dar um zoom lento no hover. */
+/* Camada do material (degradê enquanto não há foto; fica por trás da foto
+   enquanto ela carrega). Separada do card para o zoom lento no hover. */
 .tile::before {
   content: "";
   position: absolute;
@@ -851,6 +851,23 @@ a.brand:hover .brand__mark { color: var(--bege); }
 }
 .tile:hover::before,
 .tile:focus-within::before { transform: scale(1.06); }
+
+/* Foto da coleção (campo imagem em CATEGORIAS) */
+.tile__foto {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+.tile:hover .tile__foto,
+.tile:focus-within .tile__foto { transform: scale(1.06); }
+/* Fotos claras pedem um véu um pouco mais forte embaixo do texto */
+.tile--foto .tile__link::before {
+  background: linear-gradient(to top, rgba(30, 20, 14, .85) 0%, rgba(30, 20, 14, .35) 50%, rgba(30, 20, 14, .05));
+}
 
 .tile__link {
   position: absolute;
