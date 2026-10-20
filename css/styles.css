@@ -1286,6 +1286,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
   .destaque__grade { grid-template-columns: 1fr; }
   .destaque__legendas {
     min-height: 0;
+    align-items: start;          /* legenda colada na imagem; a sobra fica embaixo */
     margin-top: var(--sp-5);
     padding-left: 0;
   }
