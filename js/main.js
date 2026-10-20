@@ -44,6 +44,7 @@ var CATEGORIAS = [
   },
   {
     nome: 'Coifas', slug: 'coifas', visual: 'coifas', ilustracao: 'p-coifa', prefixo: 'Para ',
+    imagem: 'img/colecoes/coifas.webp', foco: '58% 30%',
     subcategorias: [
       { nome: 'Churrasqueira', slug: 'churrasqueira' },
       { nome: 'Cozinha', slug: 'cozinha' },
