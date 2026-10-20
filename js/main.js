@@ -53,6 +53,7 @@ var CATEGORIAS = [
   },
   {
     nome: 'Parrillas', slug: 'parrillas', visual: 'parrillas', ilustracao: 'p-parrilla', prefixo: 'Linhas ',
+    imagem: 'img/colecoes/parrillas.webp', foco: '40% 45%',
     subcategorias: [
       { nome: 'Profissional', slug: 'profissional' },
       { nome: 'Residencial', slug: 'residencial' }
