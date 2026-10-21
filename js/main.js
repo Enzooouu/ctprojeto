@@ -64,10 +64,12 @@ var CATEGORIAS = [
   {
     nome: 'Coifas', slug: 'coifas', visual: 'coifas', ilustracao: 'p-coifa', prefixo: 'Para ',
     imagem: 'img/colecoes/coifas.webp', foco: '58% 30%',
+    pagina: true,
+    // TODO: foto e frase curta de cada linha
     subcategorias: [
-      { nome: 'Churrasqueira', slug: 'churrasqueira' },
-      { nome: 'Cozinha', slug: 'cozinha' },
-      { nome: 'Parrilla', slug: 'parrilla' }
+      { nome: 'Churrasqueira', slug: 'churrasqueira', descricao: '', imagem: '', textoAlternativo: '' },
+      { nome: 'Cozinha', slug: 'cozinha', descricao: '', imagem: '', textoAlternativo: '' },
+      { nome: 'Parrilla', slug: 'parrilla', descricao: '', imagem: '', textoAlternativo: '' }
     ]
   },
   {
