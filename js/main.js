@@ -116,10 +116,16 @@ var CATEGORIAS = [
     nome: 'Tocheiros', slug: 'tocheiros', visual: 'tocheiros', ilustracao: 'p-tocheiro', prefixo: 'Modelos ',
     imagem: 'img/colecoes/tocheiros.webp', foco: '50% 40%',
     pagina: true,
-    // TODO: foto e frase curta de cada linha
+    // TODO: confirmar com a Construflama "sem instalação de gás" (A álcool)
     subcategorias: [
-      { nome: 'A gás', titulo: 'Tocheiro a gás', slug: 'a-gas', descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'A álcool', titulo: 'Tocheiro a álcool', slug: 'a-alcool', descricao: '', imagem: '', textoAlternativo: '' }
+      { nome: 'A gás', titulo: 'Tocheiro a gás', slug: 'a-gas',
+        descricao: 'O fogo como centro do jardim: uma chama constante que reúne todos em volta, do fim de tarde à noite.',
+        imagem: 'img/linhas/tocheiros-a-gas.webp', foco: '50% 50%',
+        textoAlternativo: 'Tocheiro a gás aceso, com proteção de vidro e pedras vulcânicas, no centro de um banco circular de madeira, num jardim com pedriscos claros.' },
+      { nome: 'A álcool', titulo: 'Tocheiro a álcool', slug: 'a-alcool',
+        descricao: 'Fogo de verdade sem instalação de gás: peças que se acomodam entre as plantas e levam luz e calor ao jardim.',
+        imagem: 'img/linhas/tocheiros-a-alcool.webp', foco: '45% 50%',
+        textoAlternativo: 'Tocheiro a álcool aceso, em formato de bacia escura, entre plantas de um jardim iluminado à noite.' }
     ]
   },
   {
