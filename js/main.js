@@ -50,11 +50,13 @@ var CATEGORIAS = [
   {
     nome: 'Churrasqueiras', slug: 'churrasqueiras', visual: 'churrasqueiras', ilustracao: 'p-churrasqueira', prefixo: '',
     imagem: 'img/colecoes/churrasqueiras.webp', foco: '45% 55%',
+    pagina: true,
+    // TODO: foto e frase curta de cada linha
     subcategorias: [
-      { nome: 'A carvão', slug: 'a-carvao' },
-      { nome: 'A gás', slug: 'a-gas' },
-      { nome: 'Híbrida', slug: 'hibrida' },
-      { nome: 'Acessórios', slug: 'acessorios' }
+      { nome: 'A carvão', slug: 'a-carvao', descricao: '', imagem: '', textoAlternativo: '' },
+      { nome: 'A gás', slug: 'a-gas', descricao: '', imagem: '', textoAlternativo: '' },
+      { nome: 'Híbrida', slug: 'hibrida', descricao: '', imagem: '', textoAlternativo: '' },
+      { nome: 'Acessórios', slug: 'acessorios', descricao: '', imagem: '', textoAlternativo: '' }
     ]
   },
   {
