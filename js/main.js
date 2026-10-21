@@ -79,9 +79,12 @@ var CATEGORIAS = [
   {
     nome: 'Parrillas', slug: 'parrillas', visual: 'parrillas', ilustracao: 'p-parrilla', prefixo: 'Linhas ',
     imagem: 'img/colecoes/parrillas.webp', foco: '40% 45%',
+    pagina: true,
+    // TODO: foto e frase curta de cada linha
     subcategorias: [
-      { nome: 'Profissional', slug: 'profissional' },
-      { nome: 'Residencial', slug: 'residencial' }
+      { nome: 'Profissional', slug: 'profissional', descricao: '', imagem: '', textoAlternativo: '' },
+      { nome: 'Residencial', slug: 'residencial', descricao: '', imagem: '', textoAlternativo: '' },
+      { nome: 'Para eventos', slug: 'para-eventos', descricao: '', imagem: '', textoAlternativo: '' }
     ]
   },
   {
