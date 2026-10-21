@@ -51,11 +51,14 @@ var CATEGORIAS = [
     nome: 'Churrasqueiras', slug: 'churrasqueiras', visual: 'churrasqueiras', ilustracao: 'p-churrasqueira', prefixo: 'Linhas ',
     imagem: 'img/colecoes/churrasqueiras.webp', foco: '45% 55%',
     pagina: true,
-    // TODO: foto e frase curta de cada linha
+    // TODO: frase curta de cada linha (campo descricao)
     subcategorias: [
-      { nome: 'Soft', slug: 'soft', descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'Premium', slug: 'premium', descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'High-end', slug: 'high-end', descricao: '', imagem: '', textoAlternativo: '' }
+      { nome: 'Soft', slug: 'soft', descricao: '', imagem: 'img/linhas/churrasqueiras-soft.webp', foco: '55% 50%',
+        textoAlternativo: 'Churrasqueira metálica com grelhas e espetos, sobre bancada de pedra clara, ao lado de um cooktop e de um vaso com planta.' },
+      { nome: 'Premium', slug: 'premium', descricao: '', imagem: 'img/linhas/churrasqueiras-premium.webp', foco: '50% 55%',
+        textoAlternativo: 'Churrasqueira metálica com tampa aberta, grelhas e três botões de controle, embutida em bancada de pedra clara.' },
+      { nome: 'High-end', slug: 'high-end', descricao: '', imagem: 'img/linhas/churrasqueiras-high-end.webp', foco: '60% 60%',
+        textoAlternativo: 'Churrasqueira metálica com grelhas, espetos e roda de regulagem, sob uma coifa, numa parede de tijolinhos.' }
     ]
   },
   {
