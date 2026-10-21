@@ -20,6 +20,8 @@
      quando ela é recortada (CSS object-position, ex.: '45% 60%')
    - pagina: true quando a coleção já tem página própria (colecao.html?c=slug).
      Sem isso, os links da coleção mostram o aviso de "próxima etapa".
+   - acaoLinha: 'sobre' troca o botão de cada linha por "Ver sobre" (quando a
+     linha é um produto só, como nos fornos).
    - Em cada subcategoria (usados na página da coleção):
      titulo (opcional): nome do bloco da linha na página, quando o nome curto
      do menu não basta sozinho (ex.: 'Coifa para cozinha');
@@ -98,10 +100,16 @@ var CATEGORIAS = [
     nome: 'Fornos de Pizza', slug: 'fornos-de-pizza', visual: 'fornos', ilustracao: 'p-forno', prefixo: '',
     imagem: 'img/colecoes/fornos-de-pizza.webp', foco: '55% 55%',
     pagina: true,
-    // TODO: foto e frase curta de cada linha
+    acaoLinha: 'sobre', // cada linha é um forno: botão "Ver sobre" em vez de "Ver todos os modelos"
     subcategorias: [
-      { nome: 'A lenha', slug: 'a-lenha', descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'Portátil', slug: 'portatil', descricao: '', imagem: '', textoAlternativo: '' }
+      { nome: 'A lenha', titulo: 'Forno a lenha', slug: 'a-lenha',
+        descricao: 'O forno em cúpula, com porta e chaminé, para pizzas de sabor tradicional e para fazer do preparo um encontro.',
+        imagem: 'img/linhas/fornos-a-lenha.webp', foco: '40% 50%',
+        textoAlternativo: 'Forno a lenha branco em formato de cúpula, com porta preta e chaminé, sobre bancada de pedra diante de uma parede de tijolinhos.' },
+      { nome: 'Portátil', titulo: 'Forno portátil', slug: 'portatil',
+        descricao: 'Compacto e com pedra para pizza, leva o forno para a bancada da área gourmet sem precisar de obra.',
+        imagem: 'img/linhas/fornos-portatil.webp', foco: '50% 55%',
+        textoAlternativo: 'Forno portátil metálico com a marca Construflama, aberto na frente e com pedra redonda para pizza, sobre bancada de pedra clara.' }
     ]
   },
   {
@@ -457,12 +465,17 @@ var DEPOIMENTOS = [
       }
       texto.appendChild(desc);
 
-      // TODO: página com todos os modelos da linha (próxima etapa)
-      var verTodos = linkProvisorio('Ver todos os modelos',
-        'A página com todos os modelos da linha ' + (s.titulo || s.nome) + ' será criada na próxima etapa.',
+      // TODO: página da linha (próxima etapa). Coleção em que cada linha é um
+      // produto só (acaoLinha: 'sobre') leva à página do produto: "Ver sobre".
+      var nomeLinha = s.titulo || s.nome;
+      var sobre = cat.acaoLinha === 'sobre';
+      var verTodos = linkProvisorio(sobre ? 'Ver sobre' : 'Ver todos os modelos',
+        sobre
+          ? 'A página sobre o ' + nomeLinha.charAt(0).toLowerCase() + nomeLinha.slice(1) + ' será criada na próxima etapa.'
+          : 'A página com todos os modelos da linha ' + nomeLinha + ' será criada na próxima etapa.',
         '#' + idLinha);
       verTodos.className = 'btn btn--primary col-linha__cta';
-      verTodos.appendChild(srOnly(' da linha ' + (s.titulo || s.nome)));
+      verTodos.appendChild(srOnly(sobre ? ' o ' + nomeLinha.charAt(0).toLowerCase() + nomeLinha.slice(1) : ' da linha ' + nomeLinha));
       texto.appendChild(verTodos);
 
       bloco.appendChild(texto);
