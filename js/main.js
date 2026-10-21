@@ -67,12 +67,11 @@ var CATEGORIAS = [
     nome: 'Coifas', slug: 'coifas', visual: 'coifas', ilustracao: 'p-coifa', prefixo: 'Para ',
     imagem: 'img/colecoes/coifas.webp', foco: '58% 30%',
     pagina: true,
-    // TODO: frase curta de cada linha (campo descricao)
     subcategorias: [
-      { nome: 'Churrasqueira', titulo: 'Coifa para churrasqueira', slug: 'churrasqueira', descricao: '',
+      { nome: 'Churrasqueira', titulo: 'Coifa para churrasqueira', slug: 'churrasqueira', descricao: 'Acompanha a churrasqueira e mantém a área gourmet livre da fumaça, sem perder o protagonismo no ambiente.',
         imagem: 'img/linhas/coifas-churrasqueira.webp', foco: '50% 45%',
         textoAlternativo: 'Coifa metálica em formato de pirâmide sobre a churrasqueira, numa área gourmet com parede de tijolos, forno de pizza, mesa redonda e cadeiras de madeira.' },
-      { nome: 'Cozinha', titulo: 'Coifa para cozinha', slug: 'cozinha', descricao: '',
+      { nome: 'Cozinha', titulo: 'Coifa para cozinha', slug: 'cozinha', descricao: 'Formas e cores que transformam a coifa em peça de design, integrada à arquitetura da cozinha.',
         imagem: 'img/linhas/coifas-cozinha.webp', foco: '30% 40%',
         textoAlternativo: 'Coifa cilíndrica laranja suspensa sobre uma ilha de cozinha com torneira dourada, em um ambiente em tons de terracota.' }
     ]
