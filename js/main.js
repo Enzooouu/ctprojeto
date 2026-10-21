@@ -68,8 +68,7 @@ var CATEGORIAS = [
     // TODO: foto e frase curta de cada linha
     subcategorias: [
       { nome: 'Churrasqueira', slug: 'churrasqueira', descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'Cozinha', slug: 'cozinha', descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'Parrilla', slug: 'parrilla', descricao: '', imagem: '', textoAlternativo: '' }
+      { nome: 'Cozinha', slug: 'cozinha', descricao: '', imagem: '', textoAlternativo: '' }
     ]
   },
   {
