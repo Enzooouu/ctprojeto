@@ -80,11 +80,17 @@ var CATEGORIAS = [
     nome: 'Parrillas', slug: 'parrillas', visual: 'parrillas', ilustracao: 'p-parrilla', prefixo: 'Linhas ',
     imagem: 'img/colecoes/parrillas.webp', foco: '40% 45%',
     pagina: true,
-    // TODO: foto e frase curta de cada linha
+    // TODO: frase curta de cada linha (campo descricao)
     subcategorias: [
-      { nome: 'Profissional', slug: 'profissional', descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'Residencial', slug: 'residencial', descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'Para eventos', slug: 'para-eventos', descricao: '', imagem: '', textoAlternativo: '' }
+      { nome: 'Profissional', slug: 'profissional', descricao: '',
+        imagem: 'img/linhas/parrillas-profissional.webp', foco: '50% 50%',
+        textoAlternativo: 'Duas parrillas metálicas com rodas de regulagem e um braseiro ao centro com brasas acesas e faíscas, diante de uma parede de blocos.' },
+      { nome: 'Residencial', slug: 'residencial', descricao: '',
+        imagem: 'img/linhas/parrillas-residencial.webp', foco: '50% 40%',
+        textoAlternativo: 'Parrilla metálica sobre carrinho com rodízios e prateleiras, com roda de regulagem e espetos, numa área externa com deck e ripado de madeira.' },
+      { nome: 'Para eventos', slug: 'para-eventos', descricao: '',
+        imagem: 'img/linhas/parrillas-para-eventos.webp', foco: '50% 50%',
+        textoAlternativo: 'Grelha metálica sobre fogo de chão a lenha, com panelas de ferro e linguiças, ao ar livre.' }
     ]
   },
   {
