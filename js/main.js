@@ -51,13 +51,13 @@ var CATEGORIAS = [
     nome: 'Churrasqueiras', slug: 'churrasqueiras', visual: 'churrasqueiras', ilustracao: 'p-churrasqueira', prefixo: 'Linhas ',
     imagem: 'img/colecoes/churrasqueiras.webp', foco: '45% 55%',
     pagina: true,
-    // TODO: frase curta de cada linha (campo descricao)
+    // Soft = entrada, Premium = intermediária, High-end = topo (preço e acabamento)
     subcategorias: [
-      { nome: 'Soft', slug: 'soft', descricao: '', imagem: 'img/linhas/churrasqueiras-soft.webp', foco: '55% 50%',
+      { nome: 'Soft', slug: 'soft', descricao: 'A porta de entrada para o churrasco Construflama: grelhas e espetos em uma estrutura enxuta, com o melhor custo-benefício da coleção.', imagem: 'img/linhas/churrasqueiras-soft.webp', foco: '55% 50%',
         textoAlternativo: 'Churrasqueira metálica com grelhas e espetos, sobre bancada de pedra clara, ao lado de um cooktop e de um vaso com planta.' },
-      { nome: 'Premium', slug: 'premium', descricao: '', imagem: 'img/linhas/churrasqueiras-premium.webp', foco: '50% 55%',
+      { nome: 'Premium', slug: 'premium', descricao: 'O equilíbrio entre investimento e acabamento, com linhas limpas para uma área gourmet de destaque.', imagem: 'img/linhas/churrasqueiras-premium.webp', foco: '50% 55%',
         textoAlternativo: 'Churrasqueira metálica com tampa aberta, grelhas e três botões de controle, embutida em bancada de pedra clara.' },
-      { nome: 'High-end', slug: 'high-end', descricao: '', imagem: 'img/linhas/churrasqueiras-high-end.webp', foco: '60% 60%',
+      { nome: 'High-end', slug: 'high-end', descricao: 'O topo da coleção: a estrutura mais completa e o acabamento mais sofisticado, para quem leva o churrasco a sério.', imagem: 'img/linhas/churrasqueiras-high-end.webp', foco: '60% 60%',
         textoAlternativo: 'Churrasqueira metálica com grelhas, espetos e roda de regulagem, sob uma coifa, numa parede de tijolinhos.' }
     ]
   },
