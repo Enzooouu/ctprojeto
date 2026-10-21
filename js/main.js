@@ -32,17 +32,18 @@ var CATEGORIAS = [
     nome: 'Lareiras', slug: 'lareiras', visual: 'lareiras', ilustracao: 'p-lareira', prefixo: '',
     imagem: 'img/colecoes/lareiras.webp', foco: '50% 65%',
     pagina: true,
-    // TODO: frase curta de cada linha (campo descricao)
+    // TODO: revisar com a Construflama as frases de A gás linear ("acende com
+    // praticidade") e Ecoflamas ("sem obra")
     subcategorias: [
-      { nome: 'Tradicionais', slug: 'tradicionais', descricao: '', imagem: 'img/linhas/lareiras-tradicionais.webp', foco: '50% 55%',
+      { nome: 'Tradicionais', slug: 'tradicionais', descricao: 'O estalo da lenha e o calor de verdade, numa lareira que se integra à arquitetura da sala.', imagem: 'img/linhas/lareiras-tradicionais.webp', foco: '50% 55%',
         textoAlternativo: 'Lareira a lenha acesa embutida numa parede revestida de madeira, com nichos de lenha empilhada dos dois lados, numa sala com sofá claro e mesa de centro.' },
-      { nome: 'A gás linear', slug: 'a-gas-linear', descricao: '', imagem: 'img/linhas/lareiras-a-gas-linear.webp', foco: '60% 70%',
+      { nome: 'A gás linear', slug: 'a-gas-linear', descricao: 'Uma linha de fogo limpa e contínua, que acende com praticidade e vira parte do projeto.', imagem: 'img/linhas/lareiras-a-gas-linear.webp', foco: '60% 70%',
         textoAlternativo: 'Lareira a gás com abertura horizontal e chama baixa, embutida numa parede curva marrom, numa sala com poltronas claras e mesa de madeira.' },
-      { nome: 'Esculturais', slug: 'esculturais', descricao: '', imagem: 'img/linhas/lareiras-esculturais.webp', foco: '75% 60%',
+      { nome: 'Esculturais', slug: 'esculturais', descricao: 'Formas marcantes que fazem da lareira a peça central do ambiente, acesa ou apagada.', imagem: 'img/linhas/lareiras-esculturais.webp', foco: '75% 60%',
         textoAlternativo: 'Lareira preta em formato de cone apoiada no chão, acesa, ao lado de uma janela grande com cortinas de fios, numa sala com vasos e luminária dourada.' },
-      { nome: 'Ecoflamas', slug: 'ecoflamas', marca: true, descricao: '', imagem: 'img/linhas/lareiras-ecoflamas.webp', foco: '45% 45%',
+      { nome: 'Ecoflamas', slug: 'ecoflamas', marca: true, descricao: 'Fogo sem obra: peças compactas que levam a chama para perto do sofá, da mesa ou da varanda.', imagem: 'img/linhas/lareiras-ecoflamas.webp', foco: '45% 45%',
         textoAlternativo: 'Dois queimadores pretos de chão com chama, ao lado de uma mesa de centro clara e de um sofá cinza.' },
-      { nome: 'Tachos', slug: 'tachos', descricao: '', imagem: 'img/linhas/lareiras-tachos.webp', foco: '50% 50%',
+      { nome: 'Tachos', slug: 'tachos', descricao: 'O fogo no centro da roda de conversa, para decks, jardins e áreas externas.', imagem: 'img/linhas/lareiras-tachos.webp', foco: '50% 50%',
         textoAlternativo: 'Tacho metálico com pedras vulcânicas e queimador central aceso, sobre pés, num deck de madeira.' }
     ]
   },
