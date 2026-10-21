@@ -1671,11 +1671,14 @@ a.brand:hover .brand__mark { color: var(--bege); }
   .lojas__detalhes:not(.is-trocando) > :nth-child(3) { animation-delay: .14s; }
 }
 .lojas__detalhes-topo { display: grid; gap: var(--sp-2); justify-items: start; }
-.lojas__nome { color: var(--bege-claro); font-size: clamp(1.9rem, 1.3rem + 2vw, 2.8rem); }
+.lojas__nome { color: var(--bege-claro); font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); } /* Unbounded é larga */
 .lojas__info { display: grid; gap: var(--sp-3); }
-.lojas__info li { display: flex; align-items: flex-start; flex-wrap: wrap; gap: var(--sp-3); color: rgba(245, 239, 229, .92); }
+.lojas__info > li { display: flex; align-items: flex-start; gap: var(--sp-3); color: rgba(245, 239, 229, .92); }
+.lojas__info > li > span { min-width: 0; }
 .lojas__info .icon { margin-top: .2em; color: var(--laranja-claro); }
 .lojas__info-sub { color: rgba(245, 239, 229, .72); font-size: .95rem; }
+.lojas__cep { white-space: nowrap; }
+.lojas__horario-lista { display: grid; gap: .15rem; }
 .lojas__tag { position: static; background: rgba(245, 239, 229, .85); }
 .lojas__acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
 

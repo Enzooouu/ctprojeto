@@ -900,13 +900,28 @@ var DEPOIMENTOS = [
         var li = el('li');
         li.appendChild(icone(iconeId, 'icon'));
         var t = el('span', null, texto);
-        if (extra) { t.appendChild(document.createElement('br')); t.appendChild(el('span', 'lojas__info-sub', extra)); }
+        if (extra) {
+          t.appendChild(document.createElement('br'));
+          // O CEP nunca quebra no meio (ex.: "04578-" numa linha e "903" na outra)
+          var partes = extra.split(/(CEP \d{5}-\d{3})/);
+          var sub = el('span', 'lojas__info-sub');
+          partes.forEach(function (pt) {
+            if (/^CEP /.test(pt)) sub.appendChild(el('span', 'lojas__cep', pt));
+            else if (pt) sub.appendChild(document.createTextNode(pt));
+          });
+          t.appendChild(sub);
+        }
         li.appendChild(t);
         return li;
       };
       info.appendChild(linha('i-pin', l.endereco, l.complemento));
-      var h = linha('i-relogio', l.horario);
-      if (l.horarioExemplo) h.appendChild(el('span', 'tag-exemplo lojas__tag', 'Exemplo')); // TODO: horário real
+      // Horário: uma linha por faixa de dias
+      var h = el('li', 'lojas__horario');
+      h.appendChild(icone('i-relogio', 'icon'));
+      var faixas = el('ul', 'lojas__horario-lista');
+      faixas.setAttribute('aria-label', 'Horário de funcionamento');
+      [].concat(l.horario || []).forEach(function (f) { faixas.appendChild(el('li', null, f)); });
+      h.appendChild(faixas);
       info.appendChild(h);
       detalhes.appendChild(info);
 
@@ -955,6 +970,26 @@ var DEPOIMENTOS = [
     // Começa pela loja com destaque (o showroom)
     var inicial = Math.max(0, LOJAS.findIndex(function (l) { return l.destaque; }));
     selecionar(inicial);
+
+    // Altura fixa do cartão: a da loja com mais texto, para a página não pular
+    // ao trocar de loja (os horários e nomes têm tamanhos diferentes)
+    function igualarAltura() {
+      fotos.style.minHeight = '';
+      var maior = 0;
+      LOJAS.forEach(function (l) {
+        montarDetalhes(l);
+        maior = Math.max(maior, fotos.offsetHeight);
+      });
+      montarDetalhes(LOJAS[atual]);
+      fotos.style.minHeight = maior + 'px';
+    }
+    igualarAltura();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(igualarAltura);
+    var timerAltura;
+    window.addEventListener('resize', function () {
+      clearTimeout(timerAltura);
+      timerAltura = setTimeout(igualarAltura, 150);
+    });
 
     // Libera o mapa do Google quando a seção chega perto (não pesa no início da página)
     if ('IntersectionObserver' in window) {

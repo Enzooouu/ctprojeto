@@ -7,8 +7,7 @@
    - nome, endereco (linha da rua), complemento (bairro/cidade)
    - consulta: texto que o Google Maps usa para achar o lugar (mapa embutido
      ao lado da lista e botão "Como chegar")
-   - horario: TODO preencher com o horário real. Enquanto horarioExemplo for
-     true, aparece marcado como "Exemplo".
+   - horario: lista de linhas ('Dias: horário'), uma por linha na tela
    - imagem / textoAlternativo: foto da loja (vazio = gradiente provisório)
    - fundo: letra do gradiente provisório (a, b ou c)
    ========================================================================== */
@@ -19,9 +18,9 @@ var LOJAS = [
     etiqueta: 'Showroom principal',
     destaque: true,
     endereco: 'R. Vitorino de Morais, 331',
-    complemento: 'Chácara Santo Antônio, São Paulo, SP',
+    complemento: 'Chácara Santo Antônio, São Paulo, SP · CEP 04714-030',
     consulta: 'Construflama Showroom, R. Vitorino de Morais, 331, São Paulo, SP',
-    horario: '[Horário de funcionamento]', horarioExemplo: true,
+    horario: ['Segunda a quinta: 9h às 18h', 'Sexta: 9h às 17h', 'Sábado: 10h às 15h'],
     imagem: '', textoAlternativo: '', fundo: 'a'
   },
   {
@@ -30,9 +29,9 @@ var LOJAS = [
     etiqueta: '',
     destaque: false,
     endereco: 'Av. das Nações Unidas, 12.555, Piso 0',
-    complemento: 'São Paulo, SP',
+    complemento: 'Cidade Monções, São Paulo, SP · CEP 04578-903',
     consulta: 'Shopping D&D, Av. das Nações Unidas, 12555, São Paulo, SP',
-    horario: '[Horário de funcionamento]', horarioExemplo: true,
+    horario: ['Segunda a sexta: 10h às 21h', 'Sábado: 10h às 20h', 'Domingos e feriados: 14h às 19h'],
     imagem: '', textoAlternativo: '', fundo: 'b'
   },
   {
@@ -40,10 +39,10 @@ var LOJAS = [
     nome: 'Shopping Cidade Jardim',
     etiqueta: '',
     destaque: false,
-    endereco: 'Av. Magalhães de Castro, 12.000',
-    complemento: 'São Paulo, SP',
+    endereco: 'Av. Magalhães de Castro, 12.000, Mezanino 2',
+    complemento: 'São Paulo, SP · CEP 05502-001',
     consulta: 'Shopping Cidade Jardim, Av. Magalhães de Castro, 12000, São Paulo, SP',
-    horario: '[Horário de funcionamento]', horarioExemplo: true,
+    horario: ['Segunda a sexta: 10h às 22h', 'Sábado: 10h às 22h', 'Domingos e feriados: 14h às 19h'],
     imagem: '', textoAlternativo: '', fundo: 'c'
   }
 ];
