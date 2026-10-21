@@ -21,6 +21,8 @@
    - pagina: true quando a coleção já tem página própria (colecao.html?c=slug).
      Sem isso, os links da coleção mostram o aviso de "próxima etapa".
    - Em cada subcategoria (usados na página da coleção):
+     titulo (opcional): nome do bloco da linha na página, quando o nome curto
+     do menu não basta sozinho (ex.: 'Coifa para cozinha');
      descricao: frase curta da linha (TODO enquanto vazia: aparece marcada
      como exemplo); imagem / textoAlternativo / foco: foto da linha.
    - subcategorias: { nome, slug, marca? } (marca: true mantém a inicial
@@ -65,10 +67,14 @@ var CATEGORIAS = [
     nome: 'Coifas', slug: 'coifas', visual: 'coifas', ilustracao: 'p-coifa', prefixo: 'Para ',
     imagem: 'img/colecoes/coifas.webp', foco: '58% 30%',
     pagina: true,
-    // TODO: foto e frase curta de cada linha
+    // TODO: frase curta de cada linha (campo descricao)
     subcategorias: [
-      { nome: 'Churrasqueira', slug: 'churrasqueira', descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'Cozinha', slug: 'cozinha', descricao: '', imagem: '', textoAlternativo: '' }
+      { nome: 'Churrasqueira', titulo: 'Coifa para churrasqueira', slug: 'churrasqueira', descricao: '',
+        imagem: 'img/linhas/coifas-churrasqueira.webp', foco: '50% 45%',
+        textoAlternativo: 'Coifa metálica em formato de pirâmide sobre a churrasqueira, numa área gourmet com parede de tijolos, forno de pizza, mesa redonda e cadeiras de madeira.' },
+      { nome: 'Cozinha', titulo: 'Coifa para cozinha', slug: 'cozinha', descricao: '',
+        imagem: 'img/linhas/coifas-cozinha.webp', foco: '30% 40%',
+        textoAlternativo: 'Coifa cilíndrica laranja suspensa sobre uma ilha de cozinha com torneira dourada, em um ambiente em tons de terracota.' }
     ]
   },
   {
@@ -427,7 +433,7 @@ var DEPOIMENTOS = [
       var num = el('p', 'col-linha__num', String(n + 1).padStart(2, '0') + ' / ' + String(cat.subcategorias.length).padStart(2, '0'));
       num.setAttribute('aria-hidden', 'true');
       texto.appendChild(num);
-      var h = el('h3', 'col-linha__nome', s.nome);
+      var h = el('h3', 'col-linha__nome', s.titulo || s.nome);
       h.id = idLinha + '-titulo';
       texto.appendChild(h);
 
@@ -442,10 +448,10 @@ var DEPOIMENTOS = [
 
       // TODO: página com todos os modelos da linha (próxima etapa)
       var verTodos = linkProvisorio('Ver todos os modelos',
-        'A página com todos os modelos da linha ' + s.nome + ' será criada na próxima etapa.',
+        'A página com todos os modelos da linha ' + (s.titulo || s.nome) + ' será criada na próxima etapa.',
         '#' + idLinha);
       verTodos.className = 'btn btn--primary col-linha__cta';
-      verTodos.appendChild(srOnly(' da linha ' + s.nome));
+      verTodos.appendChild(srOnly(' da linha ' + (s.titulo || s.nome)));
       texto.appendChild(verTodos);
 
       bloco.appendChild(texto);
