@@ -132,9 +132,17 @@ var CATEGORIAS = [
     nome: 'Chapeiras', slug: 'chapeiras', visual: 'chapeiras', ilustracao: 'p-chapeira', prefixo: '',
     // Foto de estúdio: fundo branco trocado por fundo carvão, produto no alto
     imagem: 'img/colecoes/chapeiras.webp', foco: '50% 35%',
+    pagina: true,
+    acaoLinha: 'sobre', // cada linha é uma chapeira: botão "Ver sobre"
+    // TODO: foto da chapeira elétrica; confirmar a frase de cada linha
     subcategorias: [
-      { nome: 'A gás', slug: 'a-gas' },
-      { nome: 'Elétrica', slug: 'eletrica' }
+      { nome: 'A gás', titulo: 'Chapeira a gás', slug: 'a-gas',
+        descricao: 'Chapa ampla para grelhar ao lado da churrasqueira, com o controle da chama na ponta dos dedos.',
+        imagem: 'img/produtos/chapeira-a-gas.webp', foco: '50% 50%',
+        textoAlternativo: 'Chapeira metálica de embutir com chapa retangular e botão de controle preto, vista de frente sobre fundo escuro.' },
+      { nome: 'Elétrica', titulo: 'Chapeira elétrica', slug: 'eletrica',
+        descricao: 'Praticidade para a cozinha e para espaços onde não há gás: é só ligar e preparar.',
+        imagem: '', textoAlternativo: '' }
     ]
   }
 ];
