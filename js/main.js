@@ -32,13 +32,18 @@ var CATEGORIAS = [
     nome: 'Lareiras', slug: 'lareiras', visual: 'lareiras', ilustracao: 'p-lareira', prefixo: '',
     imagem: 'img/colecoes/lareiras.webp', foco: '50% 65%',
     pagina: true,
-    // TODO: foto e frase de cada linha (o usuário vai enviar)
+    // TODO: frase curta de cada linha (campo descricao)
     subcategorias: [
-      { nome: 'Tradicionais', slug: 'tradicionais', descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'A gás linear', slug: 'a-gas-linear', descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'Esculturais', slug: 'esculturais', descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'Ecoflamas', slug: 'ecoflamas', marca: true, descricao: '', imagem: '', textoAlternativo: '' },
-      { nome: 'Tachos', slug: 'tachos', descricao: '', imagem: '', textoAlternativo: '' }
+      { nome: 'Tradicionais', slug: 'tradicionais', descricao: '', imagem: 'img/linhas/lareiras-tradicionais.webp', foco: '50% 55%',
+        textoAlternativo: 'Lareira a lenha acesa embutida numa parede revestida de madeira, com nichos de lenha empilhada dos dois lados, numa sala com sofá claro e mesa de centro.' },
+      { nome: 'A gás linear', slug: 'a-gas-linear', descricao: '', imagem: 'img/linhas/lareiras-a-gas-linear.webp', foco: '60% 70%',
+        textoAlternativo: 'Lareira a gás com abertura horizontal e chama baixa, embutida numa parede curva marrom, numa sala com poltronas claras e mesa de madeira.' },
+      { nome: 'Esculturais', slug: 'esculturais', descricao: '', imagem: 'img/linhas/lareiras-esculturais.webp', foco: '75% 60%',
+        textoAlternativo: 'Lareira preta em formato de cone apoiada no chão, acesa, ao lado de uma janela grande com cortinas de fios, numa sala com vasos e luminária dourada.' },
+      { nome: 'Ecoflamas', slug: 'ecoflamas', marca: true, descricao: '', imagem: 'img/linhas/lareiras-ecoflamas.webp', foco: '45% 45%',
+        textoAlternativo: 'Dois queimadores pretos de chão com chama, ao lado de uma mesa de centro clara e de um sofá cinza.' },
+      { nome: 'Tachos', slug: 'tachos', descricao: '', imagem: 'img/linhas/lareiras-tachos.webp', foco: '50% 50%',
+        textoAlternativo: 'Tacho metálico com pedras vulcânicas e queimador central aceso, sobre pés, num deck de madeira.' }
     ]
   },
   {
