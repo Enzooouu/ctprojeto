@@ -97,9 +97,11 @@ var CATEGORIAS = [
   {
     nome: 'Fornos de Pizza', slug: 'fornos-de-pizza', visual: 'fornos', ilustracao: 'p-forno', prefixo: '',
     imagem: 'img/colecoes/fornos-de-pizza.webp', foco: '55% 55%',
+    pagina: true,
+    // TODO: foto e frase curta de cada linha
     subcategorias: [
-      { nome: 'A lenha', slug: 'a-lenha' },
-      { nome: 'Portátil', slug: 'portatil' }
+      { nome: 'A lenha', slug: 'a-lenha', descricao: '', imagem: '', textoAlternativo: '' },
+      { nome: 'Portátil', slug: 'portatil', descricao: '', imagem: '', textoAlternativo: '' }
     ]
   },
   {
