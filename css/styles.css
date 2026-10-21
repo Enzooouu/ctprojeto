@@ -1624,7 +1624,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
   display: grid;
   align-items: end;
   min-height: 17rem;
-  padding-top: 4rem;                 /* respiro no alto para a foto aparecer acima do texto */
+  padding-top: clamp(7rem, 5rem + 6vw, 10rem); /* faixa no alto onde a foto da loja aparece */
   border-radius: var(--raio);
   overflow: hidden;
   color: var(--bege-claro);
@@ -1651,7 +1651,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(to top, rgba(30, 20, 14, .88) 0%, rgba(30, 20, 14, .55) 45%, rgba(30, 20, 14, .05) 80%);
+  background: linear-gradient(to top, rgba(30, 20, 14, .94) 0%, rgba(30, 20, 14, .86) 55%, rgba(30, 20, 14, .35) 78%, rgba(30, 20, 14, .05) 100%);
   pointer-events: none;
 }
 .lojas__camada--a { --fundo: radial-gradient(ellipse 45% 35% at 30% 40%, rgba(244, 167, 87, .45), transparent 70%), linear-gradient(to bottom, #3A2B23 0 58%, #4A2E1F 58% 100%); }

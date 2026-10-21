@@ -879,6 +879,7 @@ var DEPOIMENTOS = [
       if (l.imagem) {
         var img = el('img');
         img.src = l.imagem; img.alt = l.textoAlternativo || ''; img.loading = 'lazy'; img.decoding = 'async';
+        if (l.foco) img.style.objectPosition = l.foco;
         c.appendChild(img);
       } // sem foto: fica o degradê quente da loja (TODO: foto real em js/lojas.js)
       fotos.insertBefore(c, detalhes);
