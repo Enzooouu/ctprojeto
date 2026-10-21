@@ -80,15 +80,16 @@ var CATEGORIAS = [
     nome: 'Parrillas', slug: 'parrillas', visual: 'parrillas', ilustracao: 'p-parrilla', prefixo: 'Linhas ',
     imagem: 'img/colecoes/parrillas.webp', foco: '40% 45%',
     pagina: true,
-    // TODO: frase curta de cada linha (campo descricao)
+    // TODO: confirmar com a Construflama "restaurantes e churrascarias"
+    // (Profissional) e "sobre rodízios" (Residencial)
     subcategorias: [
-      { nome: 'Profissional', slug: 'profissional', descricao: '',
+      { nome: 'Profissional', slug: 'profissional', descricao: 'Estrutura robusta e braseiro central para o ritmo de restaurantes e churrascarias.',
         imagem: 'img/linhas/parrillas-profissional.webp', foco: '50% 50%',
         textoAlternativo: 'Duas parrillas metálicas com rodas de regulagem e um braseiro ao centro com brasas acesas e faíscas, diante de uma parede de blocos.' },
-      { nome: 'Residencial', slug: 'residencial', descricao: '',
+      { nome: 'Residencial', slug: 'residencial', descricao: 'A parrilla em versão para casa, sobre rodízios e com prateleiras de apoio, pronta para a área gourmet.',
         imagem: 'img/linhas/parrillas-residencial.webp', foco: '50% 40%',
         textoAlternativo: 'Parrilla metálica sobre carrinho com rodízios e prateleiras, com roda de regulagem e espetos, numa área externa com deck e ripado de madeira.' },
-      { nome: 'Para eventos', slug: 'para-eventos', descricao: '',
+      { nome: 'Para eventos', slug: 'para-eventos', descricao: 'Grelha ampla sobre o fogo de chão, para cozinhar ao ar livre e receber muita gente.',
         imagem: 'img/linhas/parrillas-para-eventos.webp', foco: '50% 50%',
         textoAlternativo: 'Grelha metálica sobre fogo de chão a lenha, com panelas de ferro e linguiças, ao ar livre.' }
     ]
