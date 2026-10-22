@@ -1466,6 +1466,50 @@ var DEPOIMENTOS = [
       }
     }
 
+    // Fotos do artigo (capa e figuras): clique abre em tela cheia
+    var telaCheia = null;
+    function abrirTelaCheia(img, legenda, origem) {
+      if (!telaCheia) {
+        telaCheia = el('dialog', 'tela-cheia');
+        telaCheia.setAttribute('aria-label', 'Foto em tela cheia');
+        var fechar = el('button', 'tela-cheia__fechar', '×');
+        fechar.type = 'button';
+        fechar.setAttribute('aria-label', 'Fechar');
+        fechar.addEventListener('click', function () { telaCheia.close(); });
+        telaCheia.appendChild(fechar);
+        telaCheia.appendChild(el('img', 'tela-cheia__img'));
+        telaCheia.appendChild(el('p', 'tela-cheia__legenda'));
+        // Clique fora da foto (ou na própria foto) fecha
+        telaCheia.addEventListener('click', function (e) {
+          if (e.target === telaCheia || e.target.classList.contains('tela-cheia__img')) telaCheia.close();
+        });
+        telaCheia.addEventListener('close', function () {
+          document.body.style.overflow = '';
+          if (telaCheia._origem) telaCheia._origem.focus();
+        });
+        document.body.appendChild(telaCheia);
+      }
+      var grande = telaCheia.querySelector('.tela-cheia__img');
+      grande.src = img.src;
+      grande.alt = img.alt;
+      var leg = telaCheia.querySelector('.tela-cheia__legenda');
+      leg.textContent = legenda || '';
+      leg.hidden = !legenda;
+      telaCheia._origem = origem;
+      document.body.style.overflow = 'hidden';
+      telaCheia.showModal();               // Esc fecha; o foco fica dentro
+    }
+    document.querySelectorAll('.post-capa img, .post-figura img').forEach(function (img) {
+      var fig = img.closest('figure');
+      var legenda = fig && fig.querySelector('figcaption') ? fig.querySelector('figcaption').textContent : '';
+      var botao = el('button', 'foto-zoom');
+      botao.type = 'button';
+      botao.setAttribute('aria-label', 'Ampliar foto' + (legenda ? ': ' + legenda : ''));
+      img.parentNode.insertBefore(botao, img);
+      botao.appendChild(img);
+      botao.addEventListener('click', function () { abrirTelaCheia(img, legenda, botao); });
+    });
+
     // Barra de progresso de leitura (acompanha o texto do artigo)
     var barra = document.querySelector('[data-leitura-barra]');
     var agendado = false;

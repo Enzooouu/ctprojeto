@@ -2110,7 +2110,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
 .post-indice__lista a[aria-current] { color: var(--laranja-escuro); border-left-color: var(--laranja); }
 
 /* Texto com boa leitura: coluna estreita (~70 caracteres por linha) */
-.post-texto { max-width: 46rem; font-size: 1.1875rem; line-height: 1.75; }
+.post-texto { min-width: 0; font-size: 1.1875rem; line-height: 1.75; }
 .post-texto > * + * { margin-top: var(--sp-5); }
 .post-texto__lead { color: var(--marrom); font-size: var(--fs-md); line-height: 1.6; }
 .post-texto__sub { margin-top: var(--sp-7); font-size: var(--fs-lg); scroll-margin-top: calc(var(--header-h) + 1.5rem); }
@@ -2138,6 +2138,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
   font-size: var(--fs-sm);
 }
 
+.post-lateral { padding-top: var(--sp-5); border-top: 1px solid rgba(74, 46, 31, .2); }
 .post-compartilhar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3); }
 .post-compartilhar__titulo { width: 100%; color: var(--marrom); font-family: var(--fonte-titulo); font-size: 0.95rem; }
 
@@ -2145,21 +2146,70 @@ a.brand:hover .brand__mark { color: var(--bege); }
 .blog-relacionados { padding-top: 0; }
 .blog-relacionados .section-title { margin-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem); }
 
-/* Desktop: índice fixo à esquerda; de 1024 a 1279px o "Compartilhar" fica
-   embaixo do texto; a partir de 1280px vira uma coluna à direita */
+/* Desktop: índice fixo à esquerda e o texto ocupando o resto da largura;
+   "Compartilhar" fica embaixo do texto */
 @media (min-width: 1024px) {
-  .post-corpo { grid-template-columns: 13rem minmax(0, 46rem); justify-content: space-between; align-items: start; column-gap: clamp(1.5rem, 1rem + 2vw, 3rem); }
+  .post-corpo { grid-template-columns: 13rem minmax(0, 1fr); align-items: start; column-gap: clamp(2rem, 1rem + 3vw, 4rem); }
   .post-lateral { grid-column: 2; }
   .post-indice { position: sticky; top: calc(var(--header-h) + 2rem); }
   .post-indice__titulo { cursor: default; }
   .post-indice__caixa .post-indice__titulo::after,
   .post-indice__caixa[open] .post-indice__titulo::after { content: none; }
 }
-@media (min-width: 1280px) {
-  .post-corpo { grid-template-columns: 13rem minmax(0, 46rem) 9.5rem; }
-  .post-lateral { grid-column: auto; position: sticky; top: calc(var(--header-h) + 2rem); }
-  .post-compartilhar { display: grid; justify-items: start; }
+
+/* Foto em tela cheia (clique nas imagens do artigo) */
+.foto-zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  border-radius: var(--raio);
 }
+.foto-zoom:focus-visible { outline: 3px solid var(--foco); outline-offset: 3px; }
+.blog-capa .foto-zoom { position: absolute; inset: 0; height: 100%; border-radius: 0; }
+.blog-capa .foto-zoom:focus-visible { outline-offset: -4px; }
+.foto-zoom img { transition: transform .6s var(--ease-out); }
+.foto-zoom:hover img { transform: scale(1.02); }
+
+.tela-cheia {
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  max-height: none;
+  margin: 0;
+  padding: clamp(1rem, 3vw, 3rem);
+  border: 0;
+  background: transparent;
+  color: var(--bege-claro);
+  --foco: var(--laranja-claro);
+}
+.tela-cheia[open] { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: var(--sp-3); place-items: center; }
+.tela-cheia::backdrop { background: rgba(20, 16, 13, .96); }
+.tela-cheia__img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: var(--raio); cursor: zoom-out; }
+.tela-cheia__legenda { color: rgba(245, 239, 229, .85); font-size: var(--fs-sm); text-align: center; }
+.tela-cheia__fechar {
+  position: absolute;
+  top: var(--sp-4);
+  right: var(--sp-4);
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(245, 239, 229, .4);
+  border-radius: 50%;
+  background: rgba(20, 16, 13, .6);
+  color: var(--bege-claro);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.tela-cheia__fechar:hover { border-color: var(--bege-claro); }
+@media (prefers-reduced-motion: no-preference) {
+  .tela-cheia[open] { animation: telaCheia .25s var(--ease-out); }
+}
+@keyframes telaCheia { from { opacity: 0; } to { opacity: 1; } }
 
 /* --------------------------------------------------------------------------
    14. Rodapé
