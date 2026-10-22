@@ -1154,7 +1154,8 @@ var DEPOIMENTOS = [
     var partes = [p.titulo, p.resumo];
     (p.conteudo || []).forEach(function (b) {
       if (b.texto) partes.push(b.texto);
-      if (b.itens) partes = partes.concat(b.itens);
+      if (b.rotulo) partes.push(b.rotulo);
+      if (b.itens) b.itens.forEach(function (i) { partes.push(typeof i === 'string' ? i : i.rotulo + ' ' + i.texto); });
       if (b.legenda) partes.push(b.legenda);
     });
     return partes.join(' ');
@@ -1202,6 +1203,7 @@ var DEPOIMENTOS = [
       capa.appendChild(icone(c.ilustracao, 'blog-capa__arte'));
     }
     if (p.exemplo) capa.appendChild(el('span', 'tag-exemplo', 'Exemplo'));
+    else if (!p.imagem) capa.appendChild(el('span', 'tag-exemplo', 'Foto em breve'));
     return capa;
   }
 
@@ -1379,6 +1381,16 @@ var DEPOIMENTOS = [
     meta.replaceWith(metaPost(p, 'post-topo__meta'));
     capa.appendChild(capaPost(p, 'blog-capa--capa', true));
 
+    // "Rótulo em negrito" + texto (parágrafos e itens de lista)
+    function comRotulo(no, b) {
+      if (b.rotulo) {
+        no.appendChild(el('strong', 'post-rotulo', b.rotulo));
+        no.appendChild(document.createTextNode(' '));
+      }
+      no.appendChild(document.createTextNode(b.texto));
+      return no;
+    }
+
     // Texto: blocos de conteudo; cada subtítulo ganha um id para o índice
     var texto = document.querySelector('[data-post-texto]');
     var indice = document.querySelector('[data-post-indice]');
@@ -1402,10 +1414,10 @@ var DEPOIMENTOS = [
         li.appendChild(a);
         indice.appendChild(li);
       } else if (b.tipo === 'paragrafo') {
-        texto.appendChild(el('p', null, b.texto));
+        texto.appendChild(comRotulo(el('p'), b));
       } else if (b.tipo === 'lista') {
         var ul = el('ul');
-        b.itens.forEach(function (i) { ul.appendChild(el('li', null, i)); });
+        b.itens.forEach(function (i) { ul.appendChild(comRotulo(el('li'), typeof i === 'string' ? { texto: i } : i)); });
         texto.appendChild(ul);
       } else if (b.tipo === 'citacao') {
         var q = el('blockquote', 'post-citacao');

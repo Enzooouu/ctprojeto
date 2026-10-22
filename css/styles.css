@@ -1937,7 +1937,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
 .blog-destaque { padding-bottom: 0; }
 .blog-destaque__caixa { display: grid; gap: var(--sp-5); }
 .blog-destaque__texto { display: grid; justify-items: start; gap: var(--sp-3); align-content: center; }
-.blog-destaque__titulo { font-size: var(--fs-xl); }
+.blog-destaque__titulo { font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.4rem); line-height: 1.15; text-wrap: balance; }
 .blog-destaque__resumo { max-width: 38ch; color: var(--cinza); font-size: var(--fs-md); line-height: 1.55; }
 .blog-destaque__texto .btn { margin-top: var(--sp-3); }
 @media (min-width: 900px) {
@@ -2059,7 +2059,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
   padding-top: calc(var(--header-h) + clamp(2.5rem, 2rem + 3vw, 4.5rem));
   padding-bottom: var(--sp-6);
 }
-.post-topo__titulo { max-width: 22ch; font-size: clamp(2rem, 1.3rem + 3vw, 3.6rem); }
+.post-topo__titulo { max-width: 30ch; font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3.2rem); text-wrap: balance; }
 .post-topo__meta { color: rgba(236, 226, 210, .82); font-size: var(--fs-sm); }
 .post-topo__meta .post-voltar { color: var(--laranja-claro); }
 .blog-cat--link { color: var(--laranja-claro); text-decoration: none; }
@@ -2127,6 +2127,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
   line-height: 1.5;
 }
 .post-citacao cite { display: block; margin-top: var(--sp-2); color: var(--cinza); font-family: var(--fonte-texto); font-size: var(--fs-sm); font-style: normal; }
+.post-rotulo { color: var(--marrom); font-weight: 600; }
 .post-figura { margin-inline: 0; }
 .post-figura figcaption { margin-top: var(--sp-2); color: var(--cinza); font-size: var(--fs-sm); }
 .post-aviso {

@@ -18,8 +18,8 @@
    - exemplo: true mostra a etiqueta "Exemplo" (use false nos artigos reais)
    - conteudo: lista de blocos, na ordem do texto:
        { tipo: 'subtitulo', texto }   vira um item do índice "Neste artigo"
-       { tipo: 'paragrafo', texto }
-       { tipo: 'lista', itens: [...] }
+       { tipo: 'paragrafo', texto, rotulo? }   rotulo: começo em negrito
+       { tipo: 'lista', itens: [...] }   item: texto ou { rotulo, texto }
        { tipo: 'citacao', texto, autor? }
        { tipo: 'imagem', imagem, textoAlternativo, legenda }
    O tempo de leitura é calculado pelo número de palavras do texto.
@@ -53,6 +53,52 @@ function conteudoExemplo(subtitulos) {
 }
 
 var POSTS = [
+  {
+    slug: 'como-escolher-a-grelha-ideal',
+    titulo: 'O Detalhe que Transforma o Churrasco: Como Escolher a Grelha Ideal para o Seu Estilo',
+    categoria: 'churrasqueiras',
+    resumo: 'Argentina, uruguaia, barra chata ou plancha: conheça cada grelha e descubra qual combina com o seu jeito de fazer churrasco.',
+    data: '2026-10-21', exemplo: false,
+    // TODO: foto de capa e fotos das grelhas (o usuário vai enviar)
+    imagem: '', textoAlternativo: '',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'No universo do churrasco, ir além do convencional é o que define uma experiência inesquecível. Quem domina a arte da gastronomia na brasa sabe que cada churrasqueiro possui rituais, hábitos e preferências únicas: para alguns, a perfeição está no aroma defumado da brasa; para outros, na precisão do ponto ou naquela crosta dourada e irresistível. Tudo para receber bem não só em casa, mas também na mesa.' },
+      { tipo: 'paragrafo', texto: 'Mais do que apenas uma superfície para assar, a escolha da grelha é o elemento crucial que é fundamental para chegar à perfeição no sabor, na textura e na apresentação dos seus cortes. Compreender qual equipamento melhor se alinha ao seu estilo é o primeiro passo para elevar o nível do seu churrasco.' },
+      { tipo: 'paragrafo', texto: 'Abaixo, apresentamos as principais opções e como cada uma delas atua no preparo da carne:' },
+
+      { tipo: 'subtitulo', texto: '1. Grelha Argentina: Sabor, Controle e Praticidade' },
+      { tipo: 'imagem', imagem: '', textoAlternativo: '', legenda: 'Grelha Argentina Construflama' },
+      { tipo: 'paragrafo', texto: 'Projetada com canaletas inclinadas, a grelha argentina conduz o excesso de gordura diretamente para um reservatório, evitando fumaça excessiva e labaredas no carvão.' },
+      { tipo: 'paragrafo', rotulo: 'Para qual momento escolher?', texto: 'É a opção ideal para assados lentos e cortes nobres mais suculentos e gordurosos, como picanha e ancho, garantindo maciez e cozimento uniforme sem riscos de queimar a carne.' },
+
+      { tipo: 'subtitulo', texto: '2. Grelha Uruguaia: O Toque Defumado Marcante' },
+      { tipo: 'imagem', imagem: '', textoAlternativo: '', legenda: 'Grelha Uruguaia Construflama' },
+      { tipo: 'paragrafo', texto: 'Com suas hastes arredondadas, essa grelha proporciona o contato exato da gordura com a brasa incandescente, gerando aquele aroma e sabor defumado inconfundível, clássico da cultura sul-americana.' },
+      { tipo: 'paragrafo', rotulo: 'Para qual momento escolher?', texto: 'Extremamente versátil e prática, é perfeita para quem busca intensidade de sabor nos mais variados cortes e preparos.' },
+
+      { tipo: 'subtitulo', texto: '3. Grelha de Barra Chata: O Tostado Preciso e Crocante' },
+      { tipo: 'imagem', imagem: '', textoAlternativo: '', legenda: 'Grelha de Barra Chata Construflama' },
+      { tipo: 'paragrafo', texto: 'Sua superfície plana amplia a área de contato direto com a carne, potencializando a famosa Reação de Maillard. O resultado é uma selagem impecável, que cria uma leve e sutil crosta externa sem perder a suculência interna.' },
+      { tipo: 'paragrafo', rotulo: 'Para qual momento escolher?', texto: 'Ideal para amantes do churrasco tradicional que priorizam um tostado perfeito e o clássico visual marcado no corte.' },
+
+      { tipo: 'subtitulo', texto: '4. Grelha Plancha / Chapa Inox: Versatilidade Gastronômica' },
+      { tipo: 'imagem', imagem: '', textoAlternativo: '', legenda: 'Grelha Plancha Chapa Inox Construflama' },
+      { tipo: 'paragrafo', texto: 'Por ser uma superfície contínua e sem aberturas, a chapa de inox retém e distribui o calor com alta uniformidade.' },
+      { tipo: 'paragrafo', rotulo: 'Para qual momento escolher?', texto: 'Transforma sua churrasqueira em uma estação completa de culinária, sendo a escolha perfeita para o preparo de hambúrgueres artesanais, frutos do mar, legumes selados e acompanhamentos picados.' },
+
+      { tipo: 'subtitulo', texto: 'Qual é a Grelha Ideal para Você?' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Cortes gordurosos e suculentos:', texto: 'Grelha Argentina' },
+        { rotulo: 'Sabor defumado tradicional:', texto: 'Grelha Uruguaia' },
+        { rotulo: 'Selagem perfeita e crosta dourada:', texto: 'Barra Chata' },
+        { rotulo: 'Versatilidade e preparos especiais:', texto: 'Plancha / Chapa Inox' }
+      ] },
+
+      { tipo: 'subtitulo', texto: 'Uma Experiência Sob Medida' },
+      { tipo: 'paragrafo', texto: 'Seja em nossas churrasqueiras ou em nossas parrillas, oferecemos a possibilidade de ter a grelha ideal com modelos customizados e grelhas adicionais além das grelhas padrão, tudo para chegar ao churrasco perfeito. Uma refeição que reflete a sua personalidade a cada garfada e marca pelo sabor nos momentos ao redor do fogo que se tornarão memórias eternas.' },
+      { tipo: 'paragrafo', texto: 'Fale com nossos consultores e descubra como transformar cada reunião em uma verdadeira experiência gastronômica.' }
+    ]
+  },
   {
     slug: 'lareira-a-gas-ou-ecoflama',
     titulo: 'Lareira a gás ou ecoflama: como escolher',
