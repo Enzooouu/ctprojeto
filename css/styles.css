@@ -2147,7 +2147,8 @@ a.brand:hover .brand__mark { color: var(--bege); }
 .blog-relacionados .section-title { margin-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem); }
 
 /* Desktop: índice fixo à esquerda e o texto ocupando o resto da largura;
-   "Compartilhar" fica embaixo do texto */
+   "Compartilhar" embaixo do texto (1024 a 1279px) ou numa coluna estreita
+   de ícones à direita, que acompanha a rolagem (a partir de 1280px) */
 @media (min-width: 1024px) {
   .post-corpo { grid-template-columns: 13rem minmax(0, 1fr); align-items: start; column-gap: clamp(2rem, 1rem + 3vw, 4rem); }
   .post-lateral { grid-column: 2; }
@@ -2155,6 +2156,15 @@ a.brand:hover .brand__mark { color: var(--bege); }
   .post-indice__titulo { cursor: default; }
   .post-indice__caixa .post-indice__titulo::after,
   .post-indice__caixa[open] .post-indice__titulo::after { content: none; }
+}
+@media (min-width: 1280px) {
+  .post-corpo { grid-template-columns: 13rem minmax(0, 1fr) 3rem; }
+  .post-lateral { grid-column: 3; grid-row: 1; position: sticky; top: calc(var(--header-h) + 2rem); padding-top: 0; border-top: 0; }
+  .post-compartilhar { display: grid; justify-items: center; gap: var(--sp-2); }
+  .post-compartilhar__titulo { width: auto; font-family: var(--fonte-texto); font-size: .72rem; font-weight: 600; text-align: center; color: var(--cinza); }
+  .post-compartilhar .btn { width: 3rem; height: 3rem; min-height: 0; padding: 0; border-radius: 50%; }
+  .post-compartilhar .btn .icon { width: 1.25rem; height: 1.25rem; }
+  .post-compartilhar__rotulo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 }
 
 /* Foto em tela cheia (clique nas imagens do artigo) */
