@@ -226,17 +226,29 @@ var DEPOIMENTOS = [
 
   function srOnly(text) { return el('span', 'sr-only', text); }
 
+  // Aviso discreto no rodapé da tela (links do protótipo, "Link copiado"...)
+  var toastTimer = null;
+  function mostrarAviso(texto) {
+    var toast = document.querySelector('.toast');
+    if (!toast) return;
+    toast.textContent = texto;
+    toast.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('is-visible'); }, 3200);
+  }
+
   // Texto do menu que, no desktop, aparece esticado na vertical (ver .alto no CSS)
   function textoAlto(text) { return el('span', 'alto', text); }
 
   // Página de coleção (colecao.html?c=slug) ou, nas outras páginas, a home
+  var NA_HOME = !!document.getElementById('inicio');
   var NA_PAGINA_COLECAO = document.body.hasAttribute('data-pagina-colecao');
   var SLUG_ATUAL = NA_PAGINA_COLECAO ? new URLSearchParams(location.search).get('c') : null;
 
   // Coleção com página própria leva até ela; as outras, ao card da home
   function ancoraColecao(cat) {
     if (cat.pagina) return 'colecao.html?c=' + cat.slug;
-    return (NA_PAGINA_COLECAO ? 'index.html' : '') + '#colecao-' + cat.slug;
+    return (NA_HOME ? '' : 'index.html') + '#colecao-' + cat.slug;
   }
 
   // Linha dentro da página da coleção (âncora #linha-slug)
@@ -1116,6 +1128,400 @@ var DEPOIMENTOS = [
   }
 
   /* ------------------------------------------------------------------------
+     H. Blog: lista (blog.html) e artigo (post.html?slug=...)
+        Tudo sai de POSTS e BLOG_CATEGORIAS (js/posts.js). Nomes e
+        ilustrações das categorias de produto vêm de CATEGORIAS.
+     ------------------------------------------------------------------------ */
+  var NA_BLOG = document.body.hasAttribute('data-pagina-blog');
+  var NO_POST = document.body.hasAttribute('data-pagina-post');
+  var WHATSAPP_ORCAMENTO = 'https://whts.co/Construflama_com';
+  var PALAVRAS_POR_MINUTO = 200;
+
+  function categoriaBlog(slug) {
+    var bc = (typeof BLOG_CATEGORIAS === 'undefined' ? [] : BLOG_CATEGORIAS)
+      .filter(function (c) { return c.slug === slug; })[0] || { slug: slug };
+    var cat = buscarCategoria(slug);
+    return {
+      slug: slug,
+      nome: bc.nome || (cat ? cat.nome : slug),
+      ilustracao: cat ? cat.ilustracao : 'i-chama',
+      visual: cat ? cat.visual : slug
+    };
+  }
+
+  // Todo o texto do artigo (título, resumo e blocos), para contar palavras
+  function textoDoPost(p) {
+    var partes = [p.titulo, p.resumo];
+    (p.conteudo || []).forEach(function (b) {
+      if (b.texto) partes.push(b.texto);
+      if (b.itens) partes = partes.concat(b.itens);
+      if (b.legenda) partes.push(b.legenda);
+    });
+    return partes.join(' ');
+  }
+
+  function tempoLeitura(p) {
+    var palavras = textoDoPost(p).split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.ceil(palavras / PALAVRAS_POR_MINUTO)) + ' min de leitura';
+  }
+
+  function formatarData(iso) {
+    return new Date(iso + 'T12:00:00').toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  function urlPost(p) { return 'post.html?slug=' + encodeURIComponent(p.slug); }
+
+  // "12 de outubro de 2026 · 1 min de leitura"
+  function metaPost(p, classe) {
+    var meta = el('p', classe);
+    var t = el('time', null, formatarData(p.data));
+    t.setAttribute('datetime', p.data);
+    meta.appendChild(t);
+    meta.appendChild(document.createTextNode(' · ' + tempoLeitura(p)));
+    return meta;
+  }
+
+  // Capa: foto ou bloco de gradiente da categoria com ilustração
+  function capaPost(p, classe, alt) {
+    var c = categoriaBlog(p.categoria);
+    var capa = el('div', 'blog-capa material--' + c.visual + (classe ? ' ' + classe : ''));
+    if (p.imagem) {
+      var img = el('img');
+      img.src = p.imagem;
+      img.alt = alt ? (p.textoAlternativo || '') : '';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      capa.appendChild(img);
+    } else {
+      // TODO: trocar pela foto real do artigo (campo imagem em js/posts.js)
+      capa.appendChild(icone(c.ilustracao, 'blog-capa__arte'));
+    }
+    if (p.exemplo) capa.appendChild(el('span', 'tag-exemplo', 'Exemplo'));
+    return capa;
+  }
+
+  // Card da grade (lista e relacionados): o título é o único link e cobre o card
+  function cardPost(p) {
+    var li = el('li', 'blog-card');
+    var art = el('article', 'blog-card__caixa');
+    art.appendChild(capaPost(p));
+    var corpo = el('div', 'blog-card__corpo');
+    corpo.appendChild(el('p', 'blog-cat', categoriaBlog(p.categoria).nome));
+    var h = el('h3', 'blog-card__titulo');
+    var a = el('a', 'blog-card__link', p.titulo);
+    a.href = urlPost(p);
+    h.appendChild(a);
+    corpo.appendChild(h);
+    corpo.appendChild(el('p', 'blog-card__resumo', p.resumo));
+    corpo.appendChild(metaPost(p, 'blog-meta'));
+    art.appendChild(corpo);
+    li.appendChild(art);
+    return li;
+  }
+
+  // Sem acento e em minúsculas, para a busca achar "area" em "área"
+  function normalizar(t) {
+    return String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  }
+
+  /* ---------- Lista ---------- */
+  (function montarBlog() {
+    if (!NA_BLOG || typeof POSTS === 'undefined') return;
+    var POR_PAGINA = 6;
+    var secaoDestaque = document.querySelector('[data-blog-destaque]');
+    var caixaDestaque = document.querySelector('[data-blog-destaque-caixa]');
+    var filtros = document.querySelector('[data-blog-filtros]');
+    var busca = document.querySelector('[data-blog-busca]');
+    var grade = document.querySelector('[data-blog-grade]');
+    var vazio = document.querySelector('[data-blog-vazio]');
+    var maisCaixa = document.querySelector('[data-blog-mais-caixa]');
+    var mais = document.querySelector('[data-blog-mais]');
+    var contagem = document.querySelector('[data-blog-contagem]');
+    var destaque = POSTS.filter(function (p) { return p.destaque; })[0] || null;
+
+    var estado = { cat: 'todos', termo: '', limite: POR_PAGINA };
+    var pedida = new URLSearchParams(location.search).get('categoria');
+    if (pedida && BLOG_CATEGORIAS.some(function (c) { return c.slug === pedida; })) estado.cat = pedida;
+
+    // Artigo em destaque
+    if (destaque) {
+      var art = el('article', 'blog-destaque__caixa');
+      art.appendChild(capaPost(destaque, 'blog-capa--grande', true));
+      var txt = el('div', 'blog-destaque__texto');
+      txt.appendChild(el('p', 'blog-cat', categoriaBlog(destaque.categoria).nome));
+      txt.appendChild(el('h2', 'blog-destaque__titulo', destaque.titulo));
+      txt.appendChild(el('p', 'blog-destaque__resumo', destaque.resumo));
+      txt.appendChild(metaPost(destaque, 'blog-meta'));
+      var ler = el('a', 'btn btn--primary', 'Ler artigo');
+      ler.href = urlPost(destaque);
+      ler.appendChild(srOnly(': ' + destaque.titulo));
+      txt.appendChild(ler);
+      art.appendChild(txt);
+      caixaDestaque.appendChild(art);
+    } else {
+      secaoDestaque.hidden = true;
+    }
+
+    // Botões de filtro: Todos + BLOG_CATEGORIAS
+    var opcoes = [{ slug: 'todos', nome: 'Todos' }].concat(BLOG_CATEGORIAS.map(function (c) { return categoriaBlog(c.slug); }));
+    var botoes = opcoes.map(function (o) {
+      var b = el('button', 'blog-filtro', o.nome);
+      b.type = 'button';
+      b.setAttribute('data-cat', o.slug);
+      b.addEventListener('click', function () {
+        estado.cat = o.slug;
+        estado.limite = POR_PAGINA;
+        if (history.replaceState) {
+          history.replaceState(null, '', o.slug === 'todos' ? location.pathname : '?categoria=' + o.slug);
+        }
+        render(true);
+      });
+      filtros.appendChild(b);
+      return b;
+    });
+
+    function resultado() {
+      var termo = normalizar(estado.termo.trim());
+      var filtrando = estado.cat !== 'todos' || termo !== '';
+      return {
+        filtrando: filtrando,
+        lista: POSTS.filter(function (p) {
+          if (!filtrando && p === destaque) return false;   // já está grande no topo
+          if (estado.cat !== 'todos' && p.categoria !== estado.cat) return false;
+          return !termo || normalizar(p.titulo + ' ' + p.resumo).indexOf(termo) >= 0;
+        })
+      };
+    }
+
+    function render(anunciar) {
+      var r = resultado();
+      botoes.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-cat') === estado.cat)); });
+      if (destaque) secaoDestaque.hidden = r.filtrando;   // filtrando, o destaque entra na grade
+      grade.textContent = '';
+      r.lista.slice(0, estado.limite).forEach(function (p) { grade.appendChild(cardPost(p)); });
+      vazio.hidden = r.lista.length > 0;
+      maisCaixa.hidden = r.lista.length <= estado.limite;
+      if (anunciar) {
+        contagem.textContent = r.lista.length === 0 ? 'Nenhum artigo encontrado.'
+          : r.lista.length + (r.lista.length === 1 ? ' artigo encontrado.' : ' artigos encontrados.');
+      }
+    }
+
+    busca.addEventListener('input', function () {
+      estado.termo = busca.value;
+      estado.limite = POR_PAGINA;
+      render(true);
+    });
+
+    mais.addEventListener('click', function () {
+      var antes = grade.children.length;
+      estado.limite += POR_PAGINA;
+      render(true);
+      // Foco no primeiro card novo (quem usa teclado continua de onde parou)
+      var novo = grade.children[antes] && grade.children[antes].querySelector('a');
+      if (novo) novo.focus();
+    });
+
+    document.querySelector('[data-blog-limpar]').addEventListener('click', function () {
+      estado = { cat: 'todos', termo: '', limite: POR_PAGINA };
+      busca.value = '';
+      if (history.replaceState) history.replaceState(null, '', location.pathname);
+      render(true);
+      busca.focus();
+    });
+
+    render(false);
+  })();
+
+  /* ---------- Artigo ---------- */
+  (function montarPost() {
+    if (!NO_POST || typeof POSTS === 'undefined') return;
+    var slug = new URLSearchParams(location.search).get('slug');
+    var p = POSTS.filter(function (x) { return x.slug === slug; })[0];
+    var titulo = document.querySelector('[data-post-titulo]');
+    var meta = document.querySelector('[data-post-meta]');
+    var catEl = document.querySelector('[data-post-categoria]');
+    var corpo = document.querySelector('[data-post-corpo]');
+    var capa = document.querySelector('[data-post-capa]');
+    var extras = document.querySelectorAll('[data-post-extra]');
+    var descricao = document.querySelector('meta[name="description"]');
+
+    // Endereço sem artigo: mensagem e caminho de volta
+    if (!p) {
+      document.title = 'Artigo não encontrado | Blog Construflama';
+      titulo.textContent = 'Artigo não encontrado';
+      meta.textContent = 'O endereço pode estar incorreto ou o artigo pode ter saído do ar. ';
+      var volta = el('a', 'text-link post-voltar', 'Voltar ao blog');
+      volta.href = 'blog.html';
+      meta.appendChild(volta);
+      document.querySelector('.post-topo .migalhas').hidden = true;  // o link de volta já leva ao blog
+      [corpo, capa, catEl].concat([].slice.call(extras)).forEach(function (n) { n.hidden = true; });
+      document.querySelector('.leitura-progresso').hidden = true;
+      return;
+    }
+
+    var cat = categoriaBlog(p.categoria);
+    document.title = p.titulo + ' | Blog Construflama';
+    if (descricao) descricao.setAttribute('content', p.resumo);
+    document.querySelector('[data-post-migalha]').textContent = p.titulo;
+
+    var linkCat = el('a', 'blog-cat blog-cat--link', cat.nome);
+    linkCat.href = 'blog.html?categoria=' + cat.slug;
+    linkCat.appendChild(srOnly(': ver os artigos da categoria'));
+    catEl.appendChild(linkCat);
+    titulo.textContent = p.titulo;
+    meta.replaceWith(metaPost(p, 'post-topo__meta'));
+    capa.appendChild(capaPost(p, 'blog-capa--capa', true));
+
+    // Texto: blocos de conteudo; cada subtítulo ganha um id para o índice
+    var texto = document.querySelector('[data-post-texto]');
+    var indice = document.querySelector('[data-post-indice]');
+    var usados = {};
+    var secoes = [];
+    if (p.exemplo) texto.appendChild(el('p', 'post-aviso', 'Artigo de exemplo: o texto abaixo é provisório.'));
+    texto.appendChild(el('p', 'post-texto__lead', p.resumo));
+    (p.conteudo || []).forEach(function (b) {
+      if (b.tipo === 'subtitulo') {
+        var base = 'secao-' + normalizar(b.texto).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        var id = base, n = 2;
+        while (usados[id]) id = base + '-' + n++;
+        usados[id] = true;
+        var h = el('h2', 'post-texto__sub', b.texto);
+        h.id = id;
+        texto.appendChild(h);
+        secoes.push(h);
+        var li = el('li');
+        var a = el('a', null, b.texto);
+        a.href = '#' + id;
+        li.appendChild(a);
+        indice.appendChild(li);
+      } else if (b.tipo === 'paragrafo') {
+        texto.appendChild(el('p', null, b.texto));
+      } else if (b.tipo === 'lista') {
+        var ul = el('ul');
+        b.itens.forEach(function (i) { ul.appendChild(el('li', null, i)); });
+        texto.appendChild(ul);
+      } else if (b.tipo === 'citacao') {
+        var q = el('blockquote', 'post-citacao');
+        q.appendChild(el('p', null, b.texto));
+        if (b.autor) q.appendChild(el('cite', null, b.autor));
+        texto.appendChild(q);
+      } else if (b.tipo === 'imagem') {
+        var fig = el('figure', 'post-figura');
+        fig.appendChild(capaPost({ categoria: p.categoria, imagem: b.imagem, textoAlternativo: b.textoAlternativo }, 'blog-capa--figura', true));
+        if (b.legenda) fig.appendChild(el('figcaption', null, b.legenda));
+        texto.appendChild(fig);
+      }
+    });
+
+    // Índice: aberto no desktop, recolhido no celular; some se não houver subtítulos
+    var detalhes = document.querySelector('[data-post-indice-detalhes]');
+    var caixaIndice = document.querySelector('[data-post-indice-caixa]');
+    var desktopIndice = window.matchMedia('(min-width: 1024px)');
+    if (!secoes.length) {
+      caixaIndice.hidden = true;
+    } else {
+      var ajustarIndice = function () { detalhes.open = desktopIndice.matches; };
+      ajustarIndice();
+      if (desktopIndice.addEventListener) desktopIndice.addEventListener('change', ajustarIndice);
+      // No desktop o índice fica sempre aberto (o título não recolhe)
+      detalhes.querySelector('summary').addEventListener('click', function (e) {
+        if (desktopIndice.matches) e.preventDefault();
+      });
+      indice.addEventListener('click', function (e) {
+        if (e.target.closest('a') && !desktopIndice.matches) detalhes.open = false;
+      });
+      // Marca no índice a seção que está sendo lida
+      if ('IntersectionObserver' in window) {
+        var links = indice.querySelectorAll('a');
+        var obsSecao = new IntersectionObserver(function (entradas) {
+          entradas.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            var i = secoes.indexOf(en.target);
+            links.forEach(function (l, j) {
+              if (j === i) l.setAttribute('aria-current', 'true'); else l.removeAttribute('aria-current');
+            });
+          });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        secoes.forEach(function (s) { obsSecao.observe(s); });
+      }
+    }
+
+    // Barra de progresso de leitura (acompanha o texto do artigo)
+    var barra = document.querySelector('[data-leitura-barra]');
+    var agendado = false;
+    function progresso() {
+      var r = texto.getBoundingClientRect();
+      var total = r.height - window.innerHeight * 0.5;
+      var feito = Math.min(1, Math.max(0, (window.innerHeight * 0.5 - r.top) / Math.max(1, total)));
+      barra.style.transform = 'scaleX(' + feito.toFixed(4) + ')';
+      agendado = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!agendado) { agendado = true; window.requestAnimationFrame(progresso); }
+    }, { passive: true });
+    window.addEventListener('resize', progresso);
+    progresso();
+
+    // Compartilhar
+    var endereco = location.href.split('#')[0];
+    var whats = document.querySelector('[data-compartilhar-whatsapp]');
+    whats.href = 'https://wa.me/?text=' + encodeURIComponent(p.titulo + ' ' + endereco);
+    whats.appendChild(srOnly(': compartilhar este artigo'));
+    document.querySelector('[data-copiar-link]').addEventListener('click', function () {
+      var ok = function () { mostrarAviso('Link copiado.'); };
+      var falhou = function () {
+        // Sem a API de área de transferência (ex.: arquivo aberto direto): caminho antigo
+        var campo = el('textarea');
+        campo.value = endereco;
+        campo.setAttribute('readonly', '');
+        campo.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+        document.body.appendChild(campo);
+        campo.select();
+        var copiou = false;
+        try { copiou = document.execCommand('copy'); } catch (err) { copiou = false; }
+        campo.remove();
+        mostrarAviso(copiou ? 'Link copiado.' : 'Não foi possível copiar. Copie o endereço na barra do navegador.');
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(endereco).then(ok, falhou);
+      } else {
+        falhou();
+      }
+    });
+
+    // Relacionados: mesma categoria primeiro; completa com os mais recentes
+    var outros = POSTS.filter(function (x) { return x !== p; });
+    var relacionados = outros.filter(function (x) { return x.categoria === p.categoria; })
+      .concat(outros.filter(function (x) { return x.categoria !== p.categoria; }))
+      .slice(0, 3);
+    var gradeRel = document.querySelector('[data-post-relacionados]');
+    relacionados.forEach(function (x) { gradeRel.appendChild(cardPost(x)); });
+    if (!relacionados.length) gradeRel.closest('section').hidden = true;
+
+    // Dados estruturados (schema.org Article) para buscadores
+    var ld = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: p.titulo,
+      description: p.resumo,
+      datePublished: p.data,
+      dateModified: p.data,
+      inLanguage: 'pt-BR',
+      articleSection: cat.nome,
+      wordCount: textoDoPost(p).split(/\s+/).filter(Boolean).length,
+      mainEntityOfPage: endereco,
+      author: { '@type': 'Organization', name: 'Construflama' },
+      publisher: { '@type': 'Organization', name: 'Construflama' }
+    };
+    if (p.imagem) ld.image = new URL(p.imagem, location.href).href;
+    var script = el('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(ld);
+    document.head.appendChild(script);
+  })();
+
+  /* ------------------------------------------------------------------------
      1. Cabeçalho: muda de aspecto depois de rolar um pouco
      ------------------------------------------------------------------------ */
   var header = document.querySelector('.site-header');
@@ -1425,17 +1831,11 @@ var DEPOIMENTOS = [
      6. Links ainda não criados neste protótipo: aviso discreto em vez de
         página quebrada. TODO: remover quando as páginas existirem.
      ------------------------------------------------------------------------ */
-  var toast = document.querySelector('.toast');
-  var toastTimer = null;
-
   document.addEventListener('click', function (event) {
     var link = event.target.closest('[data-proto]');
     if (!link) return;
     event.preventDefault();
-    toast.textContent = link.getAttribute('data-proto') || 'Esta página será criada na próxima etapa do protótipo.';
-    toast.classList.add('is-visible');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { toast.classList.remove('is-visible'); }, 3200);
+    mostrarAviso(link.getAttribute('data-proto') || 'Esta página será criada na próxima etapa do protótipo.');
   });
 
   /* ------------------------------------------------------------------------
