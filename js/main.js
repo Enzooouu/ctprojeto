@@ -1195,6 +1195,7 @@ var DEPOIMENTOS = [
       var img = el('img');
       img.src = p.imagem;
       img.alt = alt ? (p.textoAlternativo || '') : '';
+      if (p.foco) img.style.objectPosition = p.foco;
       img.loading = 'lazy';
       img.decoding = 'async';
       capa.appendChild(img);
