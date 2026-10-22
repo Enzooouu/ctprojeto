@@ -1921,6 +1921,8 @@ a.brand:hover .brand__mark { color: var(--bege); }
   background: var(--material);
 }
 .blog-capa img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.blog-capa--inteira { background: #fff; }
+.blog-capa--inteira img { object-fit: contain; }
 .blog-capa__arte {
   position: absolute;
   top: 50%;
@@ -2122,9 +2124,9 @@ a.brand:hover .brand__mark { color: var(--bege); }
   padding: var(--sp-2) 0 var(--sp-2) var(--sp-5);
   border-left: 3px solid var(--laranja);
   color: var(--marrom);
-  font-family: var(--fonte-titulo);
-  font-size: var(--fs-md);
-  line-height: 1.5;
+  font-size: 1.3rem;
+  font-style: italic;
+  line-height: 1.55;
 }
 .post-citacao cite { display: block; margin-top: var(--sp-2); color: var(--cinza); font-family: var(--fonte-texto); font-size: var(--fs-sm); font-style: normal; }
 .post-rotulo { color: var(--marrom); font-weight: 600; }

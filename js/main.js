@@ -1190,7 +1190,7 @@ var DEPOIMENTOS = [
   // Capa: foto ou bloco de gradiente da categoria com ilustração
   function capaPost(p, classe, alt) {
     var c = categoriaBlog(p.categoria);
-    var capa = el('div', 'blog-capa material--' + c.visual + (classe ? ' ' + classe : ''));
+    var capa = el('div', 'blog-capa material--' + c.visual + (classe ? ' ' + classe : '') + (p.capaInteira ? ' blog-capa--inteira' : ''));
     if (p.imagem) {
       var img = el('img');
       img.src = p.imagem;
