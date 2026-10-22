@@ -1171,6 +1171,11 @@ var DEPOIMENTOS = [
 
   function urlPost(p) { return 'post.html?slug=' + encodeURIComponent(p.slug); }
 
+  // Artigos do mais novo para o mais antigo (datas 'AAAA-MM-DD' ordenam como texto)
+  function postsPorData() {
+    return POSTS.slice().sort(function (a, b) { return a.data < b.data ? 1 : a.data > b.data ? -1 : 0; });
+  }
+
   // "12 de outubro de 2026 · 1 min de leitura"
   function metaPost(p, classe) {
     var meta = el('p', classe);
@@ -1237,13 +1242,14 @@ var DEPOIMENTOS = [
     var maisCaixa = document.querySelector('[data-blog-mais-caixa]');
     var mais = document.querySelector('[data-blog-mais]');
     var contagem = document.querySelector('[data-blog-contagem]');
-    var destaque = POSTS.filter(function (p) { return p.destaque; })[0] || null;
+    var posts = postsPorData();
+    var destaque = posts[0] || null;   // o artigo mais recente é sempre o destaque
 
     var estado = { cat: 'todos', termo: '', limite: POR_PAGINA };
     var pedida = new URLSearchParams(location.search).get('categoria');
     if (pedida && BLOG_CATEGORIAS.some(function (c) { return c.slug === pedida; })) estado.cat = pedida;
 
-    // Artigo em destaque
+    // Artigo em destaque (o mais recente)
     if (destaque) {
       var art = el('article', 'blog-destaque__caixa');
       art.appendChild(capaPost(destaque, 'blog-capa--grande', true));
@@ -1285,7 +1291,7 @@ var DEPOIMENTOS = [
       var filtrando = estado.cat !== 'todos' || termo !== '';
       return {
         filtrando: filtrando,
-        lista: POSTS.filter(function (p) {
+        lista: posts.filter(function (p) {
           if (!filtrando && p === destaque) return false;   // já está grande no topo
           if (estado.cat !== 'todos' && p.categoria !== estado.cat) return false;
           return !termo || normalizar(p.titulo + ' ' + p.resumo).indexOf(termo) >= 0;
@@ -1491,7 +1497,7 @@ var DEPOIMENTOS = [
     });
 
     // Relacionados: mesma categoria primeiro; completa com os mais recentes
-    var outros = POSTS.filter(function (x) { return x !== p; });
+    var outros = postsPorData().filter(function (x) { return x !== p; });
     var relacionados = outros.filter(function (x) { return x.categoria === p.categoria; })
       .concat(outros.filter(function (x) { return x.categoria !== p.categoria; }))
       .slice(0, 3);
