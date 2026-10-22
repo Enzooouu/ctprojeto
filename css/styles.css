@@ -2110,7 +2110,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
 .post-indice__lista a[aria-current] { color: var(--laranja-escuro); border-left-color: var(--laranja); }
 
 /* Texto com boa leitura: coluna estreita (~70 caracteres por linha) */
-.post-texto { max-width: 31rem; font-size: 1.125rem; line-height: 1.75; }
+.post-texto { max-width: 46rem; font-size: 1.1875rem; line-height: 1.75; }
 .post-texto > * + * { margin-top: var(--sp-5); }
 .post-texto__lead { color: var(--marrom); font-size: var(--fs-md); line-height: 1.6; }
 .post-texto__sub { margin-top: var(--sp-7); font-size: var(--fs-lg); scroll-margin-top: calc(var(--header-h) + 1.5rem); }
@@ -2145,13 +2145,19 @@ a.brand:hover .brand__mark { color: var(--bege); }
 .blog-relacionados { padding-top: 0; }
 .blog-relacionados .section-title { margin-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem); }
 
+/* Desktop: índice fixo à esquerda; de 1024 a 1279px o "Compartilhar" fica
+   embaixo do texto; a partir de 1280px vira uma coluna à direita */
 @media (min-width: 1024px) {
-  .post-corpo { grid-template-columns: 15rem minmax(0, 31rem) 11rem; justify-content: space-between; align-items: start; }
-  .post-indice,
-  .post-lateral { position: sticky; top: calc(var(--header-h) + 2rem); }
+  .post-corpo { grid-template-columns: 13rem minmax(0, 46rem); justify-content: space-between; align-items: start; column-gap: clamp(1.5rem, 1rem + 2vw, 3rem); }
+  .post-lateral { grid-column: 2; }
+  .post-indice { position: sticky; top: calc(var(--header-h) + 2rem); }
   .post-indice__titulo { cursor: default; }
   .post-indice__caixa .post-indice__titulo::after,
   .post-indice__caixa[open] .post-indice__titulo::after { content: none; }
+}
+@media (min-width: 1280px) {
+  .post-corpo { grid-template-columns: 13rem minmax(0, 46rem) 9.5rem; }
+  .post-lateral { grid-column: auto; position: sticky; top: calc(var(--header-h) + 2rem); }
   .post-compartilhar { display: grid; justify-items: start; }
 }
 
