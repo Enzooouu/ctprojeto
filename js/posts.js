@@ -62,7 +62,7 @@ var POSTS = [
       { tipo: 'paragrafo', texto: 'Confira todos os detalhes da Churrasqueira Híbrida Premium Construflama em nossos vídeos:' },
       { tipo: 'lista', itens: [
         { rotulo: 'Instagram:', texto: '', link: { texto: 'assistir ao vídeo da Churrasqueira Híbrida', href: 'https://www.instagram.com/p/DXuuP_7DeMj/' } },
-        { rotulo: 'YouTube:', texto: '', link: { texto: '@construflamaoficial', href: 'https://www.youtube.com/@construflamaoficial' } }
+        { rotulo: 'YouTube:', texto: '', link: { texto: 'assistir ao vídeo da Churrasqueira Híbrida', href: 'https://www.youtube.com/shorts/ZNyjzujxUU4' } }
       ] },
       { tipo: 'paragrafo', texto: '', link: { texto: 'Entre em contato com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: 'e descubra a liberdade de escolher como assar e saborear cada momento do seu churrasco!' }
     ]
