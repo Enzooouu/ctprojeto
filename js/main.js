@@ -1526,7 +1526,8 @@ var DEPOIMENTOS = [
         if (/^https?:/.test(b.link.href)) { a.target = '_blank'; a.rel = 'noopener'; }
         no.appendChild(a);
       }
-      if (b.depois) no.appendChild(document.createTextNode(' ' + b.depois));
+      // pontuação logo depois do link (".", ",") vem colada, sem espaço
+      if (b.depois) no.appendChild(document.createTextNode((/^[.,;:!?)]/.test(b.depois) ? '' : ' ') + b.depois));
       return no;
     }
 

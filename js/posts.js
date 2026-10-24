@@ -42,6 +42,212 @@ var BLOG_CATEGORIAS = [
 
 var POSTS = [
   {
+    slug: 'ecos-brandos-lareira-tarus',
+    titulo: 'Ecos Brandos e a Lareira Tarus: curvas, conforto e design no dormitório dos sonhos',
+    categoria: 'lareiras',
+    resumo: 'No projeto Ecos Brandos, de Lucas Panobianco e Expedito Bezerra, a Lareira Tarus branca é o ponto focal de um dormitório feito para descansar e respirar.',
+    data: '2025-09-29', exemplo: false,
+    imagem: 'img/blog/ecos-brandos-tarus.webp',
+    textoAlternativo: 'Lareira Tarus branca suspensa por um tubo sobre um piso de pedriscos claros com lenha empilhada, ao lado de uma janela com cortinas de voal, banqueta de madeira e, ao fundo, banheiro revestido de cerâmica rosada e uma cama.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'No universo da arquitetura contemporânea, poucos elementos são tão impactantes quanto a combinação entre forma, textura e significado. O projeto Ecos Brandos, assinado pelos arquitetos Lucas Panobianco e Expedito Bezerra, ganha vida em um ambiente onde as curvas suaves e os tons neutros criam uma atmosfera de acolhimento e sofisticação.' },
+      { tipo: 'paragrafo', texto: 'Um dos grandes destaques desse espaço é, sem dúvida, a Lareira Tarus, peça escolhida estrategicamente para compor o dormitório e reforçar a proposta de um refúgio de paz e introspecção.' },
+      { tipo: 'subtitulo', texto: 'Curvas que acolhem, cores que acalmam' },
+      { tipo: 'paragrafo', texto: 'O Estúdio Ecos Brandos é um convite à contemplação. A ausência de linhas retas dominantes e a presença de formas orgânicas transformam o espaço em algo quase sensorial. As texturas naturais, os revestimentos em tons claros e os volumes bem definidos dão identidade ao quarto, que foge do convencional sem abrir mão do conforto.' },
+      { tipo: 'paragrafo', texto: 'Nesse cenário, a Lareira Tarus branca surge como ponto focal. Seu design elegante, com formas arredondadas, integra-se perfeitamente à paleta do ambiente, reforçando o conceito de fluidez e continuidade visual.' },
+      { tipo: 'subtitulo', texto: 'Lareira como símbolo de conforto e memória' },
+      { tipo: 'paragrafo', texto: 'Mais do que um item de decoração, a lareira foi pensada como um elemento simbólico. Segundo o arquiteto Expedito Bezerra, o dormitório foi projetado como um espaço de “descanso e respiro”, e a presença da lareira amplifica essa sensação. Ela representa o calor humano, o acolhimento íntimo e os momentos compartilhados com aqueles que mais importam.' },
+      { tipo: 'paragrafo', texto: 'A escolha da Lareira Tarus não apenas agregou valor estético, como também reforçou o conceito emocional do projeto. É o tipo de peça que transforma um ambiente, tornando-o mais funcional, sensível e memorável.' },
+      { tipo: 'subtitulo', texto: 'Inspiração para quem busca um dormitório com lareira' },
+      { tipo: 'paragrafo', texto: 'Se você está buscando referências para criar um ambiente aconchegante e sofisticado, o Estúdio Ecos Brandos é uma excelente inspiração. A escolha de uma lareira como a Tarus mostra como o design pode ser funcional e emocional ao mesmo tempo.' },
+      { tipo: 'paragrafo', texto: 'Aposte em curvas, invista em texturas suaves e considere elementos que vão além do visual. Afinal, o verdadeiro luxo está nos detalhes que tocam a alma.' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Conheça a Tarus e os outros modelos da linha Escultural.', href: 'post.html?slug=modelos-da-linha-escultural' } }
+    ]
+  },
+  {
+    slug: 'lareira-pipe-fendi-sala-clareira',
+    titulo: 'Lareira Pipe em Fendi transforma a Sala Clareira na CASACOR 2025',
+    categoria: 'lareiras',
+    resumo: 'Na CASACOR São Paulo 2025, a Sala 2 Arquitetura levou para a Sala Clareira uma Lareira Pipe com pintura especial na cor Fendi, criada para o projeto.',
+    data: '2025-09-24', exemplo: false,
+    imagem: 'img/blog/sala-clareira-pipe-fendi.webp', foco: '30% 50%',
+    textoAlternativo: 'Lareira Pipe cilíndrica na cor Fendi, presa à parede de madeira escura, ao lado de um sofá modular curvo, mesa de centro redonda com vaso de flores secas e uma escultura de arame na parede.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'A criatividade está no DNA da Construflama e, quando ela se encontra com o talento de grandes escritórios de arquitetura, surgem projetos verdadeiramente únicos. É o caso da Sala Clareira, da Sala 2 Arquitetura, que encantou o público na CASACOR São Paulo 2025 com um ambiente imersivo e acolhedor.' },
+      { tipo: 'paragrafo', texto: 'Entre os destaques do espaço brilha a Lareira Pipe na cor Fendi, desenvolvida especialmente para o projeto em parceria com a Construflama.' },
+      { tipo: 'subtitulo', texto: 'Uma peça exclusiva para um conceito original' },
+      { tipo: 'paragrafo', texto: 'O projeto da Sala Clareira partiu de um conceito provocador: desacelerar. A proposta era criar um caminho de transição entre o ritmo intenso da mostra e a tranquilidade que só o design consciente pode proporcionar.' },
+      { tipo: 'paragrafo', texto: 'A Lareira Pipe, com sua forma cilíndrica e presença imponente, foi escolhida como uma das peças centrais do ambiente. E, para essa edição, recebeu uma pintura especial em tom Fendi, uma cor sofisticada, neutra e elegante, que harmoniza com diversos estilos de decoração.' },
+      { tipo: 'subtitulo', texto: 'Um ambiente que convida à pausa e à contemplação' },
+      { tipo: 'paragrafo', texto: 'Ao entrar na Sala Clareira, o visitante era conduzido por um corredor com texturas que remetem a uma mata densa, em um percurso sensorial até o living. Ali, cada elemento foi pensado para proporcionar relaxamento, aconchego e introspecção.' },
+      { tipo: 'paragrafo', texto: 'O revestimento inclinado do teto, inspirado nos chalés de montanha, somado às janelas históricas do Parque da Água Branca, criou um refúgio urbano com alma natural. Nesse cenário, a Lareira Pipe assumiu um papel fundamental: um convite silencioso à contemplação e ao calor reconfortante do fogo.' },
+      { tipo: 'subtitulo', texto: 'A elegância da cor Fendi no design contemporâneo' },
+      { tipo: 'paragrafo', texto: 'A escolha pela cor Fendi, resultado de uma curadoria entre as melhores opções de pigmentação do mercado, deu à peça um ar sofisticado e atemporal. O tom neutro contrasta de forma sutil com os revestimentos escuros que envolvem a Sala Clareira, criando um ponto de atenção visual sem quebrar a harmonia do ambiente.' },
+      { tipo: 'paragrafo', texto: 'Essa combinação reforça o compromisso da Construflama com a inovação, a estética e a versatilidade, criando lareiras que não só aquecem, mas também emocionam.' },
+      { tipo: 'paragrafo', texto: 'A Pipe esteve presente na Sala Clareira desde o primeiro desenho:', link: { texto: 'veja como o projeto usou os blocos do Espaço do Especificador.', href: 'post.html?slug=espaco-do-especificador' } },
+      { tipo: 'subtitulo', texto: 'Lareira Pipe: calor, design e personalidade' },
+      { tipo: 'paragrafo', texto: 'A Lareira Pipe é muito mais que uma fonte de aquecimento. É um elemento de design escultural, capaz de transformar qualquer ambiente em um espaço de convívio, descanso e inspiração.' },
+      { tipo: 'paragrafo', texto: 'Se você busca levar para o seu projeto o mesmo equilíbrio entre funcionalidade e beleza,', link: { texto: 'fale com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: 'e descubra como a Lareira Pipe pode transformar o seu lar.' }
+    ]
+  },
+  {
+    slug: 'construflama-dd-garden-design-2025',
+    titulo: 'Construflama no D&D Garden Design: uma experiência inesquecível',
+    categoria: 'projetos',
+    resumo: 'Na 7ª edição do D&D Garden Design, a vitrine da Construflama, assinada por Renata Guastelli e Andressa Cardoso, uniu bambu, vegetação e fogo.',
+    data: '2025-09-19', exemplo: false,
+    imagem: 'img/blog/dd-garden-design-2025.webp', foco: '40% 45%',
+    textoAlternativo: 'Lareira Gota preta suspensa por um tubo sobre o piso claro, rodeada por vasos com folhagens e bambu, com a tela de proteção apoiada no chão e, ao fundo, uma cozinha gourmet com churrasqueira de inox.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'A 7ª edição do D&D Garden Design surpreendeu ao trazer sua noite de abertura para a área externa do shopping, transformando o espaço em um verdadeiro espetáculo de paisagismo e convivência. O evento, que reuniu arquitetos, paisagistas, designers e marcas de referência, foi marcado por uma atmosfera elegante, regada a champanhe, networking e memórias inspiradoras.' },
+      { tipo: 'paragrafo', texto: 'Estar presente no D&D durante o período de preparação foi uma oportunidade única para a equipe da Construflama. Acompanhar de perto a agilidade dos escritórios de arquitetura, os ajustes de última hora e a colaboração entre profissionais reforça a essência deste evento: parceria e criatividade para entregar ambientes que realmente emocionam o público. E o resultado brilhou — literalmente.' },
+      { tipo: 'subtitulo', texto: 'Paisagismo para espaços contemporâneos' },
+      { tipo: 'paragrafo', texto: 'O D&D Garden Design tem atraído um público cada vez maior em busca de ideias que dialogam com a vida atual. Os ambientes criados pelos paisagistas apresentam soluções que se adaptam perfeitamente aos apartamentos mais compactos de hoje, trazendo bem-estar, verde e acolhimento para dentro dos lares.' },
+      { tipo: 'paragrafo', texto: 'É nesse contexto que a Construflama reforça seu papel. Mais do que fornecer produtos, levamos sensações para os espaços. Tocheiros, tachos, ecoflamas e lareiras criam pontos de encontro, aquecimento e convivência. O fogo, elemento ancestral, ressurge como protagonista nos projetos paisagísticos contemporâneos, seja para transformar varandas em refúgios, áreas externas em lounges elegantes ou jardins em verdadeiros espaços de contemplação.' },
+      { tipo: 'subtitulo', texto: 'A vitrine Construflama: natureza, design e acolhimento' },
+      { tipo: 'paragrafo', texto: 'Neste ano, nossa vitrine no D&D foi assinada pelas profissionais Renata Guastelli e Andressa Cardoso. Elas criaram para a Construflama um espaço que trabalhou com maestria o bambu para gerar volume e altura, incorporou vegetação no tacho e apostou em uma comunhão de espécies botânicas que proporcionaram movimento, imponência e aconchego.' },
+      { tipo: 'paragrafo', texto: 'Além da vitrine que assinaram para nós, Renata e Andressa também tiveram o próprio espaço no D&D, onde utilizaram o', link: { texto: 'Trio Chess', href: 'post.html?slug=trio-chess-casacor-minas-2025' }, depois: 'em seu ambiente autoral. Ao final do evento, elas nos concederam uma entrevista exclusiva no nosso Instagram, explicando a proposta da vitrine criada para a Construflama e detalhando toda a vegetação escolhida.' },
+      { tipo: 'paragrafo', texto: 'Outro destaque foi o ambiente assinado por Marianne Ramos e Flavia Menezes, que utilizaram um tacho Construflama a lenha em seu espaço. Após o evento, as duas profissionais aproveitaram para visitar a loja Construflama, conhecer nossa curadoria completa e explorar de perto todos os produtos que inspiraram seus projetos.' },
+      { tipo: 'subtitulo', texto: 'Presença da equipe e troca de experiências' },
+      { tipo: 'paragrafo', texto: 'Durante a abertura, toda a equipe de marketing da Construflama esteve presente, reforçando nosso compromisso em apoiar profissionais e escritórios parceiros. Nosso CEO, Marceu Perroni, também marcou presença e aproveitou para visitar os ambientes que utilizaram produtos Construflama, reforçando nossa proximidade com os criadores e nosso olhar atento às novas tendências.' },
+      { tipo: 'paragrafo', texto: 'A 7ª edição do D&D Garden Design mostra que paisagismo e arquitetura são campos vivos e em constante evolução, e a Construflama tem orgulho de estar presente nessa jornada, oferecendo soluções que unem design, qualidade e sensações únicas.' },
+      { tipo: 'paragrafo', rotulo: 'Texto:', texto: 'Victor Hugo Cordeiro, consultor comercial Construflama' }
+    ]
+  },
+  {
+    slug: 'construflama-final-dd-decor-chef',
+    titulo: 'Construflama brilha na grande final do D&D Decor Chef!',
+    categoria: 'projetos',
+    resumo: 'Coelho na proteína, três duplas finalistas e a vitória de Daniel Polacchini e Paulo Evangelista: como foi a final do D&D Decor Chef, patrocinado pela Construflama.',
+    data: '2025-09-18', exemplo: false,
+    imagem: 'img/blog/dd-decor-chef-final.webp', foco: '50% 62%',
+    textoAlternativo: 'Faca de chef com cabo e bainha de madeira gravada com “Construflama, a arte e o prazer do fogo”, sobre bancada de pedra clara, ao lado de um suporte de acrílico com facas pretas.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'A noite de encerramento do D&D Decor Chef foi um espetáculo de criatividade, talento e emoção, e a Construflama esteve presente desde o primeiro momento, reforçando seu papel como parceira oficial de um dos eventos mais esperados do D&D Shopping.' },
+      { tipo: 'paragrafo', texto: 'Com três duplas finalistas competindo pelo título, o clima no shopping era de pura expectativa. A torcida, que também contou pontos para a avaliação, vibrava a cada apresentação. A proteína escolhida para a grande final foi o coelho, ingrediente sofisticado e desafiador, que levou cada dupla a seguir caminhos distintos em sabor e técnica. Tivemos desde coelho marinado e assado até versões refogadas e criativas, que despertaram a curiosidade de todos os presentes. Não é exagero dizer que muitos gostariam de estar no lugar dos jurados para provar cada prato.' },
+      { tipo: 'paragrafo', texto: 'O corpo de jurados, formado por cinco renomados chefs de cozinha, destacou não apenas a dificuldade do preparo, mas também a ousadia e a inventividade dos finalistas. Entre eles, nomes consagrados da arquitetura que há anos dão vida ao cenário do D&D.' },
+      { tipo: 'paragrafo', texto: 'Na grande revelação, a dupla Daniel Polacchini e Paulo Evangelista conquistou o primeiro lugar, arrancando aplausos do público e elogios da banca.' },
+      { tipo: 'paragrafo', texto: 'A Construflama marcou presença de forma especial. O criador e fundador Roberto Cassab acompanhou a disputa de perto, enquanto o CEO Marceu Perroni subiu ao palco para representar a empresa como patrocinadora oficial do evento. Um momento que reforça o compromisso da marca em apoiar iniciativas que unem gastronomia, arquitetura e relacionamento de alto nível.' },
+      { tipo: 'paragrafo', texto: 'Para além da competição, o espaço do D&D Decor Chef proporcionou networking e descontração entre arquitetos, lojistas e profissionais que fazem do polo um verdadeiro hub de tendências. Estar presente neste cenário é reafirmar o DNA da Construflama: tradição, excelência e proximidade com quem transforma espaços em experiências.' },
+      { tipo: 'paragrafo', texto: 'Com uma assinatura marcante e uma participação brilhante, a Construflama reforça sua posição de destaque no mercado e no universo do D&D, elevando mais uma vez o nível de seus relacionamentos e consolidando seu papel como parceira de eventos que inspiram.' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Relembre a abertura do D&D Decor Chef.', href: 'post.html?slug=construflama-no-dd-decor-chef' } },
+      { tipo: 'paragrafo', rotulo: 'Texto:', texto: 'Victor Hugo Cordeiro, consultor comercial Construflama' }
+    ]
+  },
+  {
+    slug: 'lareira-cone-casa-cosentino',
+    titulo: 'Lareira Cone é destaque na Casa Cosentino, por Romário Rodrigues, na CASACOR São Paulo 2025',
+    categoria: 'lareiras',
+    resumo: 'No living de pé-direito alto da Casa Cosentino, a Lareira Cone em Marrom Asteca virou o ponto de união de um projeto que defende que “o futuro precisa ser social”.',
+    data: '2025-09-15', exemplo: false,
+    imagem: 'img/blog/casa-cosentino-cone.webp',
+    textoAlternativo: 'Lareira Cone marrom suspensa por um tubo no centro de um living com paredes de pedra clara, sofá e poltrona mostarda, um grande painel colorido de paisagem, vasos com árvores e janela em arco.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Na edição 2025 da CASACOR São Paulo, a Casa Cosentino, assinada pelo arquiteto Romário Rodrigues, encantou o público com um ambiente amplo, de pé-direito alto, onde o design contemporâneo se une à natureza e à convivência.' },
+      { tipo: 'paragrafo', texto: 'Em local de destaque no living, a Lareira Cone, fornecida pela Construflama, chamou a atenção por sua imponência, elegância e força escultórica. Mais do que um elemento funcional, a peça se transformou em ponto de união do espaço, materializando o conceito central do projeto de que “o futuro precisa ser social”.' },
+      { tipo: 'paragrafo', texto: 'Com acabamento em Marrom Asteca, a lareira se destaca em meio à paleta suave do ambiente, contrastando de forma sofisticada com os tons terrosos dos sofás e poltronas que a cercam. Seu desenho cônico contribui para a fluidez visual do espaço, criando um eixo de acolhimento e contemplação.' },
+      { tipo: 'paragrafo', texto: 'A Casa Cosentino apresentou uma curadoria precisa de arte e design, integrando cozinha, living, biblioteca e bar em um único espaço de convívio e inspiração. Janelas com vista para a vegetação ao redor do parque reforçaram o diálogo entre interior e exterior, e a Lareira Cone atuou como elo sensorial entre o “estar” e o “apreciar”, uma verdadeira celebração do habitar contemporâneo.' },
+      { tipo: 'paragrafo', texto: 'Mais uma vez, a Construflama tem orgulho de participar de projetos que elevam o morar a uma experiência completa, unindo tecnologia, conforto e sofisticação com peças que aquecem ambientes e corações.' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Conheça a Cone e os outros modelos da linha Escultural.', href: 'post.html?slug=modelos-da-linha-escultural' } }
+    ]
+  },
+  {
+    slug: 'loft-alvora-paula-neder-ecoflama',
+    titulo: 'Loft Alvorá por Paula Neder: Lareira Ecoflama como ponto de encontro na CASACOR SP 2025',
+    categoria: 'lareiras',
+    resumo: 'Inspirado no alvorecer, o Loft Alvorá, de Paula Neder, encaixou a Lareira Ecoflama em um nicho de pedras rosadas como convite para socializar.',
+    data: '2025-09-08', exemplo: false,
+    imagem: 'img/blog/loft-alvora-ecoflama.webp', foco: '50% 55%',
+    textoAlternativo: 'Living com a Lareira Ecoflama embutida em um nicho de pedra rosada sob uma bancada de madeira clara, poltrona Bowl preta com almofada vermelha, vasos de plantas, tapete listrado colorido e janelas abertas para árvores.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Na edição 2025 da CASACOR São Paulo, a arquiteta Paula Neder nos convida a entrar no universo do Loft Alvorá, um espaço que celebra o renascer diário com delicadeza, arte e alma. Pensado para uma mulher jovem, contemporânea e criativa, o loft traduz o frescor das manhãs em uma atmosfera de leveza e introspecção.' },
+      { tipo: 'paragrafo', texto: 'Com um conceito voltado a uma mulher conectada com a arte, com a moda e consigo mesma, o ambiente aposta em uma paleta de tons neutros contrastados com cores vivas e quentes, remetendo ao alvorecer como um instante sublime que inspira novos começos.' },
+      { tipo: 'paragrafo', texto: 'A Lareira Ecoflama contribui para essa atmosfera de acolhimento e introspecção com seu design elegante e minimalista, integrando-se perfeitamente ao nicho em pedras rosadas que emoldura o living. Mais do que uma peça funcional, ela se torna parte da narrativa visual e afetiva do espaço, um convite para socializar com quem importa e viver momentos com presença e autenticidade.' },
+      { tipo: 'paragrafo', texto: 'Com obras de arte cuidadosamente escolhidas e mobiliário assinado por grandes nomes do design, o Loft Alvorá propõe que habitar é também criar, e que a verdadeira inspiração vem tanto do que nos cerca quanto da conexão com nosso interior.' },
+      { tipo: 'paragrafo', texto: 'A Construflama se orgulha de fazer parte deste projeto que valoriza o bem-estar, o design e a sustentabilidade com soluções como a Lareira Ecoflama, pensada para transformar espaços em experiências.', link: { texto: 'Veja também a Ecoflama Framo na CASACOR Minas.', href: 'post.html?slug=lareira-ecoflama-framo-casacor-minas-2025' } },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Ambiente:', texto: 'Paula Neder' },
+        { rotulo: 'Foto:', texto: 'Max Fahrer' }
+      ] }
+    ]
+  },
+  {
+    slug: 'parrilla-ou-churrasqueira',
+    titulo: 'Parrilla ou churrasqueira: qual é a ideal para o seu churrasco?',
+    categoria: 'parrillas',
+    resumo: 'Firebox lateral e volante na parrilla, praticidade e braseiro profundo na churrasqueira: entenda as diferenças e escolha a que combina com você.',
+    data: '2025-08-29', exemplo: false,
+    imagem: 'img/blog/parrilla-ou-churrasqueira.webp',
+    textoAlternativo: 'Parrilla Construflama de inox sobre carrinho com rodas, com volante, grelha e firebox lateral com o logotipo CF, diante de um painel de grade preta, ao ar livre sob uma árvore.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Se você ama reunir amigos e família em torno do fogo, sabe que o churrasco é muito mais do que só comida: é experiência, sabor e celebração. E, quando o assunto é preparar a carne perfeita, a dúvida aparece: parrilla ou churrasqueira? Qual delas é a melhor escolha para você?' },
+      { tipo: 'paragrafo', texto: 'A resposta não é única: ela depende do seu estilo, das suas preferências e até do tipo de experiência que você quer proporcionar. Vamos te ajudar a entender as diferenças e escolher a opção ideal para criar momentos inesquecíveis.' },
+      { tipo: 'subtitulo', texto: 'Parrilla: sabor argentino com controle absoluto' },
+      { tipo: 'paragrafo', texto: 'Inspirada no tradicional churrasco argentino, a parrilla Construflama é sinônimo de controle e autenticidade. O grande diferencial está no firebox lateral, onde o carvão ou a lenha são queimados separadamente. Conforme o material vai queimando, as brasas caem e são distribuídas sob a grelha com a ajuda do rastelo, permitindo um assado mais uniforme.' },
+      { tipo: 'paragrafo', texto: 'Outro ponto alto é o sistema de elevação da grelha por volante, que garante um manuseio leve e preciso. Assim, você ajusta a distância da carne até a brasa com facilidade, alcançando o ponto perfeito com o sabor que só o fogo controlado pode oferecer.' },
+      { tipo: 'paragrafo', texto: 'Com visual imponente e funcionamento profissional, a parrilla é ideal para quem busca um ritual de preparo mais elaborado e uma experiência completa.', link: { texto: 'Conheça as parrillas Construflama.', href: 'colecao.html?c=parrillas' } },
+      { tipo: 'subtitulo', texto: 'Churrasqueira: tradição e praticidade brasileira' },
+      { tipo: 'paragrafo', texto: 'A clássica churrasqueira brasileira é presença certa em lares por todo o país. Com uma estrutura mais compacta e caixa de braseiro profunda, ela é prática e funcional para o dia a dia.' },
+      { tipo: 'paragrafo', texto: 'Nas churrasqueiras Construflama, você conta com controle de altura da grelha, seja por manivela, na linha Soft, ou por volante, nas linhas Premium e High-end. Isso permite regular o calor conforme a necessidade e assar com qualidade, mesmo em espaços menores.' },
+      { tipo: 'paragrafo', texto: 'Ela é a escolha perfeita para quem busca a tradição do churrasco com praticidade, sem abrir mão de um ótimo desempenho.', link: { texto: 'Compare as linhas Soft, Premium e High-end.', href: 'post.html?slug=descubra-sua-churrasqueira-dos-sonhos' } },
+      { tipo: 'subtitulo', texto: 'E aí, qual escolher?' },
+      { tipo: 'paragrafo', texto: 'Não existe certo ou errado: existe o que melhor combina com você. Quer um preparo mais técnico e controlado? Vá de parrilla. Prefere algo mais direto, que funcione bem em qualquer ocasião? A churrasqueira tradicional pode ser sua melhor companheira.' },
+      { tipo: 'paragrafo', texto: 'Se ainda estiver na dúvida,', link: { texto: 'fale com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: '. Vamos entender seu perfil e suas preferências e ajudar você a escolher o equipamento ideal para transformar sua área gourmet em um verdadeiro templo do sabor.' }
+    ]
+  },
+  {
+    slug: 'construflama-no-dd-decor-chef',
+    titulo: 'Construflama no D&D Decor Chef',
+    categoria: 'projetos',
+    resumo: 'A Construflama marca presença na abertura do D&D Decor Chef e celebra a arte do fogo no design e na gastronomia; a dupla vencedora leva uma Lareira Canoa.',
+    data: '2025-08-25', exemplo: false,
+    imagem: 'img/blog/dd-decor-chef-abertura.webp',
+    textoAlternativo: 'Vista do alto do D&D Decor Chef: duplas cozinhando em ilhas brancas espalhadas por um piso de madeira escura, com o logotipo do evento no tapete central, um piano de cauda à esquerda e a mesa dos jurados ao fundo.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'A Construflama marca presença no D&D Decor Chef e celebra a arte do fogo no design e na gastronomia.' },
+      { tipo: 'paragrafo', texto: 'O D&D Shopping deu início ontem a mais uma edição do D&D Decor Chef, evento que reúne arquitetos, designers, paisagistas e lojistas em uma verdadeira experiência de alta gastronomia, criatividade e integração. A abertura foi conduzida com maestria pelo chef Jeferson Finger, do renomado restaurante Barbacoa, sob a direção de Ângelo Derenze, diretor-geral do D&D.' },
+      { tipo: 'paragrafo', texto: 'A Construflama, referência em lareiras, churrasqueiras e soluções de alto padrão, esteve presente desde o primeiro momento, reafirmando seu compromisso em apoiar iniciativas que unem design, sofisticação e experiências únicas. A direção de marketing, ao lado do nosso CEO, Marceu Perroni, e do diretor Patrick Cassab, acompanhou de perto a abertura e reforçou a importância deste encontro, que movimenta todo o setor.' },
+      { tipo: 'paragrafo', texto: 'Como símbolo de parceria e valorização da arte do fogo, a Construflama premiará a dupla vencedora com a Lareira Canoa, peça de design exclusivo que traduz aconchego, inovação e elegância.' },
+      { tipo: 'paragrafo', texto: 'Na estreia, duas duplas foram consagradas vencedoras, em uma disputa marcada por criatividade, sabor e interação. Ao longo de sete dias de evento, o D&D Decor Chef seguirá promovendo experiências gastronômicas inesquecíveis, sempre com a participação de jurados convidados e a presença de um público altamente qualificado.' },
+      { tipo: 'paragrafo', texto: 'Mais do que uma competição, o projeto abre espaço para o networking e o fortalecimento das relações entre profissionais da arquitetura, do design e da decoração. Para a Construflama, estar inserida nesse movimento é essencial para manter viva sua conexão com o polo de decoração mais importante do Brasil: o D&D Shopping.' },
+      // TODO: link do reel do Instagram que aparece no post original (a faca Construflama)
+      { tipo: 'paragrafo', texto: 'Veja os bastidores do evento no nosso', link: { texto: 'Instagram', href: 'https://www.instagram.com/construflama' }, depois: '.' },
+      { tipo: 'paragrafo', rotulo: 'Texto:', texto: 'Victor Hugo Cordeiro, consultor comercial Construflama' }
+    ]
+  },
+  {
+    slug: 'decoracao-de-inverno-com-lareira',
+    titulo: 'Decoração de inverno com lareira: ideias aconchegantes e elegantes para o seu lar',
+    categoria: 'lareiras',
+    resumo: 'Mantas, velas, tapetes, luz quente e móveis confortáveis: cinco dicas para transformar o espaço ao redor da lareira em um refúgio de inverno.',
+    data: '2025-07-21', exemplo: false,
+    imagem: 'img/blog/decoracao-inverno-lareira.webp', foco: '50% 55%',
+    textoAlternativo: 'Living amplo com lareira embutida em um móvel de pedra escura ao fundo, sofá longo de veludo com almofadas, poltronas brancas, mesas de centro de vidro e tapete geométrico em tons de rosa e cinza.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Quando o frio chega, o lar pede mais calor, conforto e beleza. E não há peça que represente melhor essa estação do que a lareira, símbolo de acolhimento e momentos especiais. Mas, para que ela seja também o ponto alto da sua decoração, é preciso pensar nos detalhes que a rodeiam.' },
+      { tipo: 'paragrafo', texto: 'Neste artigo, a Construflama, especialista em lareiras a gás, ecológicas e a lenha, traz dicas valiosas para transformar seu espaço em um verdadeiro refúgio de inverno, com elegância e funcionalidade.' },
+      { tipo: 'subtitulo', texto: '1. Mantas e almofadas: calor e textura' },
+      { tipo: 'paragrafo', texto: 'Combine mantas de tricô, lã ou fleece com almofadas em tecidos como veludo ou linho. Escolha uma paleta de cores que valorize o clima invernal: tons terrosos, cinza, vinho, mostarda ou verde-escuro. Disponha as peças de forma casual sobre sofás e poltronas próximos à lareira, criando um convite ao descanso.' },
+      { tipo: 'subtitulo', texto: '2. Velas e aromas: clima intimista' },
+      { tipo: 'paragrafo', texto: 'As velas são ótimas aliadas para compor uma atmosfera acolhedora. Prefira modelos em potes de vidro, cerâmica ou latas metálicas, e escolha aromas como madeira, baunilha, canela e pinho. Agrupe diferentes tamanhos em bandejas ou lanternas decorativas ao redor da lareira (longe do calor excessivo, claro).' },
+      { tipo: 'subtitulo', texto: '3. Tapetes macios: aconchego ao alcance dos pés' },
+      { tipo: 'paragrafo', texto: 'Colocar um tapete felpudo ou de lã próximo à lareira é essencial para criar um espaço mais quente e confortável. Opte por modelos em cores neutras, como bege, cinza ou marrom, que combinam com a maioria dos estilos e ainda destacam o brilho do fogo.' },
+      { tipo: 'subtitulo', texto: '4. Iluminação quente: complemento perfeito' },
+      { tipo: 'paragrafo', texto: 'Aposte em iluminação indireta e quente, com luminárias de piso, abajures e até luzes de corda em locais estratégicos. A luz amarela suaviza o ambiente e valoriza o efeito das chamas, criando uma experiência sensorial única.' },
+      { tipo: 'subtitulo', texto: '5. Móveis aconchegantes e funcionais' },
+      { tipo: 'paragrafo', texto: 'Cadeiras de balanço, poltronas estofadas ou até um banco rústico de madeira perto da lareira são perfeitos para momentos de leitura, bate-papo ou um bom vinho. Invista em móveis que valorizem o estilo do seu ambiente, do contemporâneo ao rústico.' },
+      { tipo: 'subtitulo', texto: 'A lareira ideal para cada estilo' },
+      { tipo: 'paragrafo', texto: 'Mais do que um elemento de aquecimento, a lareira é o centro emocional do inverno. Por isso, a Construflama oferece soluções sob medida para cada necessidade:' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Lareiras a gás:', texto: 'praticidade, com controle total da chama e acendimento automático.' },
+        { rotulo: 'Lareiras ecológicas:', texto: 'sem fumaça e com instalação simplificada, perfeitas para apartamentos e espaços modernos.' },
+        { rotulo: 'Lareiras a lenha:', texto: 'charme tradicional, ideal para quem valoriza o som e o aroma do fogo natural.' }
+      ] },
+      { tipo: 'paragrafo', texto: 'Com mais de 40 anos de experiência, a Construflama fabrica lareiras com qualidade, design e segurança, para que seus momentos de inverno sejam ainda mais especiais.', link: { texto: 'Conheça a coleção de lareiras.', href: 'colecao.html?c=lareiras' } },
+      { tipo: 'paragrafo', texto: 'Gostou das dicas? Acompanhe nosso blog para mais inspirações e entre em contato para planejar a lareira perfeita para o seu projeto: ligue para (11) 5171-6070 ou escreva para', link: { texto: 'construflama@construflama.com.br', href: 'mailto:construflama@construflama.com.br' }, depois: '.' }
+    ]
+  },
+  {
     slug: 'lareira-gota-casacor-brasilia-2025',
     titulo: 'A Lareira Gota: um toque de sofisticação e aconchego em diversos ambientes',
     categoria: 'lareiras',
