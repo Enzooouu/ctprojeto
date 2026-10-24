@@ -58,6 +58,33 @@ function conteudoExemplo(subtitulos) {
 
 var POSTS = [
   {
+    slug: 'como-escolher-a-lareira-ideal',
+    titulo: 'Como escolher a lareira ideal para sua casa',
+    categoria: 'lareiras',
+    resumo: 'Inovação com liberdade criativa: como o Trio Ecolare foi lançado na CASACOR São Paulo 2026 e conquistou paisagistas e o público.',
+    data: '2026-08-21', exemplo: false,
+    // ATENÇÃO: o site oficial publica neste título o mesmo texto do artigo
+    // do Trio Ecolare (copiado igual, a pedido). TODO: trocar pelo texto
+    // próprio quando a Construflama corrigir.
+    imagem: 'img/blog/lareira-ideal-igor-zanon.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Quarto com paredes revestidas de madeira e a lareira suspensa branca, de tubo fino, entre a cama e uma poltrona clara, diante de uma janela com persiana. Ambiente de Igor Zanon, foto de Gustavo Xavier.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Os projetos de alto padrão têm necessidade de inovação constante, com clientes exigentes que buscam diferenciação e profissionais que buscam perfeição em cada escolha de seus projetos, levando em conta quem habita, suas rotinas e, acima de tudo, suas personalidades e identidades.' },
+      { tipo: 'paragrafo', texto: 'Atendendo essa demanda, foi lançado na CASACOR São Paulo 2026 um conceito que foi testado através da liberdade criativa dos participantes da mostra. A estética do Trio Ecolare, com vidros temperados e visual que lembra uma lanterna de arandela, foi adotada sobretudo por profissionais que projetaram ambientes externos, como os ambientes assinados por Bia Abreu, Alexandre Galhego e pelas profissionais do Aria Studio, além da versão customizada que atendeu a amplitude do jardim das paisagistas Ana Lui e Karen Marini.' },
+      { tipo: 'paragrafo', texto: 'A estratégia de lançamento não foi feita através da imposição da situação de uso do produto, e sim disponibilizando casualmente o design ainda em fase de protótipo para aqueles que buscavam expor itens sem necessidade de instalação em seus projetos da mostra, e estudando desde as reações em reunião com esses profissionais até as reações do público observando cada uma das posições escolhidas para o Trio Ecolare.' },
+      { tipo: 'paragrafo', texto: 'A Construflama observou, no momento do desenvolvimento, a necessidade do mercado por peças versáteis que possam ser utilizadas tanto como uma composição em trio focada na harmonia das medidas quanto de forma individual, através da escolha de uma das peças que possua o tamanho ideal para atender cada espaço.' },
+      { tipo: 'paragrafo', texto: 'A predileção dos paisagistas por esse modelo e a reação do público a esse produto são a prova de que o fogo atrai olhares pela estética e reúne pelo conforto, o que atende em benefícios estéticos e funcionais as propostas dos projetos com tom de refúgio, criados para descompressão através do encantamento.' },
+      { tipo: 'subtitulo', texto: 'Conheça os conceitos criativos que receberam o Trio Ecolare' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Jardim Onde a Mente Pousa:', texto: '', link: { texto: 'assistir no Instagram', href: 'https://www.instagram.com/reel/DbY_J0Ft07v/' } },
+        { rotulo: 'Jardim Respiro:', texto: '', link: { texto: 'assistir no Instagram', href: 'https://www.instagram.com/reel/Da3ihiABuTZ/' } },
+        { rotulo: 'Clareira na Mata:', texto: '', link: { texto: 'assistir no Instagram', href: 'https://www.instagram.com/reel/DcRrcB6BhAm/' } },
+        { rotulo: 'Ruído Bar:', texto: '', link: { texto: 'assistir no Instagram', href: 'https://www.instagram.com/reel/DayX49GtSk6/' } }
+      ] },
+      { tipo: 'paragrafo', texto: 'Siga a Construflama e acompanhe o mercado na visão da arte e do prazer do fogo!' }
+    ]
+  },
+  {
     slug: 'espaco-do-especificador',
     titulo: 'Espaço do Especificador Construflama: mais facilidade para transformar projetos em realidade',
     categoria: 'projetos',
