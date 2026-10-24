@@ -42,6 +42,101 @@ var BLOG_CATEGORIAS = [
 
 var POSTS = [
   {
+    slug: 'lareira-gota-casacor-brasilia-2025',
+    titulo: 'A Lareira Gota: um toque de sofisticação e aconchego em diversos ambientes',
+    categoria: 'lareiras',
+    resumo: 'No “Entre Linhas Office”, de Lucas Machado na CASACOR Brasília 2025, a Lareira Gota virou o coração de um refúgio para trabalhar e refletir.',
+    data: '2025-10-21', exemplo: false,
+    imagem: 'img/blog/lareira-gota-entre-linhas-office.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Lareira Gota preta, suspensa por um tubo, com lenha empilhada embaixo, ao lado de um grande pufe de camurça caramelo, luminária de piso e pilhas de livros antigos, diante de cortinas claras. Ambiente de Lucas Machado, foto de Clausem Bonifacio.',
+    conteudo: [
+      { tipo: 'subtitulo', texto: 'O calor da sofisticação' },
+      { tipo: 'paragrafo', texto: 'Na busca pelo lar perfeito, onde o conforto e a elegância andam lado a lado, a Lareira Gota se destaca como uma peça única e sofisticada. No ambiente “Entre Linhas Office”, projetado por Lucas Machado, essa lareira se tornou o coração do espaço, trazendo aconchego e acolhimento para um refúgio sensorial dedicado ao trabalho, mas também à reflexão.' },
+      { tipo: 'paragrafo', texto: 'Com tons terrosos, mármore verde e madeira escura, o ambiente criado por Lucas Machado é um verdadeiro oásis de sofisticação: as formas curvas do mobiliário promovem conforto e estética, enquanto a iluminação valoriza texturas e compõe atmosferas dinâmicas. Nesse contexto, a Lareira Gota se encaixa perfeitamente no local onde foi instalada, ao lado de uma janela ampla e de uma poltrona robusta e macia, adicionando um toque de calor e personalidade a esse espaço especial do ambiente.' },
+      { tipo: 'subtitulo', texto: 'Um amor à primeira vista' },
+      { tipo: 'paragrafo', texto: 'A Lareira Gota da Construflama foi um “amor à primeira vista”, disse Lucas Machado ao falar sobre o projeto. O arquiteto, que sempre sonhou em trabalhar com lareiras, escolheu com esmero a peça para integrar o “Entre Linhas Office” da CASACOR Brasília 2025. A inspiração surgiu durante a pandemia, quando os conceitos de casa e trabalho foram reinterpretados. O resultado é um espaço de introspecção e conforto que convida ao relaxamento e ao trabalho.' },
+      { tipo: 'subtitulo', texto: 'A Lareira Gota: uma peça única' },
+      { tipo: 'paragrafo', texto: 'Com seu design inovador e sofisticado, a Lareira Gota é mais do que apenas uma peça de aquecimento: é uma obra de arte que transforma ambientes. Sua forma, que contrasta curvas com uma base retilínea e elegante, cria um ponto focal no espaço, enquanto sua funcionalidade proporciona calor e conforto.' },
+      { tipo: 'paragrafo', texto: 'A Lareira Gota é uma escolha perfeita para quem busca adicionar um toque de sofisticação e aconchego ao seu ambiente. Com seu design único e funcionalidade, essa lareira é capaz de transformar qualquer espaço em um refúgio sensorial. Se você está procurando uma peça que combine design, acabamento primoroso e conforto, a Lareira Gota é a escolha certa para você.' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Conheça todos os modelos da linha Escultural.', href: 'post.html?slug=modelos-da-linha-escultural' } }
+    ]
+  },
+  {
+    slug: 'lareira-tarus-casacor-brasilia-2025',
+    titulo: 'Lareira Tarus: o coração de um ambiente sereno e sofisticado',
+    categoria: 'lareiras',
+    resumo: 'Na CASACOR Brasília 2025, a arquiteta Giovanna Leal fez da Lareira Tarus, na cor Marrom Asteca, o ponto focal de um refúgio urbano de 76 m².',
+    data: '2025-10-14', exemplo: false,
+    imagem: 'img/blog/lareira-tarus-giovanna-leal.webp',
+    textoAlternativo: 'Lareira Tarus marrom suspensa por um tubo sobre um banco curvo de pedra clara com lenha embaixo, em sala revestida de madeira com escultura iluminada na parede e poltrona de madeira com almofadas.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Na edição de 2025 da CASACOR Brasília, a arquiteta Giovanna Leal assinou um ambiente de 76 m² que convida ao silêncio, ao conforto e à introspecção. Com uma paleta de tons suaves, texturas naturais e formas orgânicas, o espaço é um verdadeiro refúgio urbano. No centro desse cenário acolhedor e elegante está a Lareira Tarus, da Construflama, peça escolhida para aquecer não apenas o espaço, mas toda a experiência sensorial proposta no projeto.' },
+      { tipo: 'subtitulo', texto: 'Design, calor e identidade brasileira' },
+      { tipo: 'paragrafo', texto: 'A Lareira Tarus, na sofisticada cor Marrom Asteca, foi integrada como um ponto focal do ambiente. Mais que uma fonte de calor, ela se destaca como uma escultura funcional, símbolo de aconchego, sofisticação e brasilidade. Sua presença reforça o conceito de um lar que valoriza o design autoral, o bem-estar e a conexão com elementos naturais.' },
+      { tipo: 'paragrafo', texto: 'Projetado com atenção a cada detalhe, o ambiente de Giovanna Leal mescla mobiliário nacional, iluminação suave e materiais orgânicos para criar uma atmosfera de calma e contemplação. E a Tarus desempenha um papel essencial nessa composição: é o coração pulsante que aquece corpo e alma.' },
+      { tipo: 'subtitulo', texto: 'A escolha dos grandes projetos' },
+      { tipo: 'paragrafo', texto: 'Presente em residências de alto padrão e em mostras de arquitetura por todo o país, a Lareira Tarus é um dos destaques do portfólio da Construflama. Na CASACOR Brasília 2025, ela reafirma seu status como peça-chave em projetos que valorizam estética, funcionalidade e inovação.', link: { texto: 'Veja os outros modelos da linha Escultural.', href: 'post.html?slug=modelos-da-linha-escultural' } },
+      { tipo: 'subtitulo', texto: 'Sobre a Construflama' },
+      { tipo: 'paragrafo', texto: 'Com mais de 40 anos de tradição, a Construflama é referência nacional na fabricação de lareiras, churrasqueiras e soluções sob medida para ambientes internos e externos. Unimos tecnologia, design e qualidade para oferecer produtos que transformam espaços e elevam experiências. A Lareira Tarus é um exemplo dessa trajetória: um ícone do calor que une arte e conforto.' },
+      { tipo: 'subtitulo', texto: 'Quer levar esse conceito para sua casa ou projeto?' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Fale com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: 'e descubra como levar a arte e o prazer do fogo com sofisticação e estilo. Atendimento personalizado para arquitetos, decoradores e clientes finais.' },
+      { tipo: 'paragrafo', rotulo: 'Texto:', texto: 'Victor Hugo Cordeiro, consultor comercial Construflama' }
+    ]
+  },
+  {
+    slug: 'descubra-sua-churrasqueira-dos-sonhos',
+    titulo: 'Descubra qual é a sua churrasqueira dos sonhos!',
+    categoria: 'churrasqueiras',
+    resumo: 'High-end, Premium ou Soft: compare em poucos minutos as três linhas de churrasqueiras Construflama, todas em aço inox 304, a gás ou a carvão.',
+    data: '2025-10-06', exemplo: false,
+    imagem: 'img/blog/churrasqueira-high-end.webp',
+    textoAlternativo: 'Churrasqueira High-end Construflama em aço inox, vista de frente: volante com o logotipo CF para erguer as grelhas por correntes, quatro espetos e duas grelhas sobre o braseiro, embutida em bancada clara com vaso de planta ao lado.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Que tal transformar sua área gourmet com a sua churrasqueira dos sonhos? Você prefere combustão a gás ou a carvão?', link: { texto: 'Conheça nossas linhas com as duas opções', href: 'colecao.html?c=churrasqueiras' }, depois: 'em menos de 5 minutos e fale com nossos consultores!' },
+      { tipo: 'subtitulo', texto: 'Linha High-end: o ápice do churrasco' },
+      { tipo: 'paragrafo', texto: 'Quando o assunto é churrasco de alto nível, a Linha High-end é o produto mais sofisticado da Construflama: uma verdadeira “Ferrari” entre as churrasqueiras. Projetada para oferecer o máximo em robustez, acabamento e tecnologia, com elegância em cada detalhe, essa linha reflete exclusividade e performance para os clientes mais exigentes.' },
+      { tipo: 'paragrafo', texto: 'Produzida inteiramente em aço inox 304, com espessuras que chegam a 9 mm, a Linha High-end transforma o churrasco em uma experiência gourmet única. As características que podem levar seu churrasco ao próximo nível são:' },
+      { tipo: 'lista', itens: [
+        'Varal defumador integrado.',
+        'Grelha móvel e área de descanso.',
+        'Volante para elevação da grelha por correntes, com trava contínua para chegar ao ponto preciso de cada corte de carne ou alimento.',
+        'Espetos maciços em chapa de 3 mm, fabricados com aço inox 304.',
+        'Estrutura tubular de alta densidade, com cortes a laser, acabamento de alta qualidade e durabilidade superior.',
+        'Corpo com acabamento sem emendas ou rebites.',
+        'Opção com tampa.',
+        'Combustão a gás ou a carvão disponível em todos os modelos.'
+      ] },
+      { tipo: 'paragrafo', texto: 'Indicada para projetos de altíssimo padrão ou para clientes que buscam o máximo em desempenho, design e sofisticação, essa linha eleva seu espaço a um novo patamar de excelência para receber amigos e família e celebrar momentos especiais com uma refeição digna de chefs.' },
+      { tipo: 'subtitulo', texto: 'Linha Premium: robustez e elegância' },
+      { tipo: 'imagem', imagem: 'img/blog/churrasqueira-premium.webp', textoAlternativo: 'Churrasqueira Premium Construflama em aço inox, com estrutura tubular, manivela lateral, grelha suspensa por correntes, cinco espetos e duas grelhas sobre o braseiro.', legenda: 'Linha Premium' },
+      { tipo: 'paragrafo', texto: 'Para quem busca uma churrasqueira confiável, resistente e com design sofisticado, a Linha Premium é a escolha certa. Produzida 100% em aço inox 304 com chapas de 5 mm, sua estrutura totalmente tubular e sem rebites aparentes garante durabilidade e beleza duradoura.' },
+      { tipo: 'paragrafo', texto: 'Perfeita para uso intenso e frequente, ela vem com grelhas elevatórias por corrente, que trazem segurança e mais conforto na operação. Seu acabamento impecável a torna ideal tanto para residências de alto padrão quanto para ambientes comerciais sofisticados. Entre seus recursos premium estão:' },
+      { tipo: 'lista', itens: [
+        'Manivela para elevação da grelha, com trava para ajustes precisos.',
+        'Estrutura com acabamento sem emendas ou rebites.',
+        'Espetos maciços em chapa de 3 mm, fabricados com aço inox 304.',
+        'Estrutura tubular cortada a laser, com acabamento de alta qualidade e durabilidade superior.',
+        'Opção com tampa.',
+        'Combustão a gás ou a carvão disponível em todos os modelos.'
+      ] },
+      { tipo: 'paragrafo', texto: 'Se você valoriza uma combinação de alta resistência e estética refinada, a Linha Premium atende às suas expectativas com a excelência que só a Construflama entrega.' },
+      { tipo: 'subtitulo', texto: 'Linha Soft: versátil e viável sem perder o padrão' },
+      { tipo: 'imagem', imagem: 'img/blog/churrasqueira-soft.webp', textoAlternativo: 'Churrasqueira Soft Construflama a gás em aço inox, com estrutura em chapa dobrada, manivela à direita, quatro espetos, duas grelhas e três botões de controle, embutida em bancada clara.', legenda: 'Linha Soft' },
+      { tipo: 'paragrafo', texto: 'Para quem busca qualidade, durabilidade e design, a Linha Soft da Construflama é uma excelente opção. Produzida em aço inox 304, ela oferece a resistência do melhor aço do mercado, com espetos mais leves para dar agilidade ao manusear o alimento.' },
+      { tipo: 'paragrafo', texto: 'Com versões e medidas padrão que facilitam a instalação e atendem a diferentes tamanhos de projeto, ela é ideal para quem deseja um produto de alta qualidade com investimento mais otimizado. Sua estrutura mais leve e a espessura de 2 mm fazem dela uma escolha prática e versátil, sem abrir mão do padrão de qualidade Construflama.' },
+      { tipo: 'lista', itens: [
+        'Manivela para elevação da grelha, com trava para ajustes precisos.',
+        'Estrutura em chapa dobrada.',
+        'Espetos mais leves, para mais agilidade no seu churrasco.',
+        'Opção com tampa.',
+        'Combustão a gás ou a carvão disponível em todos os modelos.'
+      ] },
+      { tipo: 'paragrafo', texto: 'A Linha Soft é perfeita para quem busca equilíbrio entre desempenho, investimento e estilo, garantindo sempre um bom churrasco com o design Construflama.' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Fale com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: 'e descubra qual linha combina com o seu projeto.' },
+      { tipo: 'paragrafo', rotulo: 'Texto:', texto: 'Victor Hugo Cordeiro, consultor comercial Construflama' }
+    ]
+  },
+  {
     slug: 'marinada-para-peixes',
     titulo: 'Marinada para peixes: a arte de transformar seu churrasco',
     categoria: 'dicas',
