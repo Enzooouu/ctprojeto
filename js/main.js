@@ -1192,7 +1192,7 @@ var DEPOIMENTOS = [
   // Capa: foto ou bloco de gradiente da categoria com ilustração
   function capaPost(p, classe, alt) {
     var c = categoriaBlog(p.categoria);
-    var capa = el('div', 'blog-capa material--' + c.visual + (classe ? ' ' + classe : '') + (p.capaInteira ? ' blog-capa--inteira' : ''));
+    var capa = el('div', 'blog-capa material--' + c.visual + (classe ? ' ' + classe : '') + (p.capaInteira ? ' blog-capa--inteira' + (p.capaInteira === 'escuro' ? ' blog-capa--escura' : '') : ''));
     if (p.imagem) {
       var img = el('img');
       img.src = p.imagem;
@@ -1390,9 +1390,9 @@ var DEPOIMENTOS = [
         no.appendChild(el('strong', 'post-rotulo', b.rotulo));
         no.appendChild(document.createTextNode(' '));
       }
-      no.appendChild(document.createTextNode(b.texto));
+      if (b.texto) no.appendChild(document.createTextNode(b.texto));
       if (b.link) {
-        no.appendChild(document.createTextNode(' '));
+        if (b.texto) no.appendChild(document.createTextNode(' '));
         var a = el('a', 'text-link post-link', b.link.texto);
         a.href = b.link.href;
         if (/^https?:/.test(b.link.href)) { a.target = '_blank'; a.rel = 'noopener'; }
@@ -1449,6 +1449,7 @@ var DEPOIMENTOS = [
     var desktopIndice = window.matchMedia('(min-width: 1024px)');
     if (!secoes.length) {
       caixaIndice.hidden = true;
+      corpo.classList.add('post-corpo--sem-indice');   // o texto ocupa a coluna do índice
     } else {
       var ajustarIndice = function () { detalhes.open = desktopIndice.matches; };
       ajustarIndice();

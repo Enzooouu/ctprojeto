@@ -1922,6 +1922,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
 }
 .blog-capa img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .blog-capa--inteira { background: #fff; }
+.blog-capa--escura { background: var(--cinza-escuro-profundo); }
 .blog-capa--inteira img { object-fit: contain; }
 .blog-capa__arte {
   position: absolute;
@@ -2159,8 +2160,14 @@ a.brand:hover .brand__mark { color: var(--bege); }
   .post-indice__caixa .post-indice__titulo::after,
   .post-indice__caixa[open] .post-indice__titulo::after { content: none; }
 }
+@media (min-width: 1024px) {
+  .post-corpo--sem-indice { grid-template-columns: minmax(0, 1fr); }
+  .post-corpo--sem-indice .post-lateral { grid-column: 1; }
+}
 @media (min-width: 1280px) {
   .post-corpo { grid-template-columns: 13rem minmax(0, 1fr) 3rem; }
+  .post-corpo--sem-indice { grid-template-columns: minmax(0, 1fr) 3rem; }
+  .post-corpo--sem-indice .post-lateral { grid-column: 2; }
   .post-lateral { grid-column: 3; grid-row: 1; position: sticky; top: calc(var(--header-h) + 2rem); padding-top: 0; border-top: 0; }
   .post-compartilhar { display: grid; justify-items: center; gap: var(--sp-2); }
   .post-compartilhar__titulo { width: auto; font-family: var(--fonte-texto); font-size: .72rem; font-weight: 600; text-align: center; color: var(--cinza); }

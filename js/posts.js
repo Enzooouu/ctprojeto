@@ -13,7 +13,8 @@
    - titulo, resumo: textos do card e do topo do artigo
    - categoria: slug de BLOG_CATEGORIAS
    - data: 'AAAA-MM-DD' (data de publicação)
-   - capaInteira: true mostra a capa inteira, sem recortar (artes com texto)
+   - capaInteira: true mostra a capa inteira, sem recortar (artes com texto),
+     com fundo branco; 'escuro' faz o mesmo com fundo carvão (fotos)
    - imagem / textoAlternativo: capa do artigo. Vazio = bloco de gradiente da
      categoria com ilustração (TODO: trocar pelas fotos reais)
    - exemplo: true mostra a etiqueta "Exemplo" (use false nos artigos reais)
@@ -56,6 +57,85 @@ function conteudoExemplo(subtitulos) {
 }
 
 var POSTS = [
+  {
+    slug: 'espaco-do-especificador',
+    titulo: 'Espaço do Especificador Construflama: mais facilidade para transformar projetos em realidade',
+    categoria: 'projetos',
+    resumo: 'Blocos CAD e modelos 3D prontos para inserir os produtos no projeto: veja como a Sala Clareira usou a lareira Pipe desde o primeiro desenho.',
+    data: '2026-09-09', exemplo: false,
+    // Foto com créditos e nome do produto escritos na imagem: mostra inteira
+    imagem: 'img/blog/sala-clareira-pipe.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Projeto da Sala Clareira, da SALA02 Arquitetura: sala com paredes e teto de madeira escura, sofá curvo verde e a lareira Pipe, cilíndrica e clara, com a chama acesa.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Projetar é transformar ideias em experiências. Para arquitetos e designers de interiores, contar com ferramentas que aproximam a concepção do projeto da realidade faz toda a diferença no desenvolvimento de cada ambiente.' },
+      { tipo: 'paragrafo', texto: 'Pensando em facilitar esse processo, a Construflama criou o Espaço do Especificador, uma área exclusiva dentro do site da marca que reúne recursos desenvolvidos especialmente para profissionais que desejam inserir os produtos Construflama em seus projetos de forma prática, precisa e visualmente integrada.' },
+      { tipo: 'subtitulo', texto: 'Uma ferramenta para facilitar o processo de especificação' },
+      { tipo: 'paragrafo', texto: 'O Espaço do Especificador funciona como um facilitador para arquitetos, designers de interiores e demais profissionais que trabalham com projetos.' },
+      { tipo: 'paragrafo', texto: 'Nele, é possível encontrar blocos em CAD dos produtos Construflama, além de arquivos 3D prontos para serem aplicados aos projetos. Dessa forma, o profissional consegue visualizar com maior precisão como cada produto se comportará no ambiente, considerando proporções, posicionamento e composição com os demais elementos.' },
+      { tipo: 'paragrafo', texto: 'Mais do que disponibilizar arquivos, a proposta é tornar a jornada de especificação mais simples: o profissional pode escolher o produto, inseri-lo diretamente em seu projeto e avançar no desenvolvimento do ambiente com mais agilidade e segurança.' },
+      { tipo: 'subtitulo', texto: 'Da ideia à visualização do ambiente' },
+      { tipo: 'paragrafo', texto: 'Quando um produto é pensado desde as primeiras etapas do projeto, ele deixa de ser apenas um elemento funcional e passa a fazer parte da experiência proposta para o espaço.' },
+      { tipo: 'paragrafo', texto: 'Foi o que aconteceu na Sala Clareira, projeto assinado por Vanessa Martins, da Sala 2 Arquitetura. O ambiente foi concebido para desacelerar gradualmente a percepção de quem adentra o espaço, criando uma atmosfera de paz e acolhimento — uma sensação que remete ao refúgio e à tranquilidade proporcionados por uma floresta.' },
+      { tipo: 'paragrafo', texto: 'Nesse cenário, a lareira escultural Pipe, da Construflama, foi escolhida para compor o ambiente e assumir um papel de destaque na composição.' },
+      { tipo: 'subtitulo', texto: 'A lareira Pipe como elemento de destaque' },
+      { tipo: 'paragrafo', texto: 'Especialmente selecionada na cor Fendi para o projeto, a lareira Pipe cria um contraste elegante com os revestimentos mais escuros presentes no ambiente.' },
+      { tipo: 'paragrafo', texto: 'Sua forma versátil e escultural contribui para a identidade visual da sala e, ao mesmo tempo, reforça a proposta de criar uma experiência acolhedora e contemplativa para quem utiliza o espaço.' },
+      { tipo: 'paragrafo', texto: 'A escolha da lareira demonstra como um produto pode ser incorporado ao conceito arquitetônico de maneira natural, tornando-se parte da narrativa do ambiente e não apenas um complemento.' },
+      { tipo: 'subtitulo', texto: 'Mais realidade para o projeto' },
+      { tipo: 'paragrafo', texto: 'Durante o desenvolvimento da Sala Clareira, foram utilizados os blocos disponibilizados pela Construflama no Espaço do Especificador. A presença do produto em sua representação digital ajudou a aproximar a visualização do projeto daquilo que seria encontrado no ambiente final.' },
+      { tipo: 'paragrafo', texto: 'Ter acesso aos modelos e blocos prontos também facilita o trabalho do profissional, reduzindo etapas de desenvolvimento e permitindo que a atenção esteja voltada para aquilo que realmente importa: criar soluções que traduzam o conceito e a personalidade de cada projeto.' },
+      { tipo: 'paragrafo', texto: 'No caso da Sala Clareira, a inserção da Pipe desde o projeto contribuiu para visualizar sua presença junto aos revestimentos, materiais e demais elementos escolhidos para o espaço.' },
+      { tipo: 'subtitulo', texto: 'Construflama ao lado de quem especifica' },
+      { tipo: 'paragrafo', texto: 'O Espaço do Especificador nasce com um propósito claro: facilitar o trabalho dos profissionais e aproximar os produtos Construflama dos projetos desde a fase de criação.' },
+      { tipo: 'paragrafo', texto: 'Com blocos CAD e modelos 3D prontos para utilização, arquitetos e designers podem incorporar os produtos aos seus projetos com mais praticidade, precisão e liberdade criativa.' },
+      { tipo: 'paragrafo', texto: 'Assim como na Sala Clareira, em que a lareira Pipe ajudou a construir uma atmosfera de contraste, acolhimento e contemplação, a Construflama busca estar presente desde o desenho inicial até a realização de cada ambiente.' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Acesse o Espaço do Especificador', href: 'index.html#especificadores' }, depois: 'e encontre os arquivos necessários para levar os produtos da marca para os seus próximos projetos.' }
+    ]
+  },
+  {
+    slug: 'lareira-pilao-living-ritmo-vital',
+    titulo: 'Acolhendo ideias que acolhem pessoas: a Lareira Pilão do Living Ritmo Vital',
+    categoria: 'lareiras',
+    resumo: 'Como a Lareira Pilão nasceu em parceria com a MAAI Arquitetura para a CASACOR São Paulo 2026: o rústico de forma elegante, ao redor do fogo.',
+    data: '2026-09-02', exemplo: false,
+    // Foto com créditos e nome do produto escritos na imagem: mostra inteira
+    imagem: 'img/blog/living-ritmo-vital-pilao.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Living Ritmo Vital, da MAAI Arquitetura, na CASACOR São Paulo 2026: a Lareira Pilão, de metal escuro, sobre uma base com lenha, diante de paredes de palha trançada e uma porta de madeira. Foto: Bianca Versolato.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Atender demandas criativas nem sempre é um processo padronizado: muitas vezes a oportunidade se apresenta e a análise da viabilidade vem concomitantemente ao desenvolvimento. A flexibilidade se faz cada dia mais um diferencial, considerando uma sociedade com público clusterizado.' },
+      { tipo: 'paragrafo', texto: 'Durante a CASACOR SP 2026, muitas inovações foram propostas tanto por clientes de longa data quanto por novos profissionais parceiros que vieram a conhecer a marca por meio da mostra, com o primeiro contato trazendo conceitos diferenciados desenvolvidos em conjunto com esses novos parceiros, como por exemplo o projeto desenvolvido junto da equipe da MAAI Arquitetura.' },
+      { tipo: 'paragrafo', texto: 'A Lareira Pilão nos foi apresentada no primeiro contato com um conceito inicial focado totalmente na proposta do espaço e na representação de uma série de conceitos que inspiram o Living “Ritmo Vital”, culminando no formato que dá o nome “Pilão” ao produto, pela forma similar aos artefatos utilizados há gerações para moagem de alimentos, pigmentos e diversos outros preparos.' },
+      { tipo: 'paragrafo', texto: 'A proposta desse espaço é composta por referências de ancestralidade dos povos originários, por contrastes de itens rústicos com designs sofisticados, além das cores em tons terrosos. Observando essas inspirações, a lareira teve como foco trazer o rústico de uma forma elegante, manter a fluidez do design mesmo com linhas mais fortes, além de viabilizar a produção dentro do prazo dinâmico necessário para a participação da mostra.' },
+      { tipo: 'paragrafo', texto: 'O resultado foi a imponência como representação do que vem bruto da natureza, a precisão como detalhe que representa o alto padrão, além da funcionalidade que pode ser levada aos lares de nossos clientes, mimetizando a atmosfera de união entre pessoas para socializar que o Living “Ritmo Vital” tem como uma força motriz em sua proposta, que carrega toda a história do costume indígena de se reunir ao redor do fogo para compartilhar histórias.' },
+      // TODO: link do reels (no original vinha só o texto "Ritmo Vital")
+      { tipo: 'paragrafo', texto: 'Conheça o espaço em detalhe no reels gravado com a sócia e Diretora de Relacionamento do escritório, Mônica Pinto.' }
+    ]
+  },
+  {
+    slug: 'trio-ecolare-casacor-2026',
+    titulo: 'Trio Ecolare na CASACOR 2026: inovação comprovada com liberdade criativa',
+    categoria: 'projetos',
+    resumo: 'Lançado como protótipo na CASACOR São Paulo 2026, o Trio Ecolare conquistou paisagistas e o público em jardins e ambientes externos.',
+    data: '2026-08-26', exemplo: false,
+    // Foto com créditos e nome do produto escritos na imagem: mostra inteira
+    imagem: 'img/blog/trio-ecolare.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Três lanternas Trio Ecolare, de vidro com moldura escura e chama acesa, sobre um deck de madeira entre plantas, ao lado de um sofá com almofadas verdes. Ambiente de Alexandre Galhego, foto de Bianca Versolato.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Os projetos de alto padrão têm necessidade de inovação constante, com clientes exigentes que buscam diferenciação e profissionais que buscam perfeição em cada escolha de seus projetos, levando em conta quem habita, suas rotinas e, acima de tudo, suas personalidades e identidades.' },
+      { tipo: 'paragrafo', texto: 'Atendendo essa demanda, foi lançado na CASACOR São Paulo 2026 um conceito que foi testado através da liberdade criativa dos participantes da mostra. A estética do Trio Ecolare, com vidros temperados e visual que lembra uma lanterna de arandela, foi adotada sobretudo por profissionais que projetaram ambientes externos, como os ambientes assinados por Bia Abreu, Alexandre Galhego e pelas profissionais do Aria Studio, além da versão customizada que atendeu a amplitude do jardim das paisagistas Ana Lui e Karen Marini.' },
+      { tipo: 'paragrafo', texto: 'A estratégia de lançamento não foi feita através da imposição da situação de uso do produto, e sim disponibilizando casualmente o design ainda em fase de protótipo para aqueles que buscavam expor itens sem necessidade de instalação em seus projetos da mostra, e estudando desde as reações em reunião com esses profissionais até as reações do público observando cada uma das posições escolhidas para o Trio Ecolare.' },
+      { tipo: 'paragrafo', texto: 'A Construflama observou, no momento do desenvolvimento, a necessidade do mercado por peças versáteis que possam ser utilizadas tanto como uma composição em trio focada na harmonia das medidas quanto de forma individual, através da escolha de uma das peças que possua o tamanho ideal para atender cada espaço.' },
+      { tipo: 'paragrafo', texto: 'A predileção dos paisagistas por esse modelo e a reação do público a esse produto são a prova de que o fogo atrai olhares pela estética e reúne pelo conforto, o que atende em benefícios estéticos e funcionais as propostas dos projetos com tom de refúgio, criados para descompressão através do encantamento.' },
+      { tipo: 'subtitulo', texto: 'Conheça os conceitos criativos que receberam o Trio Ecolare' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Jardim Onde a Mente Pousa:', texto: '', link: { texto: 'assistir no Instagram', href: 'https://www.instagram.com/reel/DbY_J0Ft07v/' } },
+        { rotulo: 'Jardim Respiro:', texto: '', link: { texto: 'assistir no Instagram', href: 'https://www.instagram.com/reel/Da3ihiABuTZ/' } },
+        { rotulo: 'Clareira na Mata:', texto: '', link: { texto: 'assistir no Instagram', href: 'https://www.instagram.com/reel/DcRrcB6BhAm/' } },
+        { rotulo: 'Ruído Bar:', texto: '', link: { texto: 'assistir no Instagram', href: 'https://www.instagram.com/reel/DayX49GtSk6/' } }
+      ] },
+      { tipo: 'paragrafo', texto: 'Siga a Construflama e acompanhe o mercado na visão da arte e do prazer do fogo!' }
+    ]
+  },
   {
     slug: 'calculo-de-exaustao',
     titulo: 'O que é cálculo de exaustão e como isso te proporciona mais conforto no churrasco ou na cozinha?',
@@ -113,7 +193,7 @@ var POSTS = [
       { tipo: 'citacao', texto: 'A gente tem aqui um diálogo de peças metálicas, peças orgânicas que no contraste se conversam.', autor: 'Bernardo Barcellos, que trabalhou na Eco Casa da L.ara em 2026' },
       { tipo: 'subtitulo', texto: 'Lareira Pilão' },
       { tipo: 'paragrafo', texto: 'O mais recente lançamento da Construflama dentro dessa linha é uma peça robusta que faz a referência rústica se apresentar de forma elegante. A Pilão foi desenvolvida em conjunto com o escritório Brasiliense “MAAI Arquitetura”, que trouxe referências ancestrais do Centro-Oeste para a CASACOR São Paulo.' },
-      { tipo: 'citacao', texto: 'Esse formato mais rústico com essa tendência mais feita a mão.', autor: 'Mônica, sobre o Living “Ritmo Vital”, que traz o conceito de lareira como uma forma de manter a “Roda de Conversa” ao redor do fogo, um costume milenar visível nos costumes indígenas que inspiraram muitos elementos do espaço' },
+      { tipo: 'citacao', texto: 'Esse formato mais rústico com essa tendência mais feita a mão.', autor: 'Mônica Pinto, sócia e Diretora de Relacionamento da MAAI Arquitetura, sobre o Living “Ritmo Vital”, que traz o conceito de lareira como uma forma de manter a “Roda de Conversa” ao redor do fogo, um costume milenar visível nos costumes indígenas que inspiraram muitos elementos do espaço' },
       { tipo: 'subtitulo', texto: 'Qual o modelo que mais te encanta?' },
       { tipo: 'paragrafo', texto: 'O design dessas lareiras não só tem sua personalidade no conceito por si só, mas também a personalidade que assume em cada espaço, associada a cada projeto, cada proposta criativa e cada estilo de vida para os quais esses cenários são criados.' },
       { tipo: 'paragrafo', texto: 'Fale com nossos consultores e tenha a peça ideal para criar momentos ao redor do fogo com a sua proposta de espaço dos sonhos!' }
