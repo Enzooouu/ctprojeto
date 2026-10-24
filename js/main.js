@@ -1237,7 +1237,11 @@ var DEPOIMENTOS = [
   /* ---------- Lista ---------- */
   (function montarBlog() {
     if (!NA_BLOG || typeof POSTS === 'undefined') return;
+    // Computador (grade de 3 colunas): começa com 12 cards; celular e tablet, 6.
+    // "Carregar mais" acrescenta sempre 6.
     var POR_PAGINA = 6;
+    var gradeLarga = window.matchMedia('(min-width: 1024px)');
+    function inicial() { return gradeLarga.matches ? 12 : 6; }
     var secaoDestaque = document.querySelector('[data-blog-destaque]');
     var caixaDestaque = document.querySelector('[data-blog-destaque-caixa]');
     var filtros = document.querySelector('[data-blog-filtros]');
@@ -1250,7 +1254,7 @@ var DEPOIMENTOS = [
     var posts = postsPorData();
     var destaque = posts[0] || null;   // o artigo mais recente é sempre o destaque
 
-    var estado = { cat: 'todos', termo: '', limite: POR_PAGINA };
+    var estado = { cat: 'todos', termo: '', limite: inicial() };
     var pedida = new URLSearchParams(location.search).get('categoria');
     if (pedida && POSTS.some(function (p) { return p.categoria === pedida; })) estado.cat = pedida;
 
@@ -1285,7 +1289,7 @@ var DEPOIMENTOS = [
       b.setAttribute('data-cat', o.slug);
       b.addEventListener('click', function () {
         estado.cat = o.slug;
-        estado.limite = POR_PAGINA;
+        estado.limite = inicial();
         if (history.replaceState) {
           history.replaceState(null, '', o.slug === 'todos' ? location.pathname : '?categoria=' + o.slug);
         }
@@ -1324,7 +1328,7 @@ var DEPOIMENTOS = [
 
     busca.addEventListener('input', function () {
       estado.termo = busca.value;
-      estado.limite = POR_PAGINA;
+      estado.limite = inicial();
       render(true);
     });
 
@@ -1338,7 +1342,7 @@ var DEPOIMENTOS = [
     });
 
     document.querySelector('[data-blog-limpar]').addEventListener('click', function () {
-      estado = { cat: 'todos', termo: '', limite: POR_PAGINA };
+      estado = { cat: 'todos', termo: '', limite: inicial() };
       busca.value = '';
       if (history.replaceState) history.replaceState(null, '', location.pathname);
       render(true);
