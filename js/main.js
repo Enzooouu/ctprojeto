@@ -1252,7 +1252,7 @@ var DEPOIMENTOS = [
 
     var estado = { cat: 'todos', termo: '', limite: POR_PAGINA };
     var pedida = new URLSearchParams(location.search).get('categoria');
-    if (pedida && BLOG_CATEGORIAS.some(function (c) { return c.slug === pedida; })) estado.cat = pedida;
+    if (pedida && POSTS.some(function (p) { return p.categoria === pedida; })) estado.cat = pedida;
 
     // Artigo em destaque (o mais recente)
     if (destaque) {
@@ -1273,8 +1273,12 @@ var DEPOIMENTOS = [
       secaoDestaque.hidden = true;
     }
 
-    // Botões de filtro: Todos + BLOG_CATEGORIAS
-    var opcoes = [{ slug: 'todos', nome: 'Todos' }].concat(BLOG_CATEGORIAS.map(function (c) { return categoriaBlog(c.slug); }));
+    // Botões de filtro: Todos + as categorias de BLOG_CATEGORIAS que têm artigo
+    // (categoria vazia não aparece, para nenhum filtro levar a uma lista vazia)
+    var comArtigo = BLOG_CATEGORIAS.filter(function (c) {
+      return POSTS.some(function (p) { return p.categoria === c.slug; });
+    });
+    var opcoes = [{ slug: 'todos', nome: 'Todos' }].concat(comArtigo.map(function (c) { return categoriaBlog(c.slug); }));
     var botoes = opcoes.map(function (o) {
       var b = el('button', 'blog-filtro', o.nome);
       b.type = 'button';
