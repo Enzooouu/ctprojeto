@@ -41,6 +41,332 @@ var BLOG_CATEGORIAS = [
 
 var POSTS = [
   {
+    slug: 'marinada-para-peixes',
+    titulo: 'Marinada para peixes: a arte de transformar seu churrasco',
+    categoria: 'dicas',
+    resumo: 'A grelha certa e marinadas leves e rápidas: as dicas do chef Giovanni Silvestre para peixes suculentos na churrasqueira.',
+    data: '2026-01-30', exemplo: false,
+    imagem: 'img/blog/marinada-peixes.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Vieiras sendo viradas com pegador sobre a grelha de uma churrasqueira de inox, ao ar livre. Foto de AleVirgilio e Rafa Cusato, Gastronomia Mar e Brasa 2025.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Um churrasco de alto nível merece uma churrasqueira de alto nível. E quando o objetivo é explorar novos sabores e criar uma experiência gastronômica memorável, a chave está nos temperos que encantam o paladar e na combinação perfeita de ingredientes. É assim que surgem momentos de união, descoberta e descontração, envoltos pelo aroma do fogo e pelo prazer de compartilhar uma boa refeição.' },
+      { tipo: 'subtitulo', texto: 'A receita perfeita: dicas do chef Giovanni Silvestre' },
+      { tipo: 'paragrafo', texto: 'Para elevar o seu churrasco, convidamos o renomado chef e produtor gastronômico Giovanni Silvestre para compartilhar suas dicas de mestre. Formado pelo Senac e com uma trajetória de destaque no MasterChef Brasil, Giovanni também é cofundador da', link: { texto: 'Tentáculos', href: 'https://www.instagram.com/tentaculosprodutora/' }, depois: ', produtora especializada em gastronomia para audiovisual e eventos. Ele sabe como transformar simples ingredientes em experiências inesquecíveis.' },
+      { tipo: 'subtitulo', texto: 'A grelha ideal para peixes' },
+      { tipo: 'paragrafo', texto: 'Na hora de preparar peixes na churrasqueira, a escolha da grelha é crucial para garantir um resultado perfeito. A Construflama oferece grelhas de alta qualidade, como a Grelha Argentina, com barras em V, e a Uruguaia, com barras redondas, ideais para peixes', link: { texto: '(conheça cada uma)', href: 'post.html?slug=como-escolher-a-grelha-ideal' }, depois: '. Para quem busca um sabor ainda mais autêntico, existe a grelha específica para peixes, que permite virar o alimento facilmente, sem quebras ou danos às fibras, preservando a suculência e o sabor. Um verdadeiro truque de mestre para garantir que seu peixe fique dourado e delicioso.' },
+      { tipo: 'subtitulo', texto: 'Técnicas para marinar com maestria' },
+      { tipo: 'paragrafo', texto: 'A marinada é o segredo para potencializar o sabor de qualquer prato, e com peixes não é diferente. Usando como base azeite ou frutas cítricas, você pode transformar o sabor do peixe com diferentes cortes e temperos. O grande segredo é a leveza: marinadas rápidas e simples são as melhores para peixes. Giovanni Silvestre compartilha as suas dicas para garantir uma marinada que vai fazer toda a diferença:' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Marinadas leves e rápidas:', texto: 'peixes exigem marinadas que preservem sua delicadeza.' },
+        { rotulo: 'Limão e ervas frescas:', texto: 'o limão, usado de maneira moderada, e as ervas frescas vão dar frescor e suavidade à proteína.' },
+        { rotulo: 'Tempo de marinada:', texto: 'não é necessário deixar o peixe marinando por muito tempo, apenas o suficiente para absorver os sabores, logo antes de ir para a grelha.' }
+      ] },
+      { tipo: 'paragrafo', texto: 'Com essas dicas preciosas, você já está pronto para conquistar o paladar dos seus convidados com peixes suculentos e cheios de sabor.' },
+      { tipo: 'subtitulo', texto: 'O toque final: a experiência do churrasco perfeito' },
+      { tipo: 'paragrafo', texto: 'Agora que você tem as dicas do chef Giovanni, é hora de colocar a mão na massa e preparar o seu churrasco. Seja com as linhas Soft, Premium ou High-end ou com as Parrillas da Construflama, o mais importante é reunir as pessoas que fazem parte da sua vida ao redor do fogo. Afinal, o churrasco vai muito além de uma refeição: é uma celebração de momentos, risadas e memórias que ficam eternizadas.' },
+      { tipo: 'paragrafo', texto: 'Inspire-se e crie o churrasco perfeito para você e seus convidados! Para te ajudar a dar o próximo passo, o chef Giovanni também criou uma receita exclusiva de bacalhau na churrasqueira High-end.' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Veja a receita de bacalhau criada pelo chef na churrasqueira High-end', href: 'https://www.instagram.com/reel/DSik_hXialy/' } }
+    ]
+  },
+  {
+    slug: 'tendencias-que-inspiram-2026',
+    titulo: 'Tendências que inspiram 2026: lareiras',
+    categoria: 'lareiras',
+    resumo: 'Minimalistas ou escultóricas, a lenha, a gás ou a álcool: a arquiteta Annelise Gonzalis analisa o papel das lareiras nos projetos e o que esperar para 2026.',
+    data: '2026-01-27', exemplo: false,
+    imagem: 'img/blog/tendencias-2026.webp',
+    textoAlternativo: 'Sala com paredes e teto de madeira escura, sofá curvo verde-oliva, mesa de centro redonda com vaso de flores secas e a lareira Pipe, cilíndrica e branca, suspensa no canto.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'As lareiras permanecem como um dos elementos mais simbólicos e desejados nos projetos de interiores, unindo função prática e valor emocional. Em 2025, ganharam força em ambientes residenciais e de alto padrão como pontos de encontro, contemplação e bem-estar, provando que o fogo segue atemporal como recurso de aconchego.' },
+      { tipo: 'subtitulo', texto: 'Os tipos de lareira mais utilizados' },
+      { tipo: 'paragrafo', texto: 'Os tipos de lareira mais utilizados em interiores traduzem diferentes estilos e necessidades:' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Lenha:', texto: 'tradicionais e sensoriais, oferecem a experiência completa do fogo, hoje em versões mais limpas e sustentáveis.' },
+        { rotulo: 'Gás:', texto: 'práticas e sofisticadas, com acendimento rápido e controle da intensidade da chama.' },
+        { rotulo: 'Etanol/álcool:', texto: 'ecológicas, sem chaminé, ideais para apartamentos e ambientes compactos, com chama real, mas sem fumaça ou cinzas.' }
+      ] },
+      { tipo: 'paragrafo', texto: 'Esteticamente, duas vertentes se destacaram: as lareiras minimalistas, discretas e integradas à arquitetura, e as lareiras escultóricas, de formatos cilíndricos, cônicos ou suspensos, que assumem protagonismo visual.' },
+      { tipo: 'subtitulo', texto: 'Lareira Pipe' },
+      { tipo: 'imagem', imagem: 'img/blog/tendencias-2026-pipe.webp', textoAlternativo: 'Lareira Pipe Construflama, cilíndrica e branca, suspensa diante de paredes de madeira escura iluminadas por uma sanca, com sofá e mesa de centro.', legenda: 'Lareira Pipe Construflama' },
+      { tipo: 'paragrafo', texto: 'A lareira Pipe, com desenho minimalista e formato cilíndrico de 473 mm, exemplifica essa busca pela simplicidade versátil, adaptando-se a diversos projetos.' },
+      { tipo: 'subtitulo', texto: 'Lareira Cone' },
+      { tipo: 'imagem', imagem: 'img/blog/tendencias-2026-cone.webp', textoAlternativo: 'Lareira Cone Construflama, suspensa e em metal escuro, sobre uma base com lenha, em uma sala ampla de pé-direito alto, com poltrona laranja e uma árvore em vaso.', legenda: 'Lareira Cone Construflama' },
+      { tipo: 'paragrafo', texto: 'Já a lareira Cone, com versões de 80 cm e 1 m de diâmetro, traduz imponência e elegância para ambientes amplos e com pé-direito alto, funcionando como peça-escultura. Ambas mostram como o setor tem explorado a diversidade de combustíveis e formatos para criar soluções que combinam design, funcionalidade e emoção.' },
+      { tipo: 'subtitulo', texto: 'Símbolos de convivência' },
+      { tipo: 'paragrafo', texto: 'Mais do que aquecer, as lareiras se consolidaram como símbolos de convivência. Seja em salas de estar, varandas fechadas ou áreas gourmet, elas transformam o ambiente em cenário de conversas, contemplação e memórias afetivas. Esse caráter emocional reforça sua presença em projetos que buscam aliar sofisticação à sensação de lar.' },
+      { tipo: 'subtitulo', texto: 'O que esperar para 2026' },
+      { tipo: 'paragrafo', texto: 'Para 2026, espera-se maior integração das lareiras com tecnologia inteligente, permitindo controle via automação e eficiência energética. A sustentabilidade também ganha protagonismo, com soluções que exploram combustíveis alternativos e sistemas de combustão ecológica. O futuro aponta para lareiras cada vez mais personalizadas e versáteis, capazes de transitar entre tradição e inovação, entre o minimalismo e a arte escultórica.' },
+      { tipo: 'paragrafo', texto: 'As lareiras provam que o fogo continua sendo um dos elementos mais essenciais do morar contemporâneo. Entre opções a lenha, gás, etanol ou elétricas, entre linhas discretas como a Pipe ou imponentes como a Cone, elas se consolidam como símbolos de aconchego, sofisticação e convivência.' },
+      { tipo: 'paragrafo', texto: 'Em 2026, seu papel deve se fortalecer como expressão de sustentabilidade, design autoral e emoção, lembrando que a verdadeira sofisticação não está apenas no objeto, mas na capacidade de reunir pessoas em torno da chama.' },
+      { tipo: 'citacao', texto: 'As lareiras contemporâneas são mais que objetos de design: são rituais de presença, lembrando que o verdadeiro conforto nasce quando a estética encontra o humano.', autor: 'Arquiteta Annelise Gonzalis' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Texto:', texto: 'arquiteta Annelise Gonzalis' },
+        { rotulo: 'Instagram:', texto: '', link: { texto: '@annelise.broker', href: 'https://www.instagram.com/annelise.broker/' } },
+        { rotulo: 'Escritório:', texto: '', link: { texto: '@jabuticaba.arq', href: 'https://www.instagram.com/jabuticaba.arq/' } }
+      ] }
+    ]
+  },
+  {
+    slug: 'receita-ano-novo-bacalhau',
+    titulo: 'Receita de Ano Novo: bacalhau grelhado com salada morna de lentilhas',
+    categoria: 'dicas',
+    resumo: 'Bacalhau e lentilhas, símbolos de prosperidade, preparados na churrasqueira: a receita do chef Giovanni Silvestre para a ceia de Ano Novo.',
+    data: '2025-12-29', exemplo: false,
+    imagem: 'img/blog/receita-bacalhau.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Postas de bacalhau grelhado com alho tostado, ervas e salsinha em uma travessa, com uma tigela de salada morna de lentilhas, tomates e azeitonas ao fundo. Receita de Giovanni Silvestre, foto de Giovanni Bellini.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'O Ano Novo é uma época cheia de significados, tradições e superstições que buscam atrair prosperidade, sucesso e harmonia. Um dos pratos mais tradicionais dessa época é o bacalhau, símbolo de boa sorte e prosperidade e, quando acompanhado de lentilhas, um prato que muitos associam ao sucesso financeiro no ano seguinte. Pensando nisso, o chef Giovanni Silvestre preparou uma receita especial para a Construflama: bacalhau grelhado com salada morna de lentilhas.' },
+      { tipo: 'paragrafo', texto: 'Prepare-se para um prato delicioso e cheio de significado, perfeito para começar o ano com o pé direito! Confira os ingredientes e o passo a passo para fazer essa receita incrível na sua churrasqueira Construflama.' },
+      { tipo: 'subtitulo', texto: 'Ingredientes' },
+      { tipo: 'paragrafo', rotulo: 'Bacalhau', texto: '' },
+      { tipo: 'lista', itens: [
+        '800 g de bacalhau dessalgado (aproximadamente 3 postas)',
+        'Pimenta-do-reino a gosto',
+        'Fio de azeite para grelhar'
+      ] },
+      { tipo: 'paragrafo', rotulo: 'Alho tostado', texto: '' },
+      { tipo: 'lista', itens: [
+        '1 cabeça de alho descascada',
+        '1 xícara (chá) de azeite',
+        '1 ramo de tomilho',
+        '1 ramo de alecrim'
+      ] },
+      { tipo: 'paragrafo', rotulo: 'Salada de lentilhas', texto: '' },
+      { tipo: 'lista', itens: [
+        '400 g de lentilha cozida',
+        '180 g de tomate-cereja',
+        '100 g de azeitona azapa',
+        '200 g de bacon em cubos',
+        '1 pimentão vermelho cortado ao meio',
+        '1 pimentão amarelo cortado ao meio',
+        '1 pimentão verde cortado ao meio',
+        '1 cebola pequena em cubos',
+        '1/2 xícara (chá) de vinho branco',
+        '1 limão-siciliano cortado ao meio',
+        'Azeite a gosto',
+        'Sal e pimenta-do-reino a gosto',
+        'Salsinha a gosto'
+      ] },
+      { tipo: 'subtitulo', texto: 'Modo de preparo' },
+      { tipo: 'paragrafo', rotulo: '1. Alho tostado:', texto: 'Em uma panela de ferro pequena, coloque os dentes de alho, o azeite, o tomilho e o alecrim. Leve para a parte superior da churrasqueira e deixe aquecer aos poucos.' },
+      { tipo: 'paragrafo', rotulo: '2. Pimentões e limão:', texto: 'Grelhe os pimentões e o limão na churrasqueira até que fiquem macios e levemente tostados. Reserve.' },
+      { tipo: 'paragrafo', rotulo: '3. Salada de lentilhas:', texto: '' },
+      { tipo: 'lista', itens: [
+        'Aqueça uma frigideira de ferro e refogue o bacon com um fio de azeite até soltar a gordura. Adicione a cebola e refogue.',
+        'Corte os pimentões grelhados em cubos e adicione ao refogado, seguidos pelos tomates-cereja e as azeitonas. Refogue tudo levemente.',
+        'Adicione o vinho branco e deixe reduzir, evaporando o álcool.',
+        'Em uma tigela com as lentilhas cozidas, adicione o refogado e tempere com sal, pimenta-do-reino, azeite e o suco do limão tostado.'
+      ] },
+      { tipo: 'paragrafo', rotulo: '4. Bacalhau:', texto: '' },
+      { tipo: 'lista', itens: [
+        'Em uma chapa na churrasqueira, adicione um fio de azeite e coloque as postas de bacalhau, começando com a pele para baixo. Grelhe por cerca de 5 minutos de cada lado, até que esteja bem dourado.',
+        'Durante o processo, use um pincel com azeite e as ervas para pincelar o bacalhau e garantir mais sabor.'
+      ] },
+      { tipo: 'paragrafo', rotulo: '5. Montagem:', texto: 'Em uma travessa, disponha as postas de bacalhau grelhadas e finalize com os dentes de alho tostados e salsinha fresca. Sirva acompanhado da salada morna de lentilhas.' },
+      { tipo: 'subtitulo', texto: 'Para começar 2026' },
+      { tipo: 'paragrafo', texto: 'Essa receita combina sabores intensos e ingredientes cheios de simbolismo, criando uma harmonização perfeita para o início de um novo ciclo. Que tal testar essa delícia na sua churrasqueira Construflama e começar 2026 com muita energia positiva?' },
+      // Vídeo: o original dizia só "Assista ao nosso vídeo", sem link; usei o reel da receita de bacalhau na High-end (o mesmo citado no artigo das marinadas de peixe)
+      { tipo: 'paragrafo', texto: 'Dica:', link: { texto: 'assista ao nosso vídeo', href: 'https://www.instagram.com/reel/DSik_hXialy/' }, depois: 'para ver o passo a passo dessa receita feita na churrasqueira Construflama High-end a gás e inspire-se para inovar na sua ceia de Ano Novo!' }
+    ]
+  },
+  {
+    slug: 'receita-de-natal-carre-de-cordeiro',
+    titulo: 'Receita de Natal: carré de cordeiro com frutas grelhadas e molho de hortelã',
+    categoria: 'dicas',
+    resumo: 'Carré de cordeiro na churrasqueira, frutas grelhadas, farofa de castanhas e molho de hortelã: uma ceia de Natal feita inteira na brasa.',
+    data: '2025-12-19', exemplo: false,
+    imagem: 'img/blog/receita-natal-cordeiro.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Carré de cordeiro grelhado com ossos aparentes, ervas e molho de hortelã, cercado de figos, pêssegos e uvas grelhados, com uma frigideira de farofa ao fundo. Receita de Giovanni Silvestre, foto de Giovanni Bellini.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Transforme sua ceia de Natal em um espetáculo de sabores! Aprecie um carré de cordeiro na Churrasqueira Infinity da Construflama, acompanhado de frutas grelhadas e do molho de hortelã tradicional deste prato.' },
+      { tipo: 'paragrafo', texto: 'Ouça o som do churrasco, imagine o cheiro das castanhas torradas na farofa e a explosão de sabores que vai transformar sua ceia em uma festa para os sentidos. Crie a sua ceia de Natal com originalidade e performance no sabor da sua Infinity!' },
+      { tipo: 'subtitulo', texto: 'Ingredientes' },
+      { tipo: 'paragrafo', rotulo: 'Carré de cordeiro', texto: '' },
+      { tipo: 'lista', itens: [
+        '2 carrés de cordeiro inteiros (aproximadamente 750 g cada)',
+        'Sal de parrilla e pimenta-do-reino a gosto',
+        'Azeite a gosto',
+        'Manteiga para pincelar'
+      ] },
+      { tipo: 'paragrafo', rotulo: 'Farofa de castanhas', texto: '' },
+      { tipo: 'lista', itens: [
+        '1 colher (sopa) de manteiga',
+        '1 ramo de tomilho',
+        '250 g de farinha panko',
+        '250 g de mix de castanhas picadas',
+        'Sal e pimenta-do-reino a gosto'
+      ] },
+      { tipo: 'paragrafo', rotulo: 'Frutas grelhadas', texto: '' },
+      { tipo: 'lista', itens: [
+        '6 figos cortados ao meio',
+        '4 pêssegos cortados ao meio',
+        '2 cachos pequenos de uvas verdes',
+        '1 colher (sopa) de mel',
+        'Azeite a gosto',
+        'Sal e pimenta-do-reino a gosto'
+      ] },
+      { tipo: 'paragrafo', rotulo: 'Molho de hortelã', texto: '' },
+      { tipo: 'lista', itens: [
+        '1 xícara de folhas de hortelã picadas',
+        '1/2 xícara (chá) de azeite',
+        'Suco de 1/2 limão-siciliano',
+        '1 dente de alho picado',
+        'Sal e pimenta-do-reino a gosto'
+      ] },
+      { tipo: 'subtitulo', texto: 'Modo de preparo' },
+      { tipo: 'paragrafo', rotulo: '1. Farofa de castanhas:', texto: 'Em uma frigideira de ferro, derreta a manteiga e adicione o tomilho e as castanhas. Mexa constantemente até que as castanhas fiquem levemente douradas. Adicione a farinha panko e continue mexendo até que a farofa esteja bem dourada. Tempere com sal e pimenta-do-reino e reserve.' },
+      { tipo: 'paragrafo', rotulo: '2. Molho de hortelã:', texto: 'Em uma tigela, misture as folhas de hortelã picadas, o azeite, o suco de limão, o alho, o sal e a pimenta. Reserve o molho.' },
+      { tipo: 'paragrafo', rotulo: '3. Tempero do carré e das frutas:', texto: 'Tempere o carré de cordeiro com azeite, sal de parrilla e pimenta-do-reino, massageando bem a carne. Tempere os figos, os pêssegos e as uvas com azeite, mel, sal e pimenta.' },
+      { tipo: 'paragrafo', rotulo: '4. Hora da grelha:', texto: 'Na churrasqueira, grelhe as peças de carré de cordeiro por cerca de 6 minutos de cada lado, até que fiquem com um ponto rosado. Enquanto isso, grelhe as frutas até que fiquem douradas e com marcas da grelha.' },
+      { tipo: 'paragrafo', rotulo: '5. Finalização e apresentação:', texto: 'Em uma travessa grande, disponha o carré de cordeiro grelhado, entrelaçado, e coloque as frutas grelhadas ao redor. Regue com o molho de hortelã e adicione um toque de mel por cima do carré para um brilho extra. Sirva a farofa de castanhas como acompanhamento.' },
+      { tipo: 'citacao', texto: 'Para um toque ainda mais especial, pincele o carré com manteiga derretida durante a grelha para intensificar o sabor e dar um toque dourado à carne.', autor: 'Dica do chef Giovanni Silvestre' },
+      { tipo: 'subtitulo', texto: 'Delicie-se!' },
+      { tipo: 'paragrafo', texto: 'Aproveite o sabor do Natal com essa receita sofisticada e cheia de simbolismo, que pode ser feita inteiramente na sua churrasqueira Construflama. O resultado é um prato perfeito para o banquete natalino, com o sabor inconfundível da brasa!' },
+      // TODO: link do vídeo da receita (no original: "Vídeo: @bygiovannibellini … que sobe dia 17.12", sem link)
+      { tipo: 'paragrafo', texto: 'Confira o preparo completo dessa receita no nosso', link: { texto: 'Instagram', href: 'https://www.instagram.com/construflama' }, depois: 'e inspire-se para criar momentos inesquecíveis na sua churrasqueira Construflama, unindo o prazer do fogo com a arte de cozinhar!' }
+    ]
+  },
+  {
+    slug: 'vitrine-de-natal-construflama-dd',
+    titulo: 'Vitrine de Natal Construflama: quando a arquitetura, além de espetáculo, vira emoção',
+    categoria: 'projetos',
+    resumo: 'Assinada por Ricardo Rossi, a vitrine de Natal da Construflama no D&D Shopping traduziu Isaías 9:6 em camadas de papel e luz, com uma noite de Quebra-Nozes.',
+    data: '2025-12-02', exemplo: false,
+    imagem: 'img/blog/vitrine-natal-dd.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Artista com figurino dourado de fada, mandando um beijo, diante da vitrine de Natal da Construflama no D&D Shopping, com o letreiro da marca e lareiras ao fundo.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Na noite de 25 de novembro, o D&D Shopping abriu oficialmente sua temporada natalina com uma atmosfera que uniu espetáculo, design e relacionamento profissional em uma única experiência memorável. Entre taças de champanhe, empresários, arquitetos e amantes da arte, a inauguração transformou a vitrine da Construflama em palco, não só de uma decoração, mas de uma narrativa sensorial que celebrou o verdadeiro sentido do Natal.' },
+      { tipo: 'paragrafo', texto: 'Assinada pelo renomado arquiteto Ricardo Rossi, a vitrine convidou o público a uma leitura poética do versículo Isaías 9:6, traduzida em camadas de papel, relevos rústicos e recortes que formaram um presépio contemporâneo. A proposta estética, simples na matéria e sofisticada na montagem, provocou surpresa: formas quase escultóricas que brincam com luz, sombra e textura, levando o olhar a viajar por relevos que contam uma história de nascimento, esperança e paz.' },
+      { tipo: 'paragrafo', texto: 'O ápice da noite foi uma adaptação do clássico “Quebra-Nozes”: bailarinos surgiram no palco principal, ampliando a experiência com movimento e emoção. O espetáculo, cuidadosamente coreografado, coroou a abertura com um final que uniu arte performática e cultura clássica.' },
+      { tipo: 'citacao', texto: 'Optamos por uma estética rústica, quase ritualística, usando papel como matéria-prima para ressaltar a simplicidade do presépio e reforçar o tema bíblico. A intenção foi provocar contemplação, não apenas admiração.', autor: 'Ricardo Rossi, arquiteto' },
+      { tipo: 'paragrafo', texto: 'A iniciativa também reforça o papel do D&D como hub cultural e de negócios: além de encantar visitantes, o evento gerou encontros profissionais, novos contatos e oportunidades comerciais que nascem precisamente nesses momentos de conexão. A experiência foi planejada e executada com a expertise da equipe Comusou | Unasp (Everson Barbosa, Fernanda Wiegner e Semiráris de Paula), cujas mãos e atenção aos detalhes foram essenciais para transformar o conceito em realidade.' },
+      { tipo: 'subtitulo', texto: 'Destaques da noite' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Concepção artística:', texto: 'Ricardo Rossi (conceito e direção criativa).' },
+        { rotulo: 'Tema:', texto: 'Isaías 9:6, “Porque um menino nos nasceu…”, interpretado em camadas de papel e luz.' },
+        { rotulo: 'Atração principal:', texto: 'performance adaptada do “Quebra-Nozes” com bailarinos, encerrando a abertura.' },
+        { rotulo: 'Parcerias e execução:', texto: 'Comusou | Unasp (Everson Barbosa, Fernanda Wiegner e Semiráris de Paula).' },
+        { rotulo: 'Público:', texto: 'convidados, arquitetos, profissionais de design, lojistas e frequentadores do shopping.' }
+      ] },
+      { tipo: 'subtitulo', texto: 'O que ficou no ar' },
+      { tipo: 'paragrafo', texto: 'Além do brilho das luzes, a sensação que permaneceu foi a de que o Natal ali foi entendido como encontro: entre tradição e contemporaneidade, entre comércio e arte, entre negócios e emoção. Uma vitrine que não é só vitrine: é palco, é convite à reflexão e cenário de novas conexões.' },
+      { tipo: 'paragrafo', rotulo: 'Texto:', texto: 'Victor Hugo Cordeiro' }
+    ]
+  },
+  {
+    slug: 'aco-inox-304-churrasqueiras-parrillas',
+    titulo: 'Aço inox 304 nas churrasqueiras e parrillas Construflama: qualidade e durabilidade que você merece',
+    categoria: 'churrasqueiras',
+    resumo: 'Resistência à corrosão e ao calor, acabamento e limpeza fácil: por que a Construflama usa aço inox 304 nas partes mais importantes dos seus equipamentos.',
+    data: '2025-11-25', exemplo: false,
+    imagem: 'img/blog/aco-inox-304.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Churrasqueira a gás de inox escovado com tampa fechada, termômetro e três botões, embutida em bancada de pedra clara sobre armário vinho, diante de parede de cimento queimado. Projeto de Yannick Athia, foto de Max Fahrer.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Quando falamos sobre churrasqueiras e parrillas, a escolha do material é fundamental para garantir não apenas um desempenho excepcional, mas também a longevidade do produto. Na Construflama, optamos pelo aço inox 304 para as partes mais importantes de nossos equipamentos, assegurando que os nossos clientes tenham a melhor experiência possível. Neste post, explicamos por que o aço inox 304 é a escolha certa para as nossas churrasqueiras e parrillas de alto desempenho.' },
+      { tipo: 'subtitulo', texto: 'Por que usamos aço inox 304?' },
+      { tipo: 'paragrafo', texto: 'O aço inox 304 é amplamente reconhecido por suas propriedades superiores quando se trata de resistência à corrosão, dureza e estética. Essas características fazem dele a opção ideal para produtos que exigem um desempenho excepcional nas situações que mais pedem qualidade, onde nossas churrasqueiras e parrillas se destacam. Descubra como esse material pode elevar o seu churrasco!' },
+      { tipo: 'subtitulo', texto: '1. Alta resistência à corrosão e oxidação' },
+      { tipo: 'paragrafo', texto: 'Uma das principais razões pelas quais escolhemos o aço inox 304 é sua resistência superior à corrosão. Churrasqueiras e parrillas ficam constantemente expostas a umidade, calor intenso e gordura, o que pode, com o tempo, comprometer a integridade de materiais de qualidade inferior. O inox 304, devido à sua composição com 18% de cromo e 8% de níquel, forma uma camada protetora contra a corrosão, garantindo que sua churrasqueira ou parrilla Construflama permaneça com aparência impecável por muito mais tempo, mesmo com uso constante.' },
+      { tipo: 'subtitulo', texto: '2. Resistência ao calor e durabilidade' },
+      { tipo: 'paragrafo', texto: 'O inox 304 é extremamente resistente a temperaturas elevadas, o que é essencial para churrasqueiras e parrillas que operam a altas temperaturas. Mesmo com o calor intenso gerado pelas brasas, o inox 304 mantém sua estrutura intacta, sem perder suas qualidades de durabilidade ou estética. Ele é resistente à ferrugem e não perde suas propriedades com a exposição ao calor, o que faz dele a escolha ideal para essas aplicações.' },
+      { tipo: 'subtitulo', texto: '3. Estética e acabamento' },
+      { tipo: 'paragrafo', texto: 'Outro grande diferencial do inox 304 é o seu acabamento escovado e, ainda assim, brilhante. A Construflama considera, em cada produto, que além de funcional a churrasqueira ou parrilla também precisa ter um visual que se encaixe no conceito de arquitetura e crie um ambiente para receber e acolher aqueles que amamos. O inox 304 tem uma aparência sofisticada e moderna que agrega valor ao seu espaço. Com o tempo, mesmo exposto ao calor e à umidade, o material mantém seu brilho, sem manchas ou sinais de desgaste, o que é um grande diferencial.' },
+      { tipo: 'subtitulo', texto: '4. Facilidade de limpeza e manutenção' },
+      { tipo: 'paragrafo', texto: 'Uma característica importante das churrasqueiras e parrillas Construflama é a facilidade de limpeza. O inox 304, por ser extremamente resistente a manchas e sujeira, torna a manutenção muito mais simples. Isso significa que sua churrasqueira ou parrilla continuará com aparência de nova, mesmo após muitos usos, e possibilita uma limpeza mais prática depois do churrasco.' },
+      { tipo: 'subtitulo', texto: 'Conclusão' },
+      { tipo: 'paragrafo', texto: 'O material escolhido para todo tipo de produto é uma das partes mais significativas da experiência do cliente. O seu momento de lazer é muito importante para nós e, por isso, buscamos um produto durável, que te dará momentos de união ao redor do fogo por anos e, ainda assim, elegante, para que o design e a usabilidade sejam suas ferramentas para entregar sabores inesquecíveis aos seus convidados.' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Fale com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: 'e conheça as churrasqueiras e parrillas Construflama.' }
+    ]
+  },
+  {
+    slug: 'trio-chess-casacor-minas-2025',
+    titulo: 'Trio Chess: a arte do conforto e da beleza no Niê Giardino da CASACOR Minas Gerais 2025',
+    categoria: 'projetos',
+    resumo: 'Rainha, Torre e Peão: as três lareiras a álcool do Trio Chess no jardim de Izabella Stambassi, um refúgio de calor no meio de Belo Horizonte.',
+    data: '2025-11-17', exemplo: false,
+    imagem: 'img/blog/trio-chess-casacor-mg.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Três lareiras Trio Chess, pretas e de formas geométricas, acesas sobre um deck de madeira à noite, diante de palmeiras. Ambiente de Izabella Stambassi, foto de Gustavo Xavier.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'A participação da Construflama na CASACOR Minas Gerais 2025 foi um marco de inovação e aconchego, especialmente no espaço projetado pela talentosa arquiteta Izabella Stambassi. Com o Trio Chess, uma coleção de lareiras que combina design e funcionalidade, o ambiente do Niê Giardino foi transformado em um verdadeiro refúgio de calor, beleza e acolhimento.' },
+      { tipo: 'paragrafo', texto: 'No cenário urbano de Belo Horizonte, que rodeava a CASACOR, o contraste do verde da vegetação com o design minimalista do Trio Chess trouxe uma sensação de harmonia e tranquilidade. O espaço foi criado para que os visitantes pudessem se desconectar do ritmo acelerado da cidade e se conectar com momentos de pausa, sabores e aromas, tudo isso ao redor do calor acolhedor do fogo.' },
+      { tipo: 'subtitulo', texto: 'O conceito por trás do Trio Chess' },
+      { tipo: 'paragrafo', texto: 'O Trio Chess é composto por três lareiras elegantes que fazem alusão às peças do jogo de xadrez: a Rainha, a Torre e o Peão. Feitas para funcionar com álcool de cereais, essas peças não apenas aquecem, mas também encantam com seu design inovador e funcional. O diferencial está na praticidade: as lareiras podem ser facilmente movidas, permitindo que se adequem a diferentes ambientes, tanto internos quanto externos, sem perder a beleza e a sofisticação.' },
+      { tipo: 'subtitulo', texto: 'O toque de carinho e aconchego' },
+      { tipo: 'paragrafo', texto: 'Para Izabella Stambassi, o Trio Chess não é apenas um elemento decorativo, mas um símbolo de carinho e acolhimento. Segundo a arquiteta, as peças foram escolhidas para trazer conforto e criar uma atmosfera envolvente para os visitantes do Niê Giardino. A ideia era que o calor das lareiras, alimentadas por álcool, fosse um convite ao convívio, uma pausa acolhedora para quem circulava pelo espaço.' },
+      { tipo: 'subtitulo', texto: 'A contribuição para o conceito orgânico e autêntico' },
+      { tipo: 'paragrafo', texto: 'O Trio Chess, além de ser uma peça-chave no Niê Giardino, também se destacou pela maneira como se integrou ao conceito de autenticidade idealizado por Izabella Stambassi. Ao contrastar o metal do design com a vegetação exuberante do ambiente, as lareiras criaram uma atmosfera única, onde o fogo iluminava o espaço e trazia conforto, especialmente durante a noite, após o pôr do sol.' },
+      { tipo: 'paragrafo', texto: 'A elegância das peças, aliada à sensação de acolhimento que o fogo proporciona, fez do Trio Chess um elemento fundamental para criar um espaço onde a arte e o prazer de estar ao redor do fogo se encontraram, proporcionando uma experiência única para todos que puderam vivenciar essa sensação.' },
+      { tipo: 'paragrafo', texto: 'Em 2025, a CASACOR Minas Gerais não só exibiu tendências inovadoras de design e decoração, mas também foi palco para momentos de conexão, conforto e beleza.' }
+    ]
+  },
+  {
+    slug: 'construflama-evento-shopping-dd',
+    titulo: 'Construflama marca presença em evento especial no Shopping D&D',
+    categoria: 'projetos',
+    resumo: 'Uma recepção para arquitetos e designers no Shopping D&D, com a presença do fundador Roberto Cassab contando a história da Construflama.',
+    data: '2025-11-13', exemplo: false,
+    imagem: 'img/blog/evento-dd-arquitetos.webp',
+    textoAlternativo: 'Grupo de arquitetos e designers em pé ao redor de uma mesa com petiscos, ouvindo o fundador Roberto Cassab no showroom da Construflama, entre churrasqueiras, coifa preta e uma parede de lenha empilhada.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'No dia 6 de novembro de 2025, a Construflama teve a honra de participar de uma recepção exclusiva promovida pelo Shopping D&D, dedicada a arquitetos, designers de interiores e profissionais de decoração. O encontro foi marcado por um ambiente acolhedor, um petit comité impecavelmente preparado e, acima de tudo, por pessoas inspiradoras que compartilham a paixão pelo design, pela arquitetura e pela arte de criar espaços memoráveis.' },
+      { tipo: 'paragrafo', texto: 'Durante o evento, nossos consultores comerciais estiveram à disposição para apresentar toda a linha de churrasqueiras, lareiras e soluções de fogo da Construflama, produtos reconhecidos pelo design sofisticado, pela tecnologia de ponta e pela tradição de mais de 40 anos de história. Cada visitante teve a oportunidade de conhecer de perto nossos diferenciais técnicos, acabamentos exclusivos e a versatilidade de modelos pensados para os mais diversos estilos de projeto.' },
+      { tipo: 'subtitulo', texto: 'A história contada pelo fundador' },
+      { tipo: 'paragrafo', texto: 'Estiveram presentes o fundador da Construflama, Roberto Cassab, e o diretor Patrick Cassab, que prestigiaram o encontro acompanhados pela nossa dedicada equipe de marketing. O ponto alto da noite foi o emocionante relato de Roberto Cassab, que compartilhou com os convidados a história e os valores que deram origem à empresa: uma trajetória construída com visão, inovação e profundo respeito pela arquitetura e pelo bom gosto.' },
+      { tipo: 'paragrafo', texto: 'Nada se compara à experiência de ouvir o próprio fundador narrar o nascimento da Construflama, relembrando os desafios, as conquistas e a paixão que impulsionam a marca até hoje. Sua fala inspirou a todos, reforçando o propósito que sempre nos guiou: transformar o fogo em experiência, e a experiência em emoção.' },
+      { tipo: 'subtitulo', texto: 'Parcerias que elevam o mercado' },
+      { tipo: 'paragrafo', texto: 'Eventos como este reafirmam a importância das parcerias entre indústria e especificadores, fortalecendo laços e promovendo trocas que elevam o padrão do mercado. A Construflama agradece ao Shopping D&D pela iniciativa e pela oportunidade de estar ainda mais próxima de profissionais que fazem da arquitetura uma expressão de arte e autenticidade.' },
+      { tipo: 'paragrafo', texto: 'Construflama: tradição, design e inovação que inspiram calor humano.' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Texto:', texto: 'Victor Hugo Cordeiro, consultor comercial Construflama' },
+        { rotulo: 'Foto:', texto: 'Visita VIP' }
+      ] }
+    ]
+  },
+  {
+    slug: 'lareira-ecoflama-framo-casacor-minas-2025',
+    titulo: 'A Lareira Ecoflama da Construflama: design, calor e memórias na CASACOR Minas 2025',
+    categoria: 'lareiras',
+    resumo: 'No ambiente “Encontro e Alento”, de Francisco Morais (Framo Arquitetura), a Ecoflama foi o coração do espaço, entre madeira escura e quartzito Tempest Red.',
+    data: '2025-11-03', exemplo: false,
+    imagem: 'img/blog/ecoflama-framo-casacor-mg.webp',
+    textoAlternativo: 'Lareira Ecoflama linear acesa em um nicho de quartzito avermelhado com veios, diante de uma poltrona e um puff de couro preto, em uma sala de paredes de madeira escura.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'O universo criado por Francisco Morais, da Framo Arquitetura, na CASACOR Minas 2025, continua vivo na memória de quem teve a sorte de vivenciar a experiência imersiva desse espaço único. Entre tantos elementos que encantaram os visitantes, a Lareira Ecoflama, da Construflama, foi sem dúvida uma das peças mais marcantes. Mais do que um simples item de aquecimento, a Ecoflama se transformou no coração do ambiente, proporcionando uma conexão genuína entre as pessoas e o espaço.' },
+      { tipo: 'subtitulo', texto: 'Encontro e Alento' },
+      { tipo: 'paragrafo', texto: 'Intitulado “Encontro e Alento”, o projeto de Francisco Morais foi cuidadosamente pensado para explorar a relação entre a matéria e a memória. O contraste entre os tons escuros da madeira e do quartzito Tempest Red criou uma atmosfera visualmente impressionante, onde o fogo da Ecoflama não só aquecia o ambiente, mas iluminava a alma dos presentes. Sua presença serena e elegante convidava os visitantes a desacelerar, a se entregar ao momento e a se conectar uns com os outros, seja em um bate-papo animado ou em um silêncio contemplativo ao redor da chama.' },
+      { tipo: 'subtitulo', texto: 'Mais do que estética' },
+      { tipo: 'paragrafo', texto: 'A Ecoflama se destacou não só pela sua estética clean e sofisticada, mas pela sua capacidade única de transformar o espaço. Sua proposta vai além da beleza: ela reúne praticidade e a magia do fogo, criando uma sensação acolhedora e convidativa. Ao redor da lareira, o ambiente se torna mais do que apenas um lugar físico: um espaço emocional, onde as pessoas se sentem inspiradas a compartilhar, relaxar e criar momentos de conexão verdadeira.' },
+      { tipo: 'paragrafo', texto: 'Em um cenário repleto de detalhes que exploram a tranquilidade e o aconchego, a Ecoflama foi a grande protagonista, presente não apenas como um elemento decorativo, mas como uma peça fundamental para a criação de uma experiência sensorial e afetiva. Sua função vai além da estética: ela tem o poder de transformar simples encontros em memórias duradouras.' },
+      { tipo: 'subtitulo', texto: 'Um convite que permanece' },
+      { tipo: 'paragrafo', texto: 'Embora a CASACOR Minas 2025 tenha chegado ao fim, o espírito daquele ambiente, e da Ecoflama em particular, permanece vivo, como um convite contínuo para reunir, relaxar e viver momentos especiais à luz e ao calor do fogo. Em cada visita, em cada conversa, a lareira de design inovador da Construflama reafirma sua missão: transformar espaços e criar memórias.' },
+      { tipo: 'paragrafo', texto: 'A Ecoflama é muito mais do que uma lareira. É um elo entre o passado e o futuro, uma conexão que continua a aquecer não apenas o ambiente, mas também os corações dos que se reúnem ao seu redor.' }
+    ]
+  },
+  {
+    slug: 'lareira-cone-especial-glaucia-britto',
+    titulo: 'Lareira Cone Especial: sofisticação e aconchego no projeto de Glaucia Britto',
+    categoria: 'lareiras',
+    resumo: 'No Piano Bar de Glaucia Britto, na CASACOR Minas, a Lareira Cone Especial uniu design e funcionalidade e virou convite para a convivência.',
+    data: '2025-10-27', exemplo: false,
+    imagem: 'img/blog/lareira-cone-glaucia-britto.webp',
+    textoAlternativo: 'Piano bar com balcão de bebidas iluminado, poltronas caramelo, plantas, um piano ao fundo e a Lareira Cone Especial, preta e suspensa, sobre uma base com lenha.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'No ambiente criado por Glaucia Britto para a CASACOR Minas, a Lareira Cone Especial da Construflama se destaca como um dos elementos-chave que unem design e funcionalidade. Mais do que um simples aquecedor, ela adiciona elegância e aconchego e cria uma atmosfera única, onde o fogo se torna um convite para momentos de convivência e lazer.' },
+      { tipo: 'subtitulo', texto: 'Um toque de estilo para seu espaço' },
+      { tipo: 'paragrafo', texto: 'O Piano Bar, assinado por Glaucia Britto, é um espaço cuidadosamente pensado para encontros cheios de música e boas conversas. A escolha da Lareira Cone, com seu design sofisticado, se encaixa perfeitamente nesse ambiente. Disponível em modelos a gás, a álcool ou a lenha, ela é a peça que traz calor, tanto físico quanto estético, para o local.' },
+      { tipo: 'paragrafo', texto: 'Com sua presença marcante, a Lareira Cone complementa o ambiente com elegância. Seu design moderno cria um contraste sutil entre os tons mais escuros e claros do espaço, tornando o ambiente ainda mais acolhedor e cheio de personalidade. Aqui, o fogo não é apenas uma fonte de calor: é também um elemento que convida ao relacionamento e à conexão.' },
+      { tipo: 'subtitulo', texto: 'Design e funcionalidade em perfeita harmonia' },
+      { tipo: 'paragrafo', texto: 'A Construflama é reconhecida por criar produtos que não só atendem às necessidades de aquecimento, mas também trazem arte e beleza aos ambientes. A Lareira Cone vai além da sua função prática, tornando-se uma peça de destaque que transmite conforto e estilo. Seja em um ambiente mais contemporâneo ou em um espaço com elementos clássicos, sua versatilidade a torna ideal para qualquer projeto de decoração.' },
+      { tipo: 'paragrafo', texto: 'Além disso, a instalação é fácil e o sistema de aquecimento é eficiente, garantindo que sua experiência com a Lareira Cone seja tanto visual quanto funcionalmente prazerosa.' },
+      { tipo: 'subtitulo', texto: 'Criando memórias e conexões' },
+      { tipo: 'paragrafo', texto: 'A Lareira Cone é muito mais do que um simples acessório para o lar. Ela foi projetada para ser o centro de momentos especiais, onde o fogo se torna o elo entre as pessoas. Ao redor dela, o ambiente se transforma em um lugar de conforto e intimidade, perfeito para criar memórias duradouras.' },
+      { tipo: 'paragrafo', texto: 'A Construflama continua a surpreender com suas inovações, sempre buscando criar espaços que tragam bem-estar e harmonia. Cada detalhe, de cada peça, reflete a missão da marca de transformar qualquer ambiente em um verdadeiro lar, repleto de emoções e momentos de convivência.' },
+      { tipo: 'subtitulo', texto: 'Transforme seu espaço com a Lareira Cone' },
+      { tipo: 'paragrafo', texto: 'Se você busca mais do que um simples aquecedor, a Lareira Cone é a escolha perfeita para dar um toque de sofisticação e elegância ao seu espaço. Disponível em versões a gás, a álcool ou a lenha, ela oferece o equilíbrio perfeito entre design inovador e funcionalidade, criando ambientes onde o aconchego e o estilo caminham juntos.' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Fale com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: 'e leve a Lareira Cone para o seu projeto.' }
+    ]
+  },
+  {
     slug: 'marinada-para-frango',
     titulo: 'Como marinar frango para o seu churrasco: dicas do chef Giovanni Silvestre',
     categoria: 'dicas',
