@@ -76,10 +76,9 @@ var POSTS = [
       { tipo: 'paragrafo', rotulo: 'Segurança garantida.', texto: 'A Churrasqueira Híbrida possui manta térmica e paredes de inox com camada dupla, permitindo o uso simultâneo de gás e carvão com total segurança, seguindo sempre as recomendações da Construflama.' },
       { tipo: 'paragrafo', rotulo: 'Customização total.', texto: 'O modelo híbrido oferece tamanhos personalizáveis, permitindo escolher tanto a área de queima quanto a extensão total da churrasqueira que melhor se adapta ao seu espaço. As grelhas bipartidas com sistema de encaixe em gaveta são intercambiáveis e podem ser adquiridas como adicionais. Além disso, é possível incluir um volante customizável no lugar da manivela tradicional para elevar a grelha com ainda mais conforto.' },
       { tipo: 'subtitulo', texto: 'Veja a Churrasqueira Híbrida em ação' },
-      // TODO: link do vídeo do Instagram de 29/04 (no original: "[linkar vídeo do Instagram postado no dia 29/04]")
       { tipo: 'paragrafo', texto: 'Confira todos os detalhes da Churrasqueira Híbrida Premium Construflama em nossos vídeos:' },
       { tipo: 'lista', itens: [
-        { rotulo: 'Instagram:', texto: '', link: { texto: '@construflama', href: 'https://www.instagram.com/construflama' } },
+        { rotulo: 'Instagram:', texto: '', link: { texto: 'assistir ao vídeo da Churrasqueira Híbrida', href: 'https://www.instagram.com/p/DXuuP_7DeMj/' } },
         { rotulo: 'YouTube:', texto: '', link: { texto: '@construflamaoficial', href: 'https://www.youtube.com/@construflamaoficial' } }
       ] },
       { tipo: 'paragrafo', texto: '', link: { texto: 'Entre em contato com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: 'e descubra a liberdade de escolher como assar e saborear cada momento do seu churrasco!' }
