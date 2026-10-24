@@ -58,6 +58,120 @@ function conteudoExemplo(subtitulos) {
 
 var POSTS = [
   {
+    slug: 'churrasqueira-hibrida-construflama',
+    titulo: 'Churrasqueira Híbrida Construflama: tecnologia e tradição lado a lado',
+    categoria: 'churrasqueiras',
+    resumo: 'Gás ou carvão, quando você quiser: como funciona a Churrasqueira Híbrida Premium e o que a diferencia.',
+    data: '2026-05-11', exemplo: false,
+    imagem: 'img/blog/churrasqueira-hibrida-daniela-dantas.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Churrasqueira híbrida embutida em um nicho revestido de pedra clara com veios, com grelhas, espetos e manivelas, acima de um móvel do mesmo revestimento, ao lado de uma mesa redonda. Ambiente de Daniela Dantas Arquitetura, fotos de Giovanni Bellini.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'A Construflama lança sua Churrasqueira Híbrida Premium, unindo inovação e tradição para transformar o preparo do churrasco. Pensada para atender às necessidades do estilo de vida dos nossos clientes, essa churrasqueira permite assar com gás ou carvão, garantindo liberdade total na hora de preparar suas receitas favoritas.' },
+      { tipo: 'subtitulo', texto: 'Como funciona a Churrasqueira Híbrida Construflama?' },
+      { tipo: 'paragrafo', texto: 'O diferencial da Churrasqueira Híbrida da linha Premium está em sua versatilidade. Com duas caixas-braseiro independentes, cada grelha bipartida pode funcionar separadamente a gás ou carvão, oferecendo controle total sobre o ponto de cada preparo.' },
+      { tipo: 'paragrafo', texto: 'Além disso, mantém a praticidade do sistema de encaixe estilo cooktop, característica marcante das churrasqueiras Construflama. Isso significa que você pode alternar entre gás e carvão sem comprometer a experiência clássica do churrasco.' },
+      { tipo: 'subtitulo', texto: 'Diferenciais da Churrasqueira Híbrida' },
+      { tipo: 'paragrafo', rotulo: 'Liberdade de escolha a todo momento.', texto: 'Com a Churrasqueira Híbrida, você decide como quer preparar seu churrasco: seja dedicando horas ao ritual completo ou transformando um momento do dia a dia em uma experiência gastronômica especial. Não é necessário escolher entre gás ou carvão no momento da compra: a escolha é sua, a qualquer hora.' },
+      { tipo: 'paragrafo', rotulo: 'Praticidade do gás com excelência.', texto: 'Acender a churrasqueira a gás Construflama é simples e rápido. Os bicos injetores cobertos com pedras vulcânicas distribuem o calor de forma uniforme, garantindo que cada pedaço seja assado com perfeição, sem alterar o sabor clássico do churrasco.' },
+      { tipo: 'paragrafo', rotulo: 'Segurança garantida.', texto: 'A Churrasqueira Híbrida possui manta térmica e paredes de inox com camada dupla, permitindo o uso simultâneo de gás e carvão com total segurança, seguindo sempre as recomendações da Construflama.' },
+      { tipo: 'paragrafo', rotulo: 'Customização total.', texto: 'O modelo híbrido oferece tamanhos personalizáveis, permitindo escolher tanto a área de queima quanto a extensão total da churrasqueira que melhor se adapta ao seu espaço. As grelhas bipartidas com sistema de encaixe em gaveta são intercambiáveis e podem ser adquiridas como adicionais. Além disso, é possível incluir um volante customizável no lugar da manivela tradicional para elevar a grelha com ainda mais conforto.' },
+      { tipo: 'subtitulo', texto: 'Veja a Churrasqueira Híbrida em ação' },
+      // TODO: link do vídeo do Instagram de 29/04 (no original: "[linkar vídeo do Instagram postado no dia 29/04]")
+      { tipo: 'paragrafo', texto: 'Confira todos os detalhes da Churrasqueira Híbrida Premium Construflama em nossos vídeos:' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Instagram:', texto: '', link: { texto: '@construflama', href: 'https://www.instagram.com/construflama' } },
+        { rotulo: 'YouTube:', texto: '', link: { texto: '@construflamaoficial', href: 'https://www.youtube.com/@construflamaoficial' } }
+      ] },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Entre em contato com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: 'e descubra a liberdade de escolher como assar e saborear cada momento do seu churrasco!' }
+    ]
+  },
+  {
+    slug: 'marinada-para-cortes-suinos',
+    titulo: 'Marinada para cortes suínos: dicas para um churrasco de alto nível',
+    categoria: 'dicas',
+    resumo: 'Laranja, limão, cerveja ou vinho: as combinações do chef Giovanni Silvestre para equilibrar a gordura e dar mais sabor aos cortes suínos.',
+    data: '2026-02-18', exemplo: false,
+    imagem: 'img/blog/marinada-suinos.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Peça de carne suína enrolada e amarrada, com a pele dourada e tostada, sobre a grelha em meio à fumaça; mãos de luvas pretas ao fundo. Foto de Milena Camillo.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Quando se fala em churrasco, logo vem à mente o sabor inconfundível de carnes suculentas e bem temperadas, acompanhadas de bons amigos e uma boa conversa. E para transformar sua churrasqueira de alto nível em um verdadeiro centro gastronômico, nada melhor do que preparar as carnes com marinadas que trazem novos sabores e experiências ao seu paladar.' },
+      { tipo: 'subtitulo', texto: 'Transforme seu churrasco com marinadas especiais' },
+      { tipo: 'paragrafo', texto: 'No Brasil, o churrasco é mais do que uma refeição: é um evento, uma celebração que acontece em torno da churrasqueira. Seja para uma reunião entre amigos, um almoço de domingo ou uma data especial, o cuidado com o preparo das carnes é essencial para deixar o momento ainda mais inesquecível.' },
+      { tipo: 'paragrafo', texto: 'Para ajudar você a elevar o sabor de seus cortes suínos, convidamos o chef e produtor gastronômico Giovanni Silvestre, formado pelo Senac, com experiência no MasterChef Brasil e cofundador da', link: { texto: 'Tentáculos, produtora de gastronomia', href: 'https://www.instagram.com/tentaculosprodutora/' }, depois: 'para audiovisual e eventos que transformam ingredientes em momentos memoráveis.' },
+      { tipo: 'subtitulo', texto: 'Como marinar cortes suínos' },
+      { tipo: 'paragrafo', texto: 'A marinada é uma das etapas mais importantes para dar aquele toque especial à carne. Ela não só ajuda a temperar, mas também a amaciar, proporcionando mais suculência e sabor.' },
+      { tipo: 'paragrafo', texto: 'Para os cortes suínos, a escolha dos ingredientes certos para a marinada é ainda mais crucial, pois a carne suína possui uma quantidade significativa de gordura. Por isso, é fundamental equilibrar os temperos.' },
+      { tipo: 'paragrafo', texto: 'O chef Giovanni Silvestre explica que a base da marinada podem ser sucos, bebidas alcoólicas ou algo que contraponha essa gordura, como frutas cítricas e outros ingredientes menos oleosos. Além disso, temperos como ervas aromáticas e especiarias são essenciais para criar aquele sabor único.' },
+      { tipo: 'subtitulo', texto: 'Dicas do chef para marinadas de cortes suínos' },
+      { tipo: 'paragrafo', texto: 'Para cortes suínos, a marinada precisa considerar o fator gordura, que é uma característica forte da carne. O segredo está em contrastar esse elemento com ingredientes que tragam frescor e equilíbrio. Aqui estão algumas sugestões do chef Giovanni:' },
+      { tipo: 'lista', itens: [
+        { rotulo: '1. Laranja, páprica e mel:', texto: 'a laranja tem uma acidez que contrasta maravilhosamente com a gordura da carne, enquanto a páprica traz um toque defumado e o mel, um leve dulçor.' },
+        { rotulo: '2. Limão, mostarda e alho:', texto: 'o limão é saboroso e refrescante, ajudando a quebrar a gordura, enquanto a mostarda adiciona um toque picante e o alho garante sabor intenso.' },
+        { rotulo: '3. Cerveja (clara ou escura) com alho e páprica:', texto: 'a cerveja, além de ajudar a amaciar, adiciona um sabor levemente amargo que equilibra a doçura natural da carne. A páprica, mais uma vez, traz aquele toque defumado delicioso.' },
+        { rotulo: '4. Vinho (branco ou tinto) com cebola e louro:', texto: 'o vinho tem a acidez necessária para amaciar a carne, e a cebola e o louro trazem um aroma irresistível, complementando o sabor da carne de maneira elegante.' }
+      ] },
+      { tipo: 'subtitulo', texto: 'A marinada ideal para cada corte suíno' },
+      { tipo: 'paragrafo', texto: 'A marinada ideal pode variar dependendo do tipo de corte que você escolheu. Mas a regra geral é equilibrar ingredientes alcoólicos ou cítricos com especiarias e temperos que ajudem a realçar o sabor da carne sem sobrecarregá-la. Aqui estão algumas sugestões de marinadas para os cortes mais populares:' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Costelinha de porco:', texto: 'marinada de laranja, mel e alho.' },
+        { rotulo: 'Pernil suíno:', texto: 'marinada de cerveja escura com cebola e louro.' },
+        { rotulo: 'Linguiça artesanal:', texto: 'marinada de limão, mostarda e ervas frescas.' }
+      ] },
+      { tipo: 'subtitulo', texto: 'O sabor dos seus sonhos!' },
+      { tipo: 'paragrafo', texto: 'Independentemente do corte, o que torna um churrasco realmente inesquecível não é só a carne, mas o prazer de estar reunido com amigos e familiares ao redor da churrasqueira. Seja com a praticidade da nossa linha de churrasqueiras a gás ou na tradição do carvão, cada detalhe conta para criar uma experiência única e saborosa.' },
+      { tipo: 'paragrafo', texto: 'Agora que você já sabe como marinar seus cortes suínos como um chef, que tal dar uma olhada em nossa linha de churrasqueiras Construflama? Com qualidade e inovação, nossas churrasqueiras são perfeitas para ajudar você a levar suas habilidades culinárias ao próximo nível!' },
+      { tipo: 'subtitulo', texto: 'Dicas extras para o sucesso do seu churrasco' },
+      { tipo: 'lista', itens: [
+        'Deixe as carnes marinando por pelo menos 30 minutos (e até 12 horas para cortes mais espessos) para garantir que os temperos penetrem bem.',
+        'Não se esqueça de usar uma grelha bem quente para selar os cortes e garantir aquele sabor defumado que todos amam.',
+        'Capriche na escolha dos acompanhamentos, como farofas, molhos e saladas frescas, para completar a refeição.'
+      ] },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Aproveite as dicas e conheça nossa linha de churrasqueiras!', href: 'colecao.html?c=churrasqueiras' } }
+    ]
+  },
+  {
+    slug: 'marinada-para-cortes-bovinos',
+    titulo: 'Marinada para cortes bovinos: dicas do chef Giovanni Silvestre',
+    categoria: 'dicas',
+    resumo: 'Quando salgar, o que usar nos cortes macios e como amaciar os mais firmes: as marinadas do chef Giovanni Silvestre para carne bovina.',
+    data: '2026-02-12', exemplo: false,
+    imagem: 'img/blog/marinada-bovinos.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Pedaço de costela bovina grelhada segurado por um pegador, sob a barra metálica com a marca Construflama, em meio à fumaça. Foto de Milena Camillo.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'O churrasco é mais que uma refeição: é uma verdadeira paixão nacional! E quando falamos de churrasco, não podemos deixar de mencionar as churrasqueiras e parrillas Construflama, que tornam cada momento ao redor da grelha ainda mais especial. Entre os cortes mais amados pelos brasileiros, os bovinos são, sem dúvida, os favoritos. Mas quem disse que precisa ser sempre só sal grosso? Existem muitos temperos novos para você explorar e descobrir formas incríveis de saborear seu corte preferido.' },
+      { tipo: 'subtitulo', texto: 'A arte de marinar carne bovina' },
+      { tipo: 'paragrafo', texto: 'Inovar no sabor é a chave para criar experiências únicas e momentos memoráveis. Com centenas de opções de marinadas, é possível agradar todos os paladares, desde quem prepara até quem saboreia o churrasco. Para te ajudar nessa jornada gastronômica, reunimos algumas dicas do chef Giovanni Silvestre, que compartilha seus segredos para marinar cortes bovinos e levar seus churrascos a um novo nível de sabor.' },
+      { tipo: 'paragrafo', texto: 'O chef e produtor gastronômico Giovanni Silvestre é formado pelo Senac, tem experiência no MasterChef Brasil e é cofundador da Tentáculos, produtora de gastronomia para audiovisual e eventos que transformam ingredientes em momentos memoráveis.' },
+      { tipo: 'subtitulo', texto: 'Sal: o toque final!' },
+      { tipo: 'paragrafo', texto: 'Escolher os temperos ideais é fundamental, mas um detalhe faz toda a diferença: o momento de salgar a carne. O chef Giovanni explica:' },
+      { tipo: 'citacao', texto: 'Uma das regras mais importantes ao preparar carnes bovinas é não incluir sal na marinada. O sal deve ser colocado apenas na hora de colocar a carne na grelha, ou até mesmo depois de grelhada.', autor: 'Chef Giovanni Silvestre' },
+      { tipo: 'paragrafo', texto: 'Esse pequeno detalhe pode transformar o sabor da carne, preservando a textura e realçando o tempero.' },
+      { tipo: 'subtitulo', texto: 'Cortes bovinos macios' },
+      { tipo: 'paragrafo', texto: 'Quando o assunto é carne bovina macia, como alcatra, fraldinha e maminha, a chave é uma marinada simples e aromática.' },
+      { tipo: 'citacao', texto: 'Para cortes mais macios, não é necessário usar ingredientes ácidos, porque o objetivo aqui é apenas aromatizar, não amaciar a carne.', autor: 'Chef Giovanni Silvestre' },
+      { tipo: 'paragrafo', texto: 'Para esses cortes (alcatra, fraldinha, maminha), opte por marinadas mais suaves, como:' },
+      { tipo: 'lista', itens: [
+        'Manteiga, alho e tomilho',
+        'Azeite, gengibre e shoyu',
+        'Azeite, manteiga, páprica e cebola'
+      ] },
+      { tipo: 'paragrafo', texto: 'Essas combinações vão realçar os sabores sem mascarar a maciez natural da carne.' },
+      { tipo: 'subtitulo', texto: 'Cortes mais firmes' },
+      { tipo: 'paragrafo', texto: 'Agora, se você vai preparar cortes mais firmes, como costela, cupim ou peito, a marinada precisa ser mais robusta, ajudando a amaciar as fibras da carne. O chef Giovanni dá a dica: esses cortes pedem uma base diferente para amaciar e, em geral, não é necessário usar óleos ou azeites, pois já têm gordura própria.' },
+      { tipo: 'paragrafo', texto: 'Para amaciar esses cortes (costela, cupim, peito), aposte em marinadas mais intensas, como:' },
+      { tipo: 'lista', itens: [
+        'Cerveja (clara ou escura) com alho e páprica',
+        'Vinho (branco ou tinto) com cebola e louro'
+      ] },
+      { tipo: 'paragrafo', texto: 'Essas opções ajudam a amaciar as fibras mais duras, conferindo à carne um sabor incrível.' },
+      { tipo: 'subtitulo', texto: 'Experimente, crie e surpreenda!' },
+      { tipo: 'paragrafo', texto: 'Com essas dicas do chef Giovanni Silvestre, você tem a liberdade para testar diferentes marinadas e encontrar a combinação perfeita para o seu paladar e de seus convidados. Lembre-se de escolher a base certa e os temperos mais harmônicos, aproveitando ao máximo a performance da sua churrasqueira Construflama!' },
+      { tipo: 'subtitulo', texto: 'Transforme sua área gourmet' },
+      { tipo: 'paragrafo', texto: 'Quer levar a experiência do churrasco para outro nível? Conheça nossa linha de churrasqueiras e parrillas, e prepare-se para receber seus amigos e família com o melhor do churrasco. Na Construflama, cada momento ao redor da grelha é uma celebração de sabor e convivência!' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Conheça as opções disponíveis', href: 'colecao.html?c=churrasqueiras' }, depois: 'para receber na sua área gourmet com o melhor do churrasco!' }
+    ]
+  },
+  {
     slug: '6-motivos-para-investir-em-uma-lareira',
     titulo: 'Acolhimento é o diferencial do seu lar: 6 motivos para investir em uma lareira',
     categoria: 'lareiras',
