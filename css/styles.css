@@ -969,6 +969,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
 /* Categorias só do blog */
 .material--projetos { --material: radial-gradient(ellipse 60% 55% at 75% 85%, rgba(224, 122, 58, .4), transparent 70%), linear-gradient(150deg, #5E5650, #3B3531 60%, #2A2623); }
 .material--dicas { --material: radial-gradient(ellipse 60% 55% at 25% 85%, rgba(244, 167, 87, .35), transparent 70%), linear-gradient(160deg, #6B3E28, #4A2E1F 70%); }
+.material--receitas { --material: radial-gradient(ellipse 60% 55% at 70% 80%, rgba(176, 74, 23, .45), transparent 70%), linear-gradient(155deg, #7A4A2E, #4A2E1F 65%, #2E2420); }
 /* Celular: Lareiras é a coleção principal, card mais alto (chama acima do texto) */
 .tile--lareiras { min-height: 18rem; }
 

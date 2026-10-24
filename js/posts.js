@@ -6,7 +6,7 @@
    BLOG_CATEGORIAS: ordem dos filtros da lista (depois de "Todos"); só
    aparecem as categorias que têm pelo menos um artigo.
    - slug igual ao de CATEGORIAS (main.js) usa o nome e a ilustração de lá;
-   - categorias só do blog (Projetos, Dicas) trazem o próprio nome.
+   - categorias só do blog (Projetos, Dicas, Receitas) trazem o próprio nome.
 
    POSTS (a ordem no arquivo não importa: o site ordena pela data, do mais
    novo para o mais antigo, e o MAIS RECENTE vira o artigo grande do topo):
@@ -36,7 +36,8 @@ var BLOG_CATEGORIAS = [
   { slug: 'parrillas' },
   { slug: 'fornos-de-pizza' },
   { slug: 'projetos', nome: 'Projetos' },
-  { slug: 'dicas', nome: 'Dicas' }
+  { slug: 'dicas', nome: 'Dicas' },
+  { slug: 'receitas', nome: 'Receitas' }
 ];
 
 var POSTS = [
@@ -109,7 +110,7 @@ var POSTS = [
   {
     slug: 'receita-ano-novo-bacalhau',
     titulo: 'Receita de Ano Novo: bacalhau grelhado com salada morna de lentilhas',
-    categoria: 'dicas',
+    categoria: 'receitas',
     resumo: 'Bacalhau e lentilhas, símbolos de prosperidade, preparados na churrasqueira: a receita do chef Giovanni Silvestre para a ceia de Ano Novo.',
     data: '2025-12-29', exemplo: false,
     imagem: 'img/blog/receita-bacalhau.webp', capaInteira: 'escuro',
@@ -172,7 +173,7 @@ var POSTS = [
   {
     slug: 'receita-de-natal-carre-de-cordeiro',
     titulo: 'Receita de Natal: carré de cordeiro com frutas grelhadas e molho de hortelã',
-    categoria: 'dicas',
+    categoria: 'receitas',
     resumo: 'Carré de cordeiro na churrasqueira, frutas grelhadas, farofa de castanhas e molho de hortelã: uma ceia de Natal feita inteira na brasa.',
     data: '2025-12-19', exemplo: false,
     imagem: 'img/blog/receita-natal-cordeiro.webp', capaInteira: 'escuro',
