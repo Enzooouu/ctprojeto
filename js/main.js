@@ -1237,26 +1237,52 @@ var DEPOIMENTOS = [
   /* ---------- Lista ---------- */
   (function montarBlog() {
     if (!NA_BLOG || typeof POSTS === 'undefined') return;
-    // Computador (grade de 3 colunas): começa com 12 cards; celular e tablet, 6.
-    // "Carregar mais" acrescenta sempre 6.
-    var POR_PAGINA = 6;
+    // Paginação: 12 artigos por página no computador (grade de 3 colunas),
+    // 6 no celular e no tablet. Página, categoria e busca ficam no endereço
+    // (blog.html?categoria=lareiras&pagina=2), então voltar de um artigo
+    // cai na mesma página e o botão Voltar do navegador troca de página.
     var gradeLarga = window.matchMedia('(min-width: 1024px)');
-    function inicial() { return gradeLarga.matches ? 12 : 6; }
+    function porPagina() { return gradeLarga.matches ? 12 : 6; }
     var secaoDestaque = document.querySelector('[data-blog-destaque]');
     var caixaDestaque = document.querySelector('[data-blog-destaque-caixa]');
     var filtros = document.querySelector('[data-blog-filtros]');
     var busca = document.querySelector('[data-blog-busca]');
     var grade = document.querySelector('[data-blog-grade]');
     var vazio = document.querySelector('[data-blog-vazio]');
-    var maisCaixa = document.querySelector('[data-blog-mais-caixa]');
-    var mais = document.querySelector('[data-blog-mais]');
+    var paginacao = document.querySelector('[data-blog-paginacao]');
     var contagem = document.querySelector('[data-blog-contagem]');
+    var tituloLista = document.getElementById('artigos-titulo');
     var posts = postsPorData();
     var destaque = posts[0] || null;   // o artigo mais recente é sempre o destaque
 
-    var estado = { cat: 'todos', termo: '', limite: inicial() };
-    var pedida = new URLSearchParams(location.search).get('categoria');
-    if (pedida && POSTS.some(function (p) { return p.categoria === pedida; })) estado.cat = pedida;
+    var estado = { cat: 'todos', termo: '', pagina: 1 };
+
+    // Lê categoria, busca e página do endereço
+    function lerEndereco() {
+      var q = new URLSearchParams(location.search);
+      var cat = q.get('categoria');
+      estado.cat = cat && POSTS.some(function (p) { return p.categoria === cat; }) ? cat : 'todos';
+      estado.termo = q.get('busca') || '';
+      estado.pagina = Math.max(1, parseInt(q.get('pagina'), 10) || 1);
+      busca.value = estado.termo;
+    }
+
+    function endereco(pagina) {
+      var q = new URLSearchParams();
+      if (estado.cat !== 'todos') q.set('categoria', estado.cat);
+      if (estado.termo.trim()) q.set('busca', estado.termo.trim());
+      if (pagina > 1) q.set('pagina', pagina);
+      var t = q.toString();
+      return location.pathname + (t ? '?' + t : '');
+    }
+
+    // Filtro e busca substituem o endereço; trocar de página cria um passo no
+    // histórico (o Voltar do navegador volta para a página anterior da lista)
+    function salvar(novoPasso) {
+      if (!history.replaceState) return;
+      var url = endereco(estado.pagina);
+      if (novoPasso) history.pushState(null, '', url); else history.replaceState(null, '', url);
+    }
 
     // Artigo em destaque (o mais recente)
     if (destaque) {
@@ -1289,10 +1315,8 @@ var DEPOIMENTOS = [
       b.setAttribute('data-cat', o.slug);
       b.addEventListener('click', function () {
         estado.cat = o.slug;
-        estado.limite = inicial();
-        if (history.replaceState) {
-          history.replaceState(null, '', o.slug === 'todos' ? location.pathname : '?categoria=' + o.slug);
-        }
+        estado.pagina = 1;
+        salvar(false);
         render(true);
       });
       filtros.appendChild(b);
@@ -1312,43 +1336,135 @@ var DEPOIMENTOS = [
       };
     }
 
+    // Números a mostrar: primeira, última e as vizinhas da atual; o resto vira "…"
+    // (no celular só a atual, para caber numa linha)
+    function numerosDaPaginacao(atual, total) {
+      var nums = [];
+      var vizinhas = gradeLarga.matches ? 1 : 0;
+      for (var n = 1; n <= total; n++) {
+        if (n === 1 || n === total || Math.abs(n - atual) <= vizinhas) nums.push(n);
+        else if (nums[nums.length - 1] !== '…') nums.push('…');
+      }
+      return nums;
+    }
+
+    function itemPaginacao(rotulo, pagina, extra) {
+      var li = el('li');
+      if (pagina == null) {
+        // Seta sem destino (primeira ou última página): visível, mas desativada
+        var off = el('span', 'blog-pagina blog-pagina--seta is-desativada', rotulo);
+        off.setAttribute('aria-hidden', 'true');
+        li.appendChild(off);
+        return li;
+      }
+      var a = el('a', 'blog-pagina' + (extra ? ' ' + extra : ''), rotulo);
+      a.href = endereco(pagina);
+      a.setAttribute('data-pagina', pagina);
+      li.appendChild(a);
+      return { li: li, a: a };
+    }
+
+    function montarPaginacao(total) {
+      paginacao.textContent = '';
+      paginacao.hidden = total <= 1;
+      if (total <= 1) return;
+      var ul = el('ul', 'blog-paginacao__lista');
+      var atual = estado.pagina;
+
+      var ant = atual > 1 ? itemPaginacao('‹', atual - 1, 'blog-pagina--seta') : null;
+      if (ant) { ant.a.setAttribute('aria-label', 'Página anterior'); ul.appendChild(ant.li); }
+      else ul.appendChild(itemPaginacao('‹', null));
+
+      numerosDaPaginacao(atual, total).forEach(function (n) {
+        if (n === '…') {
+          var li = el('li');
+          var r = el('span', 'blog-pagina blog-pagina--reticencias', '…');
+          r.setAttribute('aria-hidden', 'true');
+          li.appendChild(r);
+          ul.appendChild(li);
+          return;
+        }
+        var it = itemPaginacao(String(n), n);
+        it.a.setAttribute('aria-label', 'Página ' + n);
+        if (n === atual) it.a.setAttribute('aria-current', 'page');
+        ul.appendChild(it.li);
+      });
+
+      var prox = atual < total ? itemPaginacao('›', atual + 1, 'blog-pagina--seta') : null;
+      if (prox) { prox.a.setAttribute('aria-label', 'Próxima página'); ul.appendChild(prox.li); }
+      else ul.appendChild(itemPaginacao('›', null));
+
+      paginacao.appendChild(ul);
+    }
+
     function render(anunciar) {
       var r = resultado();
+      var tamanho = porPagina();
+      var total = Math.max(1, Math.ceil(r.lista.length / tamanho));
+      estado.pagina = Math.min(Math.max(1, estado.pagina), total);   // página fora do intervalo: ajusta
+
       botoes.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-cat') === estado.cat)); });
-      if (destaque) secaoDestaque.hidden = r.filtrando;   // filtrando, o destaque entra na grade
+      // O destaque só aparece na página 1 da lista completa
+      if (destaque) secaoDestaque.hidden = r.filtrando || estado.pagina > 1;
       grade.textContent = '';
-      r.lista.slice(0, estado.limite).forEach(function (p) { grade.appendChild(cardPost(p)); });
+      var inicio = (estado.pagina - 1) * tamanho;
+      r.lista.slice(inicio, inicio + tamanho).forEach(function (p) { grade.appendChild(cardPost(p)); });
       vazio.hidden = r.lista.length > 0;
-      maisCaixa.hidden = r.lista.length <= estado.limite;
+      montarPaginacao(r.lista.length ? total : 0);
       if (anunciar) {
         contagem.textContent = r.lista.length === 0 ? 'Nenhum artigo encontrado.'
-          : r.lista.length + (r.lista.length === 1 ? ' artigo encontrado.' : ' artigos encontrados.');
+          : r.lista.length + (r.lista.length === 1 ? ' artigo encontrado' : ' artigos encontrados')
+            + (total > 1 ? ', página ' + estado.pagina + ' de ' + total + '.' : '.');
       }
     }
 
-    busca.addEventListener('input', function () {
-      estado.termo = busca.value;
-      estado.limite = inicial();
+    // Troca de página: sobe até o começo da lista e leva o foco para o título
+    function irParaPagina(n) {
+      estado.pagina = n;
+      salvar(true);
+      render(true);
+      document.getElementById('artigos').scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      tituloLista.focus({ preventScroll: true });
+    }
+
+    paginacao.addEventListener('click', function (e) {
+      var a = e.target.closest('a[data-pagina]');
+      if (!a || e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;  // nova aba: deixa o navegador abrir
+      e.preventDefault();
+      irParaPagina(parseInt(a.getAttribute('data-pagina'), 10));
+    });
+
+    // Voltar/avançar do navegador entre páginas da lista
+    window.addEventListener('popstate', function () {
+      lerEndereco();
       render(true);
     });
 
-    mais.addEventListener('click', function () {
-      var antes = grade.children.length;
-      estado.limite += POR_PAGINA;
+    // Celular ↔ computador: mantém visível o primeiro artigo que estava na tela
+    gradeLarga.addEventListener('change', function (e) {
+      var antes = e.matches ? 6 : 12;
+      var primeiro = (estado.pagina - 1) * antes;
+      estado.pagina = Math.floor(primeiro / porPagina()) + 1;
+      salvar(false);
+      render(false);
+    });
+
+    busca.addEventListener('input', function () {
+      estado.termo = busca.value;
+      estado.pagina = 1;
+      salvar(false);
       render(true);
-      // Foco no primeiro card novo (quem usa teclado continua de onde parou)
-      var novo = grade.children[antes] && grade.children[antes].querySelector('a');
-      if (novo) novo.focus();
     });
 
     document.querySelector('[data-blog-limpar]').addEventListener('click', function () {
-      estado = { cat: 'todos', termo: '', limite: inicial() };
+      estado = { cat: 'todos', termo: '', pagina: 1 };
       busca.value = '';
-      if (history.replaceState) history.replaceState(null, '', location.pathname);
+      salvar(false);
       render(true);
       busca.focus();
     });
 
+    lerEndereco();
     render(false);
   })();
 

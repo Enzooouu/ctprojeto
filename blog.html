@@ -221,7 +221,7 @@
     <section class="section blog-lista" id="artigos" aria-labelledby="artigos-titulo">
       <div class="container">
         <div class="blog-lista__topo">
-          <h2 class="section-title" id="artigos-titulo">Artigos</h2>
+          <h2 class="section-title" id="artigos-titulo" tabindex="-1">Artigos</h2>
           <div class="blog-busca">
             <label class="blog-busca__rotulo" for="blog-busca">Buscar no blog</label>
             <input class="blog-busca__campo" id="blog-busca" type="search" placeholder="Ex.: lareira, área gourmet" autocomplete="off" data-blog-busca>
@@ -239,9 +239,8 @@
           <button class="btn btn--outline" type="button" data-blog-limpar>Ver todos os artigos</button>
         </div>
 
-        <div class="blog-mais" data-blog-mais-caixa hidden>
-          <button class="btn btn--outline" type="button" data-blog-mais>Carregar mais</button>
-        </div>
+        <!-- Páginas da lista (montadas por js/main.js; somem se couber tudo em uma) -->
+        <nav class="blog-paginacao" aria-label="Páginas do blog" data-blog-paginacao hidden></nav>
       </div>
     </section>
 

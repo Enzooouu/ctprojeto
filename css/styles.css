@@ -2018,7 +2018,35 @@ a.brand:hover .brand__mark { color: var(--bege); }
 
 .blog-vazio { display: grid; justify-items: center; gap: var(--sp-3); padding: var(--sp-7) var(--sp-4); text-align: center; color: var(--cinza); }
 .blog-vazio__titulo { color: var(--marrom); font-family: var(--fonte-titulo); font-size: var(--fs-md); }
-.blog-mais { display: flex; justify-content: center; margin-top: var(--sp-6); }
+.blog-paginacao { margin-top: clamp(2rem, 1.5rem + 2vw, 3rem); }
+.blog-paginacao__lista { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sp-2); }
+.blog-pagina {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  padding: 0 .6rem;
+  border: 1px solid rgba(74, 46, 31, .3);
+  border-radius: var(--raio);
+  color: var(--marrom);
+  font-family: var(--fonte-titulo);
+  font-size: .9rem;
+  text-decoration: none;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+a.blog-pagina:hover { border-color: var(--marrom); }
+a.blog-pagina:active { background: var(--bege-escuro); }
+.blog-pagina[aria-current="page"] { border-color: var(--marrom); background: var(--marrom); color: var(--bege-claro); }
+.blog-pagina--seta { font-size: 1.3rem; line-height: 1; }
+.blog-pagina.is-desativada { opacity: .35; }
+.blog-pagina--reticencias { min-width: 1.5rem; border-color: transparent; }
+@media (max-width: 479px) {
+  .blog-paginacao__lista { gap: var(--sp-1); }
+  .blog-pagina { min-width: 2.5rem; padding: 0 .4rem; }
+  .blog-pagina--reticencias { min-width: 1.1rem; padding: 0; }
+}
+#artigos-titulo:focus { outline: none; }
+#artigos { scroll-margin-top: calc(var(--header-h) + 1rem); }
 
 /* Convite final (blog e artigo) */
 .blog-convite__caixa {
