@@ -58,6 +58,41 @@ function conteudoExemplo(subtitulos) {
 
 var POSTS = [
   {
+    slug: 'lareira-para-apartamento',
+    titulo: 'Lareira para apartamento: é possível instalar?',
+    categoria: 'lareiras',
+    resumo: 'Ecoflama, lareira a gás ou a lenha: o que cada tipo precisa para ser instalado em um apartamento.',
+    data: '2026-08-12', exemplo: false,
+    imagem: 'img/blog/lareira-apartamento.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Sala com painel de madeira e armário de portas perfuradas; na ponta do móvel, uma lareira Ecoflama linear acesa em um nicho de mármore claro, diante de um sofá branco. Ambiente de Nathalia Candelária, foto de Rafael Renzo.',
+    conteudo: [
+      { tipo: 'subtitulo', texto: 'Por que as lareiras atraem cada dia mais interesse?' },
+      { tipo: 'paragrafo', texto: 'As lareiras em suas diversas formas são símbolos do aconchego e do conforto nos ambientes residenciais, que têm sido cada vez mais destacados na estética. Essa tendência se reflete no design de interiores e na configuração da planta de espaços de alto padrão, solicitados por quem aprecia o lar como expressão funcional da personalidade, que dentro da rotina é um local de descanso ou “refúgio”, visando fazer desse conforto o maior diferencial de um imóvel e de um estilo de vida.' },
+      { tipo: 'paragrafo', texto: '“Casa com cara de casa” é um termo que surge informalmente em círculos de entusiastas e de profissionais que buscam expressar de maneira rápida a necessidade de habitar um espaço acolhedor, e isso se reflete também nos apartamentos, principal tipo de moradia dos grandes centros urbanos.' },
+      { tipo: 'paragrafo', texto: 'Nessa busca pelo elemento do “acolher”, muitos se perguntam se é possível ter uma lareira que remete às tradições de reunir ao redor do fogo mesmo morando em um apartamento. Conheça agora as suas opções para ter no seu apartamento esse autocuidado que simboliza não só status, mas pertencimento ao local.' },
+      { tipo: 'subtitulo', texto: 'Escolha o modelo que abraça o seu lar!' },
+      { tipo: 'paragrafo', texto: 'A linha escultural é ideal para espaços amplos com pé-direito alto, como livings integrados. São modelos que podem agregar à estética do seu ambiente nas versões a gás, lenha ou carvão.' },
+      { tipo: 'paragrafo', texto: 'Modelos lineares, tanto nas Ecoflamas quanto nas lareiras a gás, podem ser encaixados em diversas propostas visuais com o minimalismo que dá toda a liberdade a quem projeta e decora.' },
+      { tipo: 'paragrafo', texto: 'As Lareiras Portáteis e Mesas com Ecoflama encaixam perfeitamente no espaço e são tão fáceis de agregar ao layout quanto um móvel de pequeno porte.' },
+      { tipo: 'subtitulo', texto: 'Quais modelos de lareira posso ter no meu apartamento?' },
+      { tipo: 'paragrafo', rotulo: 'Ecoflamas:', texto: 'As lareiras a álcool Construflama trazem de maneira especial o benefício da praticidade. Você pode utilizar esse tipo de produto em ambientes fechados sem necessidade de exaustão e nem infraestrutura do condomínio, seja nas peças portáteis que não precisam de base em alvenaria e nem processos de instalação, ou nas peças que podem ser sobrepostas com encaixe em um nicho simples. A Ecoflama é uma forma simples de agregar elegância e conforto para diversos tipos de espaço.' },
+      { tipo: 'paragrafo', rotulo: 'Lareira a gás:', texto: 'Para ter uma Lareira a Gás Construflama no seu apartamento é necessário apenas que o local tenha pontos de gás e eletricidade que possam ser conectados à lareira, além de incluir uma coifa de respiro que não demanda motor nem dentro do apartamento nem na estrutura comum do prédio, ou então ventilação cruzada, que é a existência de janelas ou portas extensas que possam arejar o ambiente durante o uso como forma de precaução, garantindo conforto térmico e visual elegante sem preocupações.' },
+      { tipo: 'paragrafo', rotulo: 'Lareira a lenha:', texto: 'Os modelos a lenha necessitam de análise da estrutura do prédio e das questões estruturais do condomínio, mas o processo é 100% possível caso haja estruturas que viabilizem a liberação da fumaça, como shafts comuns aos apartamentos ou chaminés dedicadas. Nesse tipo de produto mais tradicional, é fundamental a análise caso a caso para que seja alcançável o sonho de um lar que acolha quem entra através da beleza e do calor da chama.' },
+      { tipo: 'subtitulo', texto: 'O que mais é importante saber?' },
+      { tipo: 'lista', itens: [
+        'Atente-se às normas do condomínio para seguir todos os regulamentos relacionados a esse tipo de produto.',
+        'Escolha com carinho a posição! Ao selecionar o lugar da lareira você pode decidir qual parte do seu imóvel será mais beneficiada do ponto de vista estético e térmico.',
+        'Conheça no detalhe o seu próximo passo em direção a um lar mais confortável.'
+      ] },
+      { tipo: 'paragrafo', texto: 'Nossos consultores comerciais estão preparados para tirar suas dúvidas a fundo para encontrar a melhor opção considerando o seu imóvel, a sua rotina e a sua paixão estética!' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Clique e descubra', href: 'https://whts.co/Construflama_com' }, depois: 'como a arte e o prazer do fogo podem fazer parte da sua rotina!' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Telefone:', texto: '', link: { texto: '(11) 5171-6070', href: 'tel:+551151716070' } },
+        { rotulo: 'E-mail:', texto: '', link: { texto: 'construflama@construflama.com.br', href: 'mailto:construflama@construflama.com.br' } }
+      ] }
+    ]
+  },
+  {
     slug: 'como-escolher-a-lareira-ideal',
     titulo: 'Como escolher a lareira ideal para sua casa',
     categoria: 'lareiras',
