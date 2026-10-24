@@ -58,6 +58,114 @@ function conteudoExemplo(subtitulos) {
 
 var POSTS = [
   {
+    slug: '6-motivos-para-investir-em-uma-lareira',
+    titulo: 'Acolhimento é o diferencial do seu lar: 6 motivos para investir em uma lareira',
+    categoria: 'lareiras',
+    resumo: 'Conforto, design, convivência e valorização do imóvel: seis razões para ter uma lareira e os modelos para cada tipo de projeto.',
+    data: '2026-07-23', exemplo: false,
+    imagem: 'img/blog/motivos-lareira.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Suíte com parede de cimento queimado, televisão e, abaixo dela, uma lareira linear acesa sobre bancada de mármore claro, vista do pé da cama. Ambiente de Patrícia Hagobian, foto de Caio Falcão.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Quando as temperaturas caem, a casa se transforma no lugar onde buscamos conforto, tranquilidade e momentos especiais. E existe um elemento capaz de reunir tudo isso em um só ambiente: a lareira.' },
+      { tipo: 'paragrafo', texto: 'Muito mais do que uma fonte de aquecimento, a lareira é um item que agrega design, sofisticação, bem-estar e valorização ao imóvel. Seja em uma residência ampla, apartamento ou projeto corporativo, ela cria experiências que vão além do visual.' },
+      { tipo: 'paragrafo', texto: 'Se você está pensando em instalar uma lareira moderna, confira os principais motivos que fazem desse investimento uma das melhores escolhas para o seu lar.' },
+      { tipo: 'subtitulo', texto: '1. Conforto térmico que transforma o ambiente' },
+      { tipo: 'paragrafo', texto: 'Nada se compara ao calor agradável de uma lareira. Diferente dos aquecedores convencionais, que muitas vezes ressecam o ar ou geram ruídos, a lareira proporciona um aquecimento suave, constante e extremamente aconchegante.' },
+      { tipo: 'paragrafo', texto: 'O resultado é um ambiente mais confortável para relaxar depois do trabalho, receber amigos ou aproveitar momentos especiais com a família durante os dias frios.' },
+      { tipo: 'paragrafo', texto: 'Independentemente do modelo escolhido (lareira a lenha, lareira a gás ou lareira ecológica), o conforto é sempre protagonista.' },
+      { tipo: 'subtitulo', texto: '2. Existe uma lareira perfeita para o seu estilo de vida' },
+      { tipo: 'paragrafo', texto: 'Hoje, instalar uma lareira é muito mais simples do que muita gente imagina. A tecnologia ampliou as possibilidades e tornou esse elemento acessível para diferentes tipos de projetos.' },
+      { tipo: 'paragrafo', rotulo: 'Lareira a lenha:', texto: 'Ideal para quem valoriza a experiência tradicional do fogo, com o som da madeira queimando e o charme do estilo rústico.' },
+      { tipo: 'paragrafo', rotulo: 'Lareira a gás:', texto: 'Sinônimo de praticidade. Pode ser acionada por controle remoto, interruptor e, em alguns modelos, até por assistentes de voz como a Alexa. É uma excelente escolha para projetos contemporâneos e apartamentos.' },
+      { tipo: 'paragrafo', rotulo: 'Lareira ecológica (etanol):', texto: 'Sem fumaça, sem chaminé e sem necessidade de grandes obras. É uma alternativa elegante para quem deseja integrar o fogo ao ambiente com praticidade e design.' },
+      { tipo: 'subtitulo', texto: '3. Um modelo para cada projeto de arquitetura' },
+      { tipo: 'paragrafo', texto: 'Cada ambiente possui necessidades diferentes, e por isso existem diversos modelos capazes de valorizar qualquer espaço.' },
+      { tipo: 'paragrafo', rotulo: 'Lareiras embutidas em nicho:', texto: 'As lareiras embutidas se tornaram tendência na arquitetura contemporânea. Disponíveis nas versões a gás, álcool ou lenha, elas transformam o fogo no ponto focal do ambiente.' },
+      { tipo: 'paragrafo', texto: 'As Ecoflamas Lineares da Construflama possuem encaixe simplificado, facilitando a instalação em nichos previamente planejados. Nos modelos a gás, o acionamento pode ser realizado por controle remoto, interruptor ou integração com Alexa.' },
+      { tipo: 'paragrafo', rotulo: 'Lareiras portáteis:', texto: 'Quem procura praticidade encontra nas lareiras portáteis uma excelente solução. Modelos como a Lareira Canoa dispensam instalação e podem ser utilizados sobre superfícies resistentes ao calor, criando ambientes aconchegantes em salas, suítes, varandas e áreas externas. É a combinação perfeita entre mobilidade, design e funcionalidade.' },
+      { tipo: 'paragrafo', rotulo: 'Lareiras esculturais:', texto: 'As lareiras suspensas são verdadeiras obras de arte. Presentes em projetos premiados e em mostras como a CASACOR, elas unem design autoral, elegância e sofisticação, tornando-se protagonistas da decoração. Você pode escolher entre modelos com versões a álcool, a lenha e a gás, ideais para quem deseja criar ambientes exclusivos e atemporais.' },
+      { tipo: 'subtitulo', texto: '4. Mais sofisticação e personalidade para a decoração' },
+      { tipo: 'paragrafo', texto: 'Poucos elementos conseguem transformar um ambiente como uma lareira.' },
+      { tipo: 'paragrafo', texto: 'Ela cria um ponto focal naturalmente elegante, agrega valor ao projeto e transmite uma sensação imediata de acolhimento.' },
+      { tipo: 'paragrafo', texto: 'Por isso, arquitetos e designers utilizam cada vez mais lareiras em salas de estar, suítes, recepções e áreas de convivência.' },
+      { tipo: 'paragrafo', texto: 'Além da beleza, ela contribui para criar ambientes memoráveis e muito mais convidativos.' },
+      { tipo: 'subtitulo', texto: '5. A lareira aproxima as pessoas' },
+      { tipo: 'paragrafo', texto: 'Existe algo quase mágico em reunir pessoas ao redor do fogo.' },
+      { tipo: 'paragrafo', texto: 'A lareira convida a desacelerar, deixar o celular de lado e aproveitar momentos que realmente importam. Ela cria o cenário perfeito para:' },
+      { tipo: 'lista', itens: [
+        'Conversas acompanhadas de um bom vinho;',
+        'Noites de jogos com a família;',
+        'Filmes e séries em dias frios;',
+        'Leitura de um bom livro;',
+        'Receber amigos com mais conforto;',
+        'Simplesmente apreciar o silêncio e o calor do ambiente.'
+      ] },
+      { tipo: 'paragrafo', texto: 'Mais do que aquecer a casa, a lareira aquece relações.' },
+      { tipo: 'subtitulo', texto: '6. Um investimento que valoriza o imóvel' },
+      { tipo: 'paragrafo', texto: 'Além de todos os benefícios estéticos e funcionais, a lareira também representa uma excelente valorização patrimonial.' },
+      { tipo: 'paragrafo', texto: 'Imóveis com esse diferencial costumam despertar maior interesse no mercado, agregando percepção de exclusividade e sofisticação.' },
+      { tipo: 'paragrafo', texto: 'Assim como um projeto luminotécnico bem executado, móveis planejados ou acabamentos premium, uma lareira contribui para tornar o imóvel mais desejado e competitivo em vendas ou locações.' },
+      { tipo: 'paragrafo', texto: 'É um investimento que gera conforto hoje e valor para o futuro.' },
+      { tipo: 'subtitulo', texto: 'Pronto para transformar o seu projeto?' },
+      { tipo: 'paragrafo', texto: 'Investir em uma lareira é investir em qualidade de vida. É criar ambientes mais acolhedores, sofisticados e preparados para reunir pessoas em torno de experiências inesquecíveis.' },
+      { tipo: 'paragrafo', texto: 'Na Construflama você encontra modelos para todos os estilos de projeto: lareiras ecológicas, lareiras a gás, lareiras a lenha, modelos portáteis e lareiras esculturais que unem tecnologia, design e alto desempenho.' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Conheça todas as opções agora com um consultor comercial Construflama', href: 'https://whts.co/Construflama_com' }, depois: 'e descubra qual modelo combina perfeitamente com o seu ambiente. Seu próximo projeto merece o conforto e a elegância que apenas uma lareira Construflama pode proporcionar.' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Telefone:', texto: '', link: { texto: '(11) 5171-6070', href: 'tel:+551151716070' } },
+        { rotulo: 'E-mail:', texto: '', link: { texto: 'construflama@construflama.com.br', href: 'mailto:construflama@construflama.com.br' } }
+      ] }
+    ]
+  },
+  {
+    slug: 'dicas-fernando-rodrigues-churras-366',
+    titulo: 'Dicas de Fernando Rodrigues, do Churras 366',
+    categoria: 'dicas',
+    resumo: 'Prepare-se e domine a churrasqueira como um profissional: planejamento, cortes, acompanhamentos e temperos, com as dicas do chef do Churras 366.',
+    data: '2026-05-11', exemplo: false,
+    imagem: 'img/blog/fernando-rodrigues-churras-366.webp', foco: '50% 22%',
+    textoAlternativo: 'Chef Fernando Rodrigues, de dólmã preto com o logotipo do Churras 366, de braços cruzados e sorrindo diante de duas parrillas Construflama.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Quer transformar seu churrasco em uma experiência memorável? Fernando Rodrigues, do Churras 366, é referência no mundo do churrasco: responsável pelo maior churrasco do mundo, registrado no Guinness Book of Records, e conhecido por atender eventos de alto padrão, como a Porsche Cup Brasil e a final do Rally Mitsubishi. E ele revela: você pode levar técnicas de profissional direto para sua área gourmet usando Parrillas Construflama.' },
+      { tipo: 'subtitulo', texto: 'Planejamento é a chave do sucesso' },
+      { tipo: 'paragrafo', texto: 'Preparar um bom churrasco vai muito além de acender o fogo. Planejar cortes, acompanhamentos e temperos transforma o momento em uma experiência prazerosa para você e seus convidados. Segundo Fernando Rodrigues:' },
+      { tipo: 'citacao', texto: 'Receber as pessoas com sabores marcantes é uma sensação recompensante. O churrasco é um momento de aproximação, seja entre família ou amigos.', autor: 'Fernando Rodrigues, Churras 366' },
+      { tipo: 'paragrafo', texto: 'Organizar o que será servido antes de acender a churrasqueira ajuda a reduzir preocupações e garante que todos aproveitem o momento de lazer ao redor da churrasqueira.' },
+      { tipo: 'subtitulo', texto: 'Cortes que sempre funcionam' },
+      { tipo: 'paragrafo', texto: 'Alguns cortes de carne são versáteis, saborosos e agradam a todos os paladares:' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Bife Ancho:', texto: 'sabor marcante e textura suculenta, perfeito para impressionar.' },
+        { rotulo: 'Picanha:', texto: 'o clássico brasileiro que nunca decepciona, um verdadeiro coringa da churrasqueira.' },
+        { rotulo: 'Fraldinha ou Flat Iron:', texto: 'cortes mais magros, de preparo rápido, ideais para servir em maior quantidade.' }
+      ] },
+      { tipo: 'citacao', texto: 'Uma entradinha para abrir o apetite também faz toda a diferença.', autor: 'Fernando Rodrigues, Churras 366' },
+      { tipo: 'subtitulo', texto: 'Acompanhamentos e entradas' },
+      { tipo: 'paragrafo', texto: 'Para curtir o churrasco com tranquilidade, planeje os acompanhamentos com antecedência:' },
+      { tipo: 'lista', itens: [
+        'Organize os ingredientes antes do evento.',
+        { rotulo: 'Pré-preparo:', texto: 'cortes já temperados ou parcialmente cozidos agilizam o serviço.' },
+        'Isso permite que você passe mais tempo com os convidados e menos tempo correndo atrás de detalhes.'
+      ] },
+      { tipo: 'subtitulo', texto: 'Temperos do seu jeito' },
+      { tipo: 'paragrafo', texto: 'Um tempero bem escolhido pode transformar até o prato mais simples em uma experiência memorável. Algumas dicas do Churras 366:' },
+      { tipo: 'lista', itens: [
+        'Escolha temperos versáteis, que funcionem tanto em carnes quanto em acompanhamentos.',
+        'Use tempero seco ou molho como base e adicione seu toque especial.',
+        'Experimente marinar diferentes cortes (bovinos, suínos, frango ou até peixes) para criar sabores únicos.'
+      ] },
+      { tipo: 'subtitulo', texto: 'Parrillas Construflama: escolha de profissionais' },
+      { tipo: 'paragrafo', texto: 'Para Fernando Rodrigues e sua equipe, a qualidade e confiabilidade da churrasqueira são essenciais:' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Design e performance:', texto: 'equipamentos bem construídos que se destacam visualmente em eventos.' },
+        { rotulo: 'Durabilidade:', texto: 'churrasqueiras resistentes para acompanhar agendas intensas de eventos.' },
+        { rotulo: 'Versatilidade:', texto: 'dimensionadas para atender pequenos, médios e grandes encontros.' }
+      ] },
+      { tipo: 'citacao', texto: 'As Parrillas Construflama se tornam parte da cenografia dos eventos, oferecendo performance e segurança para qualquer situação.', autor: 'Fernando Rodrigues, Churras 366' },
+      { tipo: 'subtitulo', texto: 'Hora da churrasqueira' },
+      { tipo: 'paragrafo', texto: 'Com essas dicas, você pode transformar seu churrasco em um momento sublime, combinando técnica, sabor e descontração. Seja em eventos especiais ou encontros casuais, a Parrilla Construflama garante que cada momento ao redor da churrasqueira seja inesquecível.' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Fale com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: 'e escolha a sua Churrasqueira ou Parrilla para criar experiências memoráveis na sua área gourmet!' }
+    ]
+  },
+  {
     slug: 'lareira-para-apartamento',
     titulo: 'Lareira para apartamento: é possível instalar?',
     categoria: 'lareiras',
