@@ -1357,8 +1357,11 @@ var DEPOIMENTOS = [
         li.appendChild(off);
         return li;
       }
-      var a = el('a', 'blog-pagina' + (extra ? ' ' + extra : ''), rotulo);
-      a.href = endereco(pagina);
+      // Números são links (cada página tem seu endereço); as setas são botões,
+      // para não repetir o link do número vizinho
+      var seta = extra === 'blog-pagina--seta';
+      var a = el(seta ? 'button' : 'a', 'blog-pagina' + (extra ? ' ' + extra : ''), rotulo);
+      if (seta) a.type = 'button'; else a.href = endereco(pagina);
       a.setAttribute('data-pagina', pagina);
       li.appendChild(a);
       return { li: li, a: a };
@@ -1428,8 +1431,9 @@ var DEPOIMENTOS = [
     }
 
     paginacao.addEventListener('click', function (e) {
-      var a = e.target.closest('a[data-pagina]');
-      if (!a || e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;  // nova aba: deixa o navegador abrir
+      var a = e.target.closest('[data-pagina]');
+      if (!a) return;
+      if (a.tagName === 'A' && (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0)) return;  // nova aba: deixa o navegador abrir
       e.preventDefault();
       irParaPagina(parseInt(a.getAttribute('data-pagina'), 10));
     });

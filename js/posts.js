@@ -41,6 +41,38 @@ var BLOG_CATEGORIAS = [
 
 var POSTS = [
   {
+    slug: 'marinada-para-frango',
+    titulo: 'Como marinar frango para o seu churrasco: dicas do chef Giovanni Silvestre',
+    categoria: 'dicas',
+    resumo: 'Salmoura, alho, gengibre e sementes de coentro e mostarda: os segredos do chef Giovanni Silvestre para um frango suculento na churrasqueira.',
+    data: '2026-02-05', exemplo: false,
+    imagem: 'img/blog/marinada-frango.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Frangos inteiros e peças de carne pendurados em ganchos sobre o fogo, alguns dourados e outros tostados, com um ramo de alecrim ao alto. Captação de Giovanni Bellini.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Você sabe qual é o tempero perfeito para o seu churrasco? Quando se trata de churrasqueiras como as da Construflama, a criatividade é a chave. Cada corte oferece possibilidades únicas e, com as dicas certas, você pode transformar qualquer churrasco em um evento memorável, cheio de sabores incríveis.' },
+      { tipo: 'subtitulo', texto: 'A arte de marinar o frango' },
+      { tipo: 'paragrafo', texto: 'Marinar não é apenas uma técnica: é uma forma de potencializar os sabores, equilibrando cada elemento. E para deixar o seu frango ainda mais delicioso, convidamos o chef Giovanni Silvestre para compartilhar suas dicas sobre marinadas.' },
+      { tipo: 'paragrafo', texto: 'Giovanni é chef e produtor gastronômico, formado pelo Senac, com experiência no MasterChef Brasil e cofundador da', link: { texto: 'Tentáculos, produtora de gastronomia', href: 'https://www.instagram.com/tentaculosprodutora/' }, depois: 'para audiovisual e eventos que transformam ingredientes em momentos memoráveis.' },
+      { tipo: 'paragrafo', texto: 'Prepare-se para aprender os segredos de como realçar o sabor do frango na churrasqueira!' },
+      { tipo: 'subtitulo', texto: 'A preparação dos cortes de frango' },
+      { tipo: 'paragrafo', texto: 'Para garantir que o seu frango fique suculento e saboroso, o segredo está na salmoura. De acordo com o chef Giovanni:' },
+      { tipo: 'citacao', texto: 'A salmoura, composta por água, sal e temperos, é uma técnica diferente das marinadas com limão ou bebidas alcoólicas. O objetivo é hidratar a proteína, garantindo mais suculência durante o preparo.', autor: 'Chef Giovanni Silvestre' },
+      { tipo: 'subtitulo', texto: 'Temperos indispensáveis para o frango perfeito' },
+      { tipo: 'paragrafo', texto: 'Quer conquistar o sabor ideal? Aposte em temperos que tragam um equilíbrio de frescor, leveza e intensidade. O chef Giovanni sugere os seguintes ingredientes para uma marinada poderosa:' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Salmoura:', texto: 'bases que ajudem a hidratar a proteína.' },
+        { rotulo: 'Alho:', texto: 'para um toque aromático.' },
+        { rotulo: 'Gengibre:', texto: 'para um frescor picante.' },
+        { rotulo: 'Pimenta-do-reino:', texto: 'para um leve toque de calor.' },
+        { rotulo: 'Sementes de coentro e mostarda:', texto: 'trazem um sabor marcante e sofisticado.' }
+      ] },
+      { tipo: 'subtitulo', texto: 'Crie, inove e surpreenda!' },
+      { tipo: 'paragrafo', texto: 'Agora é com você! Com essas dicas, o seu churrasco não será apenas uma refeição, mas uma experiência única. Inove, misture sabores e crie combinações inesquecíveis para surpreender seus convidados. No final, o que importa é reunir amigos e familiares ao redor do fogo, compartilhando risos, bons momentos e, claro, pratos deliciosos!' },
+      { tipo: 'paragrafo', texto: 'E não se esqueça: para elevar ainda mais o seu churrasco, conheça nossa linha de churrasqueiras Construflama. Transforme sua área gourmet em um verdadeiro templo do sabor e do prazer de cozinhar.' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Conheça nossa linha de churrasqueiras', href: 'colecao.html?c=churrasqueiras' }, depois: 'e leve a arte e o prazer do fogo para casa!' }
+    ]
+  },
+  {
     slug: 'churrasqueira-hibrida-construflama',
     titulo: 'Churrasqueira Híbrida Construflama: tecnologia e tradição lado a lado',
     categoria: 'churrasqueiras',

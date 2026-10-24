@@ -2034,8 +2034,9 @@ a.brand:hover .brand__mark { color: var(--bege); }
   text-decoration: none;
   transition: background-color .2s, color .2s, border-color .2s;
 }
-a.blog-pagina:hover { border-color: var(--marrom); }
-a.blog-pagina:active { background: var(--bege-escuro); }
+a.blog-pagina:hover, button.blog-pagina:hover { border-color: var(--marrom); }
+a.blog-pagina:active, button.blog-pagina:active { background: var(--bege-escuro); }
+button.blog-pagina { background: none; cursor: pointer; }
 .blog-pagina[aria-current="page"] { border-color: var(--marrom); background: var(--marrom); color: var(--bege-claro); }
 .blog-pagina--seta { font-size: 1.3rem; line-height: 1; }
 .blog-pagina.is-desativada { opacity: .35; }
