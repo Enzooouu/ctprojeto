@@ -1155,6 +1155,8 @@ var DEPOIMENTOS = [
     (p.conteudo || []).forEach(function (b) {
       if (b.texto) partes.push(b.texto);
       if (b.rotulo) partes.push(b.rotulo);
+      if (b.link) partes.push(b.link.texto);
+      if (b.depois) partes.push(b.depois);
       if (b.itens) b.itens.forEach(function (i) { partes.push(typeof i === 'string' ? i : i.rotulo + ' ' + i.texto); });
       if (b.legenda) partes.push(b.legenda);
     });
@@ -1389,6 +1391,14 @@ var DEPOIMENTOS = [
         no.appendChild(document.createTextNode(' '));
       }
       no.appendChild(document.createTextNode(b.texto));
+      if (b.link) {
+        no.appendChild(document.createTextNode(' '));
+        var a = el('a', 'text-link post-link', b.link.texto);
+        a.href = b.link.href;
+        if (/^https?:/.test(b.link.href)) { a.target = '_blank'; a.rel = 'noopener'; }
+        no.appendChild(a);
+      }
+      if (b.depois) no.appendChild(document.createTextNode(' ' + b.depois));
       return no;
     }
 

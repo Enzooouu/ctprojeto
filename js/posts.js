@@ -19,7 +19,9 @@
    - exemplo: true mostra a etiqueta "Exemplo" (use false nos artigos reais)
    - conteudo: lista de blocos, na ordem do texto:
        { tipo: 'subtitulo', texto }   vira um item do índice "Neste artigo"
-       { tipo: 'paragrafo', texto, rotulo? }   rotulo: começo em negrito
+       { tipo: 'paragrafo', texto, rotulo?, link?, depois? }
+         rotulo: começo em negrito; link: { texto, href } no fim do texto
+         (abre em nova aba); depois: texto que vem após o link
        { tipo: 'lista', itens: [...] }   item: texto ou { rotulo, texto }
        { tipo: 'citacao', texto, autor? }
        { tipo: 'imagem', imagem, textoAlternativo, legenda }
@@ -54,6 +56,33 @@ function conteudoExemplo(subtitulos) {
 }
 
 var POSTS = [
+  {
+    slug: 'calculo-de-exaustao',
+    titulo: 'O que é cálculo de exaustão e como isso te proporciona mais conforto no churrasco ou na cozinha?',
+    categoria: 'coifas',
+    resumo: 'Da visita técnica à proposta: como a engenharia da Construflama estuda cada caso para a coifa funcionar sem incômodo de fumaça ou ruído.',
+    data: '2026-09-23', exemplo: false,
+    imagem: 'img/blog/calculo-de-exaustao.webp', capaInteira: true,
+    textoAlternativo: 'Desenho em traço de três coifas com tubulações diferentes: reta, com duas curvas e inclinada. Arte com o texto: Você sabe o que é cálculo de exaustão? Descubra como garantimos o conforto ao cozinhar com nossas coifas.',
+    conteudo: [
+      { tipo: 'subtitulo', texto: 'Como podemos garantir a eficiência da sua coifa?' },
+      { tipo: 'paragrafo', texto: 'Na Construflama não buscamos apenas qualidade e sim a excelência, tanto na questão visual do acabamento e do design, quanto na questão funcional da performance e confiabilidade. Por isso, nossa equipe de engenharia se dedica durante a jornada de compra do cliente a analisar caso a caso quais são os elementos necessários para proporcionar uma experiência sem incômodo pela fumaça ou ruído em excesso.' },
+      { tipo: 'paragrafo', texto: 'Como isso é feito? Acompanhe o passo a passo simplificado:' },
+      { tipo: 'subtitulo', texto: '1. Análise técnica de medidas' },
+      { tipo: 'paragrafo', texto: 'Sempre que viável, nosso time de medição realiza uma visita técnica que determina não só o caminho das tubulações, que pode conter angulações a serem estudadas, mas também a presença de outros fatores que possam dificultar o fluxo de fumaça dentro e fora da área do processo, além de averiguar a distância da coifa em relação à bancada e a largura necessária para cada equipamento a ser contemplado pela exaustão.' },
+      { tipo: 'subtitulo', texto: '2. Estudo da equipe de Engenharia' },
+      { tipo: 'paragrafo', texto: 'Com dados advindos da medição, nosso Departamento de Engenharia faz os estudos do fluxo do ar considerando também a termodinâmica e normas que estabelecem regulamentações para a decisão entre exaustão natural ou exaustão motorizada.' },
+      { tipo: 'subtitulo', texto: '3. Decisão com base nos dados' },
+      { tipo: 'paragrafo', texto: 'Após todo esse processo fica definido o tipo de motor adequado, a metragem de tubos necessários, a temperatura da fumaça que será produzida na combustão e por consequência o modelo de filtro ou grade que cobrirá a entrada de ar da coifa.' },
+      { tipo: 'subtitulo', texto: '4. Alinhamento da proposta' },
+      { tipo: 'paragrafo', texto: 'As informações são repassadas ao consultor ou consultora comercial, que te acompanhará durante todo esse processo buscando agilidade e assertividade. Nosso time comercial ajustará a proposta que contempla tudo que você precisa para exaustão confiável em sua residência ou para o projeto a ser entregue aos seus clientes.' },
+      { tipo: 'subtitulo', texto: 'Por que esse serviço é importante para chegar ao padrão ideal de atendimento?' },
+      { tipo: 'paragrafo', texto: 'Temos plena confiança na capacidade dos nossos produtos em superar as expectativas dos nossos clientes quando as condições necessárias são proporcionadas, e para manter essa segurança da nossa entrega de valor a Construflama é meticulosa nos processos da Engenharia e orienta os profissionais nos projetos que possam causar intercorrências no dia a dia do cliente ou na própria obra. Buscamos o funcionamento perfeito e a usabilidade fluida para quem quer aproveitar momentos ao redor do fogo.' },
+      { tipo: 'paragrafo', texto: 'Ou seja, valorizando o investimento feito no nosso produto, participamos junto aos profissionais que operacionalizam obras, reformas e para calcular durante todo o trajeto a exaustão será buscando eficiência e conforto, assim acompanhando cada detalhe da cozinha, área gourmet ou adjacências para desenvolver uma solução sob medida para cada lar.' },
+      { tipo: 'paragrafo', texto: 'Quer ter essa segurança de performance aliada ao design Construflama no seu projeto? Fale com nossos consultores',
+        link: { texto: 'clicando aqui!', href: 'https://whts.co/Construflama_com' }, depois: 'Tenha mais conforto ao saborear momentos inesquecíveis!' }
+    ]
+  },
   {
     slug: 'modelos-da-linha-escultural',
     titulo: 'Descubra os modelos da linha Escultural Construflama!',
