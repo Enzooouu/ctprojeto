@@ -1586,8 +1586,9 @@ var DEPOIMENTOS = [
         if (b.autor) q.appendChild(el('cite', null, b.autor));
         texto.appendChild(q);
       } else if (b.tipo === 'imagem') {
-        var fig = el('figure', 'post-figura');
-        fig.appendChild(capaPost({ categoria: p.categoria, imagem: b.imagem, textoAlternativo: b.textoAlternativo }, 'blog-capa--figura', true));
+        // pequena: desenho ou ilustração pequena, inteira em fundo branco e sem esticar
+        var fig = el('figure', 'post-figura' + (b.pequena ? ' post-figura--pequena' : ''));
+        fig.appendChild(capaPost({ categoria: p.categoria, imagem: b.imagem, textoAlternativo: b.textoAlternativo, capaInteira: b.pequena || b.capaInteira }, 'blog-capa--figura', true));
         if (b.legenda) fig.appendChild(el('figcaption', null, b.legenda));
         texto.appendChild(fig);
       }

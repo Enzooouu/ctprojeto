@@ -27,6 +27,7 @@
        { tipo: 'lista', itens: [...] }   item: texto ou { rotulo, texto }
        { tipo: 'citacao', texto, autor? }
        { tipo: 'imagem', imagem, textoAlternativo, legenda }
+         pequena: true para desenhos pequenos (inteiros, fundo branco, até 26rem)
    O tempo de leitura é calculado pelo número de palavras do texto.
    ========================================================================== */
 var BLOG_CATEGORIAS = [
@@ -41,6 +42,104 @@ var BLOG_CATEGORIAS = [
 ];
 
 var POSTS = [
+  {
+    slug: 'casacor-2025-victor-hugo-cordeiro',
+    titulo: 'CASACOR 2025, por Victor Hugo Cordeiro',
+    categoria: 'projetos',
+    resumo: 'Sons da natureza, aromas, boho étnico, estilo clean e muita luz natural: as impressões do nosso consultor sobre a CASACOR 2025, com o tema “Semear sonhos”.',
+    data: '2025-06-10', exemplo: false,
+    imagem: 'img/blog/casacor-2025-semear-sonhos.webp', capaInteira: true,
+    textoAlternativo: 'Arte da CASACOR 2025: o nome CASACOR e o tema “Semear sonhos” em marrom sobre uma esfera amarela coberta por uma trama orgânica verde-clara, em fundo rosa.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'A CASACOR 2025 chega com uma proposta ousada e sensorial, em que semear tendências e despertar inspirações se torna uma verdadeira experiência. Logo na entrada, sons da natureza e aromas envolventes preparam o visitante para uma imersão no universo sagrado da decoração.' },
+      { tipo: 'paragrafo', texto: 'Os ambientes traduzem estéticas marcantes: o boho étnico, com sua força visual, a leveza do estilo clean e o drama cuidadosamente composto em detalhes que provocam os sentidos. Ao longo do circuito, o vintage se mistura à contemporaneidade de forma harmoniosa, criando uma dicotomia visual que surpreende e encanta.' },
+      { tipo: 'paragrafo', texto: 'A Construflama abraçou a proposta com autenticidade. Seus espaços revelam um equilíbrio raro entre impacto e suavidade, acolhendo o visitante com atmosferas que traduzem conforto e personalidade. A luz natural ganha destaque nesta edição, valorizada por grandes janelas, pé-direito elevado e uma fluidez que imprime movimento e energia a cada ambiente.' },
+      { tipo: 'paragrafo', texto: 'Viver a CASACOR 2025 é mais do que visitar uma mostra: é absorver uma narrativa estética que certamente germinará frutos para todos que vivem da arte e da criação.' },
+      { tipo: 'paragrafo', rotulo: 'Texto:', texto: 'Victor Hugo Cordeiro, consultor comercial Construflama' }
+    ]
+  },
+  {
+    slug: 'como-usar-lareira-ecologica-ecoflama',
+    titulo: 'O inverno está chegando: aprenda a usar sua lareira ecológica Ecoflama da Construflama com estilo e segurança',
+    categoria: 'lareiras',
+    resumo: 'Do reservatório à chama, em seis passos ilustrados: como acender a lareira ecológica Ecoflama com segurança, e ideias para aproveitar o frio.',
+    data: '2025-06-02', exemplo: false,
+    imagem: 'img/blog/ecoflama-como-usar.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Mesa de fogo retangular marrom acesa, com pedras vulcânicas, entre um sofá azul-acinzentado e duas poltronas, diante de uma adega de vidro iluminada. Ambiente de Patricia Makhoul e Gustavo Dias, foto de Favaro Jr.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Com a chegada do frio, a vontade de ter um ambiente aconchegante em casa só aumenta. E, para isso, nada melhor do que contar com uma fonte de calor prática e cuidadosa com a estética. A lareira ecológica Ecoflama, desenvolvida pela Construflama, é a escolha perfeita para aquecer seu lar com charme e praticidade.' },
+      { tipo: 'paragrafo', texto: 'Vamos te mostrar como usar a sua lareira Ecoflama, passo a passo e com segurança, e ainda te dar algumas dicas para aproveitar melhor os dias frios com muito conforto.' },
+      { tipo: 'subtitulo', texto: 'Por que escolher a lareira ecológica Ecoflama?' },
+      { tipo: 'paragrafo', texto: 'A lareira ecológica da Construflama funciona com combustão a álcool de cereais, combinando eficiência, praticidade e um design elegante. Veja por que ela é a queridinha de quem busca um aquecimento moderno e consciente:' },
+      { tipo: 'lista', itens: [
+        'Não produz fumaça nem fuligem.',
+        'Usa combustível limpo (etanol inodoro).',
+        'Não precisa de chaminé nem de instalação fixa.',
+        'É fácil de usar e de manter.',
+        'Combina com diversos estilos de decoração.'
+      ] },
+      { tipo: 'paragrafo', texto: 'Agora que você já sabe as vantagens, confira o passo a passo para acender a sua Ecoflama Construflama com segurança e praticidade.' },
+      { tipo: 'subtitulo', texto: '1. Abra o reservatório de combustível' },
+      { tipo: 'imagem', imagem: 'img/blog/ecoflama-passo-1-abrir.webp', pequena: true, textoAlternativo: 'Desenho do queimador da Ecoflama com a haste metálica encaixada na tampa do reservatório, puxando-a para abrir.', legenda: 'Passo 1: abra a tampa com a haste.' },
+      { tipo: 'paragrafo', texto: 'Utilize a haste metálica fornecida com o produto para puxar a tampa até que o compartimento esteja totalmente aberto.' },
+      { tipo: 'subtitulo', texto: '2. Abasteça com álcool apropriado' },
+      { tipo: 'imagem', imagem: 'img/blog/ecoflama-passo-2-abastecer.webp', pequena: true, textoAlternativo: 'Desenho do reservatório aberto, em corte, com uma seta indicando onde colocar o álcool.', legenda: 'Passo 2: abasteça até o nível indicado.' },
+      { tipo: 'paragrafo', texto: 'Com um funil ou bico dosador, abasteça lentamente com álcool etanol 92,8° ou 96°, até o nível indicado no interior do reservatório. A Construflama pode te fornecer o álcool mais apropriado, testado praticamente todos os dias por nós.' },
+      { tipo: 'paragrafo', rotulo: 'Dica:', texto: 'seque imediatamente qualquer resíduo que escorrer nas laterais com um pano macio. Segurança sempre em primeiro lugar!' },
+      { tipo: 'subtitulo', texto: '3. Molhe a ponta da haste no álcool' },
+      { tipo: 'imagem', imagem: 'img/blog/ecoflama-passo-3-molhar-haste.webp', pequena: true, textoAlternativo: 'Desenho da haste com a ponta mergulhada no reservatório aberto do queimador.', legenda: 'Passo 3: molhe a ponta da haste.' },
+      { tipo: 'paragrafo', texto: 'Com cuidado, molhe uma das pontas da haste no combustível. Atenção aos respingos: passar um pano garante ainda mais segurança.' },
+      { tipo: 'subtitulo', texto: '4. Acenda a ponta da haste' },
+      { tipo: 'imagem', imagem: 'img/blog/ecoflama-passo-4-acender-haste.webp', pequena: true, textoAlternativo: 'Desenho da haste metálica com o símbolo de uma chama na ponta.', legenda: 'Passo 4: acenda a ponta da haste.' },
+      { tipo: 'paragrafo', texto: 'Use um fósforo longo ou um isqueiro para acender a extremidade da haste com álcool.' },
+      { tipo: 'subtitulo', texto: '5. Leve a chama até o reservatório' },
+      { tipo: 'imagem', imagem: 'img/blog/ecoflama-passo-5-levar-chama.webp', pequena: true, textoAlternativo: 'Desenho da haste encostada dentro do reservatório do queimador, com uma seta indicando o ponto.', legenda: 'Passo 5: encoste a haste acesa no reservatório.' },
+      { tipo: 'paragrafo', texto: 'Com calma, encoste a haste acesa dentro do reservatório da lareira para iniciar a chama.' },
+      { tipo: 'subtitulo', texto: '6. Guarde a haste em local seguro' },
+      { tipo: 'imagem', imagem: 'img/blog/ecoflama-passo-6-guardar-haste.webp', pequena: true, textoAlternativo: 'Desenho do queimador com a haste guardada ao lado dele.', legenda: 'Passo 6: guarde a haste ao lado da lareira.' },
+      { tipo: 'paragrafo', texto: 'Após acender, apague a haste e coloque-a ao lado da lareira, longe de crianças e de animais de estimação.' },
+      { tipo: 'subtitulo', texto: 'Aproveite sua lareira ecológica com estilo' },
+      { tipo: 'paragrafo', texto: 'Quer deixar sua casa ainda mais charmosa neste inverno? Veja estas ideias simples para aproveitar sua lareira Ecoflama ao máximo:' },
+      { tipo: 'lista', itens: [
+        'Crie um cantinho especial com mantas, almofadas e iluminação suave.',
+        'Que tal um vinho ou um chocolate quente para acompanhar o clima?',
+        'Combine a lareira com velas e objetos decorativos para um ambiente romântico.',
+        'Use sempre em ambientes ventilados, para garantir a segurança.'
+      ] },
+      { tipo: 'paragrafo', texto: 'Neste inverno, escolha conforto com propósito. Escolha Construflama.', link: { texto: 'Conheça a linha Ecoflamas.', href: 'colecao.html?c=lareiras#linha-ecoflamas' } }
+    ]
+  },
+  {
+    slug: 'cura-do-forno-de-pizza',
+    titulo: 'A cura do forno de pizza: o primeiro passo para assados perfeitos',
+    categoria: 'fornos-de-pizza',
+    resumo: 'Dez dias de espera e três dias de fogo baixo: como fazer a cura do forno a lenha, evitar rachaduras e usá-lo bem no dia a dia.',
+    data: '2025-05-27', exemplo: false,
+    imagem: 'img/blog/cura-forno-de-pizza.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Área gourmet externa com forno de pizza de alvenaria e porta preta, lenha guardada embaixo, churrasqueira de inox sob coifa, bancadas cinza, mesa redonda com cadeiras de madeira e parede de tijolos. Ambiente de Regianne Shwartz, foto de Caio Falcão.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Imagine a cena: uma noite estrelada, amigos reunidos na área gourmet e aquele cheirinho irresistível de pizza assando no forno a lenha. Mas, antes de viver esse momento mágico, há um passo fundamental que muitos esquecem e que faz toda a diferença na durabilidade e no desempenho do seu forno caipira: a cura do forno.' },
+      { tipo: 'subtitulo', texto: 'Por que curar o forno é tão importante?' },
+      { tipo: 'paragrafo', texto: 'Ao contrário do que parece, o forno de pizza não está pronto para uso logo após a instalação. A cura é um processo essencial para evitar rachaduras e garantir que os materiais passem pelo primeiro contato com o calor de forma gradual. Pense nisso como um “despertar suave” do seu forno, que o prepara para anos de uso com segurança e eficiência.' },
+      { tipo: 'subtitulo', texto: 'Passo a passo da cura: com calma e carinho' },
+      { tipo: 'paragrafo', texto: 'A Construflama recomenda o seguinte ritual para a primeira cura do seu forno:' },
+      { tipo: 'paragrafo', rotulo: '1. Espere 10 dias após a instalação.', texto: 'Isso mesmo! Após a montagem, é importante dar um tempo para que o forno assente completamente. Esse período de 10 dias é crucial para a secagem total dos materiais, especialmente se o forno tiver sido construído com argamassa refratária.' },
+      { tipo: 'paragrafo', rotulo: '2. Fogo baixo e breve: 3 dias de aquecimento gradual.', texto: 'Nos três dias que antecedem o uso, acenda pequenos focos de fogo por cerca de 30 minutos. Utilize apenas um pouco de lenha, sem exageros. A ideia é evitar um choque térmico, que pode causar trincas. Este é um momento de adaptação para o forno e para você!' },
+      { tipo: 'citacao', texto: 'Um pedaço de pão velho embebido em álcool é uma ótima forma de iniciar o fogo com segurança e sem produtos químicos.', autor: 'Dica da Construflama' },
+      { tipo: 'subtitulo', texto: 'E depois da cura, como usar no dia a dia?' },
+      { tipo: 'paragrafo', texto: 'Agora que seu forno está pronto para brilhar, vale lembrar alguns cuidados simples que garantem assados perfeitos e muita economia de lenha:' },
+      { tipo: 'lista', itens: [
+        'Abra o damper (registro de fumaça) antes de acender o fogo.',
+        'Acenda o fogo com 3 a 4 horas de antecedência, usando lenha seca e limpa.',
+        'Durante o aquecimento, mantenha a porta do forno fechada para preservar o calor.',
+        'Quando a lenha virar brasa e a fumaça já tiver se dissipado, o forno estará no ponto certo para assar pizzas, pães e carnes com aquele sabor inigualável!'
+      ] },
+      { tipo: 'subtitulo', texto: 'Evite erros comuns' },
+      { tipo: 'paragrafo', texto: 'Jamais use gasolina, querosene ou outros líquidos inflamáveis! Eles podem danificar o forno e comprometer o sabor dos alimentos. Prefira sempre lenha ou carvão vegetal.' },
+      { tipo: 'subtitulo', texto: 'Hora de celebrar!' },
+      { tipo: 'paragrafo', texto: 'Com o forno curado e pronto, você pode estrear seu novo equipamento em grande estilo. Prepare suas receitas favoritas e compartilhe momentos inesquecíveis com quem você ama, porque aqui na Construflama sabemos que construir um forno é também construir memórias.', link: { texto: 'Conheça os fornos de pizza Construflama.', href: 'colecao.html?c=fornos-de-pizza' } }
+    ]
+  },
   {
     slug: 'tipos-de-lareiras',
     titulo: 'Tipos de lareiras para se aquecer com estilo',

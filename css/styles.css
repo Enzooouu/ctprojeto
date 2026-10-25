@@ -2163,6 +2163,8 @@ button.blog-pagina { background: none; cursor: pointer; }
 .post-rotulo { color: var(--marrom); font-weight: 600; }
 .post-figura { margin-inline: 0; }
 .post-figura figcaption { margin-top: var(--sp-2); color: var(--cinza); font-size: var(--fs-sm); }
+.post-figura--pequena { max-width: 26rem; }
+.post-figura--pequena .blog-capa { border: 1px solid rgba(47, 29, 20, .12); }
 .post-aviso {
   padding: var(--sp-3) var(--sp-4);
   border-left: 3px solid var(--laranja);
