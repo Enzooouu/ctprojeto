@@ -43,6 +43,37 @@ var BLOG_CATEGORIAS = [
 
 var POSTS = [
   {
+    slug: 'conheca-a-ecoflama-linear',
+    titulo: 'Conheça a Ecoflama Linear',
+    categoria: 'lareiras',
+    resumo: 'Em aço inox 304, movida a álcool de cereais e sem obra nem coifa: conheça a lareira ecológica Ecoflama e os modelos da linha.',
+    data: '2025-03-20', exemplo: false,
+    imagem: 'img/blog/ecoflama-linear.webp', capaInteira: 'escuro',
+    textoAlternativo: 'Ecoflama Linear acesa, embutida em uma bancada curva cinza com um canteiro de musgo e uma árvore seca, ao lado de uma poltrona de bouclê e de um sofá claro. Na imagem, o nome “Ecoflama Linear” aponta para a peça.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Já imaginou ter uma lareira em casa com alto poder de aquecimento e ainda amiga do meio ambiente? A Ecoflama da Construflama tem uma série de benefícios que ultrapassam a sua clássica função de tornar os ambientes mais aconchegantes, proporcionando praticidade e sofisticação. Além de visualmente atraente, ela é totalmente produzida em aço inox 304, conhecido pela durabilidade e pela resistência à corrosão.' },
+      { tipo: 'paragrafo', texto: 'A instalação da Ecoflama é simples: ela pode ser feita em diversos ambientes, e as peças podem ser movidas de lugar, se necessário. Elas já vêm prontas para o uso e dispensam reformas estruturais; são ecológicas, pois funcionam à base de álcool de cereais; e são superpráticas, já que não exigem coifas de respiro.' },
+      { tipo: 'paragrafo', texto: 'Minimalista e fácil de manusear, a lareira ecológica Construflama tem uma variedade de modelos em seu catálogo: Ecoflama Retangular, Ecoflama Canoa, Ecoflama Redonda, Ecoflama Marroquina e o', link: { texto: 'Trio Chess', href: 'post.html?slug=trio-chess-casacor-minas-2025' }, depois: ', composto pelos modelos Rainha, Torre e Peão, que fazem referência ao jogo de xadrez.' },
+      { tipo: 'paragrafo', texto: '', link: { texto: 'Conheça todos os modelos da linha Ecoflamas', href: 'colecao.html?c=lareiras#linha-ecoflamas' }, depois: 'e confira o Instagram @construflama para mais detalhes.' },
+      { tipo: 'paragrafo', texto: 'Ficou com dúvidas?', link: { texto: 'Fale com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: '.' }
+    ]
+  },
+  {
+    slug: 'linhas-soft-premium-high-end',
+    titulo: 'A revolução do churrasco: conheça as linhas Soft, Premium e High-end da Construflama',
+    categoria: 'churrasqueiras',
+    resumo: 'Três linhas, todas em aço inox 304, a gás, a carvão ou por infravermelho: o que faz das churrasqueiras Construflama peças de longa duração.',
+    data: '2025-03-20', exemplo: false,
+    imagem: 'img/blog/churrasqueira-high-end-volante.webp',
+    textoAlternativo: 'Churrasqueira Construflama de aço inox com volante, grelhas suspensas por correntes, três espetos e três botões de controle, embutida em bancada cinza diante de parede de tijolos.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Unindo design e tecnologia, as churrasqueiras Construflama são divididas em três linhas, Soft, Premium e High-end, e podem funcionar a gás, a carvão ou por infravermelho, a depender do modelo.' },
+      { tipo: 'paragrafo', texto: 'A marca optou pelo uso do aço inox 304 em seus produtos. O material pode ser trabalhado em altíssimas temperaturas e é extremamente resistente à corrosão. Além da beleza e da versatilidade, garante alta durabilidade, especialmente em ambientes externos, inclusive em regiões litorâneas. Isso assegura qualidade e um produto de longa duração para ser instalado em cozinhas residenciais e industriais e em áreas externas, onde a higiene e a resistência são fundamentais!' },
+      { tipo: 'paragrafo', texto: 'Quer ver as diferenças entre as três linhas?', link: { texto: 'Compare a Soft, a Premium e a High-end', href: 'post.html?slug=descubra-sua-churrasqueira-dos-sonhos' }, depois: '.' },
+      { tipo: 'paragrafo', texto: 'Para conhecer mais sobre as churrasqueiras Construflama,', link: { texto: 'fale com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: 'e acompanhe o Instagram @construflama.' }
+    ]
+  },
+  {
     slug: 'lenha-ideal-para-forno-de-pizza',
     titulo: 'A lenha ideal para seu forno de pizza',
     categoria: 'fornos-de-pizza',
