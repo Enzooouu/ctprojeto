@@ -42,6 +42,67 @@ var BLOG_CATEGORIAS = [
 
 var POSTS = [
   {
+    slug: 'tipos-de-lareiras',
+    titulo: 'Tipos de lareiras para se aquecer com estilo',
+    categoria: 'lareiras',
+    resumo: 'A lenha, a gás ou ecológica: veja os destaques de cada tipo de lareira e o que o projeto precisa prever para recebê-la.',
+    data: '2025-07-15', exemplo: false,
+    imagem: 'img/blog/tipos-de-lareiras-ecologicas.webp',
+    textoAlternativo: 'Três lareiras ecológicas portáteis pretas, de formas geométricas, com chamas acesas, sobre um tapete cinza diante de um sofá e de uma mesa de centro baixa.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'O inverno é a estação perfeita para valorizar o conforto dos ambientes, e nada traduz melhor esse clima aconchegante do que uma lareira bem escolhida. Além de aquecer, ela também compõe a decoração, transmite elegância e se torna o grande destaque do espaço.' },
+      { tipo: 'paragrafo', texto: 'Na Construflama, oferecemos diferentes modelos de lareiras para atender a diversos estilos de vida, ambientes e preferências estéticas. A seguir, apresentamos três opções incríveis (a lenha, a gás e ecológica), todas eficientes, seguras e cheias de personalidade.' },
+      { tipo: 'paragrafo', texto: 'Cada tipo tem características específicas e, com o projeto certo, todos funcionam perfeitamente. Descubra qual é o ideal para o seu estilo de vida!' },
+      { tipo: 'subtitulo', texto: 'Lareira a lenha' },
+      { tipo: 'imagem', imagem: 'img/blog/tipos-de-lareiras-lenha.webp', textoAlternativo: 'Lareira a lenha suspensa em formato de bloco retangular cor de ferrugem, com duas chaminés cilíndricas até o teto de madeira, sobre uma base rebaixada de pedra, no centro de um grande living com mesa de jantar e estantes.', legenda: 'Lareira a lenha' },
+      { tipo: 'paragrafo', rotulo: 'Autêntica, rústica e envolvente.', texto: 'A lareira a lenha é um verdadeiro clássico. Ela cria uma atmosfera acolhedora, com o calor intenso e o som característico da madeira queimando. É ideal para quem busca a experiência completa de uma lareira tradicional.' },
+      { tipo: 'paragrafo', rotulo: 'Destaques:', texto: '' },
+      { tipo: 'lista', itens: [
+        'Excelente capacidade de aquecimento para ambientes maiores.',
+        'Atmosfera única, com chama real, sons e aromas naturais.',
+        'Visual rústico e elegante, perfeito para casas de campo ou espaços amplos.'
+      ] },
+      { tipo: 'paragrafo', rotulo: 'O que o projeto precisa prever:', texto: '' },
+      { tipo: 'lista', itens: [
+        'Chaminé ou duto para a saída dos gases.',
+        'Espaço para uma instalação segura e eficiente.',
+        'Área de armazenamento da lenha.'
+      ] },
+      { tipo: 'subtitulo', texto: 'Lareira a gás' },
+      { tipo: 'imagem', imagem: 'img/blog/tipos-de-lareiras-gas.webp', textoAlternativo: 'Lareira a gás linear acesa sobre um banco de pedra cinza, sob um volume suspenso liso da cor da parede, em sala com janelas para um bambuzal, poltrona clara, quadro colorido e tapete azul-acinzentado.', legenda: 'Lareira a gás' },
+      { tipo: 'paragrafo', rotulo: 'Prática, moderna e funcional.', texto: 'A lareira a gás é sinônimo de conforto com praticidade. Ela combina tecnologia e design, permitindo acendimento rápido, controle de intensidade e baixa manutenção: ideal para quem busca elegância com simplicidade no uso.' },
+      { tipo: 'paragrafo', rotulo: 'Destaques:', texto: '' },
+      { tipo: 'lista', itens: [
+        'Acendimento automático com controle de chama.',
+        'Queima limpa, sem fuligem ou fumaça.',
+        'Modelos compactos e versáteis, ideais para ambientes urbanos.'
+      ] },
+      { tipo: 'paragrafo', rotulo: 'O que o projeto precisa prever:', texto: '' },
+      { tipo: 'lista', itens: [
+        'Ponto de gás (natural ou GLP).',
+        'Sistema de ventilação adequado.',
+        'Instalação técnica com segurança certificada.'
+      ] },
+      { tipo: 'subtitulo', texto: 'Lareira ecológica (álcool)' },
+      { tipo: 'paragrafo', rotulo: 'Portátil, sustentável e cheia de estilo.', texto: 'A lareira ecológica é perfeita para quem busca uma solução moderna, de fácil instalação e com apelo sustentável. Funciona com álcool, não emite fumaça e pode ser usada em diversos tipos de ambientes internos.' },
+      { tipo: 'paragrafo', rotulo: 'Destaques:', texto: '' },
+      { tipo: 'lista', itens: [
+        'Queima limpa e sem resíduos.',
+        'Não requer chaminé nem instalação fixa.',
+        { rotulo: '', texto: 'Opções de embutir, modelos', link: { texto: 'esculturais', href: 'colecao.html?c=lareiras#linha-esculturais' }, depois: 'ou modelos portáteis, com design contemporâneo.' }
+      ] },
+      { tipo: 'paragrafo', rotulo: 'O que o projeto precisa prever:', texto: '' },
+      { tipo: 'lista', itens: [
+        'Escolha de um local seguro e bem ventilado.',
+        'Armazenamento adequado do combustível.',
+        'Cuidados no manuseio e no armazenamento do fluido.'
+      ] },
+      { tipo: 'subtitulo', texto: 'Qual lareira é ideal para o seu ambiente?' },
+      { tipo: 'paragrafo', texto: 'Na Construflama, acreditamos que cada projeto é único e, por isso, oferecemos suporte completo na escolha da lareira ideal, desde a definição do modelo até a instalação segura e personalizada.' },
+      { tipo: 'paragrafo', texto: 'Quer aquecer seu inverno com estilo e sofisticação?', link: { texto: 'Fale com a nossa equipe', href: 'https://whts.co/Construflama_com' }, depois: 'e descubra como transformar seu ambiente com uma lareira Construflama.' }
+    ]
+  },
+  {
     slug: 'ecos-brandos-lareira-tarus',
     titulo: 'Ecos Brandos e a Lareira Tarus: curvas, conforto e design no dormitório dos sonhos',
     categoria: 'lareiras',
