@@ -42,7 +42,7 @@ var CATEGORIAS = [
     // TODO: revisar com a Construflama as frases de A gás linear ("acende com
     // praticidade") e Ecoflamas ("sem obra")
     subcategorias: [
-      { nome: 'Tradicionais', slug: 'tradicionais', acao: 'sobre', sobreNome: 'as lareiras tradicionais', descricao: 'O estalo da lenha e o calor de verdade, numa lareira que se integra à arquitetura da sala.', imagem: 'img/linhas/lareiras-tradicionais.webp', foco: '50% 55%',
+      { nome: 'Tradicionais', slug: 'tradicionais', acao: 'sobre', sobreNome: 'as lareiras tradicionais', descricao: 'O fogo na sua forma mais pura.', imagem: 'img/linhas/lareiras-tradicionais.webp', foco: '50% 55%',
         textoAlternativo: 'Lareira a lenha acesa embutida numa parede revestida de madeira, com nichos de lenha empilhada dos dois lados, numa sala com sofá claro e mesa de centro.' },
       { nome: 'A gás linear', slug: 'a-gas-linear', descricao: 'Uma linha de fogo limpa e contínua, que acende com praticidade e vira parte do projeto.', imagem: 'img/linhas/lareiras-a-gas-linear.webp', foco: '60% 70%',
         textoAlternativo: 'Lareira a gás com abertura horizontal e chama baixa, embutida numa parede curva marrom, numa sala com poltronas claras e mesa de madeira.' },
@@ -1824,11 +1824,41 @@ var DEPOIMENTOS = [
     migalha(nome);
     document.querySelector('[data-prod-cat]').textContent = cat.nome + ' · Linha ' + linha.nome;
     titulo.textContent = nome;
+    document.querySelector('[data-prod-frase]').textContent = linha.descricao;
     // Primeiro parágrafo em destaque, acima do orçamento; o resto embaixo
-    var paragrafos = pag.texto && pag.texto.length ? pag.texto : [linha.descricao];
-    lead.textContent = paragrafos[0];
+    var paragrafos = pag.texto || [];
+    if (paragrafos.length) lead.textContent = paragrafos[0]; else lead.remove();
     paragrafos.slice(1).forEach(function (t) { texto.appendChild(el('p', null, t)); });
     if (paragrafos.length < 2) texto.remove();
+
+    // Medidas de referência: tabela com cabeçalho de linhas e colunas
+    if (pag.medidas) {
+      var md = pag.medidas;
+      var caixaMedidas = document.querySelector('[data-prod-medidas]');
+      caixaMedidas.hidden = false;
+      document.querySelector('[data-prod-medidas-titulo]').textContent = md.titulo;
+      document.querySelector('[data-prod-medidas-caixa]').setAttribute('aria-label', md.titulo);
+      document.querySelector('[data-prod-medidas-nota]').textContent = md.nota || '';
+      var tabela = document.querySelector('[data-prod-medidas-tabela]');
+      var cab = el('tr');
+      var canto = el('th', null, 'Medida');
+      canto.scope = 'col';
+      cab.appendChild(canto);
+      md.colunas.forEach(function (c) { var th = el('th', null, c); th.scope = 'col'; cab.appendChild(th); });
+      var thead = el('thead');
+      thead.appendChild(cab);
+      tabela.appendChild(thead);
+      var tbody = el('tbody');
+      md.linhas.forEach(function (l) {
+        var tr = el('tr');
+        var th = el('th', null, l.rotulo);
+        th.scope = 'row';
+        tr.appendChild(th);
+        l.valores.forEach(function (v) { tr.appendChild(el('td', null, v)); });
+        tbody.appendChild(tr);
+      });
+      tabela.appendChild(tbody);
+    }
 
     // Galeria: a foto da linha primeiro, depois as de PAGINAS_SOBRE.
     // As miniaturas só aparecem quando há mais de uma foto.

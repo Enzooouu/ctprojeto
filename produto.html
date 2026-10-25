@@ -230,6 +230,7 @@
           <div class="prod-info">
             <p class="prod-info__cat" data-prod-cat></p>
             <h1 class="prod-info__titulo" id="prod-titulo" data-prod-titulo>Carregando…</h1>
+            <p class="prod-info__frase" data-prod-frase></p>
             <p class="prod-info__lead" data-prod-lead></p>
 
             <!-- Orçamento logo depois da primeira frase, para ficar à vista -->
@@ -254,7 +255,22 @@
       </div>
     </section>
 
-    <!-- 2. Artigos do blog sobre a linha (some se não houver nenhum) -->
+    <!-- 2. Medidas de referência (quando houver): fechada, abre ao clicar.
+         No celular, a coluna dos nomes fica fixa e os tamanhos deslizam. -->
+    <section class="prod-medidas-secao" aria-label="Medidas" data-prod-medidas hidden>
+      <div class="container">
+        <details class="prod-medidas">
+          <summary class="prod-medidas__titulo" data-prod-medidas-titulo></summary>
+          <p class="prod-medidas__dica" aria-hidden="true">Deslize a tabela para ver todos os tamanhos →</p>
+          <div class="prod-medidas__rolagem" tabindex="0" role="region" data-prod-medidas-caixa>
+            <table class="prod-medidas__tabela" data-prod-medidas-tabela></table>
+          </div>
+          <p class="prod-medidas__nota" data-prod-medidas-nota></p>
+        </details>
+      </div>
+    </section>
+
+    <!-- 3. Artigos do blog sobre a linha (some se não houver nenhum) -->
     <section class="section" id="inspire-se" aria-labelledby="inspire-titulo" data-prod-so>
       <div class="container">
         <div class="section-head">
