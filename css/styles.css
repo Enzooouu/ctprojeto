@@ -2358,6 +2358,33 @@ button.blog-pagina { background: none; cursor: pointer; }
 .whatsapp-float:active { transform: scale(.95); }
 /* O rótulo fica sempre no DOM, então o botão tem nome acessível mesmo recolhido */
 
+/* Atalho de volta ao blog nos artigos: canto oposto ao do WhatsApp */
+.voltar-blog-float {
+  position: fixed;
+  left: clamp(1rem, 2.5vw, 2rem);
+  bottom: clamp(1rem, 2.5vw, 2rem);
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  height: 3.5rem;
+  padding: 0 1.25rem 0 .9rem;
+  border: 1px solid rgba(245, 239, 229, .18);
+  border-radius: 999px;
+  background: var(--cinza-escuro);
+  color: var(--bege-claro);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 28px -8px rgba(47, 29, 20, .6);
+  transition: background-color .2s, transform .15s var(--ease);
+}
+.voltar-blog-float .icon { width: 1.25rem; height: 1.25rem; }
+.voltar-blog-float:hover,
+.voltar-blog-float:focus-visible { background: var(--marrom-escuro); }
+.voltar-blog-float:active { transform: scale(.95); }
+.voltar-blog-float[hidden] { display: none; }
+
 /* --------------------------------------------------------------------------
    16. Aviso (toast) dos links ainda não criados no protótipo
    -------------------------------------------------------------------------- */

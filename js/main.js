@@ -1241,6 +1241,13 @@ var DEPOIMENTOS = [
     // 6 no celular e no tablet. Página, categoria e busca ficam no endereço
     // (blog.html?categoria=lareiras&pagina=2), então voltar de um artigo
     // cai na mesma página e o botão Voltar do navegador troca de página.
+    // Guarda o endereço da lista ao abrir um artigo, para o atalho "‹ Blog"
+    // do artigo voltar para a mesma página e o mesmo filtro
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="post.html"]');
+      if (!a) return;
+      try { sessionStorage.setItem('cf-lista-blog', location.href); } catch (err) {}
+    });
     var gradeLarga = window.matchMedia('(min-width: 1024px)');
     function porPagina() { return gradeLarga.matches ? 12 : 6; }
     var secaoDestaque = document.querySelector('[data-blog-destaque]');
@@ -1497,6 +1504,20 @@ var DEPOIMENTOS = [
       [corpo, capa, catEl].concat([].slice.call(extras)).forEach(function (n) { n.hidden = true; });
       document.querySelector('.leitura-progresso').hidden = true;
       return;
+    }
+
+    // Atalho fixo "‹ Blog": volta para a lista de onde a pessoa veio (mesma
+    // página, filtro e busca). Se ela veio direto da lista, usa o Voltar do
+    // navegador, que também devolve a posição da rolagem.
+    var voltarBlog = document.querySelector('[data-voltar-blog]');
+    if (voltarBlog) {
+      voltarBlog.hidden = false;
+      voltarBlog.addEventListener('click', function () {
+        var lista = null;
+        try { lista = sessionStorage.getItem('cf-lista-blog'); } catch (e) {}
+        if (lista && document.referrer === lista && history.length > 1) history.back();
+        else location.href = lista || 'blog.html';
+      });
     }
 
     var cat = categoriaBlog(p.categoria);
