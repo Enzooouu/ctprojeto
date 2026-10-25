@@ -399,7 +399,7 @@ var POSTS = [
       { tipo: 'paragrafo', texto: 'Na Construflama, oferecemos diferentes modelos de lareiras para atender a diversos estilos de vida, ambientes e preferências estéticas. A seguir, apresentamos três opções incríveis (a lenha, a gás e ecológica), todas eficientes, seguras e cheias de personalidade.' },
       { tipo: 'paragrafo', texto: 'Cada tipo tem características específicas e, com o projeto certo, todos funcionam perfeitamente. Descubra qual é o ideal para o seu estilo de vida!' },
       { tipo: 'subtitulo', texto: 'Lareira a lenha' },
-      { tipo: 'imagem', imagem: 'img/blog/tipos-de-lareiras-lenha.webp', textoAlternativo: 'Lareira a lenha suspensa em formato de bloco retangular cor de ferrugem, com duas chaminés cilíndricas até o teto de madeira, sobre uma base rebaixada de pedra, no centro de um grande living com mesa de jantar e estantes.', legenda: 'Lareira a lenha' },
+      { tipo: 'imagem', imagem: 'img/produtos/lareira-tradicional-coifa-aparente.webp', textoAlternativo: 'Lareira a lenha suspensa em formato de bloco retangular cor de ferrugem, com duas chaminés cilíndricas até o teto de madeira, sobre uma base rebaixada de pedra, no centro de um grande living com mesa de jantar e estantes.', legenda: 'Lareira a lenha' },
       { tipo: 'paragrafo', rotulo: 'Autêntica, rústica e envolvente.', texto: 'A lareira a lenha é um verdadeiro clássico. Ela cria uma atmosfera acolhedora, com o calor intenso e o som característico da madeira queimando. É ideal para quem busca a experiência completa de uma lareira tradicional.' },
       { tipo: 'paragrafo', rotulo: 'Destaques:', texto: '' },
       { tipo: 'lista', itens: [

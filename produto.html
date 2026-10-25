@@ -81,6 +81,9 @@
     <symbol id="i-facebook" viewBox="0 0 24 24">
       <path d="M13.6 20.5v-7.6h2.6l.4-3h-3V8.1c0-.9.3-1.5 1.5-1.5h1.6V3.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.1H8v3h2.5v7.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
     </symbol>
+    <symbol id="i-link" viewBox="0 0 24 24">
+      <path d="M10.6 13.4a3.5 3.5 0 0 0 5 0l3-3a3.5 3.5 0 0 0-5-5l-1 1M13.4 10.6a3.5 3.5 0 0 0-5 0l-3 3a3.5 3.5 0 0 0 5 5l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
     <symbol id="i-whatsapp" viewBox="0 0 24 24">
       <path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1 0 12 3.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
       <path d="M9.1 7.9c.3 0 .6 0 .8.5l.8 1.9c.1.3 0 .5-.1.7l-.6.7c.6 1.2 1.6 2.2 2.9 2.9l.7-.7c.2-.2.4-.2.7-.1l1.9.8c.4.2.5.5.4.9-.2 1-1.2 1.8-2.3 1.7-3.3-.4-6.2-3.3-6.6-6.6-.1-1.2.6-2.4 1.4-2.7Z" fill="currentColor"/>
@@ -204,11 +207,12 @@
        PÁGINA "VER SOBRE": uma linha que é um produto só
        (produto.html?c=lareiras&l=tradicionais). Montada por js/main.js
        (montarPaginaSobre) a partir de PAGINAS_SOBRE (js/sobre.js) e da
-       linha em CATEGORIAS. Sem preço: o caminho é o orçamento.
+       linha em CATEGORIAS. Cada projeto é único: sem preço, versões ou
+       ficha técnica; o caminho é o orçamento.
        ============================================================ -->
   <main id="conteudo">
 
-    <!-- 1. Topo: fotos à esquerda, nome, destaques e orçamento à direita -->
+    <!-- 1. Fotos à esquerda; nome, texto, orçamento e compartilhar à direita -->
     <section class="prod-topo" aria-labelledby="prod-titulo">
       <div class="container prod-topo__conteudo">
         <nav class="migalhas migalhas--claro" aria-label="Você está em">
@@ -228,84 +232,36 @@
             <h1 class="prod-info__titulo" id="prod-titulo" data-prod-titulo>Carregando…</h1>
             <p class="prod-info__lead" data-prod-lead></p>
 
-            <div class="prod-bloco" data-prod-so>
-              <h2 class="prod-bloco__titulo">Destaques</h2>
-              <ul class="prod-destaques" data-prod-destaques></ul>
+            <!-- Orçamento logo depois da primeira frase, para ficar à vista -->
+            <div class="prod-orcamento" data-prod-so>
+              <p class="prod-orcamento__nota">Cada projeto é único: <strong>preço sob consulta</strong>.</p>
+              <a class="btn btn--primary btn--lg" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
             </div>
 
-            <div class="prod-bloco" data-prod-so>
-              <h2 class="prod-bloco__titulo">Versões</h2>
-              <ul class="prod-opcoes" data-prod-versoes></ul>
-            </div>
+            <div class="prod-info__texto" data-prod-texto></div>
 
-            <div class="prod-bloco" data-prod-so>
-              <h2 class="prod-bloco__titulo">Acabamentos</h2>
-              <ul class="prod-cores" data-prod-acabamentos></ul>
+            <div class="prod-compartilhar" data-prod-so>
+              <p class="prod-compartilhar__titulo">Compartilhar</p>
+              <a class="btn btn--ghost btn--sm" href="#" target="_blank" rel="noopener" data-compartilhar-whatsapp>
+                <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp
+              </a>
+              <button class="btn btn--ghost btn--sm" type="button" data-copiar-link>
+                <svg class="icon" aria-hidden="true"><use href="#i-link"/></svg> Copiar link
+              </button>
             </div>
-
-            <div class="prod-acoes" data-prod-so>
-              <a class="btn btn--primary btn--lg" href="https://whts.co/Construflama_com" target="_blank" rel="noopener" data-prod-orcamento>Solicitar orçamento</a>
-              <span class="prod-acoes__pdf" data-prod-pdf></span>
-            </div>
-            <p class="prod-info__nota" data-prod-so>Sob medida para o seu projeto, com showroom em São Paulo e entrega em todo o Brasil.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 2. Atalhos para as seções da página -->
-    <nav class="col-atalhos prod-atalhos" aria-label="Nesta página" data-prod-so>
-      <ul class="container col-atalhos__lista">
-        <li><a class="col-atalho" href="#sobre">Sobre</a></li>
-        <li><a class="col-atalho" href="#ficha">Ficha técnica</a></li>
-        <li><a class="col-atalho" href="#projeto">Para o projeto</a></li>
-        <li><a class="col-atalho" href="#inspire-se">Inspire-se</a></li>
-      </ul>
-    </nav>
-
-    <!-- 3. Apresentação -->
-    <section class="section prod-secao" id="sobre" aria-labelledby="sobre-titulo" data-prod-so>
-      <div class="container prod-secao__grade">
-        <h2 class="section-title" id="sobre-titulo" data-prod-sobre-titulo>Sobre</h2>
-        <div class="prod-texto" data-prod-apresentacao></div>
-      </div>
-    </section>
-
-    <!-- 4. Ficha técnica -->
-    <section class="section prod-secao prod-secao--clara" id="ficha" aria-labelledby="ficha-titulo" data-prod-so>
-      <div class="container prod-secao__grade">
-        <h2 class="section-title" id="ficha-titulo">Ficha técnica</h2>
-        <dl class="prod-ficha" data-prod-ficha></dl>
-      </div>
-    </section>
-
-    <!-- 5. O que o projeto precisa prever -->
-    <section class="section prod-secao" id="projeto" aria-labelledby="projeto-titulo" data-prod-so>
-      <div class="container prod-secao__grade">
-        <h2 class="section-title" id="projeto-titulo">O que o projeto precisa prever</h2>
-        <ul class="prod-projeto" data-prod-projeto></ul>
-      </div>
-    </section>
-
-    <!-- 6. Artigos do blog sobre a linha -->
-    <section class="section prod-secao prod-secao--clara" id="inspire-se" aria-labelledby="inspire-titulo" data-prod-so>
+    <!-- 2. Artigos do blog sobre a linha (some se não houver nenhum) -->
+    <section class="section" id="inspire-se" aria-labelledby="inspire-titulo" data-prod-so>
       <div class="container">
         <div class="section-head">
           <h2 class="section-title" id="inspire-titulo">Inspire-se</h2>
           <p class="section-lead">Projetos e dicas do nosso blog.</p>
         </div>
         <ul class="blog-grade" data-prod-blog></ul>
-      </div>
-    </section>
-
-    <!-- 7. Chamada final -->
-    <section class="section post-cta" aria-labelledby="prod-cta-titulo" data-prod-so>
-      <div class="container">
-        <div class="blog-convite__caixa">
-          <h2 class="section-title" id="prod-cta-titulo">Vamos planejar o seu projeto?</h2>
-          <p class="section-lead">Conte como é o seu espaço e o que você imagina. A nossa equipe ajuda a escolher o modelo, as medidas e o acabamento.</p>
-          <a class="btn btn--primary btn--lg" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Falar com um consultor</a>
-        </div>
       </div>
     </section>
   </main>

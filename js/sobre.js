@@ -5,45 +5,31 @@
    O botão "Ver sobre" da página da coleção passa a levar até aqui assim que
    a linha tiver um item nesta lista.
 
-   Nome, frase curta e foto principal vêm da linha em CATEGORIAS (main.js),
-   para não digitar o mesmo texto em dois lugares.
-
-   TODO: conteúdo real. Campo vazio aparece marcado como "Exemplo" na página
-   (nada de dados inventados).
+   Cada projeto é único: a página não tem preço, versões nem ficha técnica.
+   A foto principal é a da linha em CATEGORIAS (main.js), para não repetir.
 
    Campos:
    - categoria / linha: slugs de CATEGORIAS
-   - fotos: [{ imagem, textoAlternativo }] fotos extras da galeria (a
-     primeira foto é sempre a da linha)
-   - apresentacao: [parágrafos] texto "Sobre"
-   - destaques: [textos curtos] pontos fortes, ao lado das fotos
-   - versoes: [{ nome, descricao }] modelos ou tamanhos
-   - acabamentos: [{ nome, cor }] cor: amostra em CSS (ex.: '#1E1B19')
-   - ficha: [{ rotulo, valor }] ficha técnica (valor vazio = a preencher)
-   - projeto: [textos] o que o projeto precisa prever
-   - pdf: caminho do PDF da ficha técnica ou do catálogo
-   - palavrasBlog: termos para achar artigos do blog sobre esta linha
+   - nome: nome do produto (título da página)
+   - texto: [parágrafos] apresentação do produto
+   - fotos: [{ imagem, textoAlternativo, foco? }] fotos depois da principal
+   - palavrasBlog: termos para achar artigos do blog sobre o produto
    ========================================================================== */
 var PAGINAS_SOBRE = [
   {
     categoria: 'lareiras',
     linha: 'tradicionais',
-    fotos: [],
-    apresentacao: [],
-    destaques: [],
-    versoes: [],
-    acabamentos: [],
-    // Só os rótulos: os valores chegam com a ficha técnica real
-    ficha: [
-      { rotulo: 'Largura', valor: '' },
-      { rotulo: 'Altura', valor: '' },
-      { rotulo: 'Profundidade', valor: '' },
-      { rotulo: 'Peso', valor: '' },
-      { rotulo: 'Combustível', valor: '' },
-      { rotulo: 'Área aquecida', valor: '' }
+    nome: 'Lareira tradicional',
+    texto: [
+      'Bons momentos podem se tornar mais aconchegantes com uma lareira a lenha. Por isso, desenvolvemos uma linha que aproveita melhor o calor e faz uma perfeita exaustão da fumaça.',
+      'Com beleza e segurança, a lareira a lenha Construflama oferece muito mais conforto.',
+      'São diversos modelos, com opção de embutir e opção com coifa aparente. Nos modelos de embutir, as chapas são feitas em aço carbono de alta qualidade e têm pintura resistente ao calor, isolamento térmico para preservar a integridade dos acabamentos, gabarito com vão de dilatação e câmara de queima revestida por placas refratárias.',
+      'Os modelos com coifa aparente podem ser em aço carbono pintado de preto ou branco, ou em aço corten.'
     ],
-    projeto: [],
-    pdf: '',
+    fotos: [
+      { imagem: 'img/produtos/lareira-tradicional-coifa-aparente.webp',
+        textoAlternativo: 'Lareira a lenha com coifa aparente cor de ferrugem, em formato de bloco retangular com duas chaminés cilíndricas até o teto de madeira, sobre uma base rebaixada de pedra, no centro de um grande living.' }
+    ],
     palavrasBlog: ['lenha']
   }
 ];

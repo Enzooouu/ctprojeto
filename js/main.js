@@ -229,6 +229,32 @@ var DEPOIMENTOS = [
 
   function srOnly(text) { return el('span', 'sr-only', text); }
 
+  // Botão "Copiar link" (artigo do blog e página "Ver sobre")
+  function ligarCopiarLink(botao, endereco) {
+    if (!botao) return;
+    botao.addEventListener('click', function () {
+      var ok = function () { mostrarAviso('Link copiado.'); };
+      var falhou = function () {
+        // Sem a API de área de transferência (ex.: arquivo aberto direto): caminho antigo
+        var campo = el('textarea');
+        campo.value = endereco;
+        campo.setAttribute('readonly', '');
+        campo.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+        document.body.appendChild(campo);
+        campo.select();
+        var copiou = false;
+        try { copiou = document.execCommand('copy'); } catch (err) { copiou = false; }
+        campo.remove();
+        mostrarAviso(copiou ? 'Link copiado.' : 'Não foi possível copiar. Copie o endereço na barra do navegador.');
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(endereco).then(ok, falhou);
+      } else {
+        falhou();
+      }
+    });
+  }
+
   // Aviso discreto no rodapé da tela (links do protótipo, "Link copiado"...)
   var toastTimer = null;
   function mostrarAviso(texto) {
@@ -273,13 +299,6 @@ var DEPOIMENTOS = [
     if (!s.sobreNome) return s.titulo || s.nome;
     var n = s.sobreNome.replace(/^(o|a|os|as) /, '');
     return n.charAt(0).toUpperCase() + n.slice(1);
-  }
-  // Espaço de conteúdo ainda vazio: texto entre colchetes + etiqueta "Exemplo"
-  function exemploConteudo(tag, classe, texto) {
-    var n = el(tag, (classe ? classe + ' ' : '') + 'prod-exemplo');
-    n.appendChild(document.createTextNode('[' + texto + '] '));
-    n.appendChild(el('span', 'tag-exemplo prod-exemplo__tag', 'Exemplo'));
-    return n;
   }
 
   function buscarCategoria(slug) {
@@ -1729,27 +1748,7 @@ var DEPOIMENTOS = [
     var whats = document.querySelector('[data-compartilhar-whatsapp]');
     whats.href = 'https://wa.me/?text=' + encodeURIComponent(p.titulo + ' ' + endereco);
     whats.appendChild(srOnly(': compartilhar este artigo'));
-    document.querySelector('[data-copiar-link]').addEventListener('click', function () {
-      var ok = function () { mostrarAviso('Link copiado.'); };
-      var falhou = function () {
-        // Sem a API de área de transferência (ex.: arquivo aberto direto): caminho antigo
-        var campo = el('textarea');
-        campo.value = endereco;
-        campo.setAttribute('readonly', '');
-        campo.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
-        document.body.appendChild(campo);
-        campo.select();
-        var copiou = false;
-        try { copiou = document.execCommand('copy'); } catch (err) { copiou = false; }
-        campo.remove();
-        mostrarAviso(copiou ? 'Link copiado.' : 'Não foi possível copiar. Copie o endereço na barra do navegador.');
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(endereco).then(ok, falhou);
-      } else {
-        falhou();
-      }
-    });
+    ligarCopiarLink(document.querySelector('[data-copiar-link]'), endereco);
 
     // Relacionados: mesma categoria primeiro; completa com os mais recentes
     var outros = postsPorData().filter(function (x) { return x !== p; });
@@ -1784,10 +1783,8 @@ var DEPOIMENTOS = [
 
   /* ------------------------------------------------------------------------
      H2. Página "Ver sobre" (produto.html?c=colecao&l=linha)
-         Linha que é um produto só: fotos, destaques, versões, acabamentos,
-         ficha técnica, o que o projeto precisa prever e artigos do blog.
-         Sem preço: tudo leva ao orçamento. Campo vazio em PAGINAS_SOBRE
-         aparece marcado como "Exemplo".
+         Linha que é um produto só: fotos, nome, texto, orçamento (cada
+         projeto é único, então não há preço) e artigos do blog.
      ------------------------------------------------------------------------ */
   (function montarPaginaSobre() {
     if (!NA_PAGINA_SOBRE) return;
@@ -1797,11 +1794,12 @@ var DEPOIMENTOS = [
     var pag = linha ? paginaSobre(cat.slug, linha.slug) : null;
     var titulo = document.querySelector('[data-prod-titulo]');
     var lead = document.querySelector('[data-prod-lead]');
+    var texto = document.querySelector('[data-prod-texto]');
     var migalhas = document.querySelector('[data-prod-migalhas]');
 
-    function migalha(texto, href) {
+    function migalha(rotulo, href) {
       var li = el('li');
-      var n = el(href ? 'a' : 'span', null, texto);
+      var n = el(href ? 'a' : 'span', null, rotulo);
       if (href) n.href = href; else n.setAttribute('aria-current', 'page');
       li.appendChild(n);
       migalhas.appendChild(li);
@@ -1817,7 +1815,7 @@ var DEPOIMENTOS = [
       return;
     }
 
-    var nome = nomeSobre(linha);
+    var nome = pag.nome || nomeSobre(linha);
     document.title = nome + ' | ' + cat.nome + ' | Construflama';
     var meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute('content', nome + ' Construflama: ' + linha.descricao + ' Showroom em São Paulo e entrega em todo o Brasil.');
@@ -1826,110 +1824,64 @@ var DEPOIMENTOS = [
     migalha(nome);
     document.querySelector('[data-prod-cat]').textContent = cat.nome + ' · Linha ' + linha.nome;
     titulo.textContent = nome;
-    lead.textContent = linha.descricao;
-    document.querySelector('[data-prod-sobre-titulo]').textContent = 'Sobre ' + alvoSobre(linha);
+    // Primeiro parágrafo em destaque, acima do orçamento; o resto embaixo
+    var paragrafos = pag.texto && pag.texto.length ? pag.texto : [linha.descricao];
+    lead.textContent = paragrafos[0];
+    paragrafos.slice(1).forEach(function (t) { texto.appendChild(el('p', null, t)); });
+    if (paragrafos.length < 2) texto.remove();
 
     // Galeria: a foto da linha primeiro, depois as de PAGINAS_SOBRE.
-    // Menos de 4 fotos: as vagas aparecem como "Foto em breve".
+    // As miniaturas só aparecem quando há mais de uma foto.
     var fotos = [{ imagem: linha.imagem, textoAlternativo: linha.textoAlternativo, foco: linha.foco }]
       .concat(pag.fotos || []).filter(function (f) { return f.imagem; });
-    var principal = document.querySelector('[data-prod-foto]');
     var img = el('img', 'prod-galeria__foto');
     img.decoding = 'async';
     img.setAttribute('fetchpriority', 'high');
-    principal.appendChild(img);
+    document.querySelector('[data-prod-foto]').appendChild(img);
+    var miniaturas = document.querySelector('[data-prod-miniaturas]');
     function mostrarFoto(n) {
       img.src = fotos[n].imagem;
       img.alt = fotos[n].textoAlternativo || '';
       img.style.objectPosition = fotos[n].foco || '';
       miniaturas.querySelectorAll('button').forEach(function (b, i) { b.setAttribute('aria-pressed', String(i === n)); });
     }
-    var miniaturas = document.querySelector('[data-prod-miniaturas]');
-    fotos.forEach(function (f, n) {
-      var li = el('li');
-      var b = el('button', 'prod-miniatura');
-      b.type = 'button';
-      b.setAttribute('aria-label', 'Ver foto ' + (n + 1) + ' de ' + fotos.length);
-      var mini = el('img');
-      mini.src = f.imagem;
-      mini.alt = '';
-      mini.loading = 'lazy';
-      if (f.foco) mini.style.objectPosition = f.foco;
-      b.appendChild(mini);
-      b.addEventListener('click', function () { mostrarFoto(n); });
-      li.appendChild(b);
-      miniaturas.appendChild(li);
-    });
-    for (var v = fotos.length; v < 4; v++) {
-      var vaga = el('li', 'prod-miniatura prod-miniatura--vaga material--' + cat.visual);
-      vaga.appendChild(el('span', null, 'Foto em breve'));   // TODO: fotos reais (PAGINAS_SOBRE.fotos)
-      miniaturas.appendChild(vaga);
+    if (fotos.length > 1) {
+      fotos.forEach(function (f, n) {
+        var li = el('li');
+        var b = el('button', 'prod-miniatura');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Ver foto ' + (n + 1) + ' de ' + fotos.length);
+        var mini = el('img');
+        mini.src = f.imagem;
+        mini.alt = '';
+        mini.loading = 'lazy';
+        if (f.foco) mini.style.objectPosition = f.foco;
+        b.appendChild(mini);
+        b.addEventListener('click', function () { mostrarFoto(n); });
+        li.appendChild(b);
+        miniaturas.appendChild(li);
+      });
+    } else {
+      miniaturas.remove();
     }
     mostrarFoto(0);
 
-    // Lista simples: itens reais ou um "Exemplo" no lugar
-    function lista(alvo, itens, vazio, montar) {
-      var caixa = document.querySelector(alvo);
-      if (!itens || !itens.length) { caixa.appendChild(exemploConteudo('li', null, vazio)); return; }
-      itens.forEach(function (i) { caixa.appendChild(montar(i)); });
-    }
-    lista('[data-prod-destaques]', pag.destaques, 'Pontos fortes da linha', function (t) { return el('li', null, t); });
-    lista('[data-prod-versoes]', pag.versoes, 'Versões ou tamanhos disponíveis', function (x) {
-      var li = el('li', 'prod-opcao');
-      li.appendChild(el('strong', null, x.nome));
-      if (x.descricao) li.appendChild(el('span', null, x.descricao));
-      return li;
-    });
-    lista('[data-prod-acabamentos]', pag.acabamentos, 'Acabamentos e cores', function (x) {
-      var li = el('li', 'prod-cor');
-      var amostra = el('span', 'prod-cor__amostra');
-      amostra.setAttribute('aria-hidden', 'true');
-      if (x.cor) amostra.style.background = x.cor;
-      li.appendChild(amostra);
-      li.appendChild(el('span', null, x.nome));
-      return li;
-    });
-    lista('[data-prod-projeto]', pag.projeto, 'Itens que o projeto precisa prever, como chaminé, distâncias e instalação', function (t) { return el('li', null, t); });
+    // Compartilhar (mesmo comportamento do artigo do blog)
+    var endereco = location.href.split('#')[0];
+    var whats = document.querySelector('[data-compartilhar-whatsapp]');
+    whats.href = 'https://wa.me/?text=' + encodeURIComponent(nome + ' Construflama ' + endereco);
+    whats.appendChild(srOnly(': compartilhar esta página'));
+    ligarCopiarLink(document.querySelector('[data-copiar-link]'), endereco);
 
-    var apresentacao = document.querySelector('[data-prod-apresentacao]');
-    if (pag.apresentacao && pag.apresentacao.length) {
-      pag.apresentacao.forEach(function (t) { apresentacao.appendChild(el('p', null, t)); });
-    } else {
-      apresentacao.appendChild(exemploConteudo('p', null, 'Texto de apresentação: a história da linha, para que ambientes ela é indicada e o que a diferencia'));
-    }
-
-    var ficha = document.querySelector('[data-prod-ficha]');
-    (pag.ficha || []).forEach(function (f) {
-      var linhaFicha = el('div', 'prod-ficha__linha');
-      linhaFicha.appendChild(el('dt', null, f.rotulo));
-      linhaFicha.appendChild(f.valor ? el('dd', null, f.valor) : exemploConteudo('dd', null, 'a preencher'));
-      ficha.appendChild(linhaFicha);
-    });
-
-    var pdf = document.querySelector('[data-prod-pdf]');
-    if (pag.pdf) {
-      var baixar = el('a', 'btn btn--ghost btn--lg', 'Baixar ficha técnica');
-      baixar.href = pag.pdf;
-      baixar.setAttribute('download', '');
-      baixar.appendChild(srOnly(' (PDF)'));
-      pdf.appendChild(baixar);
-    } else {
-      pdf.appendChild(exemploConteudo('span', null, 'Ficha técnica em PDF'));
-    }
-
-    // Artigos do blog da mesma coleção que falam desta linha
+    // Artigos do blog da mesma coleção que falam deste produto
     var gradeBlog = document.querySelector('[data-prod-blog]');
     var termos = (pag.palavrasBlog || []).map(normalizar);
-    var artigos = typeof POSTS === 'undefined' ? [] : postsPorData().filter(function (p) {
-      var texto = normalizar(textoDoPost(p));
-      return p.categoria === cat.slug && termos.some(function (t) { return texto.indexOf(t) !== -1; });
+    var artigos = typeof POSTS === 'undefined' || !termos.length ? [] : postsPorData().filter(function (p) {
+      var conteudo = normalizar(textoDoPost(p));
+      return p.categoria === cat.slug && termos.some(function (t) { return conteudo.indexOf(t) !== -1; });
     }).slice(0, 3);
     artigos.forEach(function (p) { gradeBlog.appendChild(cardPost(p)); });
-    if (!artigos.length) {
-      gradeBlog.closest('section').hidden = true;
-      var atalho = document.querySelector('.prod-atalhos a[href="#inspire-se"]');
-      if (atalho) atalho.parentNode.hidden = true;
-    }
+    if (!artigos.length) gradeBlog.closest('section').hidden = true;
   })();
 
   /* ------------------------------------------------------------------------
