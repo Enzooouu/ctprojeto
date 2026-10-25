@@ -1271,8 +1271,8 @@ var POSTS = [
       { tipo: 'paragrafo', texto: 'Na Construflama você encontra modelos para todos os estilos de projeto: lareiras ecológicas, lareiras a gás, lareiras a lenha, modelos portáteis e lareiras esculturais que unem tecnologia, design e alto desempenho.' },
       { tipo: 'paragrafo', texto: '', link: { texto: 'Conheça todas as opções agora com um consultor comercial Construflama', href: 'https://whts.co/Construflama_com' }, depois: 'e descubra qual modelo combina perfeitamente com o seu ambiente. Seu próximo projeto merece o conforto e a elegância que apenas uma lareira Construflama pode proporcionar.' },
       { tipo: 'lista', itens: [
-        { rotulo: 'Telefone:', texto: '', link: { texto: '(11) 5171-6070', href: 'tel:+551151716070' } },
-        { rotulo: 'E-mail:', texto: '', link: { texto: 'construflama@construflama.com.br', href: 'mailto:construflama@construflama.com.br' } }
+        { rotulo: 'Telefone:', texto: '(11) 5171-6070' },
+        { rotulo: 'E-mail:', texto: 'construflama@construflama.com.br' }
       ] }
     ]
   },
@@ -1355,8 +1355,8 @@ var POSTS = [
       { tipo: 'paragrafo', texto: 'Nossos consultores comerciais estão preparados para tirar suas dúvidas a fundo para encontrar a melhor opção considerando o seu imóvel, a sua rotina e a sua paixão estética!' },
       { tipo: 'paragrafo', texto: '', link: { texto: 'Clique e descubra', href: 'https://whts.co/Construflama_com' }, depois: 'como a arte e o prazer do fogo podem fazer parte da sua rotina!' },
       { tipo: 'lista', itens: [
-        { rotulo: 'Telefone:', texto: '', link: { texto: '(11) 5171-6070', href: 'tel:+551151716070' } },
-        { rotulo: 'E-mail:', texto: '', link: { texto: 'construflama@construflama.com.br', href: 'mailto:construflama@construflama.com.br' } }
+        { rotulo: 'Telefone:', texto: '(11) 5171-6070' },
+        { rotulo: 'E-mail:', texto: 'construflama@construflama.com.br' }
       ] }
     ]
   },
