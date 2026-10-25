@@ -2403,6 +2403,8 @@ button.blog-pagina { background: none; cursor: pointer; }
   list-style: none;
 }
 .prod-medidas__titulo::-webkit-details-marker { display: none; }
+.prod-medidas__h { font-size: inherit; font-family: inherit; color: inherit; }
+.prod-orcamento__peso { font-size: var(--fs-sm); font-weight: 400; opacity: .75; }
 .prod-medidas__titulo::after { content: "+"; color: var(--laranja); font-size: 1.5rem; line-height: 1; }
 .prod-medidas[open] .prod-medidas__titulo::after { content: "−"; }
 .prod-medidas__rolagem { overflow-x: auto; margin: 0 var(--sp-5); }

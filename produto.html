@@ -240,7 +240,7 @@
                 <a class="btn btn--primary btn--lg" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
                 <!-- PDF da coleção (CATALOGOS, em main.js); some se não houver -->
                 <a class="btn btn--ghost btn--lg" href="#" download data-prod-catalogo hidden>
-                  <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Baixar catálogo
+                  <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Baixar catálogo <span class="prod-orcamento__peso" data-prod-catalogo-peso></span>
                 </a>
               </div>
             </div>
@@ -263,10 +263,10 @@
 
     <!-- 2. Medidas de referência (quando houver): já aberta, fecha e abre ao clicar.
          No celular, a coluna dos nomes fica fixa e os tamanhos deslizam. -->
-    <section class="prod-medidas-secao" id="medidas" aria-label="Medidas" data-prod-medidas hidden>
+    <section class="prod-medidas-secao" id="medidas" aria-labelledby="medidas-titulo" data-prod-medidas hidden>
       <div class="container">
         <details class="prod-medidas" open>
-          <summary class="prod-medidas__titulo" data-prod-medidas-titulo></summary>
+          <summary class="prod-medidas__titulo"><h2 class="prod-medidas__h" id="medidas-titulo" data-prod-medidas-titulo></h2></summary>
           <p class="prod-medidas__dica" aria-hidden="true">Deslize a tabela para ver todos os tamanhos →</p>
           <div class="prod-medidas__rolagem" tabindex="0" role="region" data-prod-medidas-caixa>
             <table class="prod-medidas__tabela" data-prod-medidas-tabela></table>

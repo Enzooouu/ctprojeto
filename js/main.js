@@ -157,10 +157,11 @@ var CATEGORIAS = [
 /* --------------------------------------------------------------------------
    CATALOGOS para download (seção do especificador). Cada catálogo junta
    uma ou mais categorias; a descrição é montada com as subcategorias.
-   TODO: preencher "arquivo" com o caminho do PDF real de cada catálogo.
+   TODO: preencher "arquivo" com o caminho do PDF real de cada catálogo
+   (e "tamanho", mostrado ao lado do botão na página do produto).
    -------------------------------------------------------------------------- */
 var CATALOGOS = [
-  { titulo: 'Lareiras', categorias: ['lareiras'], arquivo: 'catalogos/catalogo-lareiras-2026.pdf' },
+  { titulo: 'Lareiras', categorias: ['lareiras'], arquivo: 'catalogos/catalogo-lareiras-2026.pdf', tamanho: '6,6 MB' },
   { titulo: 'Churrasqueiras e parrillas', categorias: ['churrasqueiras', 'parrillas'], arquivo: '' },
   { titulo: 'Coifas', categorias: ['coifas'], arquivo: '' },
   { titulo: 'Fornos de pizza, tocheiros e chapeiras', categorias: ['fornos-de-pizza', 'tocheiros', 'chapeiras'], arquivo: '' }
@@ -1818,7 +1819,7 @@ var DEPOIMENTOS = [
     var nome = pag.nome || nomeSobre(linha);
     document.title = nome + ' | ' + cat.nome + ' | Construflama';
     var meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute('content', nome + ' Construflama: ' + linha.descricao + ' Showroom em São Paulo e entrega em todo o Brasil.');
+    if (meta) meta.setAttribute('content', nome + ' Construflama. ' + linha.descricao + ' Showroom em São Paulo e entrega em todo o Brasil.');
 
     migalha(cat.nome, 'colecao.html?c=' + cat.slug);
     migalha(nome);
@@ -1902,7 +1903,8 @@ var DEPOIMENTOS = [
       var baixar = document.querySelector('[data-prod-catalogo]');
       baixar.href = catalogo.arquivo;
       baixar.hidden = false;
-      baixar.appendChild(srOnly(' de ' + catalogo.titulo.toLowerCase() + ' (PDF)'));
+      baixar.insertBefore(srOnly('de ' + catalogo.titulo.toLowerCase() + ' '), baixar.querySelector('[data-prod-catalogo-peso]'));
+      document.querySelector('[data-prod-catalogo-peso]').textContent = '(PDF' + (catalogo.tamanho ? ', ' + catalogo.tamanho : '') + ')';
     }
 
     // Compartilhar (mesmo comportamento do artigo do blog)
