@@ -43,6 +43,205 @@ var BLOG_CATEGORIAS = [
 
 var POSTS = [
   {
+    slug: 'sirva-sua-propria-pizza',
+    titulo: 'Sirva sua própria pizza',
+    categoria: 'fornos-de-pizza',
+    resumo: 'Encaixado sobre a grelha da churrasqueira, o Forno de Pizza Portátil Construflama, em inox 304 e com pedra-sabão, leva o sabor de pizzaria para a sua área gourmet.',
+    data: '2025-05-06', exemplo: false,
+    imagem: 'img/blog/forno-de-pizza-portatil.webp',
+    textoAlternativo: 'Mão abrindo o Forno de Pizza Portátil Construflama, de aço inox com o logotipo gravado, encaixado sobre uma churrasqueira de inox com botões de controle.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Que tal curtir a experiência de servir sua própria pizza aos seus convidados? Saiba como um Forno de Pizza Portátil pode te dar milhares de opções na área gourmet da sua casa!' },
+      { tipo: 'paragrafo', texto: 'Fazer sua pizza em casa pode ser tão simples quanto grelhar um corte de carne na sua churrasqueira. Com massas prontas ou receitas personalizadas, você pode ir do simples ao profissional com o Forno de Pizza Portátil Construflama.' },
+      { tipo: 'paragrafo', texto: 'A pizza é uma iguaria que, desde que chegou ao Brasil, se adaptou para atender a diversos tipos de paladar e, por isso, é uma escolha certeira para receber convidados em casa. Embutidos, queijos, carnes e até tipos de massa diferentes podem personalizar o sabor para agradar até o apreciador mais exigente.' },
+      { tipo: 'paragrafo', texto: 'Se você é apaixonado por pizzas artesanais e adora reunir amigos e família, um forno de pizza portátil pode elevar sua experiência gastronômica a outro nível. Prático e versátil, ele pode ser facilmente acomodado na sua churrasqueira, transformando qualquer encontro em um momento especial. Você pode pré-aquecer o equipamento até a temperatura desejada, colocando-o com encaixe perfeito sobre a grelha da sua churrasqueira Construflama, e inserir a sua pizza sobre a pedra-sabão, aguardando o ponto ideal para remover o alimento do forno com todo o cuidado que sua receita merece.' },
+      { tipo: 'paragrafo', texto: 'O forno portátil da Construflama foi desenvolvido para oferecer sabor e eficiência. Fabricado 100% em aço inox 304, material conhecido por sua durabilidade e resistência, ele garante alta performance e um design sofisticado. Além disso, conta com um termômetro embutido, que permite acompanhar a temperatura ideal para o cozimento perfeito. Sua base de pedra-sabão mantém o calor de forma uniforme, resultando em pizzas crocantes por fora e macias por dentro, como nos autênticos fornos napolitanos.' },
+      { tipo: 'paragrafo', texto: 'Com um forno de pizza portátil, você leva para sua casa o sabor e o aroma irresistíveis de uma pizzaria profissional, sem complicações. Que tal experimentar e transformar seus momentos ao redor da churrasqueira em verdadeiras celebrações gastronômicas?', link: { texto: 'Conheça o forno portátil.', href: 'colecao.html?c=fornos-de-pizza#linha-portatil' } }
+    ]
+  },
+  {
+    slug: 'construflama-mens-house-cidade-jardim',
+    titulo: 'Construflama e Men’s House: um novo destino de sofisticação no Shopping Cidade Jardim',
+    categoria: 'projetos',
+    resumo: 'A terceira loja da Construflama abre dentro da Men’s House, no Shopping Cidade Jardim, com as churrasqueiras mais imponentes do portfólio e a Lareira Tarus na tabacaria Murdock.',
+    data: '2025-04-03', exemplo: false,
+    imagem: 'img/blog/shopping-cidade-jardim.webp',
+    textoAlternativo: 'Letreiro do Shopping Cidade Jardim na fachada, visto de baixo, ao lado de uma árvore e do prédio do shopping.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'A Construflama tem o prazer de anunciar a abertura de sua terceira loja, em uma parceria exclusiva com a Men’s House, dentro do icônico Shopping Cidade Jardim.' },
+      { tipo: 'paragrafo', texto: 'Com um conceito inovador que une sofisticação, design e experiência, essa nova unidade reforça o compromisso da marca em oferecer produtos de alto padrão para ambientes que valorizam o convívio e o bem-estar.' },
+      { tipo: 'paragrafo', texto: 'Localizada dentro da Men’s House, referência em itens e serviços de luxo para o público masculino, a nova loja destaca as churrasqueiras mais imponentes do portfólio da Construflama. Um espaço pensado para quem aprecia experiências memoráveis e deseja o melhor em design e performance para reunir amigos ao redor do fogo.' },
+      { tipo: 'citacao', texto: 'É extremamente satisfatório poder levar os produtos e serviços da Construflama para nossos clientes que frequentam o Shopping Cidade Jardim e a Men’s House. Trabalhei durante muitos anos na JHSF, então tenho um carinho especial por toda a equipe da J e pelo próprio SCJ. A presença da Construflama na nova área de Home & Design do SCJ complementa o nosso portfólio e leva os nossos clientes para um ecossistema exclusivo e de bem-estar, aliado à experiência e à curadoria propostas pela equipe da Men’s House.', autor: 'Marceu Perroni, CEO da Construflama' },
+      { tipo: 'paragrafo', texto: 'Além disso, os visitantes poderão conferir a Lareira Tarus em um ambiente exclusivo dentro da tabacaria Murdock, proporcionando uma experiência única que alia conforto e sofisticação.' },
+      { tipo: 'paragrafo', texto: 'Para visitar o espaço, basta acessar o segundo mezanino do shopping, subindo pela escada rolante próxima à área Home & Decor.' },
+      { tipo: 'paragrafo', texto: 'Venha nos visitar e descubra como a Construflama pode transformar seu projeto com elegância e funcionalidade. Estamos prontos para recebê-lo no Shopping Cidade Jardim, em São Paulo!' }
+    ]
+  },
+  {
+    slug: 'segunda-loja-construflama-dd-shopping',
+    titulo: 'Segunda loja em São Paulo',
+    categoria: 'projetos',
+    resumo: 'A empresa desenvolve produtos inovadores que usam o fogo para criar memórias e reunir pessoas. E a chegada ao Shopping D&D vem coroar o sucesso da marca.',
+    data: '2025-03-31', exemplo: false,
+    imagem: 'img/blog/dd-shopping-fachada.webp',
+    textoAlternativo: 'Fachada do D&D Shopping ao entardecer, com as letras D&D iluminadas em laranja sobre a placa “Decoração & Design Center” e o prédio de vidro refletindo o céu.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Há mais de 40 anos, a Construflama é referência no mercado de lareiras e churrasqueiras, unindo em suas peças tecnologia, sofisticação e design exclusivo. Agora, abre as portas de sua segunda loja em São Paulo, no mais completo centro de decoração e design da América Latina: o D&D Shopping.' },
+      { tipo: 'paragrafo', texto: 'Os produtos são personalizados e proporcionam ao cliente uma experiência única de excelência e funcionalidade. A partir da inspiração central da marca, o fogo, a Construflama tem em seu portfólio uma grande variedade de produtos, como parrillas, fornos de pizza a lenha, chapeiras, tocheiros e coifas, proporcionando momentos inesquecíveis de lazer em família, descanso e conforto, e atendendo a todos os desejos por lares aconchegantes.' },
+      { tipo: 'paragrafo', texto: 'O projeto, assinado pelo arquiteto Yannick Athia, conseguiu traduzir a identidade da marca nos detalhes, desde a madeira carbonizada da bancada central até a lenha no painel que reveste o mezanino. O posicionamento dos produtos também foi delicadamente pensado pelo arquiteto, que optou por evidenciá-los estrategicamente, aliando o design e a organização, sem perder a elegância.' },
+      { tipo: 'paragrafo', texto: 'O grande diferencial é a imponência característica dos produtos dispostos no interior, atrelada ao design da loja, o que reflete a intensidade da marca nos itens que serão comercializados nessa unidade.' },
+      { tipo: 'paragrafo', texto: 'Ao longo de toda a sua trajetória, a Construflama atua em parceria com renomados profissionais da arquitetura junto ao cliente final e em grandes projetos, como a Mostra Artefacto, a CASACOR, o Taste, o Fuegos e o Meatstock, entre outros.' }
+    ]
+  },
+  {
+    slug: 'lareira-e-churrasqueira-valorizam-o-imovel',
+    titulo: 'Lareira e churrasqueira valorizam o imóvel',
+    categoria: 'lareiras',
+    resumo: 'Churrasqueiras e espaços gourmet estão entre os filtros mais usados por quem comprou imóvel em 2024, segundo a pesquisa Data Lello. Veja por que lareira e churrasqueira valorizam a casa.',
+    data: '2025-03-31', exemplo: false,
+    imagem: 'img/blog/lareira-valoriza-imovel.webp', foco: '35% 50%',
+    textoAlternativo: 'Lareira Cone cor de ferrugem suspensa sobre uma bacia com pedras, no canto de uma sala com parede de pastilhas claras, painel de madeira, escrivaninha com luminária e poltrona estampada.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'De acordo com a pesquisa Data Lello, os filtros mais utilizados pelos compradores de imóveis em 2024 incluem churrasqueiras e espaços gourmet e de lazer dentro de casa, tendência que aumentou no cenário pós-pandemia.' },
+      { tipo: 'paragrafo', texto: 'Imóveis com lareira e churrasqueira são altamente valorizados no mercado imobiliário. Elas não apenas adicionam charme e elegância ao espaço, mas também aumentam o valor de revenda do imóvel, ponto considerado pelos potenciais compradores que buscam comodidade e um imóvel atraente, valorizado e em destaque frente aos demais.' },
+      { tipo: 'paragrafo', texto: 'Os ambientes se tornam completos quando são compostos por elementos de decoração. A combinação desses artigos funcionais complementa e agrega ainda mais valor aos espaços. A escolha de equipamentos, se feita cuidadosamente e com produtos de qualidade, é capaz de transformar um imóvel e deixá-lo sofisticado e acolhedor.' },
+      { tipo: 'paragrafo', texto: 'A arquiteta Jacira Pinheiro, que expôs na CASACOR Rio de Janeiro, maior mostra de arquitetura, design e paisagismo das Américas, e está acostumada a projetar espaços dessa natureza, afirma que o uso da lareira escultural Construflama em seu ambiente foi o ponto alto do projeto e objeto de desejo de vários visitantes da mostra.' },
+      { tipo: 'citacao', texto: 'A escolha de lareiras e churrasqueiras chama a atenção pelo design, pela beleza e, principalmente, pela sensação de aconchego e acolhimento.', autor: 'Jacira Pinheiro, arquiteta' },
+      { tipo: 'paragrafo', texto: 'Na Construflama, é possível encontrar lareiras e churrasqueiras para valorizar ainda mais o seu imóvel! Para conhecê-las,', link: { texto: 'fale com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: 'e acompanhe o Instagram @construflama.' },
+      { tipo: 'lista', itens: [
+        { rotulo: '', texto: '', link: { texto: 'Coleção de lareiras', href: 'colecao.html?c=lareiras' } },
+        { rotulo: '', texto: '', link: { texto: 'Coleção de churrasqueiras', href: 'colecao.html?c=churrasqueiras' } }
+      ] }
+    ]
+  },
+  {
+    slug: 'qual-e-a-grelha-ideal-para-o-seu-churrasco',
+    titulo: 'Qual é a grelha ideal para o seu churrasco? Descubra as melhores opções!',
+    categoria: 'churrasqueiras',
+    resumo: 'Argentina, uruguaia, de barra chata ou plancha: um guia rápido para escolher a grelha certa para cada estilo de churrasco.',
+    data: '2025-03-21', exemplo: false,
+    imagem: 'img/blog/grelha-carne-fogo.webp',
+    textoAlternativo: 'Close de bifes grossos com marcas de grelha assando sobre a grelha, com chamas altas em primeiro plano.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Se você é fã de churrasco, sabe que a escolha da grelha para churrasqueira influencia diretamente no sabor e na suculência da carne. Mas qual é a melhor opção para o seu estilo de churrasco? Neste guia, vamos ajudar você a escolher a grelha ideal entre os principais tipos de grelhas para churrasco disponíveis no mercado!' },
+      { tipo: 'subtitulo', texto: 'Grelha argentina: menos gordura e mais sabor no churrasco' },
+      { tipo: 'paragrafo', texto: 'A grelha argentina é ideal para carnes mais gordurosas. Suas canaletas inclinadas direcionam a gordura para um reservatório, evitando que ela caia diretamente no fogo e crie labaredas. Esse design preserva o sabor da carne, sem o gosto excessivo de fumaça intensa. A grelha argentina é perfeita para cortes suculentos e assados de longa duração, como costela e picanha.' },
+      { tipo: 'subtitulo', texto: 'Grelha uruguaia: sabor defumado e carne suculenta' },
+      { tipo: 'paragrafo', texto: 'Muito parecida com a grelha argentina, a grelha uruguaia tem barras um pouco mais espaçadas, permitindo um leve contato da gordura com o fogo. O resultado é uma carne suculenta, com aquele toque defumado característico do tradicional churrasco uruguaio. Se você gosta de um sabor mais intenso e defumado, a grelha uruguaia é a escolha certa.' },
+      { tipo: 'subtitulo', texto: 'Grelha de barra chata' },
+      { tipo: 'paragrafo', texto: 'A grelha de barra chata é uma excelente escolha para quem busca um churrasco com sabor intenso e carne suculenta. Ideal para quem gosta de churrasco com crostinha dourada, ela é perfeita para maximizar a reação de Maillard. Se você é um amante do churrasco tradicional, com brasas e aquele toque de sabor defumado, a grelha de barra chata é a opção ideal para garantir o sucesso do seu churrasco.' },
+      { tipo: 'subtitulo', texto: 'Grelha plancha (chapa de aço inox): versatilidade para todos os alimentos' },
+      { tipo: 'paragrafo', texto: 'Para quem gosta de mais versatilidade no churrasco, a grelha plancha é perfeita! Feita de chapa de aço inox, ela distribui o calor uniformemente e é excelente para preparar hambúrgueres, legumes e frutos do mar. Se você gosta de preparar uma variedade de alimentos na churrasqueira, a grelha plancha é um coringa na sua cozinha ao ar livre!' },
+      { tipo: 'subtitulo', texto: 'Como escolher a grelha ideal para o seu churrasco?' },
+      { tipo: 'paragrafo', texto: 'A escolha da grelha ideal depende do seu estilo de churrasco. Se você prefere carnes magras, com menos gordura e sabor defumado, a grelha uruguaia é uma opção perfeita. Para cortes mais gordurosos, a grelha argentina é a melhor escolha. E, para quem busca versatilidade, a grelha plancha é a solução ideal!' },
+      { tipo: 'paragrafo', texto: 'Confira também o nosso conteúdo sobre grelhas no Instagram @construflama e', link: { texto: 'o guia completo, com fotos de cada grelha', href: 'post.html?slug=como-escolher-a-grelha-ideal' }, depois: '.' }
+    ]
+  },
+  {
+    slug: 'lareiras-suspensas',
+    titulo: 'Lareiras suspensas: a elegância do design flutuante na arquitetura moderna',
+    categoria: 'lareiras',
+    resumo: 'Penduradas no teto e visíveis de todos os ângulos, as lareiras suspensas viram peças escultóricas e pontos focais em casas, hotéis, restaurantes e spas.',
+    data: '2025-03-21', exemplo: false,
+    imagem: 'img/blog/lareira-suspensa-gota.webp',
+    textoAlternativo: 'Lareira Gota preta suspensa por um tubo, com lenha empilhada no bojo, diante de uma parede de painéis de madeira avermelhada com um quadro, livros e um sofá de veludo bordô.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'As lareiras suspensas têm conquistado um lugar especial na arquitetura e no design de interiores, transformando-se em peças centrais que aliam funcionalidade e estética. Diferentemente das lareiras tradicionais, que costumam ser incorporadas em paredes ou estruturas fixas, as suspensas flutuam no ambiente, muitas vezes penduradas no teto ou sustentadas por estruturas discretas. Essa característica lhes confere um ar contemporâneo, escultural e inovador.' },
+      { tipo: 'paragrafo', texto: 'Uma das maiores vantagens das lareiras suspensas é o impacto visual que elas proporcionam. Elas criam uma sensação de leveza, destacando-se como verdadeiras obras de arte no espaço. Por serem visíveis de diferentes ângulos, tornam-se pontos focais, especialmente em ambientes integrados, como salas de estar e áreas sociais. Seu design minimalista e fluido combina perfeitamente com estilos modernos, industriais ou até mesmo rústicos, dependendo do material e do acabamento escolhidos.' },
+      { tipo: 'paragrafo', texto: 'As lareiras Construflama permitem a personalização para atender aos mais variados gostos. Elas podem ser instaladas no centro de uma sala, funcionando como divisórias sutis, ou estrategicamente posicionadas para maximizar a distribuição de calor. Alguns modelos oferecem soluções ecológicas, utilizando biocombustível ou gás em vez de lenha, o que elimina a necessidade de chaminés volumosas e facilita a instalação.' },
+      { tipo: 'paragrafo', texto: 'Por sua funcionalidade, são ideais tanto para residências quanto para projetos comerciais, como hotéis, restaurantes ou spas, onde a estética contemporânea é um diferencial competitivo. Muitos modelos atuais estão alinhados às tendências de sustentabilidade, utilizando álcool de cereais. Além disso, o design compacto das lareiras suspensas requer menos materiais de construção, contribuindo para uma abordagem mais consciente na arquitetura.' },
+      { tipo: 'paragrafo', texto: 'Equilíbrio perfeito entre arte e funcionalidade, com presença marcante e design inovador, elas desafiam os padrões tradicionais, transformando-se em elementos que não apenas aquecem, mas também inspiram. Seja como peça de destaque em uma sala contemporânea, seja como complemento em um espaço rústico-chique, essas lareiras flutuantes são sinônimo de sofisticação, criatividade e calor humano.', link: { texto: 'Conheça a coleção de lareiras.', href: 'colecao.html?c=lareiras' } }
+    ]
+  },
+  {
+    slug: 'ambientes-gourmet-de-luxo',
+    titulo: 'Introdução ao conceito de ambientes gourmet de luxo',
+    categoria: 'churrasqueiras',
+    resumo: 'Mais do que cozinhas, os ambientes gourmet de luxo viraram pontos de encontro, e a Construflama investe em churrasqueiras e parrillas sob medida para eles.',
+    data: '2025-03-20', exemplo: false,
+    imagem: 'img/blog/ambiente-gourmet-luxo.webp',
+    textoAlternativo: 'Espaço gourmet integrado com churrasqueira envidraçada sob coifa embutida, ilha de bancada branca, mesa de madeira com jogos americanos e armários em tom sálvia.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Nos últimos anos, a busca por espaços que aliam sofisticação, funcionalidade e conforto tem crescido exponencialmente. Ambientes gourmet de luxo, projetados para proporcionar experiências únicas de convivência e gastronomia, tornaram-se uma tendência em alta no design de interiores e na arquitetura.' },
+      { tipo: 'paragrafo', texto: 'Esses espaços não são apenas cozinhas, mas verdadeiros pontos de encontro, onde o ato de cozinhar e compartilhar refeições se transforma em um momento especial. Equipados com tecnologias avançadas, materiais nobres e um design refinado, os ambientes gourmet refletem o desejo de criar experiências exclusivas e memoráveis para familiares e amigos.' },
+      { tipo: 'paragrafo', texto: 'A crescente demanda por esses espaços fez a Construflama investir cada vez mais em produtos sob medida, como churrasqueiras e parrillas modernas e funcionais, atendendo a um público cada vez mais exigente.', link: { texto: 'Conheça as churrasqueiras.', href: 'colecao.html?c=churrasqueiras' } },
+      { tipo: 'paragrafo', texto: 'As mudanças no estilo de vida moderno têm valorizado a interação social e o bem-estar. Seja em residências, seja em empreendimentos de alto padrão, os ambientes gourmet de luxo se destacam como símbolos de status, conforto e personalização.' },
+      { tipo: 'paragrafo', texto: 'Siga o Instagram @construflama.', link: { texto: 'Nossos especialistas estão a postos', href: 'https://whts.co/Construflama_com' }, depois: 'para tirar dúvidas e proporcionar o melhor atendimento!' }
+    ]
+  },
+  {
+    slug: 'escolha-de-cores-para-os-ambientes',
+    titulo: 'Escolha de cores para os ambientes: a Construflama aposta em lareiras diferenciadas e na ousadia na composição de cores',
+    categoria: 'lareiras',
+    resumo: 'Preto fosco, branco, grafite, bege, bordô ou cinza-claro: como escolher a cor da lareira para combinar com o estilo do ambiente.',
+    data: '2025-03-20', exemplo: false,
+    imagem: 'img/blog/lareiras-cone-cores.webp', capaInteira: true,
+    textoAlternativo: 'Três lareiras Cone suspensas lado a lado, nas cores branca, preta e cor de ferrugem, cada uma sobre sua bacia com lenha acesa, em fundo branco com o logotipo Construflama, “A arte e o prazer do fogo”.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'A escolha de cores para os ambientes é um dos aspectos mais importantes no design de interiores, especialmente quando se trata de itens que se destacam, como as lareiras. A Construflama, referência no mercado de soluções para aquecimento, oferece uma ampla paleta de cores para suas lareiras, permitindo uma integração harmônica com diversos estilos e tonalidades de decoração.' },
+      { tipo: 'subtitulo', texto: 'As cores disponíveis' },
+      { tipo: 'paragrafo', texto: 'A Construflama disponibiliza uma variedade de cores para suas lareiras, permitindo que elas se adaptem a diferentes tipos de ambientes e preferências pessoais. Entre as opções, destacam-se:' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Preto fosco:', texto: 'uma escolha clássica e sofisticada, que combina com quase todos os estilos de decoração, do moderno ao industrial. O preto fosco tem a vantagem de criar um contraste elegante com móveis de tons mais claros, além de se integrar bem com a madeira e outros materiais naturais.' },
+        { rotulo: 'Branco:', texto: 'oferece uma sensação de leveza e amplitude, sendo ideal para ambientes mais compactos ou minimalistas. Também cria um efeito clean, ideal para espaços de estilo contemporâneo, onde a luminosidade é essencial.' },
+        { rotulo: 'Grafite:', texto: 'uma cor que se aproxima do cinza-escuro, trazendo uma atmosfera mais sóbria e sofisticada ao ambiente. Combina bem com acabamentos metálicos e materiais como vidro e aço, criando uma vibe moderna e elegante.' },
+        { rotulo: 'Bege e areia:', texto: 'tons suaves, perfeitos para ambientes rústicos ou de estilo mediterrâneo. Essas cores trazem aconchego e tranquilidade, sendo ideais para quem busca uma decoração mais acolhedora e integrada com elementos naturais.' },
+        { rotulo: 'Vermelho e bordô:', texto: 'cores quentes, ótimas para espaços que buscam um toque de energia e dinamismo. São particularmente eficazes em ambientes de estar e convivência, como salas de estar ou lounges, onde se deseja criar um clima acolhedor e vibrante.' },
+        { rotulo: 'Cinza-claro:', texto: 'uma cor neutra que se adapta a uma grande variedade de estilos de interiores. É perfeito para espaços modernos e urbanos, funcionando bem como uma base discreta para outros elementos decorativos mais coloridos ou ousados.' }
+      ] },
+      { tipo: 'subtitulo', texto: 'Como combinar com cada estilo' },
+      { tipo: 'paragrafo', texto: 'Ao escolher a cor da lareira, é importante considerar a paleta geral do espaço. Os produtos Construflama oferecem cores que podem ser facilmente integradas aos demais elementos do ambiente, como móveis, pisos e paredes. Por exemplo:' },
+      { tipo: 'lista', itens: [
+        { rotulo: 'Ambientes modernos:', texto: 'a lareira em preto fosco ou grafite pode ser uma escolha certeira. Essas cores se destacam sem sobrecarregar, funcionando bem com móveis contemporâneos em tons neutros e metálicos.' },
+        { rotulo: 'Espaços rústicos ou naturais:', texto: 'para ambientes mais rústicos ou de estilo provençal, o bege e o areia podem complementar perfeitamente móveis de madeira, tecidos naturais e elementos decorativos como plantas e velas.' },
+        { rotulo: 'Ambientes aconchegantes e elegantes:', texto: 'a lareira em vermelho ou bordô é ideal para quem quer criar um ambiente acolhedor e sofisticado, combinando bem com cortinas pesadas, tapetes e móveis em tons mais escuros.' },
+        { rotulo: 'Espaços neutros e clean:', texto: 'se o objetivo é criar um ambiente minimalista, o branco ou o cinza-claro é a escolha certa. Esses tons ampliam visualmente o espaço e permitem que outros elementos se destaquem, como quadros, obras de arte ou móveis em cores mais vibrantes.' }
+      ] },
+      { tipo: 'paragrafo', texto: 'Ao escolher a cor ideal, é fundamental levar em conta a harmonia com os outros elementos do ambiente, garantindo que a lareira não só cumpra sua função de aquecer, mas também contribua para a criação de um espaço visualmente agradável e integrado.' },
+      { tipo: 'paragrafo', texto: 'Para mais informações,', link: { texto: 'conheça as lareiras esculturais', href: 'colecao.html?c=lareiras#linha-esculturais' }, depois: 'ou siga o Instagram @construflama. Nossos especialistas estão a postos para tirar dúvidas e proporcionar o melhor atendimento.' }
+    ]
+  },
+  {
+    slug: 'conheca-a-lareira-cone',
+    titulo: 'Conheça a Lareira Cone',
+    categoria: 'lareiras',
+    resumo: 'Formato marcante e presença em ambientes da CASACOR de Ribeirão Preto, Belo Horizonte, Rio de Janeiro e São Paulo: a Lareira Cone virou tendência em 2024.',
+    data: '2025-03-20', exemplo: false,
+    imagem: 'img/blog/lareira-cone-casacor.webp',
+    textoAlternativo: 'Lareira Cone preta suspensa sobre uma grelha com lenha, encaixada em uma mesa de centro branca de formas orgânicas, em sala com papel de parede de floresta, sofá claro e porta de madeira.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'A Lareira Cone é sinônimo de elegância. Com seu formato diferenciado, é capaz de transformar qualquer ambiente e deixar cada espaço ainda mais aconchegante.' },
+      { tipo: 'paragrafo', texto: 'Seu diferencial estético fez com que o modelo se tornasse tendência de decoração em 2024, com presença marcante em vários ambientes da CASACOR Ribeirão Preto, Belo Horizonte, Rio de Janeiro e São Paulo, considerada a maior mostra de arquitetura, design de interiores e paisagismo das Américas. Responsável por trazer as inovações do setor todos os anos, ela se destaca pela excelente qualidade dos ambientes, expositores e profissionais participantes.' },
+      { tipo: 'paragrafo', texto: 'A singularidade da Lareira Cone se destaca ainda mais quando instalada em ambientes grandes, sendo absolutamente marcante. Na CASACOR, ela foi apresentada ao público não só com a função de inovar com estilo, mas como sinônimo de segurança e tecnologia.' },
+      { tipo: 'paragrafo', texto: 'Na Construflama, é possível encontrar lareiras nas versões a gás, a lenha e a álcool, e também nos modelos Gota, Tarus e Pipe.', link: { texto: 'Conheça a Cone e os outros modelos da linha Escultural.', href: 'post.html?slug=modelos-da-linha-escultural' } },
+      { tipo: 'paragrafo', texto: 'Para saber mais sobre a Lareira Cone,', link: { texto: 'fale com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: 'e acompanhe o Instagram @construflama.' }
+    ]
+  },
+  {
+    slug: 'receita-de-pururuca-com-a-high-end',
+    titulo: 'Receita de pururuca com a High-end',
+    categoria: 'receitas',
+    resumo: 'O chef Mário Portella ensina, em cinco passos, a fazer uma pururuca crocante e vitrificada na churrasqueira Construflama High-end a gás.',
+    data: '2025-03-20', exemplo: false,
+    imagem: 'img/blog/pururuca-high-end.webp',
+    textoAlternativo: 'Chef de chapéu de palha, de costas, diante da churrasqueira High-end Construflama com volante, carnes e legumes na grelha, sob uma coifa de inox e parede de tijolos.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Para deixar as confraternizações de fim de ano ainda mais especiais, a escolha certa da churrasqueira é essencial no preparo de qualquer tipo de prato: é a cereja do bolo! É ter o equipamento adequado, que dê conta do recado em todo o processo, do cozimento à finalização, de forma prática e simples. As churrasqueiras de alto padrão da Construflama, como a High-end a gás, têm uma qualidade ímpar: suas múltiplas funções e o layout pensado para ocasiões como essas são ideais para proporcionar momentos únicos e garantir os elogios no final.' },
+      { tipo: 'paragrafo', texto: 'É o clima perfeito para reunir toda a família em volta da mesa e demonstrar amor e carinho em forma de comida! E, para isso, nada melhor do que pôr a mão na massa e fazer uma receita que agrade a todos os paladares.' },
+      { tipo: 'paragrafo', texto: 'Mário Portella, um dos chefs mais criativos do Brasil, que marcou presença em programas como o MasterChef e o Mais Você, com Ana Maria Braga, ensina como preparar uma boa pururuca para qualquer celebração e ainda dá dicas para deixar essa experiência gastronômica ainda mais deliciosa.' },
+      { tipo: 'subtitulo', texto: 'Passo a passo' },
+      { tipo: 'lista', itens: [
+        { rotulo: '1.', texto: 'Escolha animais novos: a pele de um leitão é mais fina que a de um porco grande e fica mais crocante e vitrificada.' },
+        { rotulo: '2.', texto: 'Cubra apenas a pele com sal grosso um dia antes e deixe descansar na geladeira.' },
+        { rotulo: '3.', texto: 'Asse a peça em fogo baixo na sua churrasqueira Construflama, em média a 100 °C. As peças mais comuns nesse caso são a barriga e o joelho de porco. Ao assar, mantenha a pele para baixo.' },
+        { rotulo: '4.', texto: 'Acompanhe a pele até ficar vitrificada: quando você bater nela e escutar um barulho oco, está no ponto.' },
+        { rotulo: '5.', texto: 'Para pururucar, você precisa de uma temperatura muito alta, que pode vir do contato próximo com a brasa vermelha, de um banho de óleo quente, entre outros.' }
+      ] },
+      { tipo: 'paragrafo', texto: 'Agora é só escolher a peça do porco que vai pururucar e correr para o abraço!' },
+      { tipo: 'paragrafo', texto: 'Para mais informações sobre churrasqueiras de alto padrão,', link: { texto: 'conheça a linha High-end', href: 'colecao.html?c=churrasqueiras#linha-high-end' }, depois: 'e siga o Instagram @construflama. Nossos especialistas estão a postos para tirar dúvidas e proporcionar o melhor atendimento!' }
+    ]
+  },
+  {
     slug: 'casacor-2025-victor-hugo-cordeiro',
     titulo: 'CASACOR 2025, por Victor Hugo Cordeiro',
     categoria: 'projetos',
