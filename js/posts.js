@@ -43,6 +43,22 @@ var BLOG_CATEGORIAS = [
 
 var POSTS = [
   {
+    slug: 'lenha-ideal-para-forno-de-pizza',
+    titulo: 'A lenha ideal para seu forno de pizza',
+    categoria: 'fornos-de-pizza',
+    resumo: 'Madeiras densas e secas, como carvalho e eucalipto, sim; resinosas, como o pinheiro, não: como escolher a lenha certa para o forno de pizza.',
+    data: '2025-03-20', exemplo: false,
+    imagem: 'img/blog/lenha-ideal-forno-de-pizza.webp',
+    textoAlternativo: 'Forno de pizza branco em formato de cúpula, com porta preta e chaminé, na bancada de uma cozinha com parede de tijolinhos, prateleiras com panelas de cobre e cooktop.',
+    conteudo: [
+      { tipo: 'paragrafo', texto: 'Um dos maiores desafios na hora de fazer pizza é a escolha da lenha, já que nem todos os tipos de madeira podem ser utilizados no forno de pizza. Por isso, a Construflama te ajuda nesse processo e dá dicas de como adquirir o produto certo e fazer sucesso com a galera de casa.' },
+      { tipo: 'paragrafo', texto: 'A escolha do tipo de madeira é essencial para garantir a qualidade da pizza. O ideal são as de alta densidade, que queimam de forma lenta, têm umidade inferior a 15% e geram calor intenso, como carvalho, eucalipto, nogueira, macieira e cerejeira.' },
+      { tipo: 'paragrafo', texto: 'Por outro lado, evite o uso de madeiras resinosas, como o pinheiro, já que elas podem gerar fumaça excessiva e alterar o gosto da comida. Além disso, há madeiras que podem contaminar as pizzas, como o álamo (poplar), que libera pedaços de brasa no alimento, e o spruce pine, que tem resíduos tóxicos e pode ser prejudicial à saúde.' },
+      { tipo: 'paragrafo', texto: 'Antes da primeira fornada,', link: { texto: 'veja como fazer a cura do forno', href: 'post.html?slug=cura-do-forno-de-pizza' }, depois: '.' },
+      { tipo: 'paragrafo', texto: 'Para conhecer mais sobre o forno de pizza Construflama,', link: { texto: 'fale com nossos consultores', href: 'https://whts.co/Construflama_com' }, depois: 'e acompanhe o Instagram @construflama.' }
+    ]
+  },
+  {
     slug: 'sirva-sua-propria-pizza',
     titulo: 'Sirva sua própria pizza',
     categoria: 'fornos-de-pizza',
