@@ -22,6 +22,9 @@
      Sem isso, os links da coleção mostram o aviso de "próxima etapa".
    - acaoLinha: 'sobre' troca o botão de cada linha por "Ver sobre" (quando a
      linha é um produto só, como nos fornos).
+     Para uma linha só, use acao: 'sobre' na subcategoria, com sobreNome
+     (ex.: 'as lareiras tradicionais'), que completa o "Ver sobre" no aviso e
+     no leitor de tela.
    - Em cada subcategoria (usados na página da coleção):
      titulo (opcional): nome do bloco da linha na página, quando o nome curto
      do menu não basta sozinho (ex.: 'Coifa para cozinha');
@@ -39,7 +42,7 @@ var CATEGORIAS = [
     // TODO: revisar com a Construflama as frases de A gás linear ("acende com
     // praticidade") e Ecoflamas ("sem obra")
     subcategorias: [
-      { nome: 'Tradicionais', slug: 'tradicionais', descricao: 'O estalo da lenha e o calor de verdade, numa lareira que se integra à arquitetura da sala.', imagem: 'img/linhas/lareiras-tradicionais.webp', foco: '50% 55%',
+      { nome: 'Tradicionais', slug: 'tradicionais', acao: 'sobre', sobreNome: 'as lareiras tradicionais', descricao: 'O estalo da lenha e o calor de verdade, numa lareira que se integra à arquitetura da sala.', imagem: 'img/linhas/lareiras-tradicionais.webp', foco: '50% 55%',
         textoAlternativo: 'Lareira a lenha acesa embutida numa parede revestida de madeira, com nichos de lenha empilhada dos dois lados, numa sala com sofá claro e mesa de centro.' },
       { nome: 'A gás linear', slug: 'a-gas-linear', descricao: 'Uma linha de fogo limpa e contínua, que acende com praticidade e vira parte do projeto.', imagem: 'img/linhas/lareiras-a-gas-linear.webp', foco: '60% 70%',
         textoAlternativo: 'Lareira a gás com abertura horizontal e chama baixa, embutida numa parede curva marrom, numa sala com poltronas claras e mesa de madeira.' },
@@ -47,7 +50,7 @@ var CATEGORIAS = [
         textoAlternativo: 'Lareira preta em formato de cone apoiada no chão, acesa, ao lado de uma janela grande com cortinas de fios, numa sala com vasos e luminária dourada.' },
       { nome: 'Ecoflamas', slug: 'ecoflamas', marca: true, descricao: 'Fogo sem obra: peças compactas que levam a chama para perto do sofá, da mesa ou da varanda.', imagem: 'img/linhas/lareiras-ecoflamas.webp', foco: '45% 45%',
         textoAlternativo: 'Dois queimadores pretos de chão com chama, ao lado de uma mesa de centro clara e de um sofá cinza.' },
-      { nome: 'Tachos', slug: 'tachos', descricao: 'O fogo no centro da roda de conversa, para decks, jardins e áreas externas.', imagem: 'img/linhas/lareiras-tachos.webp', foco: '50% 50%',
+      { nome: 'Tachos', slug: 'tachos', acao: 'sobre', sobreNome: 'os tachos', descricao: 'O fogo no centro da roda de conversa, para decks, jardins e áreas externas.', imagem: 'img/linhas/lareiras-tachos.webp', foco: '50% 50%',
         textoAlternativo: 'Tacho metálico com pedras vulcânicas e queimador central aceso, sobre pés, num deck de madeira.' }
     ]
   },
@@ -498,14 +501,16 @@ var DEPOIMENTOS = [
       // TODO: página da linha (próxima etapa). Coleção em que cada linha é um
       // produto só (acaoLinha: 'sobre') leva à página do produto: "Ver sobre".
       var nomeLinha = s.titulo || s.nome;
-      var sobre = cat.acaoLinha === 'sobre';
+      var sobre = s.acao === 'sobre' || cat.acaoLinha === 'sobre';
+      // complemento do "Ver sobre" para quem usa leitor de tela (ex.: "o forno a lenha")
+      var alvo = s.sobreNome || 'o ' + nomeLinha.charAt(0).toLowerCase() + nomeLinha.slice(1);
       var verTodos = linkProvisorio(sobre ? 'Ver sobre' : 'Ver todos os modelos',
         sobre
-          ? 'A página sobre o ' + nomeLinha.charAt(0).toLowerCase() + nomeLinha.slice(1) + ' será criada na próxima etapa.'
+          ? 'A página sobre ' + alvo + ' será criada na próxima etapa.'
           : 'A página com todos os modelos da linha ' + nomeLinha + ' será criada na próxima etapa.',
         '#' + idLinha);
       verTodos.className = 'btn btn--primary col-linha__cta';
-      verTodos.appendChild(srOnly(sobre ? ' o ' + nomeLinha.charAt(0).toLowerCase() + nomeLinha.slice(1) : ' da linha ' + nomeLinha));
+      verTodos.appendChild(srOnly(sobre ? ' ' + alvo : ' da linha ' + nomeLinha));
       texto.appendChild(verTodos);
 
       bloco.appendChild(texto);
