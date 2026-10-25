@@ -261,19 +261,11 @@
       </div>
     </section>
 
-    <!-- 2. Modelos da linha (quando houver), cada um com a sua foto -->
-    <section class="section prod-tipos" id="modelos" aria-labelledby="modelos-titulo" data-prod-tipos hidden>
-      <div class="container">
-        <h2 class="section-title" id="modelos-titulo">Modelos</h2>
-        <ul class="prod-tipos__lista" data-prod-tipos-lista></ul>
-      </div>
-    </section>
-
-    <!-- 3. Medidas de referência (quando houver): fechada, abre ao clicar.
+    <!-- 2. Medidas de referência (quando houver): já aberta, fecha e abre ao clicar.
          No celular, a coluna dos nomes fica fixa e os tamanhos deslizam. -->
     <section class="prod-medidas-secao" id="medidas" aria-label="Medidas" data-prod-medidas hidden>
       <div class="container">
-        <details class="prod-medidas">
+        <details class="prod-medidas" open>
           <summary class="prod-medidas__titulo" data-prod-medidas-titulo></summary>
           <p class="prod-medidas__dica" aria-hidden="true">Deslize a tabela para ver todos os tamanhos →</p>
           <div class="prod-medidas__rolagem" tabindex="0" role="region" data-prod-medidas-caixa>
@@ -281,6 +273,14 @@
           </div>
           <p class="prod-medidas__nota" data-prod-medidas-nota></p>
         </details>
+      </div>
+    </section>
+
+    <!-- 3. Modelos da linha (quando houver), cada um com a sua foto -->
+    <section class="section prod-tipos" id="modelos" aria-labelledby="modelos-titulo" data-prod-tipos hidden>
+      <div class="container">
+        <h2 class="section-title" id="modelos-titulo">Modelos</h2>
+        <ul class="prod-tipos__lista" data-prod-tipos-lista></ul>
       </div>
     </section>
 

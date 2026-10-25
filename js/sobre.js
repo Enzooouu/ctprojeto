@@ -16,7 +16,7 @@
    - fotos: [{ imagem, textoAlternativo, foco? }] fotos depois da principal
    - tipos (opcional): [{ nome, texto, foto, medidas? }] modelos da linha
    - medidas (opcional): { titulo, colunas, linhas: [{ rotulo, valores }], nota }
-     tabela de referência, que abre ao clicar
+     tabela de referência, já aberta (fecha e abre ao clicar)
    - palavrasBlog: termos para achar artigos do blog sobre o produto
    O botão "Baixar catálogo" usa o PDF da coleção em CATALOGOS (main.js).
    ========================================================================== */

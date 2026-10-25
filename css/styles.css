@@ -2439,7 +2439,7 @@ button.blog-pagina { background: none; cursor: pointer; }
 .prod-orcamento__botoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
 
 /* Modelos da linha */
-.prod-tipos { padding-bottom: 0; }
+.prod-tipos { padding-top: clamp(3rem, 2rem + 4vw, 5rem); padding-bottom: 0; }
 .prod-tipos .section-title { margin-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem); }
 .prod-tipos__lista { display: grid; gap: var(--sp-6); margin: 0; padding: 0; list-style: none; }
 .prod-tipo { display: grid; align-content: start; gap: var(--sp-3); }
