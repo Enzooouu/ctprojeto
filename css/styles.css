@@ -2436,6 +2436,20 @@ button.blog-pagina { background: none; cursor: pointer; }
   line-height: 1.7;
 }
 .prod-orcamento { display: grid; justify-items: start; gap: var(--sp-3); }
+.prod-orcamento__botoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
+
+/* Modelos da linha */
+.prod-tipos { padding-bottom: 0; }
+.prod-tipos .section-title { margin-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem); }
+.prod-tipos__lista { display: grid; gap: var(--sp-6); margin: 0; padding: 0; list-style: none; }
+.prod-tipo { display: grid; align-content: start; gap: var(--sp-3); }
+.prod-tipo__foto { aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--raio); background: #fff; }
+.prod-tipo__foto img { width: 100%; height: 100%; object-fit: cover; }
+.prod-tipo__nome { color: var(--marrom); font-size: var(--fs-lg); }
+.prod-tipo__texto { color: var(--cinza-escuro); line-height: 1.6; }
+.prod-tipo__link { justify-self: start; }
+@media (min-width: 768px) { .prod-tipos__lista { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.prod-medidas-secao { scroll-margin-top: calc(var(--header-h) + 1rem); }
 .prod-orcamento__nota { color: rgba(236, 226, 210, .8); font-size: var(--fs-sm); }
 .prod-orcamento__nota strong { color: var(--bege-claro); }
 .prod-compartilhar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3); }

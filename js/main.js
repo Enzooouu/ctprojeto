@@ -160,7 +160,7 @@ var CATEGORIAS = [
    TODO: preencher "arquivo" com o caminho do PDF real de cada catálogo.
    -------------------------------------------------------------------------- */
 var CATALOGOS = [
-  { titulo: 'Lareiras', categorias: ['lareiras'], arquivo: '' },
+  { titulo: 'Lareiras', categorias: ['lareiras'], arquivo: 'catalogos/catalogo-lareiras-2026.pdf' },
   { titulo: 'Churrasqueiras e parrillas', categorias: ['churrasqueiras', 'parrillas'], arquivo: '' },
   { titulo: 'Coifas', categorias: ['coifas'], arquivo: '' },
   { titulo: 'Fornos de pizza, tocheiros e chapeiras', categorias: ['fornos-de-pizza', 'tocheiros', 'chapeiras'], arquivo: '' }
@@ -1895,6 +1895,44 @@ var DEPOIMENTOS = [
       miniaturas.remove();
     }
     mostrarFoto(0);
+
+    // Catálogo em PDF da coleção (o mesmo da página da coleção e da home)
+    var catalogo = CATALOGOS.filter(function (c) { return c.arquivo && c.categorias.indexOf(cat.slug) !== -1; })[0];
+    if (catalogo) {
+      var baixar = document.querySelector('[data-prod-catalogo]');
+      baixar.href = catalogo.arquivo;
+      baixar.hidden = false;
+      baixar.appendChild(srOnly(' de ' + catalogo.titulo.toLowerCase() + ' (PDF)'));
+    }
+
+    // Modelos da linha: cartões com a foto da galeria indicada em "foto"
+    if (pag.tipos && pag.tipos.length) {
+      document.querySelector('[data-prod-tipos]').hidden = false;
+      var listaTipos = document.querySelector('[data-prod-tipos-lista]');
+      pag.tipos.forEach(function (t) {
+        var li = el('li', 'prod-tipo');
+        var f = fotos[t.foto];
+        if (f) {
+          var midia = el('div', 'prod-tipo__foto');
+          var im = el('img');
+          im.src = f.imagem;
+          im.alt = '';               // a mesma foto já tem descrição na galeria
+          im.loading = 'lazy';
+          if (f.foco) im.style.objectPosition = f.foco;
+          midia.appendChild(im);
+          li.appendChild(midia);
+        }
+        li.appendChild(el('h3', 'prod-tipo__nome', t.nome));
+        if (t.texto) li.appendChild(el('p', 'prod-tipo__texto', t.texto));
+        if (t.medidas && pag.medidas) {
+          var ver = el('a', 'text-link prod-tipo__link', 'Ver medidas de referência');
+          ver.href = '#medidas';
+          ver.addEventListener('click', function () { document.querySelector('#medidas details').open = true; });
+          li.appendChild(ver);
+        }
+        listaTipos.appendChild(li);
+      });
+    }
 
     // Compartilhar (mesmo comportamento do artigo do blog)
     var endereco = location.href.split('#')[0];

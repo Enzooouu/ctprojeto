@@ -14,9 +14,11 @@
    - nome: nome do produto (título da página)
    - texto: [parágrafos] apresentação do produto
    - fotos: [{ imagem, textoAlternativo, foco? }] fotos depois da principal
+   - tipos (opcional): [{ nome, texto, foto, medidas? }] modelos da linha
    - medidas (opcional): { titulo, colunas, linhas: [{ rotulo, valores }], nota }
      tabela de referência, que abre ao clicar
    - palavrasBlog: termos para achar artigos do blog sobre o produto
+   O botão "Baixar catálogo" usa o PDF da coleção em CATALOGOS (main.js).
    ========================================================================== */
 var PAGINAS_SOBRE = [
   {
@@ -27,12 +29,25 @@ var PAGINAS_SOBRE = [
       'Bons momentos podem se tornar mais aconchegantes com uma lareira a lenha. Por isso, desenvolvemos uma linha que aproveita melhor o calor e faz uma perfeita exaustão da fumaça.',
       'A Lareira Tradicional Construflama acompanha a empresa desde as primeiras ideias do fundador. Com diversas evoluções ao longo dos 40 anos de história, essa peça imponente agrega aos ambientes a elegância que o clássico sempre mantém.',
       'Com beleza e segurança, a lareira a lenha Construflama oferece muito mais conforto.',
-      'São diversos modelos, com opção de embutir e opção com coifa aparente. Nos modelos de embutir, as chapas são feitas em aço carbono de alta qualidade e têm pintura resistente ao calor, isolamento térmico para preservar a integridade dos acabamentos, gabarito com vão de dilatação e câmara de queima revestida por placas refratárias.',
-      'Os modelos com coifa aparente podem ser em aço carbono pintado de preto ou branco, ou em aço corten.'
+      'São diversos modelos: de embutir, com coifa aparente e central.'
     ],
     fotos: [
       { imagem: 'img/produtos/lareira-tradicional-coifa-aparente.webp',
-        textoAlternativo: 'Lareira a lenha com coifa aparente cor de ferrugem, em formato de bloco retangular com duas chaminés cilíndricas até o teto de madeira, sobre uma base rebaixada de pedra, no centro de um grande living.' }
+        textoAlternativo: 'Lareira a lenha com coifa aparente cor de ferrugem, em formato de bloco retangular com duas chaminés cilíndricas até o teto de madeira, sobre uma base rebaixada de pedra, no centro de um grande living.' },
+      // Do catálogo de lareiras 2026 (página da Lareira tradicional)
+      { imagem: 'img/produtos/lareira-tradicional-embutir-quarto.webp',
+        textoAlternativo: 'Lareira a lenha acesa, embutida em uma parede branca com câmara de tijolos refratários, em um quarto com luminária de arco, poltrona clara e cama com manta azul.' },
+      { imagem: 'img/produtos/lareira-tradicional-central.webp',
+        textoAlternativo: 'Lareira tradicional central: estrutura preta aberta nos quatro lados, com coifa em pirâmide, base de tijolos refratários e, ao lado, três tubos pretos da chaminé.' }
+    ],
+    // Modelos da linha. foto: posição na galeria (0 = foto principal da linha).
+    // medidas: true mostra o link para a tabela de medidas.
+    tipos: [
+      { nome: 'De embutir', foto: 2,
+        texto: 'Chapas em aço carbono de alta qualidade, com pintura resistente ao calor, isolamento térmico para preservar a integridade dos acabamentos, gabarito com vão de dilatação e câmara de queima revestida por placas refratárias.' },
+      { nome: 'Com coifa aparente', foto: 1,
+        texto: 'Em aço carbono pintado de preto ou branco, ou em aço corten.' },
+      { nome: 'Central', foto: 3, texto: '', medidas: true }
     ],
     // Catálogo de lareiras 2026. O L6 não é mais fabricado (confirmado com a Construflama).
     medidas: {

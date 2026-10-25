@@ -236,7 +236,13 @@
             <!-- Orçamento logo depois da primeira frase, para ficar à vista -->
             <div class="prod-orcamento" data-prod-so>
               <p class="prod-orcamento__nota">Cada projeto é único: <strong>preço sob consulta</strong>.</p>
-              <a class="btn btn--primary btn--lg" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
+              <div class="prod-orcamento__botoes">
+                <a class="btn btn--primary btn--lg" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
+                <!-- PDF da coleção (CATALOGOS, em main.js); some se não houver -->
+                <a class="btn btn--ghost btn--lg" href="#" download data-prod-catalogo hidden>
+                  <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Baixar catálogo
+                </a>
+              </div>
             </div>
 
             <div class="prod-info__texto" data-prod-texto></div>
@@ -255,9 +261,17 @@
       </div>
     </section>
 
-    <!-- 2. Medidas de referência (quando houver): fechada, abre ao clicar.
+    <!-- 2. Modelos da linha (quando houver), cada um com a sua foto -->
+    <section class="section prod-tipos" id="modelos" aria-labelledby="modelos-titulo" data-prod-tipos hidden>
+      <div class="container">
+        <h2 class="section-title" id="modelos-titulo">Modelos</h2>
+        <ul class="prod-tipos__lista" data-prod-tipos-lista></ul>
+      </div>
+    </section>
+
+    <!-- 3. Medidas de referência (quando houver): fechada, abre ao clicar.
          No celular, a coluna dos nomes fica fixa e os tamanhos deslizam. -->
-    <section class="prod-medidas-secao" aria-label="Medidas" data-prod-medidas hidden>
+    <section class="prod-medidas-secao" id="medidas" aria-label="Medidas" data-prod-medidas hidden>
       <div class="container">
         <details class="prod-medidas">
           <summary class="prod-medidas__titulo" data-prod-medidas-titulo></summary>
@@ -270,7 +284,7 @@
       </div>
     </section>
 
-    <!-- 3. Artigos do blog sobre a linha (some se não houver nenhum) -->
+    <!-- 4. Artigos do blog sobre a linha (some se não houver nenhum) -->
     <section class="section" id="inspire-se" aria-labelledby="inspire-titulo" data-prod-so>
       <div class="container">
         <div class="section-head">
