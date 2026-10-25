@@ -210,7 +210,6 @@ var POSTS = [
       { tipo: 'paragrafo', texto: 'Como símbolo de parceria e valorização da arte do fogo, a Construflama premiará a dupla vencedora com a Lareira Canoa, peça de design exclusivo que traduz aconchego, inovação e elegância.' },
       { tipo: 'paragrafo', texto: 'Na estreia, duas duplas foram consagradas vencedoras, em uma disputa marcada por criatividade, sabor e interação. Ao longo de sete dias de evento, o D&D Decor Chef seguirá promovendo experiências gastronômicas inesquecíveis, sempre com a participação de jurados convidados e a presença de um público altamente qualificado.' },
       { tipo: 'paragrafo', texto: 'Mais do que uma competição, o projeto abre espaço para o networking e o fortalecimento das relações entre profissionais da arquitetura, do design e da decoração. Para a Construflama, estar inserida nesse movimento é essencial para manter viva sua conexão com o polo de decoração mais importante do Brasil: o D&D Shopping.' },
-      // TODO: link do reel do Instagram que aparece no post original (a faca Construflama)
       { tipo: 'paragrafo', texto: 'Veja os bastidores do evento no nosso', link: { texto: 'Instagram', href: 'https://www.instagram.com/construflama' }, depois: '.' },
       { tipo: 'paragrafo', rotulo: 'Texto:', texto: 'Victor Hugo Cordeiro, consultor comercial Construflama' }
     ]
@@ -524,7 +523,6 @@ var POSTS = [
       { tipo: 'citacao', texto: 'Para um toque ainda mais especial, pincele o carré com manteiga derretida durante a grelha para intensificar o sabor e dar um toque dourado à carne.', autor: 'Dica do chef Giovanni Silvestre' },
       { tipo: 'subtitulo', texto: 'Delicie-se!' },
       { tipo: 'paragrafo', texto: 'Aproveite o sabor do Natal com essa receita sofisticada e cheia de simbolismo, que pode ser feita inteiramente na sua churrasqueira Construflama. O resultado é um prato perfeito para o banquete natalino, com o sabor inconfundível da brasa!' },
-      // TODO: link do vídeo da receita (no original: "Vídeo: @bygiovannibellini … que sobe dia 17.12", sem link)
       { tipo: 'paragrafo', texto: 'Confira o preparo completo dessa receita no nosso', link: { texto: 'Instagram', href: 'https://www.instagram.com/construflama' }, depois: 'e inspire-se para criar momentos inesquecíveis na sua churrasqueira Construflama, unindo o prazer do fogo com a arte de cozinhar!' }
     ]
   },
@@ -1033,8 +1031,7 @@ var POSTS = [
       { tipo: 'paragrafo', texto: 'A Lareira Pilão nos foi apresentada no primeiro contato com um conceito inicial focado totalmente na proposta do espaço e na representação de uma série de conceitos que inspiram o Living “Ritmo Vital”, culminando no formato que dá o nome “Pilão” ao produto, pela forma similar aos artefatos utilizados há gerações para moagem de alimentos, pigmentos e diversos outros preparos.' },
       { tipo: 'paragrafo', texto: 'A proposta desse espaço é composta por referências de ancestralidade dos povos originários, por contrastes de itens rústicos com designs sofisticados, além das cores em tons terrosos. Observando essas inspirações, a lareira teve como foco trazer o rústico de uma forma elegante, manter a fluidez do design mesmo com linhas mais fortes, além de viabilizar a produção dentro do prazo dinâmico necessário para a participação da mostra.' },
       { tipo: 'paragrafo', texto: 'O resultado foi a imponência como representação do que vem bruto da natureza, a precisão como detalhe que representa o alto padrão, além da funcionalidade que pode ser levada aos lares de nossos clientes, mimetizando a atmosfera de união entre pessoas para socializar que o Living “Ritmo Vital” tem como uma força motriz em sua proposta, que carrega toda a história do costume indígena de se reunir ao redor do fogo para compartilhar histórias.' },
-      // TODO: link do reels (no original vinha só o texto "Ritmo Vital")
-      { tipo: 'paragrafo', texto: 'Conheça o espaço em detalhe no reels gravado com a sócia e Diretora de Relacionamento do escritório, Mônica Pinto.' }
+      { tipo: 'paragrafo', texto: 'Conheça o espaço em detalhe no reels gravado com a sócia e Diretora de Relacionamento do escritório, Mônica Pinto, no nosso', link: { texto: 'Instagram', href: 'https://www.instagram.com/construflama' }, depois: '.' }
     ]
   },
   {
