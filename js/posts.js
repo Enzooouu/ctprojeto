@@ -244,7 +244,7 @@ var POSTS = [
         { rotulo: 'Lareiras a lenha:', texto: 'charme tradicional, ideal para quem valoriza o som e o aroma do fogo natural.' }
       ] },
       { tipo: 'paragrafo', texto: 'Com mais de 40 anos de experiência, a Construflama fabrica lareiras com qualidade, design e segurança, para que seus momentos de inverno sejam ainda mais especiais.', link: { texto: 'Conheça a coleção de lareiras.', href: 'colecao.html?c=lareiras' } },
-      { tipo: 'paragrafo', texto: 'Gostou das dicas? Acompanhe nosso blog para mais inspirações e entre em contato para planejar a lareira perfeita para o seu projeto: ligue para (11) 5171-6070 ou escreva para', link: { texto: 'construflama@construflama.com.br', href: 'mailto:construflama@construflama.com.br' }, depois: '.' }
+      { tipo: 'paragrafo', texto: 'Gostou das dicas? Acompanhe nosso blog para mais inspirações e entre em contato para planejar a lareira perfeita para o seu projeto: ligue para (11) 5171-6070 ou escreva para construflama@construflama.com.br.' }
     ]
   },
   {
