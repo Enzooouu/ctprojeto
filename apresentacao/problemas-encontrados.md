@@ -48,6 +48,10 @@ Atualizado sempre que um novo problema aparecer.
   álcool", mas as especificações trazem só a versão a álcool. O novo site
   mostra só álcool até a Construflama confirmar.
 - **Lareira Pipe:** diâmetro "Ø475" sem unidade (provavelmente 475 mm).
+- **Tacho:** o catálogo mostra só o Tacho a lenha (com grelha), mas a foto da
+  linha Tachos no site mostra um tacho com queimador de álcool no centro e
+  pedras vulcânicas, versão que não aparece no catálogo. O texto ainda diz
+  "Disponíveil" (duas vezes, no Tacho e na Tocha Prato) e "Ø1m" sem espaço.
 - **Crase errada** em "à lenha", "à álcool" e "à gás".
 
 ### Site atual: página da Lareira Cone
