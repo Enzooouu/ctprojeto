@@ -209,8 +209,10 @@
 
   <!-- ============================================================
        PÁGINA "VER SOBRE": uma linha que é um produto só
-       (produto.html?c=lareiras&l=tradicionais). Montada por js/main.js
-       (montarPaginaSobre) a partir de PAGINAS_SOBRE (js/sobre.js) e da
+       (produto.html?c=lareiras&l=tradicionais), ou um modelo de uma linha
+       (produto.html?c=lareiras&l=esculturais&m=tarus, dados em js/modelos.js).
+       Montada por js/main.js (montarPaginaSobre) a partir de PAGINAS_SOBRE
+       (js/sobre.js) e da
        linha em CATEGORIAS. Cada projeto é único: sem preço, versões ou
        ficha técnica; o caminho é o orçamento.
        ============================================================ -->
@@ -237,6 +239,9 @@
             <p class="prod-info__frase" data-prod-frase></p>
             <p class="prod-info__lead" data-prod-lead></p>
 
+            <!-- Combustível e cores (páginas de modelo) -->
+            <dl class="prod-detalhes" data-prod-detalhes hidden></dl>
+
             <!-- Orçamento logo depois da primeira frase, para ficar à vista -->
             <div class="prod-orcamento" data-prod-so>
               <p class="prod-orcamento__nota">Cada projeto é único: <strong>preço sob consulta</strong>.</p>
@@ -250,6 +255,12 @@
             </div>
 
             <div class="prod-info__texto" data-prod-texto></div>
+
+            <!-- Frase de um arquiteto sobre o produto (quando houver) -->
+            <figure class="prod-citacao" data-prod-citacao hidden>
+              <blockquote><p data-prod-citacao-texto></p></blockquote>
+              <figcaption data-prod-citacao-autor></figcaption>
+            </figure>
 
             <div class="prod-compartilhar" data-prod-so>
               <p class="prod-compartilhar__titulo">Compartilhar</p>
@@ -280,7 +291,17 @@
       </div>
     </section>
 
-    <!-- 3. Artigos do blog sobre a linha (some se não houver nenhum) -->
+    <!-- 3. Outros modelos da mesma linha (páginas de modelo) -->
+    <section class="section prod-outros" aria-labelledby="outros-titulo" data-prod-outros hidden>
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" id="outros-titulo" data-prod-outros-titulo>Outros modelos</h2>
+        </div>
+        <ul class="prod-outros__lista" data-prod-outros-lista></ul>
+      </div>
+    </section>
+
+    <!-- 4. Artigos do blog sobre a linha (some se não houver nenhum) -->
     <section class="section" id="inspire-se" aria-labelledby="inspire-titulo" data-prod-so>
       <div class="container">
         <div class="section-head">
@@ -370,6 +391,7 @@
   <div class="toast" role="status" aria-live="polite"></div>
 
   <script src="js/sobre.js" defer></script>
+  <script src="js/modelos.js" defer></script>
   <script src="js/posts.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>

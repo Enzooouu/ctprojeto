@@ -2486,6 +2486,28 @@ button.blog-pagina { background: none; cursor: pointer; }
   .prod-galeria { position: sticky; top: calc(var(--header-h) + 1.5rem); }   /* as fotos acompanham o texto */
 }
 
+/* Combustível e cores, frase de arquiteto e outros modelos (páginas de modelo) */
+.prod-detalhes { display: grid; gap: var(--sp-2); margin: 0; }
+.prod-detalhes__linha { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3); }
+.prod-detalhes dt { min-width: 7rem; color: rgba(236, 226, 210, .7); font-size: var(--fs-sm); }
+.prod-detalhes dd { display: inline-flex; align-items: center; gap: var(--sp-2); margin: 0; color: var(--bege-claro); }
+.prod-detalhes .mod-card__cor { border-color: rgba(236, 226, 210, .5); }
+.prod-tag-prototipo { position: static; display: inline-block; margin-left: var(--sp-2); vertical-align: middle; }
+.prod-citacao { margin: 0; padding: var(--sp-2) 0 var(--sp-2) var(--sp-5); border-left: 3px solid var(--laranja-claro); }
+.prod-citacao blockquote { margin: 0; }
+.prod-citacao p { color: var(--bege-claro); font-family: var(--fonte-destaque); font-size: var(--fs-lg); line-height: 1.45; }
+.prod-citacao figcaption { margin-top: var(--sp-2); color: rgba(236, 226, 210, .75); font-size: var(--fs-sm); }
+.prod-outros { padding-bottom: 0; }
+.prod-outros__lista { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4); margin: 0; padding: 0; list-style: none; }
+@media (min-width: 768px) { .prod-outros__lista { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .prod-outros__lista { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.prod-outro__link { display: grid; gap: var(--sp-2); color: var(--marrom); text-decoration: none; border-radius: var(--raio); }
+.prod-outro__palco { display: block; border-radius: var(--raio); transition: transform .35s var(--ease-out), box-shadow .35s; }
+.prod-outro__nome { font-family: var(--fonte-destaque); font-size: var(--fs-md); }
+.prod-outro__link:hover .prod-outro__palco { transform: translateY(-3px); box-shadow: 0 18px 30px -22px rgba(47, 29, 20, .7); }
+.prod-outro__link:hover .prod-outro__nome { color: var(--laranja-escuro); }
+.prod-outro__link:focus-visible { outline: 3px solid var(--foco); outline-offset: 4px; }
+
 /* --------------------------------------------------------------------------
    14c. Modelos de uma linha (modelos.html)
    -------------------------------------------------------------------------- */

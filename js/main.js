@@ -354,6 +354,44 @@ var DEPOIMENTOS = [
     if (typeof MODELOS === 'undefined') return [];
     return MODELOS.filter(function (m) { return m.categoria === catSlug && m.linha === linhaSlug; });
   }
+  function urlModelo(m) { return 'produto.html?c=' + m.categoria + '&l=' + m.linha + '&m=' + m.slug; }
+  var NOMES_COMBUSTIVEL = { lenha: 'lenha', alcool: 'álcool', gas: 'gás' };
+  function listaComE(itens) {
+    return itens.length > 1 ? itens.slice(0, -1).join(', ') + ' e ' + itens[itens.length - 1] : (itens[0] || '');
+  }
+  // Monta os dados da página "Ver sobre" de um modelo (mesmo formato de PAGINAS_SOBRE)
+  function paginaDoModelo(m) {
+    var fotos = [];
+    if (m.imagem) fotos.push({ imagem: m.imagem, textoAlternativo: m.textoAlternativo });
+    fotos = fotos.concat(m.fotos || []);
+    if (!fotos.length && m.ambiente) fotos.push(m.ambiente);
+    var comb = m.combustiveis.map(function (c) { return NOMES_COMBUSTIVEL[c]; });
+    var textoComb = comb.length ? listaComE(comb) : 'a confirmar';
+    if (comb.length && m.gasSobConsulta) textoComb += ' (gás sob consulta)';
+    textoComb = textoComb.charAt(0).toUpperCase() + textoComb.slice(1);
+    var detalhes = [{ rotulo: 'Combustível', texto: textoComb }];
+    detalhes.push(m.cores && m.cores.length
+      ? { rotulo: 'Cores', texto: listaComE(m.cores.map(function (c) { return c.nome; })), cores: m.cores }
+      : { rotulo: 'Cores', texto: 'a confirmar' });
+    var pag = {
+      nome: m.nome,
+      texto: [m.descricao].concat(m.texto || []),
+      fotos: fotos,
+      detalhes: detalhes,
+      citacao: m.citacao,
+      palavrasBlog: [m.nome]
+    };
+    if (m.versoes) {
+      pag.medidas = {
+        titulo: 'Medidas da ' + m.nome,
+        rotuloLinhas: 'Medida',
+        colunas: m.versoes.colunas,
+        linhas: m.versoes.linhas,
+        nota: 'Medidas do catálogo de lareiras 2026. Cada projeto é único: a equipe confirma as medidas e o acabamento com você.'
+      };
+    }
+    return pag;
+  }
   function paginaSobre(catSlug, linhaSlug) {
     if (typeof PAGINAS_SOBRE === 'undefined') return null;
     return PAGINAS_SOBRE.filter(function (x) { return x.categoria === catSlug && x.linha === linhaSlug; })[0] || null;
@@ -1832,6 +1870,12 @@ var DEPOIMENTOS = [
     var cat = buscarCategoria(q.get('c'));
     var linha = cat ? cat.subcategorias.filter(function (s) { return s.slug === q.get('l'); })[0] : null;
     var pag = linha ? paginaSobre(cat.slug, linha.slug) : null;
+    // Página de um modelo da linha (&m=slug): os dados vêm de MODELOS
+    var modelo = null;
+    if (linha && q.get('m')) {
+      modelo = modelosDaLinha(cat.slug, linha.slug).filter(function (m) { return m.slug === q.get('m'); })[0] || null;
+      pag = modelo ? paginaDoModelo(modelo) : null;
+    }
     var titulo = document.querySelector('[data-prod-titulo]');
     var lead = document.querySelector('[data-prod-lead]');
     var texto = document.querySelector('[data-prod-texto]');
@@ -1861,10 +1905,64 @@ var DEPOIMENTOS = [
     if (meta) meta.setAttribute('content', nome + ' Construflama. ' + linha.descricao + ' Showroom em São Paulo e entrega em todo o Brasil.');
 
     migalha(cat.nome, 'colecao.html?c=' + cat.slug);
+    if (modelo) migalha(linha.nome, 'modelos.html?c=' + cat.slug + '&l=' + linha.slug);
     migalha(nome);
     document.querySelector('[data-prod-cat]').textContent = cat.nome + ' · Linha ' + linha.nome;
     titulo.textContent = nome;
     document.querySelector('[data-prod-frase]').textContent = linha.descricao;
+    if (modelo && modelo.prototipo) {
+      document.querySelector('[data-prod-cat]').appendChild(el('span', 'tag-exemplo prod-tag-prototipo', 'Lançamento · dados em breve'));
+    }
+
+    // Combustível e cores
+    if (pag.detalhes) {
+      var dl = document.querySelector('[data-prod-detalhes]');
+      dl.hidden = false;
+      pag.detalhes.forEach(function (d) {
+        var linhaDl = el('div', 'prod-detalhes__linha');
+        linhaDl.appendChild(el('dt', null, d.rotulo));
+        var dd = el('dd');
+        (d.cores || []).forEach(function (c) {
+          var bola = el('span', 'mod-card__cor');
+          bola.style.background = c.cor;
+          bola.setAttribute('aria-hidden', 'true');
+          dd.appendChild(bola);
+        });
+        dd.appendChild(el('span', null, d.texto));
+        linhaDl.appendChild(dd);
+        dl.appendChild(linhaDl);
+      });
+    }
+
+    // Frase de um arquiteto
+    if (pag.citacao) {
+      document.querySelector('[data-prod-citacao]').hidden = false;
+      document.querySelector('[data-prod-citacao-texto]').textContent = '“' + pag.citacao.texto + '”';
+      document.querySelector('[data-prod-citacao-autor]').textContent = pag.citacao.autor;
+    }
+
+    // Outros modelos da linha
+    if (modelo) {
+      var outros = modelosDaLinha(cat.slug, linha.slug).filter(function (m) { return m !== modelo; });
+      var listaOutros = document.querySelector('[data-prod-outros-lista]');
+      document.querySelector('[data-prod-outros]').hidden = !outros.length;
+      document.querySelector('[data-prod-outros-titulo]').textContent = 'Outras ' + (cat.nome + ' ' + linha.nome).toLowerCase();   // "Outras lareiras esculturais"
+      outros.forEach(function (m) {
+        var li = el('li', 'prod-outro');
+        var a = el('a', 'prod-outro__link');
+        a.href = urlModelo(m);
+        var palco = el('span', 'mod-card__palco prod-outro__palco');
+        var im = el('img', m.imagem ? 'mod-card__produto' : 'mod-card__ambiente-unica');
+        im.src = m.imagem || (m.ambiente && m.ambiente.imagem) || '';
+        im.alt = '';
+        im.loading = 'lazy';
+        palco.appendChild(im);
+        a.appendChild(palco);
+        a.appendChild(el('span', 'prod-outro__nome', m.nome));
+        li.appendChild(a);
+        listaOutros.appendChild(li);
+      });
+    }
     // Primeiro parágrafo em destaque, acima do orçamento; o resto embaixo
     var paragrafos = pag.texto || [];
     if (paragrafos.length) lead.textContent = paragrafos[0]; else lead.remove();
@@ -1902,7 +2000,7 @@ var DEPOIMENTOS = [
 
     // Galeria: a foto da linha primeiro, depois as de PAGINAS_SOBRE.
     // As miniaturas só aparecem quando há mais de uma foto.
-    var fotos = [{ imagem: linha.imagem, textoAlternativo: linha.textoAlternativo, foco: linha.foco }]
+    var fotos = (modelo ? [] : [{ imagem: linha.imagem, textoAlternativo: linha.textoAlternativo, foco: linha.foco }])
       .concat(pag.fotos || []).filter(function (f) { return f.imagem; });
     var img = el('img', 'prod-galeria__foto');
     img.decoding = 'async';
@@ -2091,9 +2189,8 @@ var DEPOIMENTOS = [
 
       var corpo = el('div', 'mod-card__corpo');
       var h = el('h3', 'mod-card__nome');
-      // TODO: página de cada modelo (próxima etapa)
-      var link = linkProvisorio(m.nome, 'A página da ' + m.nome + ' será criada na próxima etapa.');
-      link.className = 'mod-card__link';
+      var link = el('a', 'mod-card__link', m.nome);
+      link.href = urlModelo(m);
       h.appendChild(link);
       corpo.appendChild(h);
       var tags = el('ul', 'mod-card__tags');
