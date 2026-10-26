@@ -319,6 +319,9 @@ var MODELOS = [
       { imagem: 'img/modelos/ecoflama-retangular-plantas.webp', textoAlternativo: 'Ecoflama Retangular acesa, embutida num banco de mármore rosado, ao lado de vasos de plantas sobre piso de taco.' },
       // Do blog (mesmo projeto da foto anterior)
       { imagem: 'img/blog/loft-alvora-ecoflama.webp', textoAlternativo: 'Vista ampla do Loft Alvorá, de Paula Neder, na CASACOR São Paulo 2025: a Ecoflama Retangular embutida num nicho de pedra rosada sob uma bancada de madeira clara, com poltrona Bowl preta, vasos de plantas e tapete listrado colorido. Foto de Max Fahrer.' },
+      { imagem: 'img/blog/ecoflama-framo-casacor-mg.webp', textoAlternativo: 'Ecoflama Retangular acesa num nicho de quartzito avermelhado, diante de uma poltrona e de um pufe de couro preto, em sala de paredes de madeira escura, no ambiente Encontro e Alento, de Francisco Morais (Framo Arquitetura), CASACOR Minas 2025.' },
+      { imagem: 'img/blog/lareira-apartamento.webp', textoAlternativo: 'Ecoflama Retangular acesa num nicho de mármore claro, na ponta de um móvel de madeira com portas perfuradas, diante de um sofá branco. Ambiente de Nathalia Candelária, foto de Rafael Renzo.' },
+      { imagem: 'img/blog/ecoflama-linear.webp', textoAlternativo: 'Ecoflama Retangular acesa, embutida numa bancada curva cinza com um canteiro de musgo e uma árvore seca, ao lado de uma poltrona de bouclê e de um sofá claro. Na imagem, a peça aparece com o nome Ecoflama Linear.' },
       { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
     ],
     versoes: {
