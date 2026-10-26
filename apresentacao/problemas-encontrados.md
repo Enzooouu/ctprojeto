@@ -113,6 +113,16 @@ Atualizado sempre que um novo problema aparecer.
 - **Títulos "ÍNDICE" soltos** no topo das páginas de garantia, como no manual
   da Tarus.
 
+### Manual da Lareira Pipe a lenha (2018)
+- **Terceiro número diferente para a idade da empresa:** "mais de 35 anos de
+  tradição" (os manuais da Tarus e da Gota dizem 30; o site, 40).
+- **Telefone diferente** no verso: (11) 5181-3071, enquanto todo o resto do
+  material usa (11) 5171-6070.
+- **O texto do PDF não pode ser lido por computador** (feito no CorelDRAW e
+  exportado como imagem): não dá para buscar palavras nem usar leitor de tela.
+  Além disso, o arquivo tem 8,1 MB, pesado para baixar no celular.
+- **Página 2 em branco**, como no manual da lareira a gás.
+
 ### Blog
 - **"Parrilla ou churrasqueira" diz que a linha Premium usa volante**, mas o
   artigo das três linhas e a foto da Premium mostram manivela.

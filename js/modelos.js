@@ -180,7 +180,9 @@ var MODELOS = [
     texto: [
       'Essa peça se tornou um marco do minimalismo dos últimos anos. O formato cilíndrico traz um tom retilíneo, e a portinhola com vidro deixa a beleza da chama à vista, numa releitura moderna da tela que cobre o braseiro de outros modelos.',
       // Do site da Construflama (página da Lareira Pipe)
-      'Quanto aos materiais, ela pode ser em aço carbono, pintado de preto ou branco, ou em aço corten.'
+      'Quanto aos materiais, ela pode ser em aço carbono, pintado de preto ou branco, ou em aço corten.',
+      // Do manual da Pipe a lenha (2018)
+      'A versão a lenha sai de fábrica com todo o material refratário e todas as peças do sistema de exaustão, e tem porta de aço com vidro duplo. A recomendação é instalar a lareira suspensa a 40 cm do piso.'
     ],
     citacao: { texto: 'A gente tem aqui um diálogo de peças metálicas, peças orgânicas que no contraste se conversam.',
       autor: 'Bernardo Barcellos, sobre a Eco Casa da L.ara Arquitetura, CASACOR Minas 2026' },
@@ -189,7 +191,10 @@ var MODELOS = [
       // Do site da Construflama (página da Lareira Pipe)
       { imagem: 'img/modelos/lareira-pipe-bancada-madeira.webp', textoAlternativo: 'Lareira Pipe grafite suspensa no canto de uma sala, ao lado de uma bancada de madeira clara com nicho iluminado e cuba, com um cesto de lenha no piso de taco.' },
       { imagem: 'img/modelos/lareira-pipe-tapete-terracota.webp', textoAlternativo: 'Lareira Pipe grafite suspensa num corredor com parede de madeira clara, poltrona de couro caramelo, tapete terracota e porta de vidro ao fundo.' },
-      { imagem: 'img/modelos/lareira-pipe-branca-madeira.webp', textoAlternativo: 'Lareira Pipe branca suspensa diante de uma parede de madeira escura, ao lado de uma luminária de pedra e de um sofá curvo cor de oliva.' }
+      { imagem: 'img/modelos/lareira-pipe-branca-madeira.webp', textoAlternativo: 'Lareira Pipe branca suspensa diante de uma parede de madeira escura, ao lado de uma luminária de pedra e de um sofá curvo cor de oliva.' },
+      { imagem: 'img/modelos/lareira-pipe-branca-pedra.webp', textoAlternativo: 'Lareira Pipe branca suspensa diante de uma parede de pedra cinza, com lenha empilhada ao longo do piso, tapeçaria de franjas, mesa de centro de madeira clara e poltronas.' },
+      { imagem: 'img/modelos/lareira-pipe-branca-cozinha.webp', textoAlternativo: 'Lareira Pipe branca e acesa no canto de uma sala integrada à cozinha, entre cortinas claras, com sofá de bouclê, poltrona cor de mostarda e tapete em tons de laranja.' },
+      { imagem: 'img/modelos/lareira-pipe-jardim-vidro.webp', textoAlternativo: 'Lareira Pipe grafite acesa numa sala de paredes de vidro aberta para um jardim tropical, com sofá caramelo, tapete azul e poltrona de couro.' }
     ],
     versoes: {
       colunas: ['Lenha', 'Álcool'],
@@ -199,6 +204,9 @@ var MODELOS = [
         { rotulo: 'Peso', valores: ['110 kg', '110 kg'] }
       ]
     },
+    downloads: [
+      { texto: 'Baixar manual da versão a lenha', arquivo: 'catalogos/manual-lareira-pipe-lenha.pdf', tamanho: '8,1 MB' }
+    ],
     medidas: { altura: '200 cm', largura: 'Ø 47,5 cm', peso: '110 kg' }
   },
   {
