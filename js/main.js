@@ -387,10 +387,10 @@ var DEPOIMENTOS = [
     if (m.versoes) {
       pag.medidas = {
         titulo: 'Medidas da ' + m.nome,
-        rotuloLinhas: 'Medida',
+        rotuloLinhas: m.versoes.rotuloLinhas || 'Medida',
         colunas: m.versoes.colunas,
         linhas: m.versoes.linhas,
-        nota: 'Medidas do catálogo de lareiras 2026. Cada projeto é único: a equipe confirma as medidas e o acabamento com você.'
+        nota: m.versoes.nota || 'Medidas do catálogo de lareiras 2026. Cada projeto é único: a equipe confirma as medidas e o acabamento com você.'
       };
     }
     return pag;
@@ -2004,7 +2004,7 @@ var DEPOIMENTOS = [
     // Galeria: a foto da linha primeiro, depois as de PAGINAS_SOBRE.
     // As miniaturas só aparecem quando há mais de uma foto.
     var fotos = (modelo ? [] : [{ imagem: linha.imagem, textoAlternativo: linha.textoAlternativo, foco: linha.foco }])
-      .concat(pag.fotos || []).filter(function (f) { return f.imagem; });
+      .concat(pag.fotos || []).filter(function (f) { return f.imagem || f.video; });
     var img = el('img', 'prod-galeria__foto');
     img.decoding = 'async';
     img.setAttribute('fetchpriority', 'high');
@@ -2018,16 +2018,42 @@ var DEPOIMENTOS = [
     lupa.appendChild(icone('i-ampliar', 'icon'));
     zoom.appendChild(lupa);
     document.querySelector('[data-prod-foto]').appendChild(zoom);
+    // Vídeo do YouTube na galeria ({ video: 'id', textoAlternativo }): a
+    // miniatura mostra "Vídeo" e, escolhida, troca a foto pelo player.
+    // A tela cheia percorre só as fotos.
+    var caixaVideo = el('div', 'prod-galeria__video');
+    caixaVideo.hidden = true;
+    document.querySelector('[data-prod-foto]').appendChild(caixaVideo);
+    var soImagens = fotos.filter(function (f) { return !f.video; });
+    function telaCheiaDe(n, origem) {
+      abrirTelaCheia(img, '', origem, {
+        fotos: soImagens,
+        indice: Math.max(0, soImagens.indexOf(fotos[n])),
+        aoTrocar: function (k) { mostrarFoto(fotos.indexOf(soImagens[k])); }
+      });
+    }
     var fotoAtual = 0;
-    zoom.addEventListener('click', function () {
-      abrirTelaCheia(img, '', zoom, { fotos: fotos, indice: fotoAtual, aoTrocar: mostrarFoto });
-    });
+    zoom.addEventListener('click', function () { telaCheiaDe(fotoAtual, zoom); });
     var miniaturas = document.querySelector('[data-prod-miniaturas]');
     function mostrarFoto(n) {
       fotoAtual = n;
-      img.src = fotos[n].imagem;
-      img.alt = fotos[n].textoAlternativo || '';
-      img.style.objectPosition = fotos[n].foco || '';
+      var f = fotos[n];
+      zoom.hidden = !!f.video;
+      caixaVideo.hidden = !f.video;
+      caixaVideo.textContent = '';
+      if (f.video) {
+        var player = el('iframe');
+        player.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(f.video) + '?rel=0';
+        player.title = f.textoAlternativo || 'Vídeo';
+        player.setAttribute('allow', 'accelerometer; encrypted-media; picture-in-picture; fullscreen');
+        player.setAttribute('allowfullscreen', '');
+        player.loading = 'lazy';
+        caixaVideo.appendChild(player);
+      } else {
+        img.src = f.imagem;
+        img.alt = f.textoAlternativo || '';
+        img.style.objectPosition = f.foco || '';
+      }
       miniaturas.querySelectorAll('button').forEach(function (b, i) {
         if (b.classList.contains('prod-miniatura--mais')) return;
         b.setAttribute('aria-pressed', String(i === n));
@@ -2041,26 +2067,31 @@ var DEPOIMENTOS = [
         var resto = fotos.length - MAX_MINIATURAS + 1;
         var mais = n === MAX_MINIATURAS - 1 && fotos.length > MAX_MINIATURAS;
         var li = el('li');
-        var b = el('button', 'prod-miniatura' + (mais ? ' prod-miniatura--mais' : ''));
+        var b = el('button', 'prod-miniatura' + (mais ? ' prod-miniatura--mais' : '') + (f.video ? ' prod-miniatura--video' : ''));
         b.type = 'button';
         b.setAttribute('aria-label', mais
           ? 'Ver mais ' + resto + ' fotos em tela cheia'
-          : 'Ver foto ' + (n + 1) + ' de ' + fotos.length);
+          : f.video ? 'Ver o vídeo: ' + (f.textoAlternativo || '') : 'Ver foto ' + (n + 1) + ' de ' + fotos.length);
         if (mais) {
           var selo = el('span', 'prod-miniatura__mais', '+' + resto);
           selo.setAttribute('aria-hidden', 'true');
           b.appendChild(selo);
-          b.addEventListener('click', function () {
-            mostrarFoto(n);
-            abrirTelaCheia(img, '', b, { fotos: fotos, indice: n, aoTrocar: mostrarFoto });
-          });
+          b.addEventListener('click', function () { mostrarFoto(n); telaCheiaDe(n, b); });
         }
-        var mini = el('img');
-        mini.src = f.imagem;
-        mini.alt = '';
-        mini.loading = 'lazy';
-        if (f.foco) mini.style.objectPosition = f.foco;
-        b.insertBefore(mini, b.firstChild);
+        if (f.video) {
+          var play = el('span', 'prod-miniatura__play');
+          play.setAttribute('aria-hidden', 'true');
+          play.appendChild(icone('i-play', 'icon'));
+          play.appendChild(el('span', null, 'Vídeo'));
+          b.appendChild(play);
+        } else {
+          var mini = el('img');
+          mini.src = f.imagem;
+          mini.alt = '';
+          mini.loading = 'lazy';
+          if (f.foco) mini.style.objectPosition = f.foco;
+          b.insertBefore(mini, b.firstChild);
+        }
         if (!mais) b.addEventListener('click', function () { mostrarFoto(n); });
         li.appendChild(b);
         miniaturas.appendChild(li);

@@ -151,6 +151,25 @@ Atualizado sempre que um novo problema aparecer.
   Além disso, o arquivo tem 8,1 MB, pesado para baixar no celular.
 - **Página 2 em branco**, como no manual da lareira a gás.
 
+### Manual das Ecoflamas (LRA 035/100, revisão 4, abril de 2022)
+- **Trecho copiado de outro manual, de novo:** "toda churrasqueira elétrica tem
+  poder calórico" (igual ao manual da lareira a gás) e "conexão do equipamento
+  na rede elétrica", num produto a álcool que não usa eletricidade.
+- **Potência máxima sempre "1,5 kW"**, para todos os 14 modelos, ao lado de
+  valores em BTU que vão de 4.250 a 28.050 (1,2 a 8,2 kW).
+- **Medidas que não batem com o catálogo:** a Retangular tem 7 cm de altura e
+  19,5 cm de largura no manual, contra 9 cm e 20 cm no catálogo; a Redonda vai
+  de 40 a 70 cm no manual e "de 25 a 70 cm" no catálogo; o peso da Redonda de
+  50 cm é 7 kg no manual e 10,4 kg no catálogo.
+- **Nome de modelo trocado:** "ECO-070-CN" no lugar de "LRA-070-CN"; e a
+  Marroquina, que tem 30 cm, aparece com o código "LRA-025-MQ".
+- **Erros de português:** "A lareira acompanha não acompanha" (repetido em
+  quatro páginas), "um paco seco e macio" (pano), "prejudiciais á saúde",
+  "200 á 250", "ambientes externo", "aos tempo".
+- **Duas recomendações de altura iguais para materiais diferentes:** vidro, MDF
+  e drywall comum pedem 500 mm, e mármore e pedra também 500 mm, o que parece
+  um erro de cópia.
+
 ### Blog
 - **"Parrilla ou churrasqueira" diz que a linha Premium usa volante**, mas o
   artigo das três linhas e a foto da Premium mostram manivela.

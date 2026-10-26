@@ -300,55 +300,120 @@ var MODELOS = [
     categoria: 'lareiras', linha: 'ecoflamas',
     nome: 'Ecoflama Retangular', slug: 'retangular',
     descricao: 'Nossas Ecoflamas Retangulares podem ser embutidas em mesas e móveis desenhados por nós da Construflama, ou até mesmo ser encaixadas em nichos já disponíveis em sua casa.',
-    texto: ['Também há opções personalizadas de até 1 metro.'],
+    texto: [
+      // Do site da Construflama (página da Ecoflama Retangular)
+      'Super práticas, as lareiras ecológicas Construflama não precisam de coifa de respiro e estão prontas para o uso, com combustão à base de álcool de cereais.',
+      'São produzidas em aço inox 304 escovado de 5 mm de espessura e têm tanque duplo, hermeticamente soldado.',
+      // Do manual técnico (LRA 035/100, revisão 4)
+      'É fabricada em sete comprimentos, de 35 cm a 1 m, para ser embutida num nicho. Pedras vulcânicas e tampa para áreas externas são vendidas à parte.'
+    ],
     combustiveis: ['alcool'],
     imagem: 'img/modelos/ecoflama-retangular.webp',
     textoAlternativo: 'Ecoflama Retangular em aço inox, com o queimador comprido e a haste para acender ao lado.',
-    cores: null, fotos: [],
-    versoes: { colunas: ['Álcool'], linhas: [
-      { rotulo: 'Altura', valores: ['9 cm'] }, { rotulo: 'Profundidade', valores: ['20 cm'] },
-      { rotulo: 'Largura', valores: ['35 cm (até 1 m sob medida)'] }, { rotulo: 'Peso', valores: ['4,6 kg'] } ] },
-    medidas: { altura: '9 cm', largura: '35 cm a 1 m', peso: '4,6 kg' }
+    cores: null, fotos: [
+      // Do site da Construflama (página da Ecoflama Retangular)
+      { imagem: 'img/modelos/ecoflama-retangular-pedra.webp', textoAlternativo: 'Ecoflama Retangular acesa, embutida num longo banco de pedra clara diante de uma parede de pedra, com poltronas de couro e mesa baixa.' },
+      { imagem: 'img/modelos/ecoflama-retangular-plantas.webp', textoAlternativo: 'Ecoflama Retangular acesa, embutida num banco de mármore rosado, ao lado de vasos de plantas sobre piso de taco.' },
+      { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
+    ],
+    versoes: {
+      rotuloLinhas: 'Modelo',
+      colunas: ['Comprimento', 'Peso', 'Reservatório de álcool', 'Duração da queima'],
+      linhas: [
+        { rotulo: 'LRA-035-RT', valores: ['35 cm', '4,5 kg', '1,5 L', '1h30'] },
+        { rotulo: 'LRA-050-RT', valores: ['50 cm', '6,5 kg', '2,4 L', '2h20'] },
+        { rotulo: 'LRA-060-RT', valores: ['60 cm', '7 kg', '2,4 L', '2h20'] },
+        { rotulo: 'LRA-070-RT', valores: ['70 cm', '7,5 kg', '2,4 L', '2h20'] },
+        { rotulo: 'LRA-080-RT', valores: ['80 cm', '8,5 kg', '4,2 L', '4h10'] },
+        { rotulo: 'LRA-090-RT', valores: ['90 cm', '9 kg', '4,2 L', '4h10'] },
+        { rotulo: 'LRA-100-RT', valores: ['1 m', '9,5 kg', '4,2 L', '4h10'] }
+      ],
+      nota: 'Do manual técnico das Ecoflamas (revisão 4, abril de 2022). Todos os modelos têm 19,5 cm de largura e 7 cm de altura.'
+    },
+    downloads: [
+      { texto: 'Baixar manual técnico', arquivo: 'catalogos/manual-ecoflamas-lra.pdf', tamanho: '5,4 MB' }
+    ],
+    medidas: { altura: '7 cm', largura: '35 cm a 1 m', peso: '4,5 a 9,5 kg' }
   },
   {
     categoria: 'lareiras', linha: 'ecoflamas',
     nome: 'Ecoflama Canoa', slug: 'canoa',
     descricao: 'A icônica Lareira Ecológica Canoa brilha por sua portabilidade e design. Podendo até mesmo ficar em cima de mesas, essa Ecoflama tem acendimento a álcool de cereais, o que facilita o seu uso.',
-    texto: ['Disponível também na versão de 70 cm.'],
+    texto: [
+      'Disponível também na versão de 70 cm. Não precisa de nicho nem de instalação: é só apoiar e acender.'
+    ],
     combustiveis: ['alcool'],
     imagem: 'img/modelos/ecoflama-canoa.webp',
     textoAlternativo: 'Ecoflama Canoa: queimador de inox sobre uma base curva branca em forma de canoa, com pés finos, e a haste para acender.',
     cores: null, fotos: [],
-    versoes: { colunas: ['Álcool'], linhas: [
-      { rotulo: 'Altura', valores: ['12 cm'] }, { rotulo: 'Profundidade', valores: ['19,5 cm'] },
-      { rotulo: 'Largura', valores: ['50 cm (ou 70 cm)'] }, { rotulo: 'Peso', valores: ['5,32 kg'] } ] },
-    medidas: { altura: '12 cm', largura: '50 ou 70 cm', peso: '5,32 kg' }
+    versoes: {
+      rotuloLinhas: 'Modelo',
+      colunas: ['Comprimento', 'Peso', 'Reservatório de álcool', 'Duração da queima'],
+      linhas: [
+        { rotulo: 'LRA-050-CN', valores: ['50 cm', '7 kg', '3 L', '3h'] },
+        { rotulo: 'LRA-070-CN', valores: ['70 cm', '8 kg', '3 L', '3h'] }
+      ],
+      nota: 'Do manual técnico das Ecoflamas (revisão 4, abril de 2022). Os dois modelos têm 19,5 cm de largura e 12 cm de altura.'
+    },
+    downloads: [
+      { texto: 'Baixar manual técnico', arquivo: 'catalogos/manual-ecoflamas-lra.pdf', tamanho: '5,4 MB' }
+    ],
+    medidas: { altura: '12 cm', largura: '50 ou 70 cm', peso: '7 ou 8 kg' }
   },
   {
     categoria: 'lareiras', linha: 'ecoflamas',
     nome: 'Ecoflama Redonda', slug: 'redonda',
     descricao: 'Nossas Ecoflamas Redondas podem ser embutidas em mesas e móveis desenhados por nós da Construflama, ou até mesmo ser encaixadas em nichos já disponíveis em sua casa.',
-    texto: ['Disponível também nos diâmetros de 25 a 70 cm.'],
+    texto: [
+      'Disponível também nos diâmetros de 40 a 70 cm.',
+      'Pedras vulcânicas e tampa para áreas externas são vendidas à parte.'
+    ],
     combustiveis: ['alcool'],
     imagem: 'img/modelos/ecoflama-redonda.webp',
     textoAlternativo: 'Ecoflama Redonda em aço inox, com o queimador no centro do disco e a haste para acender.',
     cores: null, fotos: [],
-    versoes: { colunas: ['Álcool'], linhas: [
-      { rotulo: 'Altura', valores: ['9 cm'] }, { rotulo: 'Diâmetro', valores: ['50 cm (de 25 a 70 cm)'] },
-      { rotulo: 'Peso', valores: ['10,4 kg'] } ] },
-    medidas: { altura: '9 cm', largura: 'Ø 25 a 70 cm', peso: '10,4 kg' }
+    versoes: {
+      rotuloLinhas: 'Modelo',
+      colunas: ['Diâmetro', 'Peso', 'Reservatório de álcool', 'Duração da queima'],
+      linhas: [
+        { rotulo: 'LRA-040-RD', valores: ['40 cm', '6,5 kg', '1,5 L', '1h30'] },
+        { rotulo: 'LRA-050-RD', valores: ['50 cm', '7 kg', '2,4 L', '2h20'] },
+        { rotulo: 'LRA-060-RD', valores: ['60 cm', '7,5 kg', '2,4 L', '2h20'] },
+        { rotulo: 'LRA-070-RD', valores: ['70 cm', '8 kg', '2,4 L', '2h20'] }
+      ],
+      nota: 'Do manual técnico das Ecoflamas (revisão 4, abril de 2022). Todos os modelos têm 7 cm de altura.'
+    },
+    downloads: [
+      { texto: 'Baixar manual técnico', arquivo: 'catalogos/manual-ecoflamas-lra.pdf', tamanho: '5,4 MB' }
+    ],
+    medidas: { altura: '7 cm', largura: 'Ø 40 a 70 cm', peso: '6,5 a 8 kg' }
   },
   {
     categoria: 'lareiras', linha: 'ecoflamas',
     nome: 'Ecoflama Marroquina', slug: 'marroquina',
     descricao: 'Uma icônica peça de design by Construflama, a Ecoflama Marroquina tem um aspecto único que sua casa merece e precisa ter.',
+    texto: [
+      'Não precisa de nicho nem de instalação: é só apoiar e acender.'
+    ],
     combustiveis: ['alcool'],
     imagem: 'img/modelos/lareira-marroquina.webp',
     textoAlternativo: 'Ecoflama Marroquina: caixa quadrada de aço cor de ferrugem com as laterais vazadas em desenho geométrico.',
     cores: CORES_ESCULTURAIS, fotos: [],
-    versoes: { colunas: ['Álcool'], linhas: [
-      { rotulo: 'Altura', valores: ['40 cm'] }, { rotulo: 'Profundidade', valores: ['30 cm'] },
-      { rotulo: 'Largura', valores: ['30 cm'] }, { rotulo: 'Peso', valores: ['10 kg'] } ] },
+    versoes: {
+      rotuloLinhas: 'Medida',
+      colunas: ['Álcool'],
+      linhas: [
+        { rotulo: 'Altura', valores: ['40 cm'] },
+        { rotulo: 'Largura e profundidade', valores: ['30 cm'] },
+        { rotulo: 'Peso', valores: ['10 kg'] },
+        { rotulo: 'Reservatório de álcool', valores: ['0,5 L'] },
+        { rotulo: 'Duração da queima', valores: ['30 min'] }
+      ],
+      nota: 'Do manual técnico das Ecoflamas (revisão 4, abril de 2022).'
+    },
+    downloads: [
+      { texto: 'Baixar manual técnico', arquivo: 'catalogos/manual-ecoflamas-lra.pdf', tamanho: '5,4 MB' }
+    ],
     medidas: { altura: '40 cm', largura: '30 cm', peso: '10 kg' }
   },
   {
