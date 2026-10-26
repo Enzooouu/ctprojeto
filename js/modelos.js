@@ -28,7 +28,9 @@
    - versoes: { colunas: ['Lenha', 'Álcool'], linhas: [{ rotulo, valores }] }
      medidas de cada versão no catálogo
    - downloads (opcional): [{ texto, arquivo, tamanho }] manuais do modelo
-   - prototipo: true quando ainda faltam dados reais. Imagem, combustíveis,
+   - palavrasBlog (opcional): termos para achar artigos do blog (padrão: o nome)
+   - cores: null para peças em inox, sem opção de cor (a linha "Cores" some)
+   - prototipo: true quando ainda faltam dados reais; etiqueta: texto do selo. Imagem, combustíveis,
      cores ou medidas vazios aparecem marcados como "em breve" / "a confirmar".
    ========================================================================== */
 var CORES_ESCULTURAIS = [
@@ -291,6 +293,116 @@ var MODELOS = [
     citacao: { texto: 'Esse formato mais rústico com essa tendência mais feita a mão.',
       autor: 'Mônica Pinto, sócia e diretora de relacionamento da MAAI Arquitetura, sobre o Living Ritmo Vital' },
     fotos: [],
+    medidas: { altura: '', largura: '', peso: '' }
+  },
+  /* ---------------- Ecoflamas (todas a álcool; catálogo de lareiras 2026) --------------- */
+  {
+    categoria: 'lareiras', linha: 'ecoflamas',
+    nome: 'Ecoflama Retangular', slug: 'retangular',
+    descricao: 'Nossas Ecoflamas Retangulares podem ser embutidas em mesas e móveis desenhados por nós da Construflama, ou até mesmo ser encaixadas em nichos já disponíveis em sua casa.',
+    texto: ['Também há opções personalizadas de até 1 metro.'],
+    combustiveis: ['alcool'],
+    imagem: 'img/modelos/ecoflama-retangular.webp',
+    textoAlternativo: 'Ecoflama Retangular em aço inox, com o queimador comprido e a haste para acender ao lado.',
+    cores: null, fotos: [],
+    versoes: { colunas: ['Álcool'], linhas: [
+      { rotulo: 'Altura', valores: ['9 cm'] }, { rotulo: 'Profundidade', valores: ['20 cm'] },
+      { rotulo: 'Largura', valores: ['35 cm (até 1 m sob medida)'] }, { rotulo: 'Peso', valores: ['4,6 kg'] } ] },
+    medidas: { altura: '9 cm', largura: '35 cm a 1 m', peso: '4,6 kg' }
+  },
+  {
+    categoria: 'lareiras', linha: 'ecoflamas',
+    nome: 'Ecoflama Canoa', slug: 'canoa',
+    descricao: 'A icônica Lareira Ecológica Canoa brilha por sua portabilidade e design. Podendo até mesmo ficar em cima de mesas, essa Ecoflama tem acendimento a álcool de cereais, o que facilita o seu uso.',
+    texto: ['Disponível também na versão de 70 cm.'],
+    combustiveis: ['alcool'],
+    imagem: 'img/modelos/ecoflama-canoa.webp',
+    textoAlternativo: 'Ecoflama Canoa: queimador de inox sobre uma base curva branca em forma de canoa, com pés finos, e a haste para acender.',
+    cores: null, fotos: [],
+    versoes: { colunas: ['Álcool'], linhas: [
+      { rotulo: 'Altura', valores: ['12 cm'] }, { rotulo: 'Profundidade', valores: ['19,5 cm'] },
+      { rotulo: 'Largura', valores: ['50 cm (ou 70 cm)'] }, { rotulo: 'Peso', valores: ['5,32 kg'] } ] },
+    medidas: { altura: '12 cm', largura: '50 ou 70 cm', peso: '5,32 kg' }
+  },
+  {
+    categoria: 'lareiras', linha: 'ecoflamas',
+    nome: 'Ecoflama Redonda', slug: 'redonda',
+    descricao: 'Nossas Ecoflamas Redondas podem ser embutidas em mesas e móveis desenhados por nós da Construflama, ou até mesmo ser encaixadas em nichos já disponíveis em sua casa.',
+    texto: ['Disponível também nos diâmetros de 25 a 70 cm.'],
+    combustiveis: ['alcool'],
+    imagem: 'img/modelos/ecoflama-redonda.webp',
+    textoAlternativo: 'Ecoflama Redonda em aço inox, com o queimador no centro do disco e a haste para acender.',
+    cores: null, fotos: [],
+    versoes: { colunas: ['Álcool'], linhas: [
+      { rotulo: 'Altura', valores: ['9 cm'] }, { rotulo: 'Diâmetro', valores: ['50 cm (de 25 a 70 cm)'] },
+      { rotulo: 'Peso', valores: ['10,4 kg'] } ] },
+    medidas: { altura: '9 cm', largura: 'Ø 25 a 70 cm', peso: '10,4 kg' }
+  },
+  {
+    categoria: 'lareiras', linha: 'ecoflamas',
+    nome: 'Ecoflama Marroquina', slug: 'marroquina',
+    descricao: 'Uma icônica peça de design by Construflama, a Ecoflama Marroquina tem um aspecto único que sua casa merece e precisa ter.',
+    combustiveis: ['alcool'],
+    imagem: 'img/modelos/lareira-marroquina.webp',
+    textoAlternativo: 'Ecoflama Marroquina: caixa quadrada de aço cor de ferrugem com as laterais vazadas em desenho geométrico.',
+    cores: CORES_ESCULTURAIS, fotos: [],
+    versoes: { colunas: ['Álcool'], linhas: [
+      { rotulo: 'Altura', valores: ['40 cm'] }, { rotulo: 'Profundidade', valores: ['30 cm'] },
+      { rotulo: 'Largura', valores: ['30 cm'] }, { rotulo: 'Peso', valores: ['10 kg'] } ] },
+    medidas: { altura: '40 cm', largura: '30 cm', peso: '10 kg' }
+  },
+  {
+    categoria: 'lareiras', linha: 'ecoflamas',
+    nome: 'Trio Chess Rainha', slug: 'rainha',
+    descricao: 'A Lareira Rainha é o destaque do Trio Chess pela sofisticação do seu design. Uma peça que se encaixa em ambientes internos reduzidos ou amplos e externos.',
+    combustiveis: ['alcool'],
+    imagem: 'img/modelos/lareira-rainha.webp',
+    textoAlternativo: 'Lareira Rainha, do Trio Chess: peça preta formada por dois cones unidos pela ponta, com o queimador no topo.',
+    ambiente: { imagem: 'img/blog/trio-chess-casacor-mg.webp',
+      textoAlternativo: 'As três lareiras do Trio Chess acesas sobre um deck de madeira à noite, diante de palmeiras.' },
+    cores: CORES_ESCULTURAIS, fotos: [], palavrasBlog: ['Trio Chess'],
+    versoes: { colunas: ['Álcool'], linhas: [
+      { rotulo: 'Altura', valores: ['40 cm'] }, { rotulo: 'Diâmetro', valores: ['40 cm'] }, { rotulo: 'Peso', valores: ['12,5 kg'] } ] },
+    medidas: { altura: '40 cm', largura: 'Ø 40 cm', peso: '12,5 kg' }
+  },
+  {
+    categoria: 'lareiras', linha: 'ecoflamas',
+    nome: 'Trio Chess Torre', slug: 'torre',
+    descricao: 'Nada como uma peça de design que traz sofisticação e conforto para o seu lar. Com seu fácil acendimento a álcool de cereais, a Lareira Ecológica Torre traz comodidade e estilo, podendo ser instalada em pequenos espaços.',
+    combustiveis: ['alcool'],
+    imagem: 'img/modelos/lareira-torre.webp',
+    textoAlternativo: 'Lareira Torre, do Trio Chess: cilindro preto sobre uma base em cone, com o queimador no topo.',
+    ambiente: { imagem: 'img/blog/trio-chess-casacor-mg.webp',
+      textoAlternativo: 'As três lareiras do Trio Chess acesas sobre um deck de madeira à noite, diante de palmeiras.' },
+    cores: CORES_ESCULTURAIS, fotos: [], palavrasBlog: ['Trio Chess'],
+    versoes: { colunas: ['Álcool'], linhas: [
+      { rotulo: 'Altura', valores: ['36 cm'] }, { rotulo: 'Diâmetro', valores: ['30 cm'] }, { rotulo: 'Peso', valores: ['10,24 kg'] } ] },
+    medidas: { altura: '36 cm', largura: 'Ø 30 cm', peso: '10,24 kg' }
+  },
+  {
+    categoria: 'lareiras', linha: 'ecoflamas',
+    nome: 'Trio Chess Peão', slug: 'peao',
+    descricao: 'Nossa compacta Lareira Ecológica Peão, mesmo ocupando pouco espaço, traz o conforto necessário para os ambientes, sem precisar de exaustão, por conta da sua combustão a álcool de cereais.',
+    combustiveis: ['alcool'],
+    imagem: 'img/modelos/lareira-peao.webp',
+    textoAlternativo: 'Lareira Peão, do Trio Chess: peça preta baixa, mais larga no meio, com o queimador no topo.',
+    ambiente: { imagem: 'img/blog/trio-chess-casacor-mg.webp',
+      textoAlternativo: 'As três lareiras do Trio Chess acesas sobre um deck de madeira à noite, diante de palmeiras.' },
+    cores: CORES_ESCULTURAIS, fotos: [], palavrasBlog: ['Trio Chess'],
+    versoes: { colunas: ['Álcool'], linhas: [
+      { rotulo: 'Altura', valores: ['40 cm'] }, { rotulo: 'Diâmetro', valores: ['40 cm'] }, { rotulo: 'Peso', valores: ['10,4 kg'] } ] },
+    medidas: { altura: '40 cm', largura: 'Ø 40 cm', peso: '10,4 kg' }
+  },
+  {
+    // PROTÓTIPO: está no site atual, mas não no catálogo 2026. TODO: descrição e medidas.
+    prototipo: true, etiqueta: 'Descrição e medidas em breve',
+    categoria: 'lareiras', linha: 'ecoflamas',
+    nome: 'Ecoflama Pot', slug: 'pot',
+    descricao: '',
+    combustiveis: ['alcool'],
+    imagem: 'img/modelos/ecoflama-pot.webp',
+    textoAlternativo: 'Ecoflama Pot: peça redonda e baixa, preta, com tampo de inox e o queimador no centro.',
+    cores: [], fotos: [],
     medidas: { altura: '', largura: '', peso: '' }
   }
 ];

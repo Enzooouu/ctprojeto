@@ -370,17 +370,19 @@ var DEPOIMENTOS = [
     if (comb.length && m.gasSobConsulta) textoComb += ' (gás sob consulta)';
     textoComb = textoComb.charAt(0).toUpperCase() + textoComb.slice(1);
     var detalhes = [{ rotulo: 'Combustível', texto: textoComb }];
-    detalhes.push(m.cores && m.cores.length
-      ? { rotulo: 'Cores', texto: listaComE(m.cores.map(function (c) { return c.nome; })), cores: m.cores }
-      : { rotulo: 'Cores', texto: 'a confirmar' });
+    if (m.cores !== null) {   // null: peça em inox, sem opção de cor
+      detalhes.push(m.cores && m.cores.length
+        ? { rotulo: 'Cores', texto: listaComE(m.cores.map(function (c) { return c.nome; })), cores: m.cores }
+        : { rotulo: 'Cores', texto: 'a confirmar' });
+    }
     var pag = {
       nome: m.nome,
-      texto: [m.descricao].concat(m.texto || []),
+      texto: (m.descricao ? [m.descricao] : []).concat(m.texto || []),
       fotos: fotos,
       detalhes: detalhes,
       citacao: m.citacao,
       downloads: m.downloads,
-      palavrasBlog: [m.nome]
+      palavrasBlog: m.palavrasBlog || [m.nome]
     };
     if (m.versoes) {
       pag.medidas = {
@@ -1912,7 +1914,7 @@ var DEPOIMENTOS = [
     titulo.textContent = nome;
     document.querySelector('[data-prod-frase]').textContent = linha.descricao;
     if (modelo && modelo.prototipo) {
-      document.querySelector('[data-prod-cat]').appendChild(el('span', 'tag-exemplo prod-tag-prototipo', 'Lançamento · foto e medidas em breve'));
+      document.querySelector('[data-prod-cat]').appendChild(el('span', 'tag-exemplo prod-tag-prototipo', modelo.etiqueta || 'Lançamento · foto e medidas em breve'));
     }
 
     // Combustível e cores
@@ -1947,7 +1949,7 @@ var DEPOIMENTOS = [
       var outros = modelosDaLinha(cat.slug, linha.slug).filter(function (m) { return m !== modelo; });
       var listaOutros = document.querySelector('[data-prod-outros-lista]');
       document.querySelector('[data-prod-outros]').hidden = !outros.length;
-      document.querySelector('[data-prod-outros-titulo]').textContent = 'Outras ' + (cat.nome + ' ' + linha.nome).toLowerCase();   // "Outras lareiras esculturais"
+      document.querySelector('[data-prod-outros-titulo]').textContent = (linha.marca ? 'Outras ' + linha.nome : 'Outras ' + (cat.nome + ' ' + linha.nome).toLowerCase());   // "Outras lareiras esculturais"
       outros.forEach(function (m) {
         var li = el('li', 'prod-outro');
         var a = el('a', 'prod-outro__link');
@@ -2140,7 +2142,8 @@ var DEPOIMENTOS = [
       return;
     }
 
-    var nomeLinha = cat.nome + ' ' + linha.nome.toLowerCase();   // "Lareiras esculturais"
+    // "Lareiras esculturais"; linha com nome de marca fica só com o nome ("Ecoflamas")
+    var nomeLinha = linha.marca ? linha.nome : cat.nome + ' ' + linha.nome.toLowerCase();
     document.title = nomeLinha + ' | Construflama';
     var meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute('content', nomeLinha + ' Construflama: ' + modelos.map(function (m) { return m.nome.replace(/^\S+ /, ''); }).join(', ') + '. Showroom em São Paulo e entrega em todo o Brasil.');
@@ -2193,7 +2196,7 @@ var DEPOIMENTOS = [
         unica.loading = 'lazy';
         palco.appendChild(unica);
       }
-      if (m.prototipo) palco.appendChild(el('span', 'tag-exemplo', 'Lançamento · foto e medidas em breve'));
+      if (m.prototipo) palco.appendChild(el('span', 'tag-exemplo', m.etiqueta || 'Lançamento · foto e medidas em breve'));
       if (m.ambiente && m.imagem) {
         var amb = el('img', 'mod-card__ambiente');
         amb.src = m.ambiente.imagem;
@@ -2219,7 +2222,7 @@ var DEPOIMENTOS = [
       if (!listaComb.length) listaComb = ['Combustível a confirmar'];   // TODO (protótipo)
       listaComb.forEach(function (c) { tags.appendChild(el('li', null, c)); });
       corpo.appendChild(tags);
-      corpo.appendChild(el('p', 'mod-card__desc', m.descricao));
+      if (m.descricao) corpo.appendChild(el('p', 'mod-card__desc', m.descricao));
       if (m.cores && m.cores.length) {
         var cores = el('p', 'mod-card__cores');
         m.cores.forEach(function (c) {
@@ -2265,6 +2268,8 @@ var DEPOIMENTOS = [
       filtros.appendChild(b);
     });
     filtrar('todos');
+    // Um combustível só (ex.: Ecoflamas, todas a álcool): o filtro não tem o que separar
+    if (opcoes.length <= 2) filtros.hidden = true;
 
     // Tabela de comparação
     var tabela = document.querySelector('[data-mod-tabela]');
@@ -2289,7 +2294,8 @@ var DEPOIMENTOS = [
 
     // Artigos do blog que citam algum dos modelos
     var gradeBlog = document.querySelector('[data-mod-blog]');
-    var termos = modelos.map(function (m) { return normalizar(m.nome); });
+    var termos = [];
+    modelos.forEach(function (m) { (m.palavrasBlog || [m.nome]).forEach(function (t) { termos.push(normalizar(t)); }); });
     var artigos = typeof POSTS === 'undefined' ? [] : postsPorData().filter(function (p) {
       var conteudo = normalizar(textoDoPost(p));
       return termos.some(function (t) { return conteudo.indexOf(t) !== -1; });

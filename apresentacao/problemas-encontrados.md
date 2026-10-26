@@ -88,6 +88,17 @@ Atualizado sempre que um novo problema aparecer.
 - **Mesmo texto genérico das outras esculturais**, que cita Gota, Tarus, Pipe
   e Francesa, mas não a própria Balaio nem o arquiteto Quintino Facci.
 
+### Ecoflamas (site atual e catálogo)
+- **Nomes diferentes para o mesmo produto:** "Lareira Canoa" (catálogo),
+  "Lareira Ecoflama Canoa" (site) e "Ecoflama Canoa"; "Lareira Rainha"
+  (catálogo) e "Trio Chess - Modelo Rainha" (site).
+- **A Ecoflama Pot está no site, mas não no catálogo 2026:** não há descrição
+  nem medidas dela em lugar nenhum.
+- **Potência com unidades misturadas na mesma linha:** a Retangular aquece "de
+  15 a 30 m³", enquanto Canoa e Redonda aparecem com "21.000 m³".
+- **Erro de digitação:** "peça de deisgn By Construflama" (Marroquina).
+- **Página sem fotos de projeto:** só imagens do produto em fundo branco.
+
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz
   29.328 BTU/h = 13,50 kW e 36.096 BTU/h = 16,27 kW; o certo seria cerca de
