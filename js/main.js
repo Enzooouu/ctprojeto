@@ -386,7 +386,7 @@ var DEPOIMENTOS = [
     };
     if (m.versoes) {
       pag.medidas = {
-        titulo: 'Medidas da ' + m.nome,
+        titulo: m.versoes.titulo || 'Medidas da ' + m.nome,
         rotuloLinhas: m.versoes.rotuloLinhas || 'Medida',
         colunas: m.versoes.colunas,
         linhas: m.versoes.linhas,
@@ -2139,10 +2139,18 @@ var DEPOIMENTOS = [
     (pag.downloads || []).forEach(function (d) {
       var a = el('a', 'btn btn--ghost btn--lg');
       a.href = d.arquivo;
-      a.setAttribute('download', '');
       a.appendChild(icone('i-download', 'icon'));
       a.appendChild(document.createTextNode(' ' + d.texto + ' '));
-      a.appendChild(el('span', 'prod-orcamento__peso', '(PDF' + (d.tamanho ? ', ' + d.tamanho : '') + ')'));
+      if (d.externo) {
+        // Arquivo em outro site (ex.: modelo 3D no 3D Warehouse): abre em nova aba
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.appendChild(el('span', 'prod-orcamento__peso', '(' + d.externo + ')'));
+        a.appendChild(srOnly(', abre em nova aba'));
+      } else {
+        a.setAttribute('download', '');
+        a.appendChild(el('span', 'prod-orcamento__peso', '(PDF' + (d.tamanho ? ', ' + d.tamanho : '') + ')'));
+      }
       botaoCatalogo.parentNode.insertBefore(a, botaoCatalogo);
     });
 

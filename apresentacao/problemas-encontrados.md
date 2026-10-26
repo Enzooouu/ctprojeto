@@ -138,8 +138,19 @@ Atualizado sempre que um novo problema aparecer.
   todos os modelos", mas o site vende "Soft a carvão" e "Soft a gás" como
   modelos separados, e não diz qual é o combustível da "Soft com tampa" e da
   "Soft Clean".
-- **A Soft a gás não tem foto do produto**, só a foto de projeto; as outras
-  três só têm a foto do produto.
+- **A Soft a gás não tem foto do produto**, e a foto do cartão dela na lista
+  é a mesma cozinha da página da Soft a carvão (sem os botões do gás, com a
+  caixa de placas refratárias): o cliente vê uma churrasqueira a carvão no
+  lugar da a gás.
+- **Página da Soft a carvão:**
+  - "Disponíveis no modelo cooktop e clean" não explica o que é o modelo
+    cooktop, que não existe na lista da linha;
+  - "porta espetos" e "porta-espeto" escritos de dois jeitos no mesmo texto;
+  - o botão "Baixar 3D" leva a uma só versão (porta-espeto e manivela
+    frontal), mas a página abre com outra selecionada (espetos em balanço e
+    manivela lateral), sem avisar;
+  - o botão "Baixar 3D" também usa o verde-claro que parece desativado (o
+    mesmo do "Preço sob consulta", na seção 4).
 
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz

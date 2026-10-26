@@ -27,7 +27,9 @@
    - fotos: [{ imagem, textoAlternativo }] fotos de projetos, depois da do produto
    - versoes: { colunas: ['Lenha', 'Álcool'], linhas: [{ rotulo, valores }] }
      medidas de cada versão no catálogo
-   - downloads (opcional): [{ texto, arquivo, tamanho }] manuais do modelo
+   - downloads (opcional): [{ texto, arquivo, tamanho }] manuais do modelo;
+     externo: 'texto' para link de outro site, que abre em nova aba (ex.: 3D)
+   - versoes.titulo (opcional): título da tabela (padrão: "Medidas da <nome>")
    - palavrasBlog (opcional): termos para achar artigos do blog (padrão: o nome)
    - cores: null para peças em inox, sem opção de cor (a linha "Cores" some)
    - combustíveis das churrasqueiras: 'carvao' | 'gas'
@@ -569,13 +571,38 @@ var MODELOS = [
   {
     categoria: 'churrasqueiras', linha: 'soft',
     nome: 'Churrasqueira Soft a carvão', slug: 'a-carvao',
-    texto: SOFT,
+    // Do site da Construflama (página da Churrasqueira Soft a carvão)
+    descricao: 'O bom churrasco é aquele que os amigos e a família elogiam, e cada um tem seu segredo. O nosso é atender os churrasqueiros mais exigentes, unindo tradição, tecnologia e personalização.',
+    texto: [
+      'As churrasqueiras a carvão Construflama são produzidas em aço inox 304 escovado e revestidas com placas refratárias. Todas podem ter porta-espetos, inclusive na opção com espetos em balanço, e a altura da grelha é regulável.',
+      'Nossas churrasqueiras são testadas e aprovadas por grandes mestres.'
+    ].concat(SOFT.slice(0, 2)),
     combustiveis: ['carvao'],
     imagem: 'img/modelos/churrasqueira-soft-carvao.webp',
-    textoAlternativo: 'Churrasqueira Soft a carvão em aço inox: caixa retangular com duas grelhas, cavalete com espetos em balanço e manivela no alto, à direita.',
+    textoAlternativo: 'Churrasqueira Soft a carvão em aço inox escovado: caixa retangular com duas grelhas, quatro espetos em balanço e cavalete com manivela lateral no alto.',
+    ambiente: { imagem: 'img/modelos/churrasqueira-soft-carvao-cozinha.webp',
+      textoAlternativo: 'Churrasqueira Soft a carvão embutida numa bancada de mármore claro, ao lado de um cooktop e de um vaso com planta.' },
+    fotos: [
+      { imagem: 'img/modelos/churrasqueira-soft-carvao-cozinha.webp', textoAlternativo: 'Churrasqueira Soft a carvão embutida numa bancada de mármore claro, com a manivela lateral, grelhas suspensas por cabos, quatro espetos e a caixa revestida de placas refratárias, ao lado de um cooktop e de um vaso com planta.' }
+    ],
+    // Tipos do site, montados como tabela (espetos × cavalete e manivela)
+    versoes: {
+      titulo: 'Versões da Churrasqueira Soft a carvão',
+      rotuloLinhas: 'Espetos',
+      colunas: ['Manivela lateral', 'Manivela frontal', 'Sem cavalete'],
+      linhas: [
+        { rotulo: 'Em balanço', valores: ['Disponível', 'Disponível', 'Disponível'] },
+        { rotulo: 'Porta-espetos', valores: ['Não', 'Disponível', 'Disponível'] }
+      ],
+      // TODO: confirmar a unidade dos tamanhos (provavelmente centímetros de largura)
+      nota: 'Todas as versões nos tamanhos 60, 70, 80, 90, 100 e 110. A equipe confirma as medidas do seu projeto.'
+    },
+    downloads: [
+      // Modelo 3D da versão com porta-espeto e manivela frontal
+      { texto: 'Baixar 3D', externo: 'SketchUp', arquivo: 'https://3dwarehouse.sketchup.com/model/9a515822-6af3-4eb8-acbd-7c3f666cc06b/CHURRASQUEIRA-SOFT-CARV%C3%83O-PORTA-ESPETO-FRONTAL' }
+    ],
     cores: null, palavrasBlog: ['Linha Soft'],
-    prototipo: true, etiqueta: 'Descrição e medidas em breve',
-    medidas: { altura: '', largura: '', peso: '' }
+    medidas: { altura: '', largura: '60 a 110', peso: '' }
   },
   {
     categoria: 'churrasqueiras', linha: 'soft',
@@ -604,12 +631,12 @@ var MODELOS = [
     nome: 'Churrasqueira Soft a gás', slug: 'a-gas',
     texto: SOFT,
     combustiveis: ['gas'],
-    // Sem foto do produto em fundo branco: o site usa a foto de projeto
+    // Sem foto do produto em fundo branco. A foto da cozinha que o site usa
+    // no cartão da Soft a gás é da Soft a carvão (na lista de problemas)
     imagem: '',
-    ambiente: { imagem: 'img/linhas/churrasqueiras-soft.webp',
-      textoAlternativo: 'Churrasqueira Soft a gás embutida numa bancada de pedra clara, sob uma coifa preta, ao lado de um cooktop e de um vaso com planta.' },
+    ambiente: { imagem: 'img/blog/churrasqueira-soft.webp',
+      textoAlternativo: 'Churrasqueira Soft a gás em aço inox, com manivela, espetos, duas grelhas e três botões de controle, embutida em bancada clara.' },
     fotos: [
-      { imagem: 'img/linhas/churrasqueiras-soft.webp', textoAlternativo: 'Churrasqueira Soft a gás embutida numa bancada de pedra clara, sob uma coifa preta, ao lado de um cooktop e de um vaso com planta.' },
       // Do blog ("Descubra qual é a sua churrasqueira dos sonhos!")
       { imagem: 'img/blog/churrasqueira-soft.webp', textoAlternativo: 'Churrasqueira Soft a gás em aço inox, com estrutura em chapa dobrada, manivela à direita, quatro espetos, duas grelhas e três botões de controle, embutida em bancada clara.' }
     ],
