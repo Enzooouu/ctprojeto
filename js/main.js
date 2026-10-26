@@ -1912,7 +1912,7 @@ var DEPOIMENTOS = [
     titulo.textContent = nome;
     document.querySelector('[data-prod-frase]').textContent = linha.descricao;
     if (modelo && modelo.prototipo) {
-      document.querySelector('[data-prod-cat]').appendChild(el('span', 'tag-exemplo prod-tag-prototipo', 'Lançamento · dados em breve'));
+      document.querySelector('[data-prod-cat]').appendChild(el('span', 'tag-exemplo prod-tag-prototipo', 'Lançamento · foto e medidas em breve'));
     }
 
     // Combustível e cores
@@ -2193,7 +2193,7 @@ var DEPOIMENTOS = [
         unica.loading = 'lazy';
         palco.appendChild(unica);
       }
-      if (m.prototipo) palco.appendChild(el('span', 'tag-exemplo', 'Lançamento · dados em breve'));
+      if (m.prototipo) palco.appendChild(el('span', 'tag-exemplo', 'Lançamento · foto e medidas em breve'));
       if (m.ambiente && m.imagem) {
         var amb = el('img', 'mod-card__ambiente');
         amb.src = m.ambiente.imagem;

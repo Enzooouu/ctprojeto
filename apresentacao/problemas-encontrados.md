@@ -150,6 +150,9 @@ Atualizado sempre que um novo problema aparecer.
   não pode ser encontrado por quem procura nas coleções nem no catálogo, e não
   tem foto do produto, medidas, combustível nem cores publicados. No novo site
   ela já aparece na página das esculturais, marcada como lançamento.
+  A própria Construflama não tem foto do produto da Pilão: só a do ambiente
+  da CASACOR. Sem foto em fundo branco, ela não pode entrar no catálogo nem ser
+  vendida pelo site como as outras.
 
 - **"Como escolher a lareira ideal" tem o mesmo texto do artigo do Trio
   Ecolare.** (No novo site o texto foi copiado igual, a pedido, e está marcado

@@ -263,18 +263,22 @@ var MODELOS = [
   },
   {
     // PROTÓTIPO: a Pilão não está no site atual nem no catálogo 2026.
-    // TODO: foto do produto, combustíveis, cores e medidas (o Enzo vai conseguir).
+    // Lenha e cores preto e marrom confirmados com a Construflama, que ainda
+    // não tem foto do produto. TODO: foto do produto e medidas.
     prototipo: true,
     categoria: 'lareiras', linha: 'esculturais',
     nome: 'Lareira Pilão', slug: 'pilao',
     // Do artigo do blog "Descubra os modelos da linha Escultural"
     descricao: 'O mais recente lançamento da linha: uma peça robusta que faz a referência rústica se apresentar de forma elegante, desenvolvida com o escritório brasiliense MAAI Arquitetura para a CASACOR São Paulo.',
-    combustiveis: [],
+    combustiveis: ['lenha'],
     imagem: '',
     textoAlternativo: '',
     ambiente: { imagem: 'img/blog/living-ritmo-vital-pilao.webp',
       textoAlternativo: 'Lareira Pilão, de metal escuro, sobre uma base com lenha, diante de paredes de palha trançada, no Living Ritmo Vital da MAAI Arquitetura, CASACOR São Paulo 2026.' },
-    cores: [],
+    cores: [
+      { nome: 'preto', cor: '#1E1B19' },
+      { nome: 'marrom', cor: '#7A3E12' }
+    ],
     texto: [
       'A Pilão foi desenvolvida em conjunto com o escritório brasiliense MAAI Arquitetura, que trouxe referências ancestrais do Centro-Oeste para a CASACOR São Paulo.'
     ],
