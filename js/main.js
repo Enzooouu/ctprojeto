@@ -230,6 +230,68 @@ var DEPOIMENTOS = [
 
   function srOnly(text) { return el('span', 'sr-only', text); }
 
+  // Foto em tela cheia (artigo do blog e galeria da página "Ver sobre").
+  // galeria (opcional): { fotos: [{ imagem, textoAlternativo }], indice, aoTrocar(n) }
+  // mostra setas e "2 de 6"; as setas do teclado também passam as fotos.
+  var telaCheia = null;
+  function abrirTelaCheia(img, legenda, origem, galeria) {
+    if (!telaCheia) {
+      telaCheia = el('dialog', 'tela-cheia');
+      telaCheia.setAttribute('aria-label', 'Foto em tela cheia');
+      var fechar = el('button', 'tela-cheia__fechar', '×');
+      fechar.type = 'button';
+      fechar.setAttribute('aria-label', 'Fechar');
+      fechar.addEventListener('click', function () { telaCheia.close(); });
+      telaCheia.appendChild(fechar);
+      [['anterior', 'Foto anterior', -1], ['proxima', 'Próxima foto', 1]].forEach(function (d) {
+        var seta = el('button', 'tela-cheia__seta tela-cheia__seta--' + d[0]);
+        seta.type = 'button';
+        seta.setAttribute('aria-label', d[1]);
+        seta.appendChild(icone(d[2] < 0 ? 'i-anterior' : 'i-proximo', 'icon'));
+        seta.addEventListener('click', function () { passarFoto(d[2]); });
+        telaCheia.appendChild(seta);
+      });
+      telaCheia.appendChild(el('img', 'tela-cheia__img'));
+      telaCheia.appendChild(el('p', 'tela-cheia__legenda'));
+      // Clique fora da foto (ou na própria foto) fecha
+      telaCheia.addEventListener('click', function (e) {
+        if (e.target === telaCheia || e.target.classList.contains('tela-cheia__img')) telaCheia.close();
+      });
+      telaCheia.addEventListener('keydown', function (e) {
+        if (!telaCheia._galeria) return;
+        if (e.key === 'ArrowLeft') { e.preventDefault(); passarFoto(-1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); passarFoto(1); }
+      });
+      telaCheia.addEventListener('close', function () {
+        document.body.style.overflow = '';
+        if (telaCheia._origem) telaCheia._origem.focus();
+      });
+      document.body.appendChild(telaCheia);
+    }
+    function mostrar(src, alt, texto) {
+      var grande = telaCheia.querySelector('.tela-cheia__img');
+      grande.src = src;
+      grande.alt = alt;
+      var leg = telaCheia.querySelector('.tela-cheia__legenda');
+      leg.textContent = texto || '';
+      leg.hidden = !texto;
+    }
+    function passarFoto(passo) {
+      var g = telaCheia._galeria;
+      g.indice = (g.indice + passo + g.fotos.length) % g.fotos.length;
+      var f = g.fotos[g.indice];
+      mostrar(f.imagem, f.textoAlternativo || '', (g.indice + 1) + ' de ' + g.fotos.length);
+      if (g.aoTrocar) g.aoTrocar(g.indice);
+    }
+    var comSetas = !!(galeria && galeria.fotos.length > 1);
+    telaCheia._galeria = comSetas ? galeria : null;
+    telaCheia.querySelectorAll('.tela-cheia__seta').forEach(function (b) { b.hidden = !comSetas; });
+    mostrar(img.src, img.alt, comSetas ? (galeria.indice + 1) + ' de ' + galeria.fotos.length : legenda);
+    telaCheia._origem = origem;
+    document.body.style.overflow = 'hidden';
+    telaCheia.showModal();               // Esc fecha; o foco fica dentro
+  }
+
   // Botão "Copiar link" (artigo do blog e página "Ver sobre")
   function ligarCopiarLink(botao, endereco) {
     if (!botao) return;
@@ -1685,38 +1747,6 @@ var DEPOIMENTOS = [
     }
 
     // Fotos do artigo (capa e figuras): clique abre em tela cheia
-    var telaCheia = null;
-    function abrirTelaCheia(img, legenda, origem) {
-      if (!telaCheia) {
-        telaCheia = el('dialog', 'tela-cheia');
-        telaCheia.setAttribute('aria-label', 'Foto em tela cheia');
-        var fechar = el('button', 'tela-cheia__fechar', '×');
-        fechar.type = 'button';
-        fechar.setAttribute('aria-label', 'Fechar');
-        fechar.addEventListener('click', function () { telaCheia.close(); });
-        telaCheia.appendChild(fechar);
-        telaCheia.appendChild(el('img', 'tela-cheia__img'));
-        telaCheia.appendChild(el('p', 'tela-cheia__legenda'));
-        // Clique fora da foto (ou na própria foto) fecha
-        telaCheia.addEventListener('click', function (e) {
-          if (e.target === telaCheia || e.target.classList.contains('tela-cheia__img')) telaCheia.close();
-        });
-        telaCheia.addEventListener('close', function () {
-          document.body.style.overflow = '';
-          if (telaCheia._origem) telaCheia._origem.focus();
-        });
-        document.body.appendChild(telaCheia);
-      }
-      var grande = telaCheia.querySelector('.tela-cheia__img');
-      grande.src = img.src;
-      grande.alt = img.alt;
-      var leg = telaCheia.querySelector('.tela-cheia__legenda');
-      leg.textContent = legenda || '';
-      leg.hidden = !legenda;
-      telaCheia._origem = origem;
-      document.body.style.overflow = 'hidden';
-      telaCheia.showModal();               // Esc fecha; o foco fica dentro
-    }
     document.querySelectorAll('.post-capa img, .post-figura img').forEach(function (img) {
       var fig = img.closest('figure');
       var legenda = fig && fig.querySelector('figcaption') ? fig.querySelector('figcaption').textContent : '';
@@ -1868,9 +1898,23 @@ var DEPOIMENTOS = [
     var img = el('img', 'prod-galeria__foto');
     img.decoding = 'async';
     img.setAttribute('fetchpriority', 'high');
-    document.querySelector('[data-prod-foto]').appendChild(img);
+    // A foto principal é um botão: abre em tela cheia, com setas entre as fotos
+    var zoom = el('button', 'foto-zoom prod-galeria__zoom');
+    zoom.type = 'button';
+    zoom.setAttribute('aria-label', 'Ampliar foto');
+    zoom.appendChild(img);
+    var lupa = el('span', 'prod-galeria__lupa');
+    lupa.setAttribute('aria-hidden', 'true');
+    lupa.appendChild(icone('i-ampliar', 'icon'));
+    zoom.appendChild(lupa);
+    document.querySelector('[data-prod-foto]').appendChild(zoom);
+    var fotoAtual = 0;
+    zoom.addEventListener('click', function () {
+      abrirTelaCheia(img, '', zoom, { fotos: fotos, indice: fotoAtual, aoTrocar: mostrarFoto });
+    });
     var miniaturas = document.querySelector('[data-prod-miniaturas]');
     function mostrarFoto(n) {
+      fotoAtual = n;
       img.src = fotos[n].imagem;
       img.alt = fotos[n].textoAlternativo || '';
       img.style.objectPosition = fotos[n].foco || '';

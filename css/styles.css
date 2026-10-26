@@ -2257,6 +2257,25 @@ button.blog-pagina { background: none; cursor: pointer; }
   cursor: pointer;
 }
 .tela-cheia__fechar:hover { border-color: var(--bege-claro); }
+.tela-cheia__seta {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-top: -1.5rem;
+  border: 1px solid rgba(245, 239, 229, .4);
+  border-radius: 50%;
+  background: rgba(20, 16, 13, .6);
+  color: var(--bege-claro);
+  cursor: pointer;
+}
+.tela-cheia__seta:hover { border-color: var(--bege-claro); }
+.tela-cheia__seta[hidden] { display: none; }
+.tela-cheia__seta--anterior { left: var(--sp-4); }
+.tela-cheia__seta--proxima { right: var(--sp-4); }
+.tela-cheia__seta .icon { width: 1.4rem; height: 1.4rem; }
 @media (prefers-reduced-motion: no-preference) {
   .tela-cheia[open] { animation: telaCheia .25s var(--ease-out); }
 }
@@ -2352,7 +2371,23 @@ button.blog-pagina { background: none; cursor: pointer; }
   background: var(--cinza-escuro-profundo);
   box-shadow: 0 34px 70px -38px rgba(0, 0, 0, .8);
 }
+.prod-galeria__zoom { position: relative; height: 100%; overflow: hidden; border-radius: 0; }
 .prod-galeria__foto { width: 100%; height: 100%; object-fit: cover; }
+/* Lupa no canto: mostra que a foto amplia */
+.prod-galeria__lupa {
+  position: absolute;
+  right: var(--sp-3);
+  bottom: var(--sp-3);
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: rgba(20, 16, 13, .65);
+  color: var(--bege-claro);
+}
+.prod-galeria__lupa .icon { width: 1.2rem; height: 1.2rem; }
+.prod-galeria__zoom:focus-visible { outline-offset: -4px; }
 .prod-galeria__miniaturas { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin: var(--sp-3) 0 0; padding: 0; list-style: none; }
 .prod-miniatura {
   display: block;
