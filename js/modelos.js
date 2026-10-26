@@ -218,11 +218,18 @@ var MODELOS = [
     textoAlternativo: 'Lareira Francesa preta apoiada no chão, em formato de cone inclinado com abertura oval e lenha acesa.',
     cores: CORES_ESCULTURAIS,
     texto: [
-      'A primeira lareira escultural criada por Roberto Cassab, diretor fundador da Construflama, traz referências do design clássico europeu com um ar campestre. Costuma ficar perto das paredes, em espaços de identidade mais atemporal, com elementos vintage inspirados naquilo que nunca sai de moda: a elegância.'
+      'A primeira lareira escultural criada por Roberto Cassab, diretor fundador da Construflama, traz referências do design clássico europeu com um ar campestre. Costuma ficar perto das paredes, em espaços de identidade mais atemporal, com elementos vintage inspirados naquilo que nunca sai de moda: a elegância.',
+      // Do site da Construflama (página da Lareira Francesa)
+      'É o modelo de solo da linha escultural. Quanto aos materiais, ela pode ser em aço carbono, pintado de preto ou branco, ou em aço corten.'
     ],
     citacao: { texto: 'A gente quis trazer essa lareira para dentro do espaço para criar dentro do conceito da “Casa Carioca” não só perto de praia, mas em qualquer região do Rio de Janeiro ou até outro lugar.',
       autor: 'Cadé Marino, sobre o Espaço Deca, a “Casa Abraço”, da CASACOR Rio 2026' },
-    fotos: [],
+    fotos: [
+      // Do site da Construflama (página da Lareira Francesa)
+      { imagem: 'img/modelos/lareira-francesa-cores.webp', textoAlternativo: 'Três lareiras Francesas lado a lado, nas cores branca, preta e cor de ferrugem, com a chama acesa, e a tela de proteção apoiada no chão.' },
+      { imagem: 'img/modelos/lareira-francesa-janela.webp', textoAlternativo: 'Lareira Francesa preta e acesa no canto de uma sala envidraçada com cortinas de fios, ao lado de mesas pretas com vasos cor de terracota e uma escultura.' },
+      { imagem: 'img/modelos/lareira-francesa-janela-ampla.webp', textoAlternativo: 'Vista ampla da sala envidraçada com cortinas de fios, poltrona de camurça, mesa lateral dourada e, no canto, a Lareira Francesa preta acesa.' }
+    ],
     versoes: {
       colunas: ['Lenha', 'Álcool'],
       linhas: [

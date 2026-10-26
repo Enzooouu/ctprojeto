@@ -71,6 +71,12 @@ Atualizado sempre que um novo problema aparecer.
 - **Mesmo texto genérico da Cone e da Tarus**, com o mesmo erro "versão 3600"
   em vez de 360°.
 
+### Site atual: página da Lareira Francesa
+- **Mesmo texto genérico das outras esculturais** (com "versão 3600" e
+  "francesa" com inicial minúscula), sem nada da história da Francesa, que
+  foi a primeira lareira escultural criada pelo fundador, Roberto Cassab.
+- **Sem manual técnico**, ao contrário da Tarus, da Gota e da Pipe.
+
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz
   29.328 BTU/h = 13,50 kW e 36.096 BTU/h = 16,27 kW; o certo seria cerca de
