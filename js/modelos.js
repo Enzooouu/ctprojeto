@@ -515,8 +515,8 @@ var MODELOS = [
     combustiveis: ['alcool'],
     imagem: 'img/modelos/lareira-peao.webp',
     textoAlternativo: 'Lareira Peão, do Trio Chess: peça preta baixa, mais larga no meio, com o queimador no topo.',
-    ambiente: { imagem: 'img/modelos/lareira-peao-rainha-acesas.webp',
-      textoAlternativo: 'Lareiras Peão e Rainha acesas sobre um tapete cinza, ao lado de um sofá.' },
+    ambiente: { imagem: 'img/blog/tipos-de-lareiras-ecologicas.webp',
+      textoAlternativo: 'As três peças do Trio Chess acesas sobre um tapete cinza, diante de um sofá.' },
     cores: CORES_ESCULTURAIS, fotos: [
       { imagem: 'img/modelos/lareira-peao-rainha-acesas.webp', textoAlternativo: 'Lareiras Peão e Rainha pretas e acesas, com chamas altas, sobre um tapete cinza ao lado de um sofá e de uma mesa de centro baixa.' },
       // Do blog: o Trio Chess completo
