@@ -77,6 +77,12 @@ Atualizado sempre que um novo problema aparecer.
   foi a primeira lareira escultural criada pelo fundador, Roberto Cassab.
 - **Sem manual técnico**, ao contrário da Tarus, da Gota e da Pipe.
 
+### Site atual: página da Lareira Balaio
+- **Só uma foto de projeto** e nenhum artigo no blog sobre ela, embora seja
+  assinada por um arquiteto conhecido (Quintino Facci). É o modelo escultural
+  com menos material de divulgação.
+- **Sem manual técnico**, como a Francesa.
+
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz
   29.328 BTU/h = 13,50 kW e 36.096 BTU/h = 16,27 kW; o certo seria cerca de

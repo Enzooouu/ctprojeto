@@ -249,8 +249,14 @@ var MODELOS = [
     imagem: 'img/modelos/lareira-balaio.webp',
     textoAlternativo: 'Lareira Balaio preta: um cilindro suspenso por quatro hastes sobre um grande prato redondo com o queimador no centro.',
     cores: CORES_ESCULTURAIS,
-    texto: [],
-    fotos: [],
+    texto: [
+      'Um cilindro suspenso por quatro hastes sobre um grande prato redondo: a Balaio deixa o fogo à vista de todos os lados, como peça central do ambiente.',
+      'Quanto aos materiais, ela pode ser em aço carbono, pintado de preto ou branco, ou em aço corten.'
+    ],
+    fotos: [
+      // Do site da Construflama (página da Lareira Balaio)
+      { imagem: 'img/modelos/lareira-balaio-sofa-laranja.webp', textoAlternativo: 'Lareira Balaio preta acesa no canto de uma sala revestida de madeira clara, com o cilindro suspenso sobre o prato redondo, ao lado de um sofá curvo laranja e de uma parede de peças de cerâmica branca.' }
+    ],
     versoes: {
       colunas: ['Álcool'],
       linhas: [
