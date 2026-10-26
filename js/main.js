@@ -44,7 +44,7 @@ var CATEGORIAS = [
     subcategorias: [
       { nome: 'Tradicionais', slug: 'tradicionais', acao: 'sobre', sobreNome: 'as lareiras tradicionais', descricao: 'O fogo na sua forma mais pura.', imagem: 'img/linhas/lareiras-tradicionais.webp', foco: '50% 55%',
         textoAlternativo: 'Lareira a lenha acesa embutida numa parede revestida de madeira, com nichos de lenha empilhada dos dois lados, numa sala com sofá claro e mesa de centro.' },
-      { nome: 'A gás linear', slug: 'a-gas-linear', descricao: 'Uma linha de fogo limpa e contínua, que acende com praticidade e vira parte do projeto.', imagem: 'img/linhas/lareiras-a-gas-linear.webp', foco: '60% 70%',
+      { nome: 'A gás linear', slug: 'a-gas-linear', acao: 'sobre', sobreNome: 'a lareira a gás linear', descricao: 'Uma linha de fogo limpa e contínua, que acende com praticidade e vira parte do projeto.', imagem: 'img/linhas/lareiras-a-gas-linear.webp', foco: '60% 70%',
         textoAlternativo: 'Lareira a gás com abertura horizontal e chama baixa, embutida numa parede curva marrom, numa sala com poltronas claras e mesa de madeira.' },
       { nome: 'Esculturais', slug: 'esculturais', descricao: 'Formas marcantes que fazem da lareira a peça central do ambiente, acesa ou apagada.', imagem: 'img/linhas/lareiras-esculturais.webp', foco: '75% 60%',
         textoAlternativo: 'Lareira preta em formato de cone apoiada no chão, acesa, ao lado de uma janela grande com cortinas de fios, numa sala com vasos e luminária dourada.' },
