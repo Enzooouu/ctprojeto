@@ -28,6 +28,23 @@ Atualizado sempre que um novo problema aparecer.
   40 cm de largura, 28 cm de profundidade e versões "de 50 a 150 cm"; o manual
   diz 287 mm de largura e comprimentos de 690 a 2.090 mm (LRG-060 a LRG-200).
 
+- **Potência de aquecimento das lareiras esculturais com unidade impossível:**
+  "Potênc. de Aquec. m³: 60.000" (Gota, Tarus, Cone, Francesa a lenha) e
+  21.000 ou 15.000 m³ nas versões a álcool. Na mesma tabela, a Lareira
+  tradicional aquece de 100 a 450 m³ e a Ecoflama de 15 a 30 m³: os números
+  das esculturais provavelmente estão em outra unidade (kcal/h ou BTU/h).
+  O novo site não mostra esses valores.
+- **Pesos escritos de forma confusa:** "75,000Kg", "110,000Kg", "112,500kg"
+  (parece 75 mil quilos). No novo site: 75 kg, 110 kg, 112,5 kg.
+- **Capacidade do reservatório e duração da queima com os mesmos números**
+  em todos os modelos a álcool ("Capac. Reserv.(L): 2,400 / Dur. Queima(H):
+  2,400"), o que parece cópia de um campo para o outro.
+- **Lareira Balaio:** o texto diz que ela existe "nas versões à lenha e à
+  álcool", mas as especificações trazem só a versão a álcool. O novo site
+  mostra só álcool até a Construflama confirmar.
+- **Lareira Pipe:** diâmetro "Ø475" sem unidade (provavelmente 475 mm).
+- **Crase errada** em "à lenha", "à álcool" e "à gás".
+
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz
   29.328 BTU/h = 13,50 kW e 36.096 BTU/h = 16,27 kW; o certo seria cerca de
@@ -57,6 +74,11 @@ Atualizado sempre que um novo problema aparecer.
   "confraternizações de fim de ano".
 
 ## 2. Conteúdo publicado com falhas
+
+- **Lareira Pilão fora do site e do catálogo:** o blog apresenta a Pilão como
+  "o mais recente lançamento da Construflama" na linha escultural, mas ela não
+  aparece na página "Lareiras esculturais" do site nem no catálogo 2026.
+  Já a Balaio está no site e no catálogo, mas não no artigo da linha escultural.
 
 - **"Como escolher a lareira ideal" tem o mesmo texto do artigo do Trio
   Ecolare.** (No novo site o texto foi copiado igual, a pedido, e está marcado
@@ -90,6 +112,15 @@ Atualizado sempre que um novo problema aparecer.
 - Emojis no meio do texto (📞 📧 👉 🔥), que os leitores de tela leem em voz alta.
 
 ## 4. Experiência no site atual
+
+- **Página "Lareiras esculturais" sem vida:** só fotos do produto em fundo
+  branco e o nome em letras cinza, sem descrição, sem combustível, sem cores
+  e sem nenhuma foto de projeto real.
+- **Filtros repetidos e contraditórios na mesma página:** "Tipo" e "Tipos",
+  com as mesmas opções e números diferentes (Gás 2 em um, Gás 3 no outro);
+  "álcool" com inicial minúscula.
+- **Ordenação "Mais vendidos"** numa loja em que nada é vendido pelo site
+  (todos os produtos são "preço sob consulta").
 
 - Botão **"Preço sob consulta"** em verde-claro, que parece desativado, no
   lugar de um convite claro para pedir orçamento.

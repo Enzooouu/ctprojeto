@@ -348,6 +348,12 @@ var DEPOIMENTOS = [
 
   // Páginas "Ver sobre" (PAGINAS_SOBRE, em js/sobre.js)
   var NA_PAGINA_SOBRE = document.body.hasAttribute('data-pagina-sobre');
+  // Páginas de modelos de uma linha (MODELOS, em js/modelos.js)
+  var NA_PAGINA_MODELOS = document.body.hasAttribute('data-pagina-modelos');
+  function modelosDaLinha(catSlug, linhaSlug) {
+    if (typeof MODELOS === 'undefined') return [];
+    return MODELOS.filter(function (m) { return m.categoria === catSlug && m.linha === linhaSlug; });
+  }
   function paginaSobre(catSlug, linhaSlug) {
     if (typeof PAGINAS_SOBRE === 'undefined') return null;
     return PAGINAS_SOBRE.filter(function (x) { return x.categoria === catSlug && x.linha === linhaSlug; })[0] || null;
@@ -615,6 +621,9 @@ var DEPOIMENTOS = [
       if (sobre && paginaSobre(cat.slug, s.slug)) {
         verTodos = el('a', null, 'Ver sobre');
         verTodos.href = 'produto.html?c=' + cat.slug + '&l=' + s.slug;
+      } else if (!sobre && modelosDaLinha(cat.slug, s.slug).length) {
+        verTodos = el('a', null, 'Ver todos os modelos');
+        verTodos.href = 'modelos.html?c=' + cat.slug + '&l=' + s.slug;
       } else {
         verTodos = linkProvisorio(sobre ? 'Ver sobre' : 'Ver todos os modelos',
           sobre
@@ -1976,6 +1985,183 @@ var DEPOIMENTOS = [
     var artigos = typeof POSTS === 'undefined' || !termos.length ? [] : postsPorData().filter(function (p) {
       var conteudo = normalizar(textoDoPost(p));
       return p.categoria === cat.slug && termos.some(function (t) { return conteudo.indexOf(t) !== -1; });
+    }).slice(0, 3);
+    artigos.forEach(function (p) { gradeBlog.appendChild(cardPost(p)); });
+    if (!artigos.length) gradeBlog.closest('section').hidden = true;
+  })();
+
+  /* ------------------------------------------------------------------------
+     H3. Modelos de uma linha (modelos.html?c=colecao&l=linha)
+         Cartões com a foto do produto; ao passar o mouse (ou focar), a
+         foto de um projeto real aparece por cima. Filtro por combustível,
+         tabela para comparar as medidas e artigos do blog com os modelos.
+     ------------------------------------------------------------------------ */
+  (function montarPaginaModelos() {
+    if (!NA_PAGINA_MODELOS) return;
+    var q = new URLSearchParams(location.search);
+    var cat = buscarCategoria(q.get('c'));
+    var linha = cat ? cat.subcategorias.filter(function (s) { return s.slug === q.get('l'); })[0] : null;
+    var modelos = linha ? modelosDaLinha(cat.slug, linha.slug) : [];
+    var titulo = document.querySelector('[data-mod-titulo]');
+    var lead = document.querySelector('[data-mod-lead]');
+    var migalhas = document.querySelector('[data-mod-migalhas]');
+    function migalha(rotulo, href) {
+      var li = el('li');
+      var n = el(href ? 'a' : 'span', null, rotulo);
+      if (href) n.href = href; else n.setAttribute('aria-current', 'page');
+      li.appendChild(n);
+      migalhas.appendChild(li);
+    }
+
+    if (!modelos.length) {
+      document.title = 'Página não encontrada | Construflama';
+      titulo.textContent = 'Página não encontrada';
+      lead.textContent = 'Este endereço não corresponde a uma linha com modelos. Veja as coleções na página inicial.';
+      migalha('Página não encontrada');
+      document.querySelectorAll('[data-mod-so], [data-mod-foto]').forEach(function (n) { n.hidden = true; });
+      return;
+    }
+
+    var nomeLinha = cat.nome + ' ' + linha.nome.toLowerCase();   // "Lareiras esculturais"
+    document.title = nomeLinha + ' | Construflama';
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', nomeLinha + ' Construflama: ' + modelos.map(function (m) { return m.nome.replace(/^\S+ /, ''); }).join(', ') + '. Showroom em São Paulo e entrega em todo o Brasil.');
+    migalha(cat.nome, 'colecao.html?c=' + cat.slug);
+    migalha(linha.nome);
+    document.querySelector('[data-mod-cat]').textContent = cat.nome + ' · ' + modelos.length + ' modelos';
+    titulo.textContent = nomeLinha;
+    lead.textContent = linha.descricao;
+    var foto = document.querySelector('[data-mod-foto]');
+    foto.src = linha.imagem;
+    if (linha.foco) foto.style.objectPosition = linha.foco;
+
+    var catalogo = CATALOGOS.filter(function (c) { return c.arquivo && c.categorias.indexOf(cat.slug) !== -1; })[0];
+    if (catalogo) {
+      var baixar = document.querySelector('[data-prod-catalogo]');
+      baixar.href = catalogo.arquivo;
+      baixar.hidden = false;
+      baixar.insertBefore(srOnly('de ' + catalogo.titulo.toLowerCase() + ' '), baixar.querySelector('[data-prod-catalogo-peso]'));
+      document.querySelector('[data-prod-catalogo-peso]').textContent = '(PDF' + (catalogo.tamanho ? ', ' + catalogo.tamanho : '') + ')';
+    }
+
+    var NOMES_COMB = { lenha: 'Lenha', alcool: 'Álcool', gas: 'Gás' };
+    function combustiveis(m) {
+      var lista = m.combustiveis.map(function (c) { return NOMES_COMB[c]; });
+      if (m.gasSobConsulta) lista.push('Gás sob consulta');
+      return lista;
+    }
+    function listaTexto(itens) {
+      return itens.length > 1 ? itens.slice(0, -1).join(', ') + ' e ' + itens[itens.length - 1] : itens[0];
+    }
+
+    // Cartões
+    var grade = document.querySelector('[data-mod-grade]');
+    modelos.forEach(function (m, i) {
+      var li = el('li', 'mod-card');
+      li.style.setProperty('--i', i);
+      var art = el('article', 'mod-card__caixa');
+      var palco = el('div', 'mod-card__palco');
+      var img = el('img', 'mod-card__produto');
+      img.src = m.imagem;
+      img.alt = m.textoAlternativo;
+      img.loading = 'lazy';
+      palco.appendChild(img);
+      if (m.ambiente) {
+        var amb = el('img', 'mod-card__ambiente');
+        amb.src = m.ambiente.imagem;
+        amb.alt = m.ambiente.textoAlternativo;
+        amb.loading = 'lazy';
+        palco.appendChild(amb);
+        var selo = el('span', 'mod-card__selo', 'Em projeto');
+        selo.setAttribute('aria-hidden', 'true');
+        palco.appendChild(selo);
+        art.classList.add('mod-card__caixa--ambiente');
+      }
+      art.appendChild(palco);
+
+      var corpo = el('div', 'mod-card__corpo');
+      var h = el('h3', 'mod-card__nome');
+      // TODO: página de cada modelo (próxima etapa)
+      var link = linkProvisorio(m.nome, 'A página da ' + m.nome + ' será criada na próxima etapa.');
+      link.className = 'mod-card__link';
+      h.appendChild(link);
+      corpo.appendChild(h);
+      var tags = el('ul', 'mod-card__tags');
+      tags.setAttribute('aria-label', 'Combustível');
+      combustiveis(m).forEach(function (c) { tags.appendChild(el('li', null, c)); });
+      corpo.appendChild(tags);
+      corpo.appendChild(el('p', 'mod-card__desc', m.descricao));
+      if (m.cores && m.cores.length) {
+        var cores = el('p', 'mod-card__cores');
+        m.cores.forEach(function (c) {
+          var bola = el('span', 'mod-card__cor');
+          bola.style.background = c.cor;
+          bola.setAttribute('aria-hidden', 'true');
+          cores.appendChild(bola);
+        });
+        cores.appendChild(el('span', 'mod-card__cores-texto', 'Cores: ' + listaTexto(m.cores.map(function (c) { return c.nome; }))));
+        corpo.appendChild(cores);
+      }
+      art.appendChild(corpo);
+      li.appendChild(art);
+      li._modelo = m;
+      grade.appendChild(li);
+    });
+
+    // Filtro por combustível (só os que existem na linha)
+    var filtros = document.querySelector('[data-mod-filtros]');
+    var contagem = document.querySelector('[data-mod-contagem]');
+    var opcoes = [{ id: 'todos', nome: 'Todos' }];
+    ['lenha', 'alcool', 'gas'].forEach(function (c) {
+      var tem = modelos.some(function (m) { return m.combustiveis.indexOf(c) !== -1 || (c === 'gas' && m.gasSobConsulta); });
+      if (tem) opcoes.push({ id: c, nome: NOMES_COMB[c] });
+    });
+    function filtrar(id) {
+      var n = 0;
+      grade.querySelectorAll('.mod-card').forEach(function (li) {
+        var m = li._modelo;
+        var mostra = id === 'todos' || m.combustiveis.indexOf(id) !== -1 || (id === 'gas' && m.gasSobConsulta);
+        li.hidden = !mostra;
+        if (mostra) n++;
+      });
+      filtros.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(b._id === id)); });
+      contagem.textContent = n + (n === 1 ? ' modelo' : ' modelos') +
+        (id === 'todos' ? '' : ' a ' + NOMES_COMB[id].toLowerCase() + (id === 'gas' ? ' (sob consulta)' : ''));
+    }
+    opcoes.forEach(function (o) {
+      var b = el('button', 'blog-filtro', o.nome);
+      b.type = 'button';
+      b._id = o.id;
+      b.addEventListener('click', function () { filtrar(o.id); });
+      filtros.appendChild(b);
+    });
+    filtrar('todos');
+
+    // Tabela de comparação
+    var tabela = document.querySelector('[data-mod-tabela]');
+    var colunas = ['Modelo', 'Altura', 'Largura ou diâmetro', 'Peso', 'Combustível'];
+    var cab = el('tr');
+    colunas.forEach(function (c) { var th = el('th', null, c); th.scope = 'col'; cab.appendChild(th); });
+    var thead = el('thead');
+    thead.appendChild(cab);
+    tabela.appendChild(thead);
+    var tbody = el('tbody');
+    modelos.forEach(function (m) {
+      var tr = el('tr');
+      var th = el('th', null, m.nome.replace(/^Lareira /, ''));
+      th.scope = 'row';
+      tr.appendChild(th);
+      [m.medidas.altura, m.medidas.largura, m.medidas.peso, listaTexto(combustiveis(m))].forEach(function (v) { tr.appendChild(el('td', null, v)); });
+      tbody.appendChild(tr);
+    });
+    tabela.appendChild(tbody);
+
+    // Artigos do blog que citam algum dos modelos
+    var gradeBlog = document.querySelector('[data-mod-blog]');
+    var termos = modelos.map(function (m) { return normalizar(m.nome); });
+    var artigos = typeof POSTS === 'undefined' ? [] : postsPorData().filter(function (p) {
+      var conteudo = normalizar(textoDoPost(p));
+      return termos.some(function (t) { return conteudo.indexOf(t) !== -1; });
     }).slice(0, 3);
     artigos.forEach(function (p) { gradeBlog.appendChild(cardPost(p)); });
     if (!artigos.length) gradeBlog.closest('section').hidden = true;

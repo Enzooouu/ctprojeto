@@ -2487,6 +2487,169 @@ button.blog-pagina { background: none; cursor: pointer; }
 }
 
 /* --------------------------------------------------------------------------
+   14c. Modelos de uma linha (modelos.html)
+   -------------------------------------------------------------------------- */
+.mod-topo {
+  --foco: var(--laranja-claro);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--bege);
+  background: var(--cinza-escuro-profundo);
+}
+.mod-topo__foto { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+/* Escurece a foto do lado do texto, para o texto ter contraste */
+.mod-topo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to right, rgba(20, 16, 13, .92) 0%, rgba(20, 16, 13, .75) 45%, rgba(20, 16, 13, .25) 100%),
+    linear-gradient(to top, rgba(20, 16, 13, .7), transparent 50%);
+}
+.mod-topo__conteudo {
+  display: grid;
+  justify-items: start;
+  gap: var(--sp-4);
+  min-height: min(78vh, 46rem);
+  align-content: end;
+  padding-top: calc(var(--header-h) + clamp(2rem, 1.5rem + 3vw, 4rem));
+  padding-bottom: clamp(3rem, 2rem + 4vw, 5.5rem);
+}
+.mod-topo .migalhas { align-self: start; margin-bottom: auto; }
+.mod-topo__titulo {
+  max-width: 14ch;
+  font-family: var(--fonte-destaque);
+  font-size: clamp(2.6rem, 1.5rem + 5vw, 5.5rem);
+  line-height: 1;
+  color: var(--bege-claro);
+}
+.mod-topo__lead { max-width: 34rem; color: rgba(245, 239, 229, .9); font-size: var(--fs-md); line-height: 1.55; }
+.mod-topo .prod-orcamento__botoes { margin-top: var(--sp-3); }
+
+/* Lista */
+.mod-lista__topo { display: grid; gap: var(--sp-4); margin-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem); }
+.mod-lista__contagem { margin-top: var(--sp-2); color: var(--cinza); }
+.mod-filtros { margin-bottom: 0; }
+@media (min-width: 1024px) {
+  .mod-lista__topo { grid-template-columns: 1fr auto; align-items: end; }
+}
+.mod-grade { display: grid; gap: var(--sp-5); margin: 0; padding: 0; list-style: none; }
+@media (min-width: 640px) { .mod-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .mod-grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6); } }
+
+.mod-card__caixa {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--raio);
+  background: var(--bege-claro);
+  box-shadow: 0 1px 0 rgba(47, 29, 20, .08);
+  transition: transform .35s var(--ease-out), box-shadow .35s;
+}
+/* Palco: fundo claro e quente com um brilho de brasa embaixo; a foto do
+   produto (fundo branco) "some" no palco com multiply */
+.mod-card__palco {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 55% 35% at 50% 88%, rgba(224, 122, 58, .28), transparent 70%),
+    linear-gradient(to bottom, #F7F2EA, #EADFCC);
+}
+.mod-card__produto {
+  position: absolute;
+  inset: 6% 8% 4%;
+  width: 84%;
+  height: 90%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transition: transform .6s var(--ease-out);
+}
+.mod-card__ambiente {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .5s var(--ease-out), transform .8s var(--ease-out);
+  transform: scale(1.04);
+}
+.mod-card__selo {
+  position: absolute;
+  left: var(--sp-3);
+  bottom: var(--sp-3);
+  padding: .2rem .65rem;
+  border-radius: 999px;
+  background: rgba(20, 16, 13, .7);
+  color: var(--bege-claro);
+  font-size: .78rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity .4s;
+}
+.mod-card__caixa:hover,
+.mod-card__caixa:focus-within { transform: translateY(-4px); box-shadow: 0 28px 48px -30px rgba(47, 29, 20, .7); }
+.mod-card__caixa:hover .mod-card__produto { transform: scale(1.04); }
+.mod-card__caixa--ambiente:hover .mod-card__ambiente,
+.mod-card__caixa--ambiente:focus-within .mod-card__ambiente { opacity: 1; transform: none; }
+.mod-card__caixa--ambiente:hover .mod-card__selo,
+.mod-card__caixa--ambiente:focus-within .mod-card__selo { opacity: 1; }
+/* Telas de toque (sem hover): a foto do projeto aparece pequena no canto */
+@media (hover: none) {
+  .mod-card__ambiente {
+    inset: auto var(--sp-3) var(--sp-3) auto;
+    width: 36%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    opacity: 1;
+    transform: none;
+    border: 2px solid var(--bege-claro);
+    border-radius: var(--raio);
+    box-shadow: 0 8px 18px -8px rgba(47, 29, 20, .6);
+  }
+  .mod-card__selo { display: none; }
+}
+
+.mod-card__corpo { display: grid; align-content: start; gap: var(--sp-3); padding: var(--sp-5); }
+.mod-card__nome { font-family: var(--fonte-destaque); font-size: clamp(1.5rem, 1.2rem + 1vw, 1.9rem); line-height: 1.1; color: var(--marrom); }
+.mod-card__link { color: inherit; text-decoration: none; }
+.mod-card__link::after { content: ""; position: absolute; inset: 0; z-index: 1; }   /* o cartão inteiro é clicável */
+.mod-card__link:focus-visible { outline: none; }
+.mod-card__caixa:has(.mod-card__link:focus-visible) { outline: 3px solid var(--foco); outline-offset: 3px; }
+.mod-card__caixa:hover .mod-card__nome { color: var(--laranja-escuro); }
+.mod-card__tags { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin: 0; padding: 0; list-style: none; }
+.mod-card__tags li {
+  padding: .15rem .65rem;
+  border: 1px solid rgba(74, 46, 31, .3);
+  border-radius: 999px;
+  color: var(--marrom);
+  font-size: .8rem;
+  font-weight: 600;
+}
+.mod-card__desc { color: var(--cinza); font-size: .975rem; line-height: 1.55; }
+.mod-card__cores { display: flex; align-items: center; gap: var(--sp-2); color: var(--cinza); font-size: var(--fs-sm); }
+.mod-card__cor { width: 1.1rem; height: 1.1rem; border: 1px solid rgba(47, 29, 20, .3); border-radius: 50%; }
+.mod-card__cores-texto { margin-left: var(--sp-1); }
+
+/* Entrada dos cartões em sequência (só com movimento liberado) */
+@media (prefers-reduced-motion: no-preference) {
+  .js .mod-card { animation: modEntra .6s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 70ms); }
+}
+@keyframes modEntra { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .mod-card__caixa, .mod-card__produto, .mod-card__ambiente { transition: none; }
+}
+
+.mod-comparar { padding-top: 0; }
+.mod-comparar .prod-medidas__tabela th[scope="row"] { color: var(--marrom); font-family: var(--fonte-titulo); font-weight: 400; }
+.mod-comparar .prod-medidas__tabela td { white-space: normal; min-width: 7rem; }
+
+/* --------------------------------------------------------------------------
    15. Botão flutuante de WhatsApp
    -------------------------------------------------------------------------- */
 .whatsapp-float {
