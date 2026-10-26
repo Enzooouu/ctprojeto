@@ -67,6 +67,10 @@ Atualizado sempre que um novo problema aparecer.
   o mesmo acontece em "As lareiras Tarus e Gota possuem" / "uma versão 360°".
 - **Marca-d'água "construflama"** escrita por cima de uma das fotos de projeto.
 
+### Site atual: página da Lareira Gota
+- **Mesmo texto genérico da Cone e da Tarus**, com o mesmo erro "versão 3600"
+  em vez de 360°.
+
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz
   29.328 BTU/h = 13,50 kW e 36.096 BTU/h = 16,27 kW; o certo seria cerca de
