@@ -98,6 +98,11 @@ Atualizado sempre que um novo problema aparecer.
   15 a 30 m³", enquanto Canoa e Redonda aparecem com "21.000 m³".
 - **Erro de digitação:** "peça de deisgn By Construflama" (Marroquina).
 - **Página sem fotos de projeto:** só imagens do produto em fundo branco.
+- **Mesmo texto em todas as páginas de Ecoflama** ("Quem ama ambientes
+  acolhedores…"), sem nada específico de cada modelo; e o mesmo vídeo repetido
+  em todas, sem título nem explicação.
+- **Manual técnico só em algumas:** a Retangular e a Canoa têm o botão, mas o
+  Trio Chess não, embora o manual não cubra o Trio Chess de jeito nenhum.
 
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz

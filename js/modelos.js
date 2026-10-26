@@ -310,6 +310,8 @@ var MODELOS = [
     combustiveis: ['alcool'],
     imagem: 'img/modelos/ecoflama-retangular.webp',
     textoAlternativo: 'Ecoflama Retangular em aço inox, com o queimador comprido e a haste para acender ao lado.',
+    ambiente: { imagem: 'img/modelos/ecoflama-retangular-pedra.webp',
+      textoAlternativo: 'Ecoflama Retangular acesa, embutida num longo banco de pedra clara diante de uma parede de pedra.' },
     cores: null, fotos: [
       // Do site da Construflama (página da Ecoflama Retangular)
       { imagem: 'img/modelos/ecoflama-retangular-pedra.webp', textoAlternativo: 'Ecoflama Retangular acesa, embutida num longo banco de pedra clara diante de uma parede de pedra, com poltronas de couro e mesa baixa.' },
@@ -340,12 +342,20 @@ var MODELOS = [
     nome: 'Ecoflama Canoa', slug: 'canoa',
     descricao: 'A icônica Lareira Ecológica Canoa brilha por sua portabilidade e design. Podendo até mesmo ficar em cima de mesas, essa Ecoflama tem acendimento a álcool de cereais, o que facilita o seu uso.',
     texto: [
-      'Disponível também na versão de 70 cm. Não precisa de nicho nem de instalação: é só apoiar e acender.'
+      'Disponível também na versão de 70 cm. Não precisa de nicho nem de instalação: é só apoiar e acender.',
+      // Do site da Construflama (texto comum às Ecoflamas)
+      'Super práticas, as lareiras ecológicas Construflama não precisam de coifa de respiro e estão prontas para o uso, com combustão à base de álcool de cereais.',
+      'São produzidas em aço inox 304 escovado de 5 mm de espessura e têm tanque duplo, hermeticamente soldado.'
     ],
     combustiveis: ['alcool'],
     imagem: 'img/modelos/ecoflama-canoa.webp',
     textoAlternativo: 'Ecoflama Canoa: queimador de inox sobre uma base curva branca em forma de canoa, com pés finos, e a haste para acender.',
-    cores: null, fotos: [],
+    ambiente: { imagem: 'img/modelos/ecoflama-canoa-mesa.webp',
+      textoAlternativo: 'Ecoflama Canoa acesa sobre uma mesa redonda de fibra trançada, diante de estantes de madeira.' },
+    cores: null, fotos: [
+      { imagem: 'img/modelos/ecoflama-canoa-mesa.webp', textoAlternativo: 'Ecoflama Canoa de inox escuro acesa, com chamas altas, sobre uma mesa redonda de fibra trançada, diante de estantes de madeira e de um quadro colorido.' },
+      { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
+    ],
     versoes: {
       rotuloLinhas: 'Modelo',
       colunas: ['Comprimento', 'Peso', 'Reservatório de álcool', 'Duração da queima'],
@@ -366,12 +376,17 @@ var MODELOS = [
     descricao: 'Nossas Ecoflamas Redondas podem ser embutidas em mesas e móveis desenhados por nós da Construflama, ou até mesmo ser encaixadas em nichos já disponíveis em sua casa.',
     texto: [
       'Disponível também nos diâmetros de 40 a 70 cm.',
-      'Pedras vulcânicas e tampa para áreas externas são vendidas à parte.'
+      'Pedras vulcânicas e tampa para áreas externas são vendidas à parte.',
+      // Do site da Construflama (texto comum às Ecoflamas)
+      'Super práticas, as lareiras ecológicas Construflama não precisam de coifa de respiro e estão prontas para o uso, com combustão à base de álcool de cereais.',
+      'São produzidas em aço inox 304 escovado de 5 mm de espessura e têm tanque duplo, hermeticamente soldado.'
     ],
     combustiveis: ['alcool'],
     imagem: 'img/modelos/ecoflama-redonda.webp',
     textoAlternativo: 'Ecoflama Redonda em aço inox, com o queimador no centro do disco e a haste para acender.',
-    cores: null, fotos: [],
+    cores: null, fotos: [
+      { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
+    ],
     versoes: {
       rotuloLinhas: 'Modelo',
       colunas: ['Diâmetro', 'Peso', 'Reservatório de álcool', 'Duração da queima'],
@@ -393,12 +408,17 @@ var MODELOS = [
     nome: 'Ecoflama Marroquina', slug: 'marroquina',
     descricao: 'Uma icônica peça de design by Construflama, a Ecoflama Marroquina tem um aspecto único que sua casa merece e precisa ter.',
     texto: [
-      'Não precisa de nicho nem de instalação: é só apoiar e acender.'
+      'Não precisa de nicho nem de instalação: é só apoiar e acender.',
+      // Do site da Construflama (texto comum às Ecoflamas)
+      'Super práticas, as lareiras ecológicas Construflama não precisam de coifa de respiro e estão prontas para o uso, com combustão à base de álcool de cereais.',
+      'São produzidas em aço inox 304 escovado de 5 mm de espessura e têm tanque duplo, hermeticamente soldado.'
     ],
     combustiveis: ['alcool'],
     imagem: 'img/modelos/lareira-marroquina.webp',
     textoAlternativo: 'Ecoflama Marroquina: caixa quadrada de aço cor de ferrugem com as laterais vazadas em desenho geométrico.',
-    cores: CORES_ESCULTURAIS, fotos: [],
+    cores: CORES_ESCULTURAIS, fotos: [
+      { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
+    ],
     versoes: {
       rotuloLinhas: 'Medida',
       colunas: ['Álcool'],
@@ -420,12 +440,22 @@ var MODELOS = [
     categoria: 'lareiras', linha: 'ecoflamas',
     nome: 'Trio Chess Rainha', slug: 'rainha',
     descricao: 'A Lareira Rainha é o destaque do Trio Chess pela sofisticação do seu design. Uma peça que se encaixa em ambientes internos reduzidos ou amplos e externos.',
+    texto: [
+      // Do site da Construflama (texto comum às Ecoflamas)
+      'Super práticas, as lareiras ecológicas Construflama não precisam de coifa de respiro e estão prontas para o uso, com combustão à base de álcool de cereais.',
+      'São produzidas em aço inox 304 escovado de 5 mm de espessura e têm tanque duplo, hermeticamente soldado.'
+    ],
     combustiveis: ['alcool'],
     imagem: 'img/modelos/lareira-rainha.webp',
     textoAlternativo: 'Lareira Rainha, do Trio Chess: peça preta formada por dois cones unidos pela ponta, com o queimador no topo.',
-    ambiente: { imagem: 'img/blog/trio-chess-casacor-mg.webp',
-      textoAlternativo: 'As três lareiras do Trio Chess acesas sobre um deck de madeira à noite, diante de palmeiras.' },
-    cores: CORES_ESCULTURAIS, fotos: [], palavrasBlog: ['Trio Chess'],
+    ambiente: { imagem: 'img/modelos/lareira-rainha-poltrona.webp',
+      textoAlternativo: 'Lareira Rainha preta sobre pedriscos, ao lado de uma poltrona de corda azul.' },
+    cores: CORES_ESCULTURAIS, fotos: [
+      { imagem: 'img/modelos/lareira-rainha-jardim.webp', textoAlternativo: 'Lareira Rainha preta num jardim tropical de pedriscos, ao lado de uma poltrona de corda azul, com vasos azuis, pufes verdes e um guarda-sol de franjas.' },
+      { imagem: 'img/modelos/lareira-rainha-poltrona.webp', textoAlternativo: 'Close da Lareira Rainha preta sobre pedriscos, ao lado de uma poltrona de corda azul.' },
+      { imagem: 'img/modelos/lareira-rainha-jardim-vertical.webp', textoAlternativo: 'Vista vertical do jardim tropical com a Lareira Rainha em primeiro plano, poltronas de corda azul, mesa de tronco e, ao fundo, a Lareira Peão.' },
+      { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
+    ], palavrasBlog: ['Trio Chess'],
     versoes: { colunas: ['Álcool'], linhas: [
       { rotulo: 'Altura', valores: ['40 cm'] }, { rotulo: 'Diâmetro', valores: ['40 cm'] }, { rotulo: 'Peso', valores: ['12,5 kg'] } ] },
     medidas: { altura: '40 cm', largura: 'Ø 40 cm', peso: '12,5 kg' }
@@ -434,12 +464,24 @@ var MODELOS = [
     categoria: 'lareiras', linha: 'ecoflamas',
     nome: 'Trio Chess Torre', slug: 'torre',
     descricao: 'Nada como uma peça de design que traz sofisticação e conforto para o seu lar. Com seu fácil acendimento a álcool de cereais, a Lareira Ecológica Torre traz comodidade e estilo, podendo ser instalada em pequenos espaços.',
+    texto: [
+      // Do site da Construflama (texto comum às Ecoflamas)
+      'Super práticas, as lareiras ecológicas Construflama não precisam de coifa de respiro e estão prontas para o uso, com combustão à base de álcool de cereais.',
+      'São produzidas em aço inox 304 escovado de 5 mm de espessura e têm tanque duplo, hermeticamente soldado.'
+    ],
     combustiveis: ['alcool'],
     imagem: 'img/modelos/lareira-torre.webp',
     textoAlternativo: 'Lareira Torre, do Trio Chess: cilindro preto sobre uma base em cone, com o queimador no topo.',
-    ambiente: { imagem: 'img/blog/trio-chess-casacor-mg.webp',
-      textoAlternativo: 'As três lareiras do Trio Chess acesas sobre um deck de madeira à noite, diante de palmeiras.' },
-    cores: CORES_ESCULTURAIS, fotos: [], palavrasBlog: ['Trio Chess'],
+    ambiente: { imagem: 'img/modelos/lareira-torre-jardim-3.webp',
+      textoAlternativo: 'Lareira Torre preta num jardim de pedriscos, ao lado de uma poltrona de corda verde.' },
+    cores: CORES_ESCULTURAIS, fotos: [
+      { imagem: 'img/modelos/lareira-torre-jardim-1.webp', textoAlternativo: 'Lareira Torre preta sobre pedriscos num jardim, ao lado de uma poltrona de corda verde e um pufe, diante de um painel de vidro.' },
+      { imagem: 'img/modelos/lareira-torre-jardim-2.webp', textoAlternativo: 'Outro ângulo da Lareira Torre no jardim, com poltrona de corda verde, pufe claro e folhagens.' },
+      { imagem: 'img/modelos/lareira-torre-jardim-3.webp', textoAlternativo: 'Lareira Torre preta no jardim de pedriscos, entre a poltrona de corda verde e palmeiras, com o reflexo no vidro ao fundo.' },
+      { imagem: 'img/modelos/lareira-torre-jardim-4.webp', textoAlternativo: 'Close da Lareira Torre preta ao lado de um pufe verde-claro e de uma poltrona de corda, sob a luz do sol.' },
+      { imagem: 'img/modelos/lareira-torre-detalhe.webp', textoAlternativo: 'Detalhe do topo da Lareira Torre, com a plaqueta Construflama e o queimador de inox.' },
+      { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
+    ], palavrasBlog: ['Trio Chess'],
     versoes: { colunas: ['Álcool'], linhas: [
       { rotulo: 'Altura', valores: ['36 cm'] }, { rotulo: 'Diâmetro', valores: ['30 cm'] }, { rotulo: 'Peso', valores: ['10,24 kg'] } ] },
     medidas: { altura: '36 cm', largura: 'Ø 30 cm', peso: '10,24 kg' }
@@ -448,12 +490,20 @@ var MODELOS = [
     categoria: 'lareiras', linha: 'ecoflamas',
     nome: 'Trio Chess Peão', slug: 'peao',
     descricao: 'Nossa compacta Lareira Ecológica Peão, mesmo ocupando pouco espaço, traz o conforto necessário para os ambientes, sem precisar de exaustão, por conta da sua combustão a álcool de cereais.',
+    texto: [
+      // Do site da Construflama (texto comum às Ecoflamas)
+      'Super práticas, as lareiras ecológicas Construflama não precisam de coifa de respiro e estão prontas para o uso, com combustão à base de álcool de cereais.',
+      'São produzidas em aço inox 304 escovado de 5 mm de espessura e têm tanque duplo, hermeticamente soldado.'
+    ],
     combustiveis: ['alcool'],
     imagem: 'img/modelos/lareira-peao.webp',
     textoAlternativo: 'Lareira Peão, do Trio Chess: peça preta baixa, mais larga no meio, com o queimador no topo.',
-    ambiente: { imagem: 'img/blog/trio-chess-casacor-mg.webp',
-      textoAlternativo: 'As três lareiras do Trio Chess acesas sobre um deck de madeira à noite, diante de palmeiras.' },
-    cores: CORES_ESCULTURAIS, fotos: [], palavrasBlog: ['Trio Chess'],
+    ambiente: { imagem: 'img/modelos/lareira-peao-rainha-acesas.webp',
+      textoAlternativo: 'Lareiras Peão e Rainha acesas sobre um tapete cinza, ao lado de um sofá.' },
+    cores: CORES_ESCULTURAIS, fotos: [
+      { imagem: 'img/modelos/lareira-peao-rainha-acesas.webp', textoAlternativo: 'Lareiras Peão e Rainha pretas e acesas, com chamas altas, sobre um tapete cinza ao lado de um sofá e de uma mesa de centro baixa.' },
+      { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
+    ], palavrasBlog: ['Trio Chess'],
     versoes: { colunas: ['Álcool'], linhas: [
       { rotulo: 'Altura', valores: ['40 cm'] }, { rotulo: 'Diâmetro', valores: ['40 cm'] }, { rotulo: 'Peso', valores: ['10,4 kg'] } ] },
     medidas: { altura: '40 cm', largura: 'Ø 40 cm', peso: '10,4 kg' }
