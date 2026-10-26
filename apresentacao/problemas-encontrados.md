@@ -125,6 +125,22 @@ Atualizado sempre que um novo problema aparecer.
   tipo (álcool e lenha).
 - **Foto da versão a lenha em baixa resolução** (borrada).
 
+### Site atual: churrasqueiras Soft
+- **Filtros em maiúsculas no meio da frase e sem padrão:** "Com Espetos Em
+  Balanço E Manivela Frontal", "Com Porta Espetos E Sem Cavalete" e "Com
+  Porta-espeto E Manivela Frontal" (porta espetos ou porta-espeto?).
+- **"Infrared" em inglês** no filtro, enquanto o blog fala em "infravermelho".
+- **Tamanhos sem unidade:** o filtro mostra 60, 70, 80, 90, 100 e 110, sem dizer
+  se são centímetros nem qual medida é (largura?).
+- **Descrição genérica da linha:** "Fazer um bom churrasco é uma arte…" não diz
+  nada da Soft; o que diferencia a linha só aparece no blog.
+- **Combustível confuso:** o blog diz que gás ou carvão estão disponíveis "em
+  todos os modelos", mas o site vende "Soft a carvão" e "Soft a gás" como
+  modelos separados, e não diz qual é o combustível da "Soft com tampa" e da
+  "Soft Clean".
+- **A Soft a gás não tem foto do produto**, só a foto de projeto; as outras
+  três só têm a foto do produto.
+
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz
   29.328 BTU/h = 13,50 kW e 36.096 BTU/h = 16,27 kW; o certo seria cerca de

@@ -60,11 +60,11 @@ var CATEGORIAS = [
     pagina: true,
     // Soft = entrada, Premium = intermediária, High-end = topo (preço e acabamento)
     subcategorias: [
-      { nome: 'Soft', slug: 'soft', descricao: 'A porta de entrada para o churrasco Construflama: grelhas e espetos em uma estrutura enxuta, com o melhor custo-benefício da coleção.', imagem: 'img/linhas/churrasqueiras-soft.webp', foco: '55% 50%',
+      { nome: 'Soft', slug: 'soft', nomeProprio: true, descricao: 'A porta de entrada para o churrasco Construflama: grelhas e espetos em uma estrutura enxuta, com o melhor custo-benefício da coleção.', imagem: 'img/linhas/churrasqueiras-soft.webp', foco: '55% 50%',
         textoAlternativo: 'Churrasqueira metálica com grelhas e espetos, sobre bancada de pedra clara, ao lado de um cooktop e de um vaso com planta.' },
-      { nome: 'Premium', slug: 'premium', descricao: 'O equilíbrio entre investimento e acabamento, com linhas limpas para uma área gourmet de destaque.', imagem: 'img/linhas/churrasqueiras-premium.webp', foco: '50% 55%',
+      { nome: 'Premium', slug: 'premium', nomeProprio: true, descricao: 'O equilíbrio entre investimento e acabamento, com linhas limpas para uma área gourmet de destaque.', imagem: 'img/linhas/churrasqueiras-premium.webp', foco: '50% 55%',
         textoAlternativo: 'Churrasqueira metálica com tampa aberta, grelhas e três botões de controle, embutida em bancada de pedra clara.' },
-      { nome: 'High-end', slug: 'high-end', descricao: 'O topo da coleção: a estrutura mais completa e o acabamento mais sofisticado, para quem leva o churrasco a sério.', imagem: 'img/linhas/churrasqueiras-high-end.webp', foco: '60% 60%',
+      { nome: 'High-end', slug: 'high-end', nomeProprio: true, descricao: 'O topo da coleção: a estrutura mais completa e o acabamento mais sofisticado, para quem leva o churrasco a sério.', imagem: 'img/linhas/churrasqueiras-high-end.webp', foco: '60% 60%',
         textoAlternativo: 'Churrasqueira metálica com grelhas, espetos e roda de regulagem, sob uma coifa, numa parede de tijolinhos.' }
     ]
   },
@@ -355,7 +355,7 @@ var DEPOIMENTOS = [
     return MODELOS.filter(function (m) { return m.categoria === catSlug && m.linha === linhaSlug; });
   }
   function urlModelo(m) { return 'produto.html?c=' + m.categoria + '&l=' + m.linha + '&m=' + m.slug; }
-  var NOMES_COMBUSTIVEL = { lenha: 'lenha', alcool: 'álcool', gas: 'gás' };
+  var NOMES_COMBUSTIVEL = { lenha: 'lenha', alcool: 'álcool', carvao: 'carvão', gas: 'gás' };
   function listaComE(itens) {
     return itens.length > 1 ? itens.slice(0, -1).join(', ') + ' e ' + itens[itens.length - 1] : (itens[0] || '');
   }
@@ -390,7 +390,7 @@ var DEPOIMENTOS = [
         rotuloLinhas: m.versoes.rotuloLinhas || 'Medida',
         colunas: m.versoes.colunas,
         linhas: m.versoes.linhas,
-        nota: m.versoes.nota || 'Medidas do catálogo de lareiras 2026. Cada projeto é único: a equipe confirma as medidas e o acabamento com você.'
+        nota: m.versoes.nota || (m.categoria === 'lareiras' ? 'Medidas do catálogo de lareiras 2026. ' : '') + 'Cada projeto é único: a equipe confirma as medidas e o acabamento com você.'
       };
     }
     return pag;
@@ -1953,7 +1953,7 @@ var DEPOIMENTOS = [
       var outros = modelosDaLinha(cat.slug, linha.slug).filter(function (m) { return m !== modelo; });
       var listaOutros = document.querySelector('[data-prod-outros-lista]');
       document.querySelector('[data-prod-outros]').hidden = !outros.length;
-      document.querySelector('[data-prod-outros-titulo]').textContent = (linha.marca ? 'Outras ' + linha.nome : 'Outras ' + (cat.nome + ' ' + linha.nome).toLowerCase());   // "Outras lareiras esculturais"
+      document.querySelector('[data-prod-outros-titulo]').textContent = 'Outras ' + (linha.marca ? linha.nome : cat.nome.toLowerCase() + ' ' + (linha.nomeProprio ? linha.nome : linha.nome.toLowerCase()));   // "Outras lareiras esculturais"
       outros.forEach(function (m) {
         var li = el('li', 'prod-outro');
         var a = el('a', 'prod-outro__link');
@@ -2206,8 +2206,9 @@ var DEPOIMENTOS = [
       return;
     }
 
-    // "Lareiras esculturais"; linha com nome de marca fica só com o nome ("Ecoflamas")
-    var nomeLinha = linha.marca ? linha.nome : cat.nome + ' ' + linha.nome.toLowerCase();
+    // "Lareiras esculturais"; linha com nome de marca fica só com o nome ("Ecoflamas");
+    // nome próprio de linha mantém a maiúscula ("Churrasqueiras Soft")
+    var nomeLinha = linha.marca ? linha.nome : cat.nome + ' ' + (linha.nomeProprio ? linha.nome : linha.nome.toLowerCase());
     document.title = nomeLinha + ' | Construflama';
     var meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute('content', nomeLinha + ' Construflama: ' + modelos.map(function (m) { return m.nome.replace(/^\S+ /, ''); }).join(', ') + '. Showroom em São Paulo e entrega em todo o Brasil.');
@@ -2229,7 +2230,7 @@ var DEPOIMENTOS = [
       document.querySelector('[data-prod-catalogo-peso]').textContent = '(PDF' + (catalogo.tamanho ? ', ' + catalogo.tamanho : '') + ')';
     }
 
-    var NOMES_COMB = { lenha: 'Lenha', alcool: 'Álcool', gas: 'Gás' };
+    var NOMES_COMB = { lenha: 'Lenha', alcool: 'Álcool', carvao: 'Carvão', gas: 'Gás' };
     function combustiveis(m) {
       var lista = m.combustiveis.map(function (c) { return NOMES_COMB[c]; });
       if (m.gasSobConsulta) lista.push('Gás sob consulta');
@@ -2308,10 +2309,12 @@ var DEPOIMENTOS = [
     var filtros = document.querySelector('[data-mod-filtros]');
     var contagem = document.querySelector('[data-mod-contagem]');
     var opcoes = [{ id: 'todos', nome: 'Todos' }];
-    ['lenha', 'alcool', 'gas'].forEach(function (c) {
+    ['lenha', 'alcool', 'carvao', 'gas'].forEach(function (c) {
       var tem = modelos.some(function (m) { return m.combustiveis.indexOf(c) !== -1 || (c === 'gas' && m.gasSobConsulta); });
       if (tem) opcoes.push({ id: c, nome: NOMES_COMB[c] });
     });
+    // Gás só "sob consulta" quando nenhum modelo da linha tem o gás confirmado (esculturais)
+    var soGasSobConsulta = !modelos.some(function (m) { return m.combustiveis.indexOf('gas') !== -1; });
     function filtrar(id) {
       var n = 0;
       grade.querySelectorAll('.mod-card').forEach(function (li) {
@@ -2322,7 +2325,7 @@ var DEPOIMENTOS = [
       });
       filtros.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', String(b._id === id)); });
       contagem.textContent = n + (n === 1 ? ' modelo' : ' modelos') +
-        (id === 'todos' ? '' : ' a ' + NOMES_COMB[id].toLowerCase() + (id === 'gas' ? ' (sob consulta)' : ''));
+        (id === 'todos' ? '' : ' a ' + NOMES_COMB[id].toLowerCase() + (id === 'gas' && soGasSobConsulta ? ' (sob consulta)' : ''));
     }
     opcoes.forEach(function (o) {
       var b = el('button', 'blog-filtro', o.nome);
@@ -2346,7 +2349,7 @@ var DEPOIMENTOS = [
     var tbody = el('tbody');
     modelos.forEach(function (m) {
       var tr = el('tr');
-      var th = el('th', null, m.nome.replace(/^Lareira /, ''));
+      var th = el('th', null, m.nome.replace(/^(Lareira|Churrasqueira) /, ''));
       th.scope = 'row';
       tr.appendChild(th);
       [m.medidas.altura, m.medidas.largura, m.medidas.peso, listaTexto(combustiveis(m))].forEach(function (v) {
@@ -2355,6 +2358,11 @@ var DEPOIMENTOS = [
       tbody.appendChild(tr);
     });
     tabela.appendChild(tbody);
+    // Textos que falam de lareira só valem na coleção de lareiras
+    if (cat.slug !== 'lareiras') {
+      document.querySelector('[data-mod-nota]').textContent = 'Cada projeto é único: a equipe confirma as medidas e o acabamento com você.';
+      document.querySelector('[data-mod-cta]').textContent = 'Conte como é o seu espaço. A nossa equipe ajuda a escolher o modelo, o tamanho e o combustível.';
+    }
 
     // Artigos do blog que citam algum dos modelos
     var gradeBlog = document.querySelector('[data-mod-blog]');

@@ -30,6 +30,7 @@
    - downloads (opcional): [{ texto, arquivo, tamanho }] manuais do modelo
    - palavrasBlog (opcional): termos para achar artigos do blog (padrão: o nome)
    - cores: null para peças em inox, sem opção de cor (a linha "Cores" some)
+   - combustíveis das churrasqueiras: 'carvao' | 'gas'
    - prototipo: true quando ainda faltam dados reais; etiqueta: texto do selo. Imagem, combustíveis,
      cores ou medidas vazios aparecem marcados como "em breve" / "a confirmar".
    ========================================================================== */
@@ -37,6 +38,16 @@ var CORES_ESCULTURAIS = [
   { nome: 'preto', cor: '#1E1B19' },
   { nome: 'marrom', cor: '#7A3E12' },
   { nome: 'branco', cor: '#F5F2EC' }
+];
+
+// Texto comum da linha Soft: artigo "Descubra qual é a sua churrasqueira dos
+// sonhos!" (blog) e site da Construflama (tamanhos da lista da linha)
+var SOFT = [
+  'Para quem busca qualidade, durabilidade e design, a Linha Soft é uma excelente opção. Produzida em aço inox 304, ela oferece a resistência do melhor aço do mercado, com espetos mais leves para dar agilidade ao manusear o alimento.',
+  'Com versões e medidas padrão, que facilitam a instalação e atendem a diferentes tamanhos de projeto, é ideal para quem deseja um produto de alta qualidade com um investimento mais otimizado. A estrutura em chapa dobrada de 2 mm deixa a churrasqueira mais leve, prática e versátil.',
+  'A grelha sobe e desce por manivela, com trava para ajustes precisos.',
+  // TODO: confirmar a unidade (provavelmente centímetros de largura)
+  'Disponível nos tamanhos 60, 70, 80, 90, 100 e 110.'
 ];
 
 var MODELOS = [
@@ -548,6 +559,62 @@ var MODELOS = [
     cores: [], fotos: [
       { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
     ],
+    medidas: { altura: '', largura: '', peso: '' }
+  },
+
+  /* ---------------- Churrasqueiras Soft ----------------
+     Fonte: site da Construflama (lista da linha Soft) e o artigo "Descubra
+     qual é a sua churrasqueira dos sonhos!" (blog). Faltam a página de cada
+     modelo, as fotos em tamanho original e as medidas. */
+  {
+    categoria: 'churrasqueiras', linha: 'soft',
+    nome: 'Churrasqueira Soft a carvão', slug: 'a-carvao',
+    texto: SOFT,
+    combustiveis: ['carvao'],
+    imagem: 'img/modelos/churrasqueira-soft-carvao.webp',
+    textoAlternativo: 'Churrasqueira Soft a carvão em aço inox: caixa retangular com duas grelhas, cavalete com espetos em balanço e manivela no alto, à direita.',
+    cores: null, palavrasBlog: ['Linha Soft'],
+    prototipo: true, etiqueta: 'Descrição e medidas em breve',
+    medidas: { altura: '', largura: '', peso: '' }
+  },
+  {
+    categoria: 'churrasqueiras', linha: 'soft',
+    nome: 'Churrasqueira Soft com tampa', slug: 'com-tampa',
+    texto: SOFT,
+    combustiveis: [],   // TODO: confirmar se é a carvão ou a gás
+    imagem: 'img/modelos/churrasqueira-soft-tampa.webp',
+    textoAlternativo: 'Churrasqueira Soft com tampa em aço inox: caixa retangular fechada por uma tampa inclinada com puxador redondo.',
+    cores: null, palavrasBlog: ['Linha Soft'],
+    prototipo: true, etiqueta: 'Descrição e medidas em breve',
+    medidas: { altura: '', largura: '', peso: '' }
+  },
+  {
+    categoria: 'churrasqueiras', linha: 'soft',
+    nome: 'Churrasqueira Soft Clean', slug: 'clean',
+    texto: SOFT,
+    combustiveis: [],   // TODO: confirmar se é a carvão ou a gás
+    imagem: 'img/modelos/churrasqueira-soft-clean.webp',
+    textoAlternativo: 'Churrasqueira Soft Clean em aço inox: caixa retangular baixa com duas grelhas e espetos apoiados na borda, sem cavalete.',
+    cores: null, palavrasBlog: ['Linha Soft'],
+    prototipo: true, etiqueta: 'Descrição e medidas em breve',
+    medidas: { altura: '', largura: '', peso: '' }
+  },
+  {
+    categoria: 'churrasqueiras', linha: 'soft',
+    nome: 'Churrasqueira Soft a gás', slug: 'a-gas',
+    texto: SOFT,
+    combustiveis: ['gas'],
+    // Sem foto do produto em fundo branco: o site usa a foto de projeto
+    imagem: '',
+    ambiente: { imagem: 'img/linhas/churrasqueiras-soft.webp',
+      textoAlternativo: 'Churrasqueira Soft a gás embutida numa bancada de pedra clara, sob uma coifa preta, ao lado de um cooktop e de um vaso com planta.' },
+    fotos: [
+      { imagem: 'img/linhas/churrasqueiras-soft.webp', textoAlternativo: 'Churrasqueira Soft a gás embutida numa bancada de pedra clara, sob uma coifa preta, ao lado de um cooktop e de um vaso com planta.' },
+      // Do blog ("Descubra qual é a sua churrasqueira dos sonhos!")
+      { imagem: 'img/blog/churrasqueira-soft.webp', textoAlternativo: 'Churrasqueira Soft a gás em aço inox, com estrutura em chapa dobrada, manivela à direita, quatro espetos, duas grelhas e três botões de controle, embutida em bancada clara.' }
+    ],
+    cores: null, palavrasBlog: ['Linha Soft'],
+    prototipo: true, etiqueta: 'Descrição e medidas em breve',
     medidas: { altura: '', largura: '', peso: '' }
   }
 ];
