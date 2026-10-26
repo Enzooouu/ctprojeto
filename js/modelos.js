@@ -183,8 +183,7 @@ var MODELOS = [
     citacao: { texto: 'A gente tem aqui um diálogo de peças metálicas, peças orgânicas que no contraste se conversam.',
       autor: 'Bernardo Barcellos, sobre a Eco Casa da L.ara Arquitetura, CASACOR Minas 2026' },
     fotos: [
-      { imagem: 'img/blog/sala-clareira-pipe-fendi.webp', textoAlternativo: 'Lareira Pipe na cor Fendi presa à parede de madeira escura, ao lado de um sofá curvo, na Sala Clareira da Sala 2 Arquitetura.' },
-      { imagem: 'img/blog/tendencias-2026-pipe.webp', textoAlternativo: 'Lareira Pipe branca suspensa diante de paredes de madeira escura iluminadas por uma sanca, com sofá e mesa de centro.' }
+      { imagem: 'img/blog/sala-clareira-pipe-fendi.webp', textoAlternativo: 'Lareira Pipe na cor Fendi presa à parede de madeira escura, ao lado de um sofá curvo, na Sala Clareira da Sala 2 Arquitetura.' }
     ],
     versoes: {
       colunas: ['Lenha', 'Álcool'],
