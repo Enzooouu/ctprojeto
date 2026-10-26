@@ -2143,7 +2143,7 @@ button.blog-pagina { background: none; cursor: pointer; }
 .post-indice__lista a[aria-current] { color: var(--laranja-escuro); border-left-color: var(--laranja); }
 
 /* Texto com boa leitura: coluna estreita (~70 caracteres por linha) */
-.post-texto { min-width: 0; font-size: 1.1875rem; line-height: 1.75; }
+.post-texto { min-width: 0; font-size: 1.1875rem; line-height: 1.75; overflow-wrap: break-word; } /* e-mails longos quebram em vez de vazar a 320 px */
 .post-texto > * + * { margin-top: var(--sp-5); }
 .post-texto__lead { color: var(--marrom); font-size: var(--fs-md); line-height: 1.6; }
 .post-texto__sub { margin-top: var(--sp-7); font-size: var(--fs-lg); scroll-margin-top: calc(var(--header-h) + 1.5rem); }

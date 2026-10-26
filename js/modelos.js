@@ -153,6 +153,7 @@ var MODELOS = [
       { imagem: 'img/modelos/lareira-cone-quarto.webp', textoAlternativo: 'Quarto com cama de linho branco e janela redonda; ao fundo, a Lareira Cone verde-escura ao lado de uma poltrona e de uma parede de pedra.' },
       { imagem: 'img/modelos/lareira-cone-sala-rosa.webp', textoAlternativo: 'Lareira Cone cor de cobre suspensa sobre uma bacia com grelha e lenha, numa sala de paredes curvas cor-de-rosa, com poltrona concha, sofá branco curvo e plantas.' },
       { imagem: 'img/modelos/lareira-cone-sala-rosa-ampla.webp', textoAlternativo: 'Vista ampla da sala cor-de-rosa com teto curvo iluminado, sofá branco, mesa de centro com flores e, ao fundo, a Lareira Cone cor de cobre.' },
+      { imagem: 'img/blog/lareira-cone-casacor.webp', textoAlternativo: 'Outro ângulo da sala com papel de parede de floresta: a Lareira Cone preta suspensa sobre a mesa de centro branca de formas orgânicas, com sofá claro e porta de madeira.' },
       { imagem: 'img/blog/lareira-cone-glaucia-britto.webp', textoAlternativo: 'Lareira Cone preta suspensa num piano bar com balcão iluminado e poltronas caramelo.' },
       { imagem: 'img/blog/tendencias-2026-cone.webp', textoAlternativo: 'Lareira Cone em metal escuro numa sala ampla de pé-direito alto, com poltrona laranja e uma árvore em vaso.' },
       { imagem: 'img/blog/lareira-valoriza-imovel.webp', textoAlternativo: 'Lareira Cone cor de ferrugem sobre uma bacia com pedras, no canto de uma sala com painel de madeira e poltrona estampada.' }
@@ -316,6 +317,8 @@ var MODELOS = [
       // Do site da Construflama (página da Ecoflama Retangular)
       { imagem: 'img/modelos/ecoflama-retangular-pedra.webp', textoAlternativo: 'Ecoflama Retangular acesa, embutida num longo banco de pedra clara diante de uma parede de pedra, com poltronas de couro e mesa baixa.' },
       { imagem: 'img/modelos/ecoflama-retangular-plantas.webp', textoAlternativo: 'Ecoflama Retangular acesa, embutida num banco de mármore rosado, ao lado de vasos de plantas sobre piso de taco.' },
+      // Do blog (mesmo projeto da foto anterior)
+      { imagem: 'img/blog/loft-alvora-ecoflama.webp', textoAlternativo: 'Vista ampla do Loft Alvorá, de Paula Neder, na CASACOR São Paulo 2025: a Ecoflama Retangular embutida num nicho de pedra rosada sob uma bancada de madeira clara, com poltrona Bowl preta, vasos de plantas e tapete listrado colorido. Foto de Max Fahrer.' },
       { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
     ],
     versoes: {
@@ -462,6 +465,9 @@ var MODELOS = [
       { imagem: 'img/modelos/lareira-rainha-jardim.webp', textoAlternativo: 'Lareira Rainha preta num jardim tropical de pedriscos, ao lado de uma poltrona de corda azul, com vasos azuis, pufes verdes e um guarda-sol de franjas.' },
       { imagem: 'img/modelos/lareira-rainha-poltrona.webp', textoAlternativo: 'Close da Lareira Rainha preta sobre pedriscos, ao lado de uma poltrona de corda azul.' },
       { imagem: 'img/modelos/lareira-rainha-jardim-vertical.webp', textoAlternativo: 'Vista vertical do jardim tropical com a Lareira Rainha em primeiro plano, poltronas de corda azul, mesa de tronco e, ao fundo, a Lareira Peão.' },
+      // Do blog: o Trio Chess completo
+      { imagem: 'img/blog/tipos-de-lareiras-ecologicas.webp', textoAlternativo: 'As três peças do Trio Chess, Rainha, Torre e Peão, pretas e acesas sobre um tapete cinza, diante de um sofá e de uma mesa de centro baixa.' },
+      { imagem: 'img/blog/trio-chess-casacor-mg.webp', textoAlternativo: 'As três peças do Trio Chess acesas sobre um deck de madeira à noite, diante de palmeiras, no Niê Giardino de Izabella Stambassi, CASACOR Minas Gerais 2025. Foto de Gustavo Xavier.' },
       { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
     ], palavrasBlog: ['Trio Chess'],
     versoes: { colunas: ['Álcool'], linhas: [
@@ -488,6 +494,9 @@ var MODELOS = [
       { imagem: 'img/modelos/lareira-torre-jardim-3.webp', textoAlternativo: 'Lareira Torre preta no jardim de pedriscos, entre a poltrona de corda verde e palmeiras, com o reflexo no vidro ao fundo.' },
       { imagem: 'img/modelos/lareira-torre-jardim-4.webp', textoAlternativo: 'Close da Lareira Torre preta ao lado de um pufe verde-claro e de uma poltrona de corda, sob a luz do sol.' },
       { imagem: 'img/modelos/lareira-torre-detalhe.webp', textoAlternativo: 'Detalhe do topo da Lareira Torre, com a plaqueta Construflama e o queimador de inox.' },
+      // Do blog: o Trio Chess completo
+      { imagem: 'img/blog/tipos-de-lareiras-ecologicas.webp', textoAlternativo: 'As três peças do Trio Chess, Rainha, Torre e Peão, pretas e acesas sobre um tapete cinza, diante de um sofá e de uma mesa de centro baixa.' },
+      { imagem: 'img/blog/trio-chess-casacor-mg.webp', textoAlternativo: 'As três peças do Trio Chess acesas sobre um deck de madeira à noite, diante de palmeiras, no Niê Giardino de Izabella Stambassi, CASACOR Minas Gerais 2025. Foto de Gustavo Xavier.' },
       { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
     ], palavrasBlog: ['Trio Chess'],
     versoes: { colunas: ['Álcool'], linhas: [
@@ -510,6 +519,9 @@ var MODELOS = [
       textoAlternativo: 'Lareiras Peão e Rainha acesas sobre um tapete cinza, ao lado de um sofá.' },
     cores: CORES_ESCULTURAIS, fotos: [
       { imagem: 'img/modelos/lareira-peao-rainha-acesas.webp', textoAlternativo: 'Lareiras Peão e Rainha pretas e acesas, com chamas altas, sobre um tapete cinza ao lado de um sofá e de uma mesa de centro baixa.' },
+      // Do blog: o Trio Chess completo
+      { imagem: 'img/blog/tipos-de-lareiras-ecologicas.webp', textoAlternativo: 'As três peças do Trio Chess, Rainha, Torre e Peão, pretas e acesas sobre um tapete cinza, diante de um sofá e de uma mesa de centro baixa.' },
+      { imagem: 'img/blog/trio-chess-casacor-mg.webp', textoAlternativo: 'As três peças do Trio Chess acesas sobre um deck de madeira à noite, diante de palmeiras, no Niê Giardino de Izabella Stambassi, CASACOR Minas Gerais 2025. Foto de Gustavo Xavier.' },
       { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
     ], palavrasBlog: ['Trio Chess'],
     versoes: { colunas: ['Álcool'], linhas: [

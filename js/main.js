@@ -1831,8 +1831,12 @@ var DEPOIMENTOS = [
     whats.appendChild(srOnly(': compartilhar este artigo'));
     ligarCopiarLink(document.querySelector('[data-copiar-link]'), endereco);
 
-    // Relacionados: mesma categoria primeiro; completa com os mais recentes
-    var outros = postsPorData().filter(function (x) { return x !== p; });
+    // Relacionados: mesma categoria primeiro; completa com os mais recentes.
+    // Pula os artigos que o texto já indica num link (sem link repetido)
+    var jaLinkados = p.conteudo.map(function (b) { return b.link && b.link.href; }).filter(Boolean);
+    var outros = postsPorData().filter(function (x) {
+      return x !== p && jaLinkados.indexOf('post.html?slug=' + x.slug) === -1;
+    });
     var relacionados = outros.filter(function (x) { return x.categoria === p.categoria; })
       .concat(outros.filter(function (x) { return x.categoria !== p.categoria; }))
       .slice(0, 3);
@@ -2061,6 +2065,14 @@ var DEPOIMENTOS = [
     }
     // Até 8 miniaturas; com mais fotos, a 8ª mostra "+N" e abre a tela cheia
     var MAX_MINIATURAS = 8;
+    // A tela cheia só tem fotos: com miniaturas escondidas, os vídeos sobem
+    // para antes do "+N", para não ficarem fora de alcance
+    if (fotos.length > MAX_MINIATURAS) {
+      var videos = fotos.filter(function (f) { return f.video; });
+      var imagens = fotos.filter(function (f) { return !f.video; });
+      var pos = Math.max(1, MAX_MINIATURAS - 1 - videos.length);
+      fotos = imagens.slice(0, pos).concat(videos, imagens.slice(pos));
+    }
     if (fotos.length > 1) {
       fotos.forEach(function (f, n) {
         if (n >= MAX_MINIATURAS) return;
