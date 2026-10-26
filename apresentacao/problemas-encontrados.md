@@ -48,10 +48,17 @@ Atualizado sempre que um novo problema aparecer.
   álcool", mas as especificações trazem só a versão a álcool. O novo site
   mostra só álcool até a Construflama confirmar.
 - **Lareira Pipe:** diâmetro "Ø475" sem unidade (provavelmente 475 mm).
-- **Tacho:** o catálogo mostra só o Tacho a lenha (com grelha), mas a foto da
-  linha Tachos no site mostra um tacho com queimador de álcool no centro e
-  pedras vulcânicas, versão que não aparece no catálogo. O texto ainda diz
-  "Disponíveil" (duas vezes, no Tacho e na Tocha Prato) e "Ø1m" sem espaço.
+- **Tacho: catálogo e site não batem em nada.**
+  - Material: "aço corten" no catálogo, "ferro fundido" no site.
+  - Tamanhos: 80 cm (e 1 m sob encomenda) no catálogo, 60 e 100 cm no site.
+  - Combustível: o catálogo só tem o Tacho a lenha; o site vende a álcool e a
+    lenha, e a primeira foto é a versão a álcool.
+  - O título da aba do site diz "Tacho a Lenha de Ferro Fundido", mas a página
+    oferece também a versão a álcool.
+  - No novo site: "ferro fundido/aço corten", medidas do catálogo e os dois
+    combustíveis, até a Construflama confirmar.
+  - O catálogo ainda diz "Disponíveil" (duas vezes, no Tacho e na Tocha Prato)
+    e "Ø1m" sem espaço.
 - **Crase errada** em "à lenha", "à álcool" e "à gás".
 
 ### Site atual: página da Lareira Cone
@@ -110,6 +117,13 @@ Atualizado sempre que um novo problema aparecer.
   Trio Chess não, embora o manual não cubra o Trio Chess de jeito nenhum.
   A Redonda também fica sem o botão e sem nenhuma medida na página, embora o
   manual tenha a tabela dela (LRA-040-RD a LRA-070-RD).
+
+### Site atual: página do Tacho
+- **Erro de concordância:** "Os tachos Construflama são incomparáveis! Feito
+  em ferro, nosso tacho…".
+- **Sem medidas nem cores** na página, só os botões de tamanho (60 e 100) e de
+  tipo (álcool e lenha).
+- **Foto da versão a lenha em baixa resolução** (borrada).
 
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz

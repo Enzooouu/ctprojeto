@@ -19,6 +19,8 @@
      título da primeira coluna (padrão: 'Medida')
    - downloads (opcional): [{ texto, arquivo, tamanho }] PDFs do produto, como o
      manual técnico (aparecem ao lado do orçamento, antes do catálogo)
+   - detalhes (opcional): [{ rotulo, texto, cores? }] linhas "Combustível" e
+     "Cores" ao lado do título; cores: [{ nome, cor }] para as bolinhas
    - palavrasBlog: termos para achar artigos do blog sobre o produto
    O botão "Baixar catálogo" usa o PDF da coleção em CATALOGOS (main.js).
    ========================================================================== */
@@ -109,5 +111,42 @@ var PAGINAS_SOBRE = [
       { texto: 'Baixar manual técnico', arquivo: 'catalogos/manual-lareira-gas-linear-lrg.pdf', tamanho: '2,4 MB' }
     ],
     palavrasBlog: ['lareira a gas', 'lareiras a gas', 'gas linear']
+  },
+  {
+    categoria: 'lareiras',
+    linha: 'tachos',
+    nome: 'Tacho',
+    texto: [
+      // Site da Construflama (página do Tacho) e catálogo de lareiras 2026
+      'Os tachos Construflama reúnem amigos e família ao redor do fogo para compartilhar histórias e momentos incríveis.',
+      // TODO: o site diz ferro fundido e o catálogo diz aço corten (na lista de problemas)
+      'Duráveis e eficientes, são feitos em ferro fundido/aço corten e foram pensados para áreas externas, trazendo conforto e elegância para o seu ambiente.',
+      'O Tacho pode ser usado com álcool, com o queimador de inox no centro e pedras vulcânicas em volta, ou com lenha, sobre a grelha.'
+    ],
+    // Site: álcool e lenha. Catálogo: só lenha (na lista de problemas)
+    detalhes: [
+      { rotulo: 'Combustível', texto: 'Álcool e lenha' },
+      { rotulo: 'Cores', texto: 'preto, marrom e branco', cores: [
+        { nome: 'preto', cor: '#1E1B19' }, { nome: 'marrom', cor: '#7A3E12' }, { nome: 'branco', cor: '#F5F2EC' } ] }
+    ],
+    fotos: [
+      // Do site da Construflama (página do Tacho)
+      { imagem: 'img/produtos/tacho-alcool-detalhe.webp',
+        textoAlternativo: 'Detalhe do Tacho a álcool aceso: o queimador redondo de inox com a plaqueta Construflama, cercado de pedras vulcânicas avermelhadas.' },
+      { imagem: 'img/produtos/tacho-lenha-poltronas.webp',
+        textoAlternativo: 'Tacho a lenha cheio de toras, sobre pés, num piso de pedra clara, entre poltronas curvas cor de terracota.' }
+    ],
+    // Catálogo de lareiras 2026. O site oferece 60 e 100 cm (na lista de problemas)
+    medidas: {
+      titulo: 'Medidas do Tacho a lenha',
+      colunas: ['Tacho a lenha'],
+      linhas: [
+        { rotulo: 'Diâmetro', valores: ['80 cm'] },
+        { rotulo: 'Altura', valores: ['12,5 cm'] },
+        { rotulo: 'Peso', valores: ['7 kg'] }
+      ],
+      nota: 'Também sob encomenda com 1 m de diâmetro.'
+    },
+    palavrasBlog: ['tacho']
   }
 ];
