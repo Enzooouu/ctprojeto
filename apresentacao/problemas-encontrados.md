@@ -101,6 +101,18 @@ Atualizado sempre que um novo problema aparecer.
 - **Medidas no desenho técnico sem padrão** ("50 0", "74 0", com espaço no
   meio do número).
 
+### Manual da Lareira Gota a lenha (21/09/2017)
+- **Medidas diferentes do catálogo:** o manual dá 600 mm de altura e 750 mm de
+  profundidade; o catálogo 2026 dá 67,5 cm de altura e 74 cm de profundidade
+  para a mesma versão a lenha. Vale confirmar qual está certo.
+- **Também fala em "mais de 30 anos de tradição"** (o resto do material diz 40).
+- **Erros de português:** "ASSESSÓRIOS" (acessórios), "sustenção"
+  (sustentação), "temos existe a necessidade", "ambientes muito alto",
+  "coberta" (cobertura), "Tubo diâm. 220 m" (falta um "m": são 220 mm),
+  "decorrente de instalação ou uso inapropriados".
+- **Títulos "ÍNDICE" soltos** no topo das páginas de garantia, como no manual
+  da Tarus.
+
 ### Blog
 - **"Parrilla ou churrasqueira" diz que a linha Premium usa volante**, mas o
   artigo das três linhas e a foto da Premium mostram manivela.
