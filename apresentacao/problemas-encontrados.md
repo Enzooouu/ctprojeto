@@ -104,6 +104,8 @@ Atualizado sempre que um novo problema aparecer.
   em todas, sem título nem explicação.
 - **Manual técnico só em algumas:** a Retangular e a Canoa têm o botão, mas o
   Trio Chess não, embora o manual não cubra o Trio Chess de jeito nenhum.
+  A Redonda também fica sem o botão e sem nenhuma medida na página, embora o
+  manual tenha a tabela dela (LRA-040-RD a LRA-070-RD).
 
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz

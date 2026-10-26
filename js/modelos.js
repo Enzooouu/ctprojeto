@@ -384,7 +384,10 @@ var MODELOS = [
     combustiveis: ['alcool'],
     imagem: 'img/modelos/ecoflama-redonda.webp',
     textoAlternativo: 'Ecoflama Redonda em aço inox, com o queimador no centro do disco e a haste para acender.',
+    ambiente: { imagem: 'img/modelos/ecoflama-redonda-mesa.webp',
+      textoAlternativo: 'Ecoflama Redonda acesa, embutida no centro de uma mesa redonda bege, ao lado de uma cadeira de madeira.' },
     cores: null, fotos: [
+      { imagem: 'img/modelos/ecoflama-redonda-mesa.webp', textoAlternativo: 'Ecoflama Redonda acesa, embutida no centro de uma mesa redonda bege sobre um tapete cinza, ao lado de uma cadeira de madeira com almofada clara e pedriscos ao fundo.' },
       { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
     ],
     versoes: {
