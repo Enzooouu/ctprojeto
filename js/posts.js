@@ -503,7 +503,7 @@ var POSTS = [
     resumo: 'Na 7ª edição do D&D Garden Design, a vitrine da Construflama, assinada por Renata Guastelli e Andressa Cardoso, uniu bambu, vegetação e fogo.',
     data: '2025-09-19', exemplo: false,
     imagem: 'img/blog/dd-garden-design-2025.webp', foco: '40% 45%',
-    textoAlternativo: 'Lareira Gota preta suspensa por um tubo sobre o piso claro, rodeada por vasos com folhagens e bambu, com a tela de proteção apoiada no chão e, ao fundo, uma cozinha gourmet com churrasqueira de inox.',
+    textoAlternativo: 'Lareira Tarus preta suspensa por um tubo sobre o piso claro, rodeada por vasos com folhagens e bambu, com a tela de proteção apoiada no chão e, ao fundo, uma cozinha gourmet com churrasqueira de inox.',
     conteudo: [
       { tipo: 'paragrafo', texto: 'A 7ª edição do D&D Garden Design surpreendeu ao trazer sua noite de abertura para a área externa do shopping, transformando o espaço em um verdadeiro espetáculo de paisagismo e convivência. O evento, que reuniu arquitetos, paisagistas, designers e marcas de referência, foi marcado por uma atmosfera elegante, regada a champanhe, networking e memórias inspiradoras.' },
       { tipo: 'paragrafo', texto: 'Estar presente no D&D durante o período de preparação foi uma oportunidade única para a equipe da Construflama. Acompanhar de perto a agilidade dos escritórios de arquitetura, os ajustes de última hora e a colaboração entre profissionais reforça a essência deste evento: parceria e criatividade para entregar ambientes que realmente emocionam o público. E o resultado brilhou — literalmente.' },
