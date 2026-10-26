@@ -45,6 +45,16 @@ Atualizado sempre que um novo problema aparecer.
 - **Lareira Pipe:** diâmetro "Ø475" sem unidade (provavelmente 475 mm).
 - **Crase errada** em "à lenha", "à álcool" e "à gás".
 
+### Site atual: página da Lareira Cone
+- **O texto não fala da Cone:** é um texto genérico da linha escultural, que
+  cita Gota, Tarus, Pipe e Francesa, mas não a própria Cone. Começa com uma
+  frase sobre elegância que serve para qualquer produto.
+- **Contradiz o catálogo sobre o gás:** diz que "as versões lenha, álcool e gás
+  estão disponíveis", enquanto o catálogo diz "opção a gás sob consulta".
+- **"Versão 3600"** em vez de "versão 360°" (o símbolo de grau virou um zero).
+- **O botão "Gás" aparece selecionado** no seletor de tipo, embora o gás seja
+  sob consulta, e o seletor não muda nada na página.
+
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz
   29.328 BTU/h = 13,50 kW e 36.096 BTU/h = 16,27 kW; o certo seria cerca de

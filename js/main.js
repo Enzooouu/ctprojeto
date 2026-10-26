@@ -2025,21 +2025,40 @@ var DEPOIMENTOS = [
       img.src = fotos[n].imagem;
       img.alt = fotos[n].textoAlternativo || '';
       img.style.objectPosition = fotos[n].foco || '';
-      miniaturas.querySelectorAll('button').forEach(function (b, i) { b.setAttribute('aria-pressed', String(i === n)); });
+      miniaturas.querySelectorAll('button').forEach(function (b, i) {
+        if (b.classList.contains('prod-miniatura--mais')) return;
+        b.setAttribute('aria-pressed', String(i === n));
+      });
     }
+    // Até 8 miniaturas; com mais fotos, a 8ª mostra "+N" e abre a tela cheia
+    var MAX_MINIATURAS = 8;
     if (fotos.length > 1) {
       fotos.forEach(function (f, n) {
+        if (n >= MAX_MINIATURAS) return;
+        var resto = fotos.length - MAX_MINIATURAS + 1;
+        var mais = n === MAX_MINIATURAS - 1 && fotos.length > MAX_MINIATURAS;
         var li = el('li');
-        var b = el('button', 'prod-miniatura');
+        var b = el('button', 'prod-miniatura' + (mais ? ' prod-miniatura--mais' : ''));
         b.type = 'button';
-        b.setAttribute('aria-label', 'Ver foto ' + (n + 1) + ' de ' + fotos.length);
+        b.setAttribute('aria-label', mais
+          ? 'Ver mais ' + resto + ' fotos em tela cheia'
+          : 'Ver foto ' + (n + 1) + ' de ' + fotos.length);
+        if (mais) {
+          var selo = el('span', 'prod-miniatura__mais', '+' + resto);
+          selo.setAttribute('aria-hidden', 'true');
+          b.appendChild(selo);
+          b.addEventListener('click', function () {
+            mostrarFoto(n);
+            abrirTelaCheia(img, '', b, { fotos: fotos, indice: n, aoTrocar: mostrarFoto });
+          });
+        }
         var mini = el('img');
         mini.src = f.imagem;
         mini.alt = '';
         mini.loading = 'lazy';
         if (f.foco) mini.style.objectPosition = f.foco;
-        b.appendChild(mini);
-        b.addEventListener('click', function () { mostrarFoto(n); });
+        b.insertBefore(mini, b.firstChild);
+        if (!mais) b.addEventListener('click', function () { mostrarFoto(n); });
         li.appendChild(b);
         miniaturas.appendChild(li);
       });
