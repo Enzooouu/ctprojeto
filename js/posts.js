@@ -1223,7 +1223,7 @@ var POSTS = [
     categoria: 'lareiras',
     resumo: 'Conforto, design, convivência e valorização do imóvel: seis razões para ter uma lareira e os modelos para cada tipo de projeto.',
     data: '2026-07-23', exemplo: false,
-    imagem: 'img/blog/motivos-lareira.webp', capaInteira: 'escuro',
+    imagem: 'img/produtos/lareira-gas-linear-suite.webp', capaInteira: 'escuro',
     textoAlternativo: 'Suíte com parede de cimento queimado, televisão e, abaixo dela, uma lareira linear acesa sobre bancada de mármore claro, vista do pé da cama. Ambiente de Patrícia Hagobian, foto de Caio Falcão.',
     conteudo: [
       { tipo: 'paragrafo', texto: 'Quando as temperaturas caem, a casa se transforma no lugar onde buscamos conforto, tranquilidade e momentos especiais. E existe um elemento capaz de reunir tudo isso em um só ambiente: a lareira.' },

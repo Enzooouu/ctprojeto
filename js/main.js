@@ -1842,7 +1842,7 @@ var DEPOIMENTOS = [
       document.querySelector('[data-prod-medidas-nota]').textContent = md.nota || '';
       var tabela = document.querySelector('[data-prod-medidas-tabela]');
       var cab = el('tr');
-      var canto = el('th', null, 'Medida');
+      var canto = el('th', null, md.rotuloLinhas || 'Medida');
       canto.scope = 'col';
       cab.appendChild(canto);
       md.colunas.forEach(function (c) { var th = el('th', null, c); th.scope = 'col'; cab.appendChild(th); });
@@ -1896,6 +1896,18 @@ var DEPOIMENTOS = [
       miniaturas.remove();
     }
     mostrarFoto(0);
+
+    // PDFs do produto (ex.: manual técnico), antes do catálogo da coleção
+    var botaoCatalogo = document.querySelector('[data-prod-catalogo]');
+    (pag.downloads || []).forEach(function (d) {
+      var a = el('a', 'btn btn--ghost btn--lg');
+      a.href = d.arquivo;
+      a.setAttribute('download', '');
+      a.appendChild(icone('i-download', 'icon'));
+      a.appendChild(document.createTextNode(' ' + d.texto + ' '));
+      a.appendChild(el('span', 'prod-orcamento__peso', '(PDF' + (d.tamanho ? ', ' + d.tamanho : '') + ')'));
+      botaoCatalogo.parentNode.insertBefore(a, botaoCatalogo);
+    });
 
     // Catálogo em PDF da coleção (o mesmo da página da coleção e da home)
     var catalogo = CATALOGOS.filter(function (c) { return c.arquivo && c.categorias.indexOf(cat.slug) !== -1; })[0];
