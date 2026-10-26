@@ -416,7 +416,12 @@ var MODELOS = [
     combustiveis: ['alcool'],
     imagem: 'img/modelos/lareira-marroquina.webp',
     textoAlternativo: 'Ecoflama Marroquina: caixa quadrada de aço cor de ferrugem com as laterais vazadas em desenho geométrico.',
+    ambiente: { imagem: 'img/modelos/lareira-marroquina-acesa.webp',
+      textoAlternativo: 'Ecoflama Marroquina acesa, com a luz da chama passando pelo desenho vazado.' },
     cores: CORES_ESCULTURAIS, fotos: [
+      // Do site da Construflama (página da Ecoflama Marroquina)
+      { imagem: 'img/modelos/lareira-marroquina-acesa.webp', textoAlternativo: 'Ecoflama Marroquina acesa, com a luz da chama passando pelo desenho vazado, ao lado de um vaso de lavanda e de uma espreguiçadeira.' },
+      { imagem: 'img/modelos/lareira-marroquina-varanda.webp', textoAlternativo: 'Ecoflama Marroquina acesa numa varanda, entre um grande vaso de lavanda, uma espreguiçadeira e um sofá curvo ao fundo.' },
       { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
     ],
     versoes: {
@@ -509,15 +514,22 @@ var MODELOS = [
     medidas: { altura: '40 cm', largura: 'Ø 40 cm', peso: '10,4 kg' }
   },
   {
-    // PROTÓTIPO: está no site atual, mas não no catálogo 2026. TODO: descrição e medidas.
+    // PROTÓTIPO: está no site atual (sem texto), mas não no catálogo 2026. TODO: descrição e medidas.
     prototipo: true, etiqueta: 'Descrição e medidas em breve',
     categoria: 'lareiras', linha: 'ecoflamas',
     nome: 'Ecoflama Pot', slug: 'pot',
     descricao: '',
+    texto: [
+      // Do site da Construflama (texto comum às Ecoflamas)
+      'Super práticas, as lareiras ecológicas Construflama não precisam de coifa de respiro e estão prontas para o uso, com combustão à base de álcool de cereais.',
+      'São produzidas em aço inox 304 escovado de 5 mm de espessura e têm tanque duplo, hermeticamente soldado.'
+    ],
     combustiveis: ['alcool'],
     imagem: 'img/modelos/ecoflama-pot.webp',
     textoAlternativo: 'Ecoflama Pot: peça redonda e baixa, preta, com tampo de inox e o queimador no centro.',
-    cores: [], fotos: [],
+    cores: [], fotos: [
+      { video: 'CmpUd5KWtEY', textoAlternativo: 'Como acender e usar a Ecoflama Construflama' }
+    ],
     medidas: { altura: '', largura: '', peso: '' }
   }
 ];

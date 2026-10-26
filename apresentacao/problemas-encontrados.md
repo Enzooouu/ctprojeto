@@ -93,7 +93,8 @@ Atualizado sempre que um novo problema aparecer.
   "Lareira Ecoflama Canoa" (site) e "Ecoflama Canoa"; "Lareira Rainha"
   (catálogo) e "Trio Chess - Modelo Rainha" (site).
 - **A Ecoflama Pot está no site, mas não no catálogo 2026:** não há descrição
-  nem medidas dela em lugar nenhum.
+  nem medidas dela em lugar nenhum; a página dela no site não tem nenhum texto,
+  só a foto do produto e o vídeo.
 - **Potência com unidades misturadas na mesma linha:** a Retangular aquece "de
   15 a 30 m³", enquanto Canoa e Redonda aparecem com "21.000 m³".
 - **Erro de digitação:** "peça de deisgn By Construflama" (Marroquina).
