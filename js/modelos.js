@@ -607,13 +607,38 @@ var MODELOS = [
   {
     categoria: 'churrasqueiras', linha: 'soft',
     nome: 'Churrasqueira Soft com tampa', slug: 'com-tampa',
-    texto: SOFT,
-    combustiveis: [],   // TODO: confirmar se é a carvão ou a gás
+    // Do site da Construflama (página da Churrasqueira Soft com tampa)
+    descricao: 'Design e tecnologia juntos, com o mais alto padrão de eficiência.',
+    texto: [
+      'A Churrasqueira Soft com tampa é produzida em aço inox 304 e está disponível a gás, a carvão ou com queimador infravermelho (infrared), em diversos tamanhos.'
+    ].concat(SOFT.slice(1, 2)),   // sem o parágrafo dos espetos, que ela não tem
+    combustiveis: ['carvao', 'gas'],
     imagem: 'img/modelos/churrasqueira-soft-tampa.webp',
-    textoAlternativo: 'Churrasqueira Soft com tampa em aço inox: caixa retangular fechada por uma tampa inclinada com puxador redondo.',
+    textoAlternativo: 'Churrasqueira Soft com tampa em aço inox escovado: caixa retangular fechada por uma tampa inclinada, com termômetro redondo e puxador comprido.',
+    ambiente: { imagem: 'img/modelos/churrasqueira-soft-tampa-cozinha-luz.webp',
+      textoAlternativo: 'Churrasqueira Soft com tampa embutida numa bancada branca, sob uma coifa de inox, ao lado da pia, numa cozinha de armários rosados.' },
+    fotos: [
+      { imagem: 'img/modelos/churrasqueira-soft-tampa-cozinha.webp', textoAlternativo: 'Cozinha de armários rosados com bancada branca, vaso de planta, cuba de inox e adega; à direita, a Churrasqueira Soft com tampa a gás, com três botões, sob uma coifa de inox.' },
+      { imagem: 'img/modelos/churrasqueira-soft-tampa-cozinha-luz.webp', textoAlternativo: 'A mesma cozinha vista de lado, com a prateleira iluminada: a Churrasqueira Soft com tampa a gás embutida na bancada branca, sob a coifa de inox.' }
+    ],
+    versoes: {
+      titulo: 'Versões da Churrasqueira Soft com tampa',
+      rotuloLinhas: 'Tipo',
+      colunas: ['Tamanhos'],
+      linhas: [
+        { rotulo: 'A gás', valores: ['60, 70, 80, 90, 100 e 110'] },
+        { rotulo: 'A carvão', valores: ['60, 70, 80, 90, 100 e 110'] },
+        { rotulo: 'Infravermelho (infrared)', valores: ['60, 70, 80, 90, 100 e 110'] }
+      ],
+      // TODO: confirmar a unidade dos tamanhos (provavelmente centímetros de largura)
+      nota: 'Tamanhos do site da Construflama. A equipe confirma as medidas do seu projeto.'
+    },
+    downloads: [
+      // Modelo 3D da versão a carvão de 80 (CH 80)
+      { texto: 'Baixar 3D', externo: 'SketchUp', arquivo: 'https://3dwarehouse.sketchup.com/model/b5e3f3c5-1834-4fcf-b0ea-386e075f3759/CHURRASQUEIRA-SOFT-CARV%C3%83O-CH-80-TAMPA' }
+    ],
     cores: null, palavrasBlog: ['Linha Soft'],
-    prototipo: true, etiqueta: 'Descrição e medidas em breve',
-    medidas: { altura: '', largura: '', peso: '' }
+    medidas: { altura: '', largura: '60 a 110', peso: '' }
   },
   {
     categoria: 'churrasqueiras', linha: 'soft',

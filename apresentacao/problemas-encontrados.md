@@ -151,6 +151,13 @@ Atualizado sempre que um novo problema aparecer.
     manivela lateral), sem avisar;
   - o botão "Baixar 3D" também usa o verde-claro que parece desativado (o
     mesmo do "Preço sob consulta", na seção 4).
+- **Página da Soft com tampa:**
+  - o texto fala só das "churrasqueiras infrared", mas a página vende a
+    versão a gás, a carvão e infrared;
+  - frase sem verbo principal: "O design e a tecnologia, juntos, oferecendo o
+    mais alto padrão de eficiência.";
+  - as fotos da cozinha mostram a versão a gás (com os três botões), mas o
+    "Baixar 3D" é da versão a carvão (CH 80), sem avisar.
 
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz
