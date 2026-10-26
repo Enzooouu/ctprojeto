@@ -127,6 +127,13 @@ Atualizado sempre que um novo problema aparecer.
 
 ## 4. Experiência no site atual
 
+- **As fotos dos projetos ficam escondidas no blog:** quem procura uma lareira
+  pelas coleções quase nunca chega ao blog, então não vê a maior parte das
+  fotos dela em projetos reais. A Cone, por exemplo, tem 6 fotos na página do
+  produto e várias outras só nos artigos do blog (Casa Cosentino, piano bar
+  da Glaucia Britto, CASACOR). No novo site, cada lareira junta na própria
+  página as fotos do produto e as de todos os projetos do blog (a Cone fica
+  com 12), e ainda mostra os artigos em que ela aparece.
 - **Página "Lareiras esculturais" sem vida:** só fotos do produto em fundo
   branco e o nome em letras cinza, sem descrição, sem combustível, sem cores
   e sem nenhuma foto de projeto real.
