@@ -2527,8 +2527,10 @@ button.blog-pagina { background: none; cursor: pointer; }
 .prod-citacao figcaption { margin-top: var(--sp-2); color: rgba(236, 226, 210, .75); font-size: var(--fs-sm); }
 .prod-outros { padding-bottom: 0; }
 .prod-outros__lista { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4); margin: 0; padding: 0; list-style: none; }
-@media (min-width: 768px) { .prod-outros__lista { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (min-width: 1024px) { .prod-outros__lista { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+@media (min-width: 768px) { .prod-outros__lista { grid-template-columns: repeat(var(--outros-m, 3), minmax(0, 1fr)); } }
+/* Até 3 (tablet) ou 6 (desktop) por linha; com menos modelos, eles dividem a
+   largura toda (--outros-m e --outros, postos pelo JS) */
+@media (min-width: 1024px) { .prod-outros__lista { grid-template-columns: repeat(var(--outros, 6), minmax(0, 1fr)); } }
 .prod-outro__link { display: grid; gap: var(--sp-2); color: var(--marrom); text-decoration: none; border-radius: var(--raio); }
 .prod-outro__palco { display: block; border-radius: var(--raio); transition: transform .35s var(--ease-out), box-shadow .35s; }
 .prod-outro__nome { font-family: var(--fonte-destaque); font-size: var(--fs-md); }

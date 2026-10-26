@@ -1952,6 +1952,8 @@ var DEPOIMENTOS = [
     if (modelo) {
       var outros = modelosDaLinha(cat.slug, linha.slug).filter(function (m) { return m !== modelo; });
       var listaOutros = document.querySelector('[data-prod-outros-lista]');
+      listaOutros.style.setProperty('--outros', Math.min(outros.length, 6));
+      listaOutros.style.setProperty('--outros-m', Math.min(outros.length, 3));
       document.querySelector('[data-prod-outros]').hidden = !outros.length;
       document.querySelector('[data-prod-outros-titulo]').textContent = 'Outras ' + (linha.marca ? linha.nome : cat.nome.toLowerCase() + ' ' + (linha.nomeProprio ? linha.nome : linha.nome.toLowerCase()));   // "Outras lareiras esculturais"
       outros.forEach(function (m) {
