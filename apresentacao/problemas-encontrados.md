@@ -55,6 +55,13 @@ Atualizado sempre que um novo problema aparecer.
 - **O botão "Gás" aparece selecionado** no seletor de tipo, embora o gás seja
   sob consulta, e o seletor não muda nada na página.
 
+### Site atual: página da Lareira Tarus
+- **Mesmo texto genérico da Cone**, que não fala da Tarus em particular.
+- **Frases cortadas no meio** em parágrafos separados: "As versões lenha,
+  álcool e gás" termina um parágrafo e "estão disponíveis…" começa o seguinte;
+  o mesmo acontece em "As lareiras Tarus e Gota possuem" / "uma versão 360°".
+- **Marca-d'água "construflama"** escrita por cima de uma das fotos de projeto.
+
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz
   29.328 BTU/h = 13,50 kW e 36.096 BTU/h = 16,27 kW; o certo seria cerca de

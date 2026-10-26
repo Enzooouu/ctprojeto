@@ -190,8 +190,8 @@ var POSTS = [
     categoria: 'lareiras',
     resumo: 'Penduradas no teto e visíveis de todos os ângulos, as lareiras suspensas viram peças escultóricas e pontos focais em casas, hotéis, restaurantes e spas.',
     data: '2025-03-21', exemplo: false,
-    imagem: 'img/blog/lareira-suspensa-gota.webp',
-    textoAlternativo: 'Lareira Gota preta suspensa por um tubo, com lenha empilhada no bojo, diante de uma parede de painéis de madeira avermelhada com um quadro, livros e um sofá de veludo bordô.',
+    imagem: 'img/blog/lareira-suspensa-tarus.webp',
+    textoAlternativo: 'Lareira Tarus preta suspensa por um tubo, com lenha empilhada no bojo, diante de uma parede de painéis de madeira avermelhada com um quadro, livros e um sofá de veludo bordô.',
     conteudo: [
       { tipo: 'paragrafo', texto: 'As lareiras suspensas têm conquistado um lugar especial na arquitetura e no design de interiores, transformando-se em peças centrais que aliam funcionalidade e estética. Diferentemente das lareiras tradicionais, que costumam ser incorporadas em paredes ou estruturas fixas, as suspensas flutuam no ambiente, muitas vezes penduradas no teto ou sustentadas por estruturas discretas. Essa característica lhes confere um ar contemporâneo, escultural e inovador.' },
       { tipo: 'paragrafo', texto: 'Uma das maiores vantagens das lareiras suspensas é o impacto visual que elas proporcionam. Elas criam uma sensação de leveza, destacando-se como verdadeiras obras de arte no espaço. Por serem visíveis de diferentes ângulos, tornam-se pontos focais, especialmente em ambientes integrados, como salas de estar e áreas sociais. Seu design minimalista e fluido combina perfeitamente com estilos modernos, industriais ou até mesmo rústicos, dependendo do material e do acabamento escolhidos.' },
