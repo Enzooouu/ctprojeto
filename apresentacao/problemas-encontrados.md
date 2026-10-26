@@ -79,6 +79,10 @@ Atualizado sempre que um novo problema aparecer.
   "o mais recente lançamento da Construflama" na linha escultural, mas ela não
   aparece na página "Lareiras esculturais" do site nem no catálogo 2026.
   Já a Balaio está no site e no catálogo, mas não no artigo da linha escultural.
+  Ou seja: o produto mais novo, que foi destaque na CASACOR São Paulo 2026,
+  não pode ser encontrado por quem procura nas coleções nem no catálogo, e não
+  tem foto do produto, medidas, combustível nem cores publicados. No novo site
+  ela já aparece na página das esculturais, marcada como lançamento.
 
 - **"Como escolher a lareira ideal" tem o mesmo texto do artigo do Trio
   Ecolare.** (No novo site o texto foi copiado igual, a pedido, e está marcado

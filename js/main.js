@@ -2061,12 +2061,22 @@ var DEPOIMENTOS = [
       li.style.setProperty('--i', i);
       var art = el('article', 'mod-card__caixa');
       var palco = el('div', 'mod-card__palco');
-      var img = el('img', 'mod-card__produto');
-      img.src = m.imagem;
-      img.alt = m.textoAlternativo;
-      img.loading = 'lazy';
-      palco.appendChild(img);
-      if (m.ambiente) {
+      if (m.imagem) {
+        var img = el('img', 'mod-card__produto');
+        img.src = m.imagem;
+        img.alt = m.textoAlternativo;
+        img.loading = 'lazy';
+        palco.appendChild(img);
+      } else if (m.ambiente) {
+        // Sem foto do produto (protótipo): a foto do projeto ocupa o palco
+        var unica = el('img', 'mod-card__ambiente-unica');
+        unica.src = m.ambiente.imagem;
+        unica.alt = m.ambiente.textoAlternativo;
+        unica.loading = 'lazy';
+        palco.appendChild(unica);
+      }
+      if (m.prototipo) palco.appendChild(el('span', 'tag-exemplo', 'Lançamento · dados em breve'));
+      if (m.ambiente && m.imagem) {
         var amb = el('img', 'mod-card__ambiente');
         amb.src = m.ambiente.imagem;
         amb.alt = m.ambiente.textoAlternativo;
@@ -2088,7 +2098,9 @@ var DEPOIMENTOS = [
       corpo.appendChild(h);
       var tags = el('ul', 'mod-card__tags');
       tags.setAttribute('aria-label', 'Combustível');
-      combustiveis(m).forEach(function (c) { tags.appendChild(el('li', null, c)); });
+      var listaComb = combustiveis(m);
+      if (!listaComb.length) listaComb = ['Combustível a confirmar'];   // TODO (protótipo)
+      listaComb.forEach(function (c) { tags.appendChild(el('li', null, c)); });
       corpo.appendChild(tags);
       corpo.appendChild(el('p', 'mod-card__desc', m.descricao));
       if (m.cores && m.cores.length) {
@@ -2151,7 +2163,9 @@ var DEPOIMENTOS = [
       var th = el('th', null, m.nome.replace(/^Lareira /, ''));
       th.scope = 'row';
       tr.appendChild(th);
-      [m.medidas.altura, m.medidas.largura, m.medidas.peso, listaTexto(combustiveis(m))].forEach(function (v) { tr.appendChild(el('td', null, v)); });
+      [m.medidas.altura, m.medidas.largura, m.medidas.peso, listaTexto(combustiveis(m))].forEach(function (v) {
+        tr.appendChild(v ? el('td', null, v) : el('td', 'mod-a-confirmar', 'a confirmar'));
+      });
       tbody.appendChild(tr);
     });
     tabela.appendChild(tbody);

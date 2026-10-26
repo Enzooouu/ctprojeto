@@ -19,6 +19,8 @@
    - cores: amostras do catálogo
    - medidas: { altura, largura, peso } para a tabela de comparação
      (largura pode ser diâmetro: "Ø 47,5 cm")
+   - prototipo: true quando ainda faltam dados reais. Imagem, combustíveis,
+     cores ou medidas vazios aparecem marcados como "em breve" / "a confirmar".
    ========================================================================== */
 var CORES_ESCULTURAIS = [
   { nome: 'preto', cor: '#1E1B19' },
@@ -95,5 +97,21 @@ var MODELOS = [
     textoAlternativo: 'Lareira Balaio preta: um cilindro suspenso por quatro hastes sobre um grande prato redondo com o queimador no centro.',
     cores: CORES_ESCULTURAIS,
     medidas: { altura: '215 cm', largura: 'Ø 100 cm', peso: '58 kg' }
+  },
+  {
+    // PROTÓTIPO: a Pilão não está no site atual nem no catálogo 2026.
+    // TODO: foto do produto, combustíveis, cores e medidas (o Enzo vai conseguir).
+    prototipo: true,
+    categoria: 'lareiras', linha: 'esculturais',
+    nome: 'Lareira Pilão', slug: 'pilao',
+    // Do artigo do blog "Descubra os modelos da linha Escultural"
+    descricao: 'O mais recente lançamento da linha: uma peça robusta que faz a referência rústica se apresentar de forma elegante, desenvolvida com o escritório brasiliense MAAI Arquitetura para a CASACOR São Paulo.',
+    combustiveis: [],
+    imagem: '',
+    textoAlternativo: '',
+    ambiente: { imagem: 'img/blog/living-ritmo-vital-pilao.webp',
+      textoAlternativo: 'Lareira Pilão, de metal escuro, sobre uma base com lenha, diante de paredes de palha trançada, no Living Ritmo Vital da MAAI Arquitetura, CASACOR São Paulo 2026.' },
+    cores: [],
+    medidas: { altura: '', largura: '', peso: '' }
   }
 ];

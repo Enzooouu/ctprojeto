@@ -2579,6 +2579,9 @@ button.blog-pagina { background: none; cursor: pointer; }
   transition: opacity .5s var(--ease-out), transform .8s var(--ease-out);
   transform: scale(1.04);
 }
+.mod-card__ambiente-unica { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mod-card__palco .tag-exemplo { z-index: 2; left: var(--sp-3); right: auto; }
+.mod-a-confirmar { color: var(--cinza) !important; font-style: italic; }
 .mod-card__selo {
   position: absolute;
   left: var(--sp-3);
