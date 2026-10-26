@@ -379,6 +379,7 @@ var DEPOIMENTOS = [
       fotos: fotos,
       detalhes: detalhes,
       citacao: m.citacao,
+      downloads: m.downloads,
       palavrasBlog: [m.nome]
     };
     if (m.versoes) {

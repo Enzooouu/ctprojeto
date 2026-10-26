@@ -11,7 +11,9 @@
    - categoria / linha: slugs de CATEGORIAS
    - nome, slug: nome do modelo e endereço da futura página do modelo
    - descricao: texto do catálogo
-   - combustiveis: 'lenha' | 'alcool' | 'gas' (o que o catálogo lista)
+   - combustiveis: 'lenha' | 'alcool' | 'gas'. Todas as esculturais, menos a
+     Pilão, têm as três versões (confirmado com a Construflama; o catálogo diz
+     "gás sob consulta" e lista a Balaio só a álcool)
    - gasSobConsulta: true quando o catálogo diz "opção a gás sob consulta"
    - imagem / textoAlternativo: foto do produto (fundo branco)
    - ambiente (opcional): { imagem, textoAlternativo } foto num projeto real,
@@ -25,6 +27,7 @@
    - fotos: [{ imagem, textoAlternativo }] fotos de projetos, depois da do produto
    - versoes: { colunas: ['Lenha', 'Álcool'], linhas: [{ rotulo, valores }] }
      medidas de cada versão no catálogo
+   - downloads (opcional): [{ texto, arquivo, tamanho }] manuais do modelo
    - prototipo: true quando ainda faltam dados reais. Imagem, combustíveis,
      cores ou medidas vazios aparecem marcados como "em breve" / "a confirmar".
    ========================================================================== */
@@ -39,7 +42,7 @@ var MODELOS = [
     categoria: 'lareiras', linha: 'esculturais',
     nome: 'Lareira Tarus', slug: 'tarus',
     descricao: 'Uma das estrelas da Construflama, a icônica Lareira Tarus sempre está presente em mostras como CASACOR e Artefacto. A sofisticação do seu design imponente traz o fogo com elegância ao seu lar.',
-    combustiveis: ['lenha', 'alcool'], gasSobConsulta: true,
+    combustiveis: ['lenha', 'alcool', 'gas'],
     imagem: 'img/modelos/lareira-tarus.webp',
     textoAlternativo: 'Lareira Tarus preta, suspensa por um tubo, em formato de meia-lua com a chama à mostra.',
     ambiente: { imagem: 'img/blog/lareira-tarus-giovanna-leal.webp',
@@ -49,7 +52,10 @@ var MODELOS = [
       'A Tarus é um dos designs mais icônicos e memoráveis da Construflama: suas linhas curvas, combinadas com a vertical do tubo, são um diferencial em ambientes contemporâneos, e ela também pode ser usada em espaços que contrastam o visual antigo com elementos atuais, sem perder a elegância nem a personalidade clássica.',
       // Do site da Construflama (página da Lareira Tarus)
       'A Tarus também tem uma versão 360°, em que o corpo gira livremente, e a versão Space, maior, com 1,30 m de largura.',
-      'Quanto aos materiais, ela pode ser em aço carbono, pintado de preto ou branco, ou em aço corten.'
+      'Quanto aos materiais, ela pode ser em aço carbono, pintado de preto ou branco, ou em aço corten.',
+      // Do manual da Tarus a álcool (29/09/2020)
+      'Também existe a versão de duas bocas, indicada para usar como ilha, no meio do ambiente. A recomendação é instalar a lareira suspensa a 40 cm do piso.',
+      'A versão a álcool sai de fábrica com todas as peças para a fixação, a tela de proteção, a haste para acender e apagar e pedras vulcânicas para decorar o fundo.'
     ],
     citacao: { texto: 'Tentamos trazer uma neutralidade nos tons com bastante volume e texturas, que tocasse as pessoas. Dentro dessa atmosfera a gente achou a Lareira Tarus da Construflama, ela trouxe o design que a gente buscava.',
       autor: 'Expedito Bezerra, sobre o Loft da CASACOR São Paulo 2025' },
@@ -70,13 +76,16 @@ var MODELOS = [
         { rotulo: 'Peso', valores: ['45 kg', '45 kg'] }
       ]
     },
+    downloads: [
+      { texto: 'Baixar manual da versão a álcool', arquivo: 'catalogos/manual-lareira-tarus-alcool.pdf', tamanho: '0,8 MB' }
+    ],
     medidas: { altura: '50 cm', largura: '100 cm', peso: '45 kg' }
   },
   {
     categoria: 'lareiras', linha: 'esculturais',
     nome: 'Lareira Gota', slug: 'gota',
     descricao: 'Trazendo elegância para os ambientes em que está presente, a Lareira Gota chama atenção em qualquer espaço em que estiver, proporcionando o ambiente ideal.',
-    combustiveis: ['lenha', 'alcool'], gasSobConsulta: true,
+    combustiveis: ['lenha', 'alcool', 'gas'],
     imagem: 'img/modelos/lareira-gota.webp',
     textoAlternativo: 'Lareira Gota preta, suspensa por um tubo, em formato de cone baixo com a chama à mostra.',
     ambiente: { imagem: 'img/blog/lareira-gota-entre-linhas-office.webp',
@@ -106,7 +115,7 @@ var MODELOS = [
     categoria: 'lareiras', linha: 'esculturais',
     nome: 'Lareira Cone', slug: 'cone',
     descricao: 'A Lareira Cone é uma de nossas lareiras mais queridas quando o assunto é arquitetura. Seu design diferenciado já brilhou em várias mostras ao redor do Brasil, como Belo Horizonte e São Paulo.',
-    combustiveis: ['lenha', 'alcool'], gasSobConsulta: true,
+    combustiveis: ['lenha', 'alcool', 'gas'],
     imagem: 'img/modelos/lareira-cone.webp',
     textoAlternativo: 'Lareira Cone preta: um cone suspenso sobre um prato baixo com a chama acesa.',
     ambiente: { imagem: 'img/blog/casa-cosentino-cone.webp',
@@ -149,7 +158,7 @@ var MODELOS = [
     categoria: 'lareiras', linha: 'esculturais',
     nome: 'Lareira Pipe', slug: 'pipe',
     descricao: 'A Lareira Pipe se destaca pela modernidade, sendo perfeita para ambientes menores, onde traz conforto e elegância ocupando pouco espaço.',
-    combustiveis: ['lenha', 'alcool'], gasSobConsulta: true,
+    combustiveis: ['lenha', 'alcool', 'gas'],
     imagem: 'img/modelos/lareira-pipe.webp',
     textoAlternativo: 'Lareira Pipe preta, cilíndrica e vertical, com a portinhola de vidro aberta e a chama acesa.',
     ambiente: { imagem: 'img/blog/sala-clareira-pipe-fendi.webp',
@@ -178,7 +187,7 @@ var MODELOS = [
     categoria: 'lareiras', linha: 'esculturais',
     nome: 'Lareira Francesa', slug: 'francesa',
     descricao: 'A imponente e icônica Lareira Francesa traz a mistura perfeita entre o clássico e o moderno, trazendo conforto e sofisticação a todos os ambientes em que está presente.',
-    combustiveis: ['lenha', 'alcool'], gasSobConsulta: true,
+    combustiveis: ['lenha', 'alcool', 'gas'],
     imagem: 'img/modelos/lareira-francesa.webp',
     textoAlternativo: 'Lareira Francesa preta apoiada no chão, em formato de cone inclinado com abertura oval e lenha acesa.',
     cores: CORES_ESCULTURAIS,
@@ -203,8 +212,7 @@ var MODELOS = [
     categoria: 'lareiras', linha: 'esculturais',
     nome: 'Lareira Balaio', slug: 'balaio',
     descricao: 'Desenhada pelo renomado arquiteto Quintino Facci, a Lareira Escultural Balaio proporciona um ambiente aconchegante e sofisticado.',
-    // O texto do catálogo cita lenha e álcool, mas as especificações só trazem álcool
-    combustiveis: ['alcool'],
+    combustiveis: ['lenha', 'alcool', 'gas'],
     imagem: 'img/modelos/lareira-balaio.webp',
     textoAlternativo: 'Lareira Balaio preta: um cilindro suspenso por quatro hastes sobre um grande prato redondo com o queimador no centro.',
     cores: CORES_ESCULTURAIS,

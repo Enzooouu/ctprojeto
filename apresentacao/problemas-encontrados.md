@@ -34,6 +34,11 @@ Atualizado sempre que um novo problema aparecer.
   tradicional aquece de 100 a 450 m³ e a Ecoflama de 15 a 30 m³: os números
   das esculturais provavelmente estão em outra unidade (kcal/h ou BTU/h).
   O novo site não mostra esses valores.
+- **Combustíveis errados no catálogo:** todas as lareiras esculturais (menos a
+  Pilão) são feitas nas versões a álcool, a lenha e a gás (confirmado com a
+  Construflama), mas o catálogo diz "opção a gás sob consulta" e lista a
+  Balaio só a álcool. Quem consulta o catálogo acha que tem menos opções do
+  que realmente existem.
 - **Pesos escritos de forma confusa:** "75,000Kg", "110,000Kg", "112,500kg"
   (parece 75 mil quilos). No novo site: 75 kg, 110 kg, 112,5 kg.
 - **Capacidade do reservatório e duração da queima com os mesmos números**
@@ -78,6 +83,19 @@ Atualizado sempre que um novo problema aparecer.
 - **O texto do PDF não pode ser lido por computador:** as fontes estão
   quebradas, então não dá para buscar palavras, copiar trechos nem usar leitor
   de tela. A página 2 está em branco.
+
+### Manual da Lareira Tarus ecológica (29/09/2020)
+- **"Empresa com mais de 30 anos de tradição"**, enquanto o site, o blog e o
+  catálogo falam em mais de 40 anos.
+- **Materiais diferentes do site:** o manual diz que o corpo é "fabricado em
+  aço corten" e, em outro trecho, "em aço com a opção pintada ou aço corten
+  oxidado"; o site fala em aço carbono pintado de preto ou branco, ou corten.
+- **Erros de português:** "Ecologica" sem acento, "tranqüilidade" (com trema,
+  abolido em 2009), "pedra vulcânica que são indicas", "deveram ficar"
+  (deverão), "realize á fixação", "eletro-eletrônicos".
+- **Títulos "ÍNDICE" soltos** no topo das páginas de garantia e anexos.
+- **Medidas no desenho técnico sem padrão** ("50 0", "74 0", com espaço no
+  meio do número).
 
 ### Blog
 - **"Parrilla ou churrasqueira" diz que a linha Premium usa volante**, mas o
