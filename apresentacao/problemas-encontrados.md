@@ -82,6 +82,11 @@ Atualizado sempre que um novo problema aparecer.
   assinada por um arquiteto conhecido (Quintino Facci). É o modelo escultural
   com menos material de divulgação.
 - **Sem manual técnico**, como a Francesa.
+- **Três respostas diferentes para o combustível:** a página do site oferece
+  lenha e álcool; o catálogo lista só álcool; e a Construflama informou que
+  todas as esculturais (menos a Pilão) têm lenha, álcool e gás.
+- **Mesmo texto genérico das outras esculturais**, que cita Gota, Tarus, Pipe
+  e Francesa, mas não a própria Balaio nem o arquiteto Quintino Facci.
 
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz
