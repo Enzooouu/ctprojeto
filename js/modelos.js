@@ -178,12 +178,18 @@ var MODELOS = [
       textoAlternativo: 'Lareira Pipe na cor Fendi presa à parede de madeira escura, ao lado de um sofá curvo.' },
     cores: CORES_ESCULTURAIS,
     texto: [
-      'Essa peça se tornou um marco do minimalismo dos últimos anos. O formato cilíndrico traz um tom retilíneo, e a portinhola com vidro deixa a beleza da chama à vista, numa releitura moderna da tela que cobre o braseiro de outros modelos.'
+      'Essa peça se tornou um marco do minimalismo dos últimos anos. O formato cilíndrico traz um tom retilíneo, e a portinhola com vidro deixa a beleza da chama à vista, numa releitura moderna da tela que cobre o braseiro de outros modelos.',
+      // Do site da Construflama (página da Lareira Pipe)
+      'Quanto aos materiais, ela pode ser em aço carbono, pintado de preto ou branco, ou em aço corten.'
     ],
     citacao: { texto: 'A gente tem aqui um diálogo de peças metálicas, peças orgânicas que no contraste se conversam.',
       autor: 'Bernardo Barcellos, sobre a Eco Casa da L.ara Arquitetura, CASACOR Minas 2026' },
     fotos: [
-      { imagem: 'img/blog/sala-clareira-pipe-fendi.webp', textoAlternativo: 'Lareira Pipe na cor Fendi presa à parede de madeira escura, ao lado de um sofá curvo, na Sala Clareira da Sala 2 Arquitetura.' }
+      { imagem: 'img/blog/sala-clareira-pipe-fendi.webp', textoAlternativo: 'Lareira Pipe na cor Fendi presa à parede de madeira escura, ao lado de um sofá curvo, na Sala Clareira da Sala 2 Arquitetura.' },
+      // Do site da Construflama (página da Lareira Pipe)
+      { imagem: 'img/modelos/lareira-pipe-bancada-madeira.webp', textoAlternativo: 'Lareira Pipe grafite suspensa no canto de uma sala, ao lado de uma bancada de madeira clara com nicho iluminado e cuba, com um cesto de lenha no piso de taco.' },
+      { imagem: 'img/modelos/lareira-pipe-tapete-terracota.webp', textoAlternativo: 'Lareira Pipe grafite suspensa num corredor com parede de madeira clara, poltrona de couro caramelo, tapete terracota e porta de vidro ao fundo.' },
+      { imagem: 'img/modelos/lareira-pipe-branca-madeira.webp', textoAlternativo: 'Lareira Pipe branca suspensa diante de uma parede de madeira escura, ao lado de uma luminária de pedra e de um sofá curvo cor de oliva.' }
     ],
     versoes: {
       colunas: ['Lenha', 'Álcool'],
