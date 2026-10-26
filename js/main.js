@@ -2045,12 +2045,33 @@ var DEPOIMENTOS = [
       zoom.hidden = !!f.video;
       caixaVideo.hidden = !f.video;
       caixaVideo.textContent = '';
-      if (f.video) {
+      if (f.video && location.protocol === 'file:') {
+        // Aberto direto do computador (file://), o navegador não manda o
+        // endereço do site e o YouTube recusa o player (erro 153). Em vez
+        // dele, a capa do vídeo leva ao YouTube numa nova aba.
+        var link = el('a', 'prod-galeria__video-link');
+        link.href = 'https://www.youtube.com/watch?v=' + encodeURIComponent(f.video);
+        link.target = '_blank';
+        link.rel = 'noopener';
+        var capa = el('img');
+        capa.src = 'https://i.ytimg.com/vi/' + encodeURIComponent(f.video) + '/hqdefault.jpg';
+        capa.alt = '';
+        capa.addEventListener('error', function () { capa.remove(); });
+        link.appendChild(capa);
+        var rotulo = el('span', 'prod-galeria__video-rotulo');
+        rotulo.appendChild(icone('i-play', 'icon'));
+        rotulo.appendChild(document.createTextNode(' Assistir no YouTube'));
+        rotulo.appendChild(srOnly(': ' + (f.textoAlternativo || 'vídeo') + ' (abre em nova aba)'));
+        link.appendChild(rotulo);
+        caixaVideo.appendChild(link);
+      } else if (f.video) {
         var player = el('iframe');
         player.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(f.video) + '?rel=0';
         player.title = f.textoAlternativo || 'Vídeo';
         player.setAttribute('allow', 'accelerometer; encrypted-media; picture-in-picture; fullscreen');
         player.setAttribute('allowfullscreen', '');
+        // O YouTube exige saber de qual site vem o player
+        player.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
         player.loading = 'lazy';
         caixaVideo.appendChild(player);
       } else {

@@ -2408,6 +2408,11 @@ button.blog-pagina { background: none; cursor: pointer; }
 .prod-miniatura--mais { position: relative; opacity: 1; }
 .prod-galeria__video { width: 100%; height: 100%; background: #000; }
 .prod-galeria__video iframe { display: block; width: 100%; height: 100%; border: 0; }
+.prod-galeria__video-link { position: relative; display: grid; place-items: center; width: 100%; height: 100%; color: #fff; text-decoration: none; }
+.prod-galeria__video-link img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .6; }
+.prod-galeria__video-rotulo { position: relative; display: inline-flex; align-items: center; gap: .5em; padding: .8em 1.4em; border-radius: 999px; background: var(--laranja); font-weight: 600; }
+.prod-galeria__video-link:hover .prod-galeria__video-rotulo, .prod-galeria__video-link:focus-visible .prod-galeria__video-rotulo { filter: brightness(1.1); }
+.prod-galeria__video-link:focus-visible { outline: 3px solid var(--laranja); outline-offset: -3px; }
 .prod-galeria__zoom[hidden] { display: none; }
 .prod-miniatura--video {
   display: grid;
