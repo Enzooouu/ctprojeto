@@ -19,7 +19,11 @@
 
   <link rel="stylesheet" href="css/styles.css">
   <!-- Marca que o JS está ativo (as animações de entrada só se aplicam com JS) -->
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    document.documentElement.classList.add('js');
+    // Vindo de outra página do site: começa coberta e clareia (ver main.js, "Transição entre páginas")
+    try { if (sessionStorage.getItem('cf-transicao')) document.documentElement.classList.add('transicao'); } catch (e) {}
+  </script>
 </head>
 <body data-pagina-modelos>
 

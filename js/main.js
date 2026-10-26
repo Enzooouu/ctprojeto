@@ -2631,6 +2631,48 @@ var DEPOIMENTOS = [
   }
 
   /* ------------------------------------------------------------------------
+     6c. Transição entre páginas do site: ao clicar num link para outra página,
+         a tela escurece (0,25 s) antes de trocar; a nova página chega coberta
+         (script no <head>) e clareia. Sem efeito com movimento reduzido.
+     ------------------------------------------------------------------------ */
+  (function transicaoEntrePaginas() {
+    var raiz = document.documentElement;
+    var semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var DURACAO = 250;
+    try { sessionStorage.removeItem('cf-transicao'); } catch (e) {}
+
+    function clarear() {
+      if (!raiz.classList.contains('transicao')) return;
+      raiz.classList.add('transicao--clara');
+      setTimeout(function () { raiz.classList.remove('transicao', 'transicao--clara'); }, 350);
+    }
+    // Chegada: espera um quadro para o navegador pintar a cobertura antes de clarear
+    requestAnimationFrame(function () { requestAnimationFrame(clarear); });
+    // Voltar/avançar do navegador com a página guardada em memória: não fica coberta
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted) raiz.classList.remove('transicao', 'transicao--clara');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (semMovimento.matches || e.defaultPrevented || e.button !== 0 ||
+          e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target === '_blank' || a.hasAttribute('download') || a.hasAttribute('data-proto')) return;
+      var href = a.getAttribute('href');
+      if (!/\.html(\?|#|$)/.test(href) || /^[a-z]+:/i.test(href)) return;   // só páginas do próprio site
+      var destino = new URL(href, location.href);
+      if (destino.pathname === location.pathname && destino.search === location.search) return;  // só âncora na mesma página
+      e.preventDefault();
+      try { sessionStorage.setItem('cf-transicao', '1'); } catch (err) {}
+      raiz.classList.add('transicao', 'transicao--clara');
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { raiz.classList.remove('transicao--clara'); });
+      });
+      setTimeout(function () { location.href = destino.href; }, DURACAO);
+    });
+  })();
+
+  /* ------------------------------------------------------------------------
      7. Ano atual no rodapé
      ------------------------------------------------------------------------ */
   var year = document.querySelector('[data-year]');

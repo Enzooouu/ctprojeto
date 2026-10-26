@@ -2749,6 +2749,25 @@ button.blog-pagina { background: none; cursor: pointer; }
 .voltar-blog-float[hidden] { display: none; }
 
 /* --------------------------------------------------------------------------
+   15b. Transição entre páginas: a página escurece ao sair e clareia ao chegar
+   (o topo de todas as páginas é escuro, então a troca fica suave)
+   -------------------------------------------------------------------------- */
+html.transicao::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--cinza-escuro-profundo);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+html.transicao.transicao--clara::after { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  html.transicao::after { display: none; }
+}
+
+/* --------------------------------------------------------------------------
    16. Aviso (toast) dos links ainda não criados no protótipo
    -------------------------------------------------------------------------- */
 .toast {
