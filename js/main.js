@@ -390,6 +390,7 @@ var DEPOIMENTOS = [
         rotuloLinhas: m.versoes.rotuloLinhas || 'Medida',
         colunas: m.versoes.colunas,
         linhas: m.versoes.linhas,
+        lista: m.versoes.lista,
         nota: m.versoes.nota || (m.categoria === 'lareiras' ? 'Medidas do catálogo de lareiras 2026. ' : '') + 'Cada projeto é único: a equipe confirma as medidas e o acabamento com você.'
       };
     }
@@ -1978,14 +1979,24 @@ var DEPOIMENTOS = [
     paragrafos.slice(1).forEach(function (t) { texto.appendChild(el('p', null, t)); });
     if (paragrafos.length < 2) texto.remove();
 
-    // Medidas de referência: tabela com cabeçalho de linhas e colunas
+    // Medidas de referência: título e nota; depois, lista de versões ou tabela
     if (pag.medidas) {
       var md = pag.medidas;
       var caixaMedidas = document.querySelector('[data-prod-medidas]');
       caixaMedidas.hidden = false;
       document.querySelector('[data-prod-medidas-titulo]').textContent = md.titulo;
       document.querySelector('[data-prod-medidas-caixa]').setAttribute('aria-label', md.titulo);
-      document.querySelector('[data-prod-medidas-nota]').textContent = md.nota || '';
+      var nota = document.querySelector('[data-prod-medidas-nota]');
+      nota.textContent = md.nota || '';
+    }
+    // Versões em lista (churrasqueiras): no lugar da tabela, sem a dica de deslizar
+    if (pag.medidas && pag.medidas.lista) {
+      var ul = el('ul', 'prod-medidas__lista');
+      pag.medidas.lista.forEach(function (t) { ul.appendChild(el('li', null, t)); });
+      nota.parentNode.insertBefore(ul, nota);
+      document.querySelector('[data-prod-medidas-caixa]').hidden = true;
+      document.querySelector('.prod-medidas__dica').hidden = true;
+    } else if (pag.medidas) {
       var tabela = document.querySelector('[data-prod-medidas-tabela]');
       var cab = el('tr');
       var canto = el('th', null, md.rotuloLinhas || 'Medida');

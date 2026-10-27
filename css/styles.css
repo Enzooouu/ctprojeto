@@ -2485,6 +2485,9 @@ button.blog-pagina { background: none; cursor: pointer; }
 .prod-medidas__tabela thead th { color: var(--marrom); font-family: var(--fonte-titulo); font-weight: 400; }
 .prod-medidas__tabela td { color: var(--texto); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .prod-medidas__nota { padding: var(--sp-4) var(--sp-5) var(--sp-5); color: var(--cinza); font-size: var(--fs-sm); }
+.prod-medidas__lista { margin: 0 var(--sp-5); padding-left: 1.2em; list-style: disc; color: var(--texto); }
+.prod-medidas__lista li { padding: var(--sp-3) 0 var(--sp-3) .25em; border-bottom: 1px solid var(--bege-escuro); }
+.prod-medidas__lista li::marker { color: var(--laranja); }
 .prod-medidas__dica { display: none; margin: 0 var(--sp-5) var(--sp-2); color: var(--laranja-escuro); font-size: var(--fs-sm); }
 @media (max-width: 639px) {
   .prod-medidas__tabela th[scope="row"] { min-width: 9.5rem; max-width: 9.5rem; }

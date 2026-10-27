@@ -30,6 +30,8 @@
    - downloads (opcional): [{ texto, arquivo, tamanho }] manuais do modelo;
      externo: 'texto' para link de outro site, que abre em nova aba (ex.: 3D)
    - versoes.titulo (opcional): título da tabela (padrão: "Medidas da <nome>")
+   - versoes.lista (opcional): [textos] versões em lista, no lugar da tabela
+     (churrasqueiras); dispensa colunas e linhas
    - palavrasBlog (opcional): termos para achar artigos do blog (padrão: o nome)
    - cores: null para peças em inox, sem opção de cor (a linha "Cores" some)
    - combustíveis das churrasqueiras: 'carvao' | 'gas'
@@ -585,17 +587,18 @@ var MODELOS = [
     fotos: [
       { imagem: 'img/modelos/churrasqueira-soft-carvao-cozinha.webp', textoAlternativo: 'Churrasqueira Soft a carvão embutida numa bancada de mármore claro, com a manivela lateral, grelhas suspensas por cabos, quatro espetos e a caixa revestida de placas refratárias, ao lado de um cooktop e de um vaso com planta.' }
     ],
-    // Tipos do site, montados como tabela (espetos × cavalete e manivela)
+    // Tipos do site
     versoes: {
       titulo: 'Versões da Churrasqueira Soft a carvão',
-      rotuloLinhas: 'Espetos',
-      colunas: ['Manivela lateral', 'Manivela frontal', 'Sem cavalete'],
-      linhas: [
-        { rotulo: 'Em balanço', valores: ['Disponível', 'Disponível', 'Disponível'] },
-        { rotulo: 'Porta-espetos', valores: ['Não', 'Disponível', 'Disponível'] }
+      lista: [
+        'Espetos em balanço e manivela lateral',
+        'Espetos em balanço e manivela frontal',
+        'Porta-espetos e manivela frontal',
+        'Espetos em balanço, sem cavalete',
+        'Porta-espetos, sem cavalete'
       ],
       // TODO: confirmar a unidade dos tamanhos (provavelmente centímetros de largura)
-      nota: 'Todas as versões nos tamanhos 60, 70, 80, 90, 100 e 110. A equipe confirma as medidas do seu projeto.'
+      nota: 'Tamanhos: 60, 70, 80, 90, 100 e 110. A equipe confirma as medidas do seu projeto.'
     },
     downloads: [
       // Modelo 3D da versão com porta-espeto e manivela frontal
@@ -623,15 +626,9 @@ var MODELOS = [
     ],
     versoes: {
       titulo: 'Versões da Churrasqueira Soft com tampa',
-      rotuloLinhas: 'Tipo',
-      colunas: ['Tamanhos'],
-      linhas: [
-        { rotulo: 'A gás', valores: ['60, 70, 80, 90, 100 e 110'] },
-        { rotulo: 'A carvão', valores: ['60, 70, 80, 90, 100 e 110'] },
-        { rotulo: 'Infravermelho (infrared)', valores: ['60, 70, 80, 90, 100 e 110'] }
-      ],
+      lista: ['A gás', 'A carvão', 'Infravermelho (infrared)'],
       // TODO: confirmar a unidade dos tamanhos (provavelmente centímetros de largura)
-      nota: 'Tamanhos do site da Construflama. A equipe confirma as medidas do seu projeto.'
+      nota: 'Tamanhos: 60, 70, 80, 90, 100 e 110. A equipe confirma as medidas do seu projeto.'
     },
     downloads: [
       // Modelo 3D da versão a carvão de 80 (CH 80)
@@ -652,14 +649,9 @@ var MODELOS = [
     textoAlternativo: 'Churrasqueira Soft Clean em aço inox escovado: caixa retangular baixa, sem cavalete, com duas grelhas e quatro espetos apoiados na borda.',
     versoes: {
       titulo: 'Versões da Churrasqueira Soft Clean',
-      rotuloLinhas: 'Tipo',
-      colunas: ['Tamanhos'],
-      linhas: [
-        { rotulo: 'A gás', valores: ['60, 70, 80, 90, 100 e 110'] },
-        { rotulo: 'A carvão', valores: ['60, 70, 80, 90, 100 e 110'] }
-      ],
+      lista: ['A gás', 'A carvão'],
       // TODO: confirmar a unidade dos tamanhos (provavelmente centímetros de largura)
-      nota: 'Tamanhos do site da Construflama. A equipe confirma as medidas do seu projeto.'
+      nota: 'Tamanhos: 60, 70, 80, 90, 100 e 110. A equipe confirma as medidas do seu projeto.'
     },
     downloads: [
       // Modelo 3D da versão a carvão de 80 (CH 80)
@@ -692,14 +684,15 @@ var MODELOS = [
     // Tipos do site (os mesmos da Soft a carvão)
     versoes: {
       titulo: 'Versões da Churrasqueira Soft a gás',
-      rotuloLinhas: 'Espetos',
-      colunas: ['Manivela lateral', 'Manivela frontal', 'Sem cavalete'],
-      linhas: [
-        { rotulo: 'Em balanço', valores: ['Disponível', 'Disponível', 'Disponível'] },
-        { rotulo: 'Porta-espetos', valores: ['Não', 'Disponível', 'Disponível'] }
+      lista: [
+        'Espetos em balanço e manivela lateral',
+        'Espetos em balanço e manivela frontal',
+        'Porta-espetos e manivela frontal',
+        'Espetos em balanço, sem cavalete',
+        'Porta-espetos, sem cavalete'
       ],
       // TODO: confirmar a unidade dos tamanhos (provavelmente centímetros de largura)
-      nota: 'Todas as versões nos tamanhos 60, 70, 80, 90, 100 e 110. A equipe confirma as medidas do seu projeto.'
+      nota: 'Tamanhos: 60, 70, 80, 90, 100 e 110. A equipe confirma as medidas do seu projeto.'
     },
     cores: null, palavrasBlog: ['Linha Soft'],
     medidas: { altura: '', largura: '60 a 110', peso: '' }
