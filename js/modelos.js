@@ -643,13 +643,30 @@ var MODELOS = [
   {
     categoria: 'churrasqueiras', linha: 'soft',
     nome: 'Churrasqueira Soft Clean', slug: 'clean',
-    texto: SOFT,
-    combustiveis: [],   // TODO: confirmar se é a carvão ou a gás
+    // O site não tem texto nesta página: texto da linha Soft (blog)
+    texto: [
+      'A Churrasqueira Soft Clean não tem cavalete: os espetos ficam apoiados na borda, sobre as grelhas. Está disponível a gás ou a carvão.'
+    ].concat(SOFT.slice(0, 2)),
+    combustiveis: ['carvao', 'gas'],
     imagem: 'img/modelos/churrasqueira-soft-clean.webp',
-    textoAlternativo: 'Churrasqueira Soft Clean em aço inox: caixa retangular baixa com duas grelhas e espetos apoiados na borda, sem cavalete.',
+    textoAlternativo: 'Churrasqueira Soft Clean em aço inox escovado: caixa retangular baixa, sem cavalete, com duas grelhas e quatro espetos apoiados na borda.',
+    versoes: {
+      titulo: 'Versões da Churrasqueira Soft Clean',
+      rotuloLinhas: 'Tipo',
+      colunas: ['Tamanhos'],
+      linhas: [
+        { rotulo: 'A gás', valores: ['60, 70, 80, 90, 100 e 110'] },
+        { rotulo: 'A carvão', valores: ['60, 70, 80, 90, 100 e 110'] }
+      ],
+      // TODO: confirmar a unidade dos tamanhos (provavelmente centímetros de largura)
+      nota: 'Tamanhos do site da Construflama. A equipe confirma as medidas do seu projeto.'
+    },
+    downloads: [
+      // Modelo 3D da versão a carvão de 80 (CH 80)
+      { texto: 'Baixar 3D', externo: 'SketchUp', arquivo: 'https://3dwarehouse.sketchup.com/model/c707068d-3767-4948-a926-d3195e150ebf/CHURRASQUEIRA-SOFT-CARV%C3%83O-CLEAN-CH-80' }
+    ],
     cores: null, palavrasBlog: ['Linha Soft'],
-    prototipo: true, etiqueta: 'Descrição e medidas em breve',
-    medidas: { altura: '', largura: '', peso: '' }
+    medidas: { altura: '', largura: '60 a 110', peso: '' }
   },
   {
     categoria: 'churrasqueiras', linha: 'soft',

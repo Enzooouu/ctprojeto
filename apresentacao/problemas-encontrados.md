@@ -158,6 +158,10 @@ Atualizado sempre que um novo problema aparecer.
     mais alto padrão de eficiência.";
   - as fotos da cozinha mostram a versão a gás (com os três botões), mas o
     "Baixar 3D" é da versão a carvão (CH 80), sem avisar.
+- **Página da Soft Clean sem nenhum texto:** só a foto, os botões de tamanho
+  e tipo (a gás e a carvão) e o "Baixar 3D", que é só da versão a carvão
+  (CH 80). O cliente não fica sabendo o que é "Clean" (sem cavalete, com os
+  espetos apoiados na borda).
 
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz
