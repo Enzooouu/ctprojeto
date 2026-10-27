@@ -671,19 +671,37 @@ var MODELOS = [
   {
     categoria: 'churrasqueiras', linha: 'soft',
     nome: 'Churrasqueira Soft a gás', slug: 'a-gas',
-    texto: SOFT,
+    // Do site da Construflama (página da Churrasqueira Soft a gás)
+    descricao: 'Fazer um bom churrasco é uma arte. Por isso, criamos uma linha de churrasqueiras a gás que mantém o sabor original e traz muita comodidade: acendimento automático, controle da intensidade do calor, grelha com regulagem de altura e porta-espetos, em balanço ou tradicional.',
+    texto: [
+      'A camada de pedras vulcânicas sobre as chamas funciona como um braseiro, que chega à temperatura ideal em poucos minutos e garante o sabor que você espera, no ponto que deseja.',
+      'As churrasqueiras a gás Construflama são produzidas em aço inox 304 escovado, em diversos tamanhos e estilos, com opção de meias-grelhas uruguaia, argentina, de barra chata ou chapa.'
+    ].concat(SOFT.slice(0, 2)),
     combustiveis: ['gas'],
-    // Sem foto do produto em fundo branco. A foto da cozinha que o site usa
-    // no cartão da Soft a gás é da Soft a carvão (na lista de problemas)
+    // Sem foto do produto em fundo branco (o site também não tem): a foto da
+    // cozinha, com os três botões do gás, vai para o cartão
     imagem: '',
-    ambiente: { imagem: 'img/blog/churrasqueira-soft.webp',
-      textoAlternativo: 'Churrasqueira Soft a gás em aço inox, com manivela, espetos, duas grelhas e três botões de controle, embutida em bancada clara.' },
+    ambiente: { imagem: 'img/modelos/churrasqueira-soft-gas-cozinha.webp',
+      textoAlternativo: 'Churrasqueira Soft a gás embutida numa bancada de mármore claro, sob uma coifa preta, ao lado de um cooktop e de um vaso com planta.' },
     fotos: [
+      { imagem: 'img/modelos/churrasqueira-soft-gas-cozinha.webp', textoAlternativo: 'Churrasqueira Soft a gás de frente, com cavalete, manivela lateral, quatro espetos, duas grelhas e três botões de controle, embutida numa bancada de mármore claro sob uma coifa preta, ao lado de um cooktop.' },
+      { imagem: 'img/modelos/churrasqueira-soft-gas-bancada.webp', textoAlternativo: 'Bancada longa de mármore claro com armários cinza: em primeiro plano, a Churrasqueira Soft a gás; ao fundo, um forno preto, uma coifa piramidal preta e outras churrasqueiras.' },
       // Do blog ("Descubra qual é a sua churrasqueira dos sonhos!")
       { imagem: 'img/blog/churrasqueira-soft.webp', textoAlternativo: 'Churrasqueira Soft a gás em aço inox, com estrutura em chapa dobrada, manivela à direita, quatro espetos, duas grelhas e três botões de controle, embutida em bancada clara.' }
     ],
+    // Tipos do site (os mesmos da Soft a carvão)
+    versoes: {
+      titulo: 'Versões da Churrasqueira Soft a gás',
+      rotuloLinhas: 'Espetos',
+      colunas: ['Manivela lateral', 'Manivela frontal', 'Sem cavalete'],
+      linhas: [
+        { rotulo: 'Em balanço', valores: ['Disponível', 'Disponível', 'Disponível'] },
+        { rotulo: 'Porta-espetos', valores: ['Não', 'Disponível', 'Disponível'] }
+      ],
+      // TODO: confirmar a unidade dos tamanhos (provavelmente centímetros de largura)
+      nota: 'Todas as versões nos tamanhos 60, 70, 80, 90, 100 e 110. A equipe confirma as medidas do seu projeto.'
+    },
     cores: null, palavrasBlog: ['Linha Soft'],
-    prototipo: true, etiqueta: 'Descrição e medidas em breve',
-    medidas: { altura: '', largura: '', peso: '' }
+    medidas: { altura: '', largura: '60 a 110', peso: '' }
   }
 ];
