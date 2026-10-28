@@ -185,6 +185,14 @@ Atualizado sempre que um novo problema aparecer.
     mas a página não dá o crédito, que o blog dá;
   - o endereço termina com um código sem sentido
     ("churrasqueira-premium-hibrida-1ds82").
+- **Página da Premium Clean:**
+  - as duas fotos de projeto mostram outra peça (uma grelha só, um botão preto
+    e um botão "start"), diferente da foto do produto (duas grelhas e três
+    botões): o cliente não sabe qual é a Clean;
+  - as fotos de projeto estão em baixa resolução (borradas);
+  - o texto só fala da versão a gás, mas a página vende a gás e a carvão;
+  - repete outra vez a frase sem verbo "O design e a tecnologia, juntos,
+    oferecendo…" e o "Fazer um bom churrasco é uma arte…" da Soft a gás.
 
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz

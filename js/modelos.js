@@ -739,13 +739,35 @@ var MODELOS = [
   {
     categoria: 'churrasqueiras', linha: 'premium',
     nome: 'Churrasqueira Premium Clean', slug: 'clean',
-    texto: PREMIUM,
-    combustiveis: [],   // TODO: confirmar se é a carvão ou a gás
+    // Do site da Construflama (página da Churrasqueira Premium Clean)
+    descricao: 'Uma churrasqueira de embutir com design mais minimalista, que mantém o sabor original e traz muita comodidade, com acendimento automático e controle da intensidade do calor.',
+    texto: [
+      'A camada de pedras vulcânicas sobre as chamas funciona como um braseiro, que chega à temperatura ideal em poucos minutos e garante o sabor que você espera, no ponto que deseja.',
+      'As churrasqueiras a gás Construflama são produzidas em aço inox 304 escovado, em diversos tamanhos e estilos, com opção de meias-grelhas uruguaia, argentina, de barra chata ou chapa.'
+    ].concat(PREMIUM.slice(0, 1)),
+    combustiveis: ['carvao', 'gas'],
     imagem: 'img/modelos/churrasqueira-premium-clean.webp',
-    textoAlternativo: 'Churrasqueira Premium Clean em aço inox: caixa retangular sem cavalete, com duas grelhas e três botões na frente.',
+    textoAlternativo: 'Churrasqueira Premium Clean em aço inox escovado: caixa retangular de embutir, sem cavalete, com duas grelhas, três botões e quatro espetos apoiados na borda.',
+    // TODO: as fotos de projeto do site mostram uma peça com uma grelha só e um
+    // botão, diferente da foto do produto (na lista de problemas)
+    ambiente: { imagem: 'img/modelos/churrasqueira-premium-clean-cozinha.webp',
+      textoAlternativo: 'Churrasqueira de embutir numa ilha de pedra, ao lado de um cooktop e de uma cuba, numa cozinha com prateleiras de garrafas e mesa redonda de madeira.' },
+    fotos: [
+      { imagem: 'img/modelos/churrasqueira-premium-clean-varanda.webp', textoAlternativo: 'Churrasqueira de embutir em inox, com grelha de barras redondas e um botão preto, rente a uma bancada de pedra, diante de uma sala com poltronas claras e de uma varanda com rede.' },
+      { imagem: 'img/modelos/churrasqueira-premium-clean-cozinha.webp', textoAlternativo: 'Churrasqueira de embutir numa ilha de pedra, ao lado de um cooktop e de uma cuba, numa cozinha com prateleiras de garrafas, luminária em forma de flor e mesa redonda de madeira.' }
+    ],
+    versoes: {
+      titulo: 'Versões da Churrasqueira Premium Clean',
+      lista: ['A gás', 'A carvão'],
+      // TODO: confirmar a unidade dos tamanhos (provavelmente centímetros de largura)
+      nota: 'Tamanhos: 60, 70, 80, 90, 100 e 110. A equipe confirma as medidas do seu projeto.'
+    },
+    downloads: [
+      // Modelo 3D da versão a gás
+      { texto: 'Baixar 3D', externo: 'SketchUp', arquivo: 'https://3dwarehouse.sketchup.com/model/88543b1a-0cb8-4822-bb95-f8abf2d93c30/CHURRASQUEIRA-PREMIUM-G%C3%81S-CLEAN' }
+    ],
     cores: null, palavrasBlog: ['Linha Premium'],
-    prototipo: true, etiqueta: 'Descrição e medidas em breve',
-    medidas: { altura: '', largura: '', peso: '' }
+    medidas: { altura: '', largura: '60 a 110', peso: '' }
   },
   {
     categoria: 'churrasqueiras', linha: 'premium',
