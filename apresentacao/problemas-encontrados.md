@@ -176,6 +176,15 @@ Atualizado sempre que um novo problema aparecer.
   foto de projeto; as outras três, com foto do produto em fundo branco.
 - **Filtros com os mesmos problemas da Soft** (maiúsculas no meio da frase,
   "porta espetos" e "porta-espeto").
+- **Página da Premium Híbrida:**
+  - o texto está em outra fonte (com serifa), diferente do resto do site,
+    como se tivesse sido colado de um editor de texto;
+  - não tem tamanhos, tipos nem "Baixar 3D", e não diz que o tamanho é
+    personalizável (isso só está no blog);
+  - as fotos são do projeto de Daniela Dantas (foto de Giovanni Bellini),
+    mas a página não dá o crédito, que o blog dá;
+  - o endereço termina com um código sem sentido
+    ("churrasqueira-premium-hibrida-1ds82").
 
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz

@@ -713,23 +713,28 @@ var MODELOS = [
   {
     categoria: 'churrasqueiras', linha: 'premium',
     nome: 'Churrasqueira Premium Híbrida', slug: 'hibrida',
-    // Do blog ("Churrasqueira Híbrida Construflama: tecnologia e tradição lado a lado")
-    descricao: 'A churrasqueira que assa a gás ou a carvão: não é preciso escolher na hora da compra.',
+    // Do site da Construflama (página da Churrasqueira Premium Híbrida)
+    descricao: 'Com a Churrasqueira Híbrida Construflama, você escolhe entre o sabor clássico do carvão e a praticidade do gás, tudo em um único equipamento de alto desempenho.',
     texto: [
-      'Com duas caixas-braseiro independentes, cada grelha bipartida funciona separadamente a gás ou a carvão, com controle total sobre o ponto de cada preparo.',
+      'Feita em aço inox 304 de altíssima qualidade, é a definição da Linha Premium: um investimento em durabilidade, design e desempenho, com visual minimalista para espaços gourmet que buscam o equilíbrio entre sofisticação e funcionalidade.',
+      // Do blog ("Churrasqueira Híbrida Construflama: tecnologia e tradição lado a lado")
+      'Com duas caixas-braseiro independentes, cada grelha bipartida funciona separadamente a gás ou a carvão, com controle total sobre o ponto de cada preparo. Não é preciso escolher o combustível na hora da compra.',
       'Manta térmica e paredes de inox com camada dupla permitem usar gás e carvão ao mesmo tempo, com segurança. No gás, os bicos injetores cobertos com pedras vulcânicas distribuem o calor de forma uniforme.',
-      'A área de queima e a extensão total são personalizáveis, e a manivela pode ser trocada por um volante.'
-    ].concat(PREMIUM.slice(0, 1)),
-    combustiveis: ['carvao', 'gas'],
-    imagem: '',
-    ambiente: { imagem: 'img/blog/churrasqueira-hibrida-daniela-dantas.webp',
-      textoAlternativo: 'Churrasqueira Premium Híbrida embutida num nicho de pedra clara com veios, com grelhas, espetos e manivelas, ao lado de uma mesa redonda. Ambiente de Daniela Dantas Arquitetura, foto de Giovanni Bellini.' },
-    fotos: [
-      { imagem: 'img/blog/churrasqueira-hibrida-daniela-dantas.webp', textoAlternativo: 'Churrasqueira Premium Híbrida embutida num nicho de pedra clara com veios, com grelhas, espetos e manivelas, acima de um móvel do mesmo revestimento, ao lado de uma mesa redonda. Ambiente de Daniela Dantas Arquitetura, foto de Giovanni Bellini.' }
+      'A área de queima e a extensão total são personalizáveis, as grelhas com encaixe em gaveta são intercambiáveis e a manivela pode ser trocada por um volante.'
     ],
-    cores: null, palavrasBlog: ['Linha Premium'],
-    prototipo: true, etiqueta: 'Descrição e medidas em breve',
-    medidas: { altura: '', largura: '', peso: '' }
+    combustiveis: ['carvao', 'gas'],
+    // Sem foto do produto em fundo branco: só fotos do projeto de Daniela Dantas
+    imagem: '',
+    ambiente: { imagem: 'img/modelos/churrasqueira-premium-hibrida-sala.webp',
+      textoAlternativo: 'Churrasqueira Premium Híbrida embutida num nicho de pedra clara com veios, ao lado de uma mesa redonda de mármore.' },
+    fotos: [
+      { imagem: 'img/modelos/churrasqueira-premium-hibrida-nicho.webp', textoAlternativo: 'Churrasqueira Premium Híbrida num nicho de vidro e pedra clara com veios, com cavalete, duas manivelas, grelhas suspensas por correntes e espetos, sobre um móvel de frisos horizontais, ao lado de um painel de madeira.' },
+      { imagem: 'img/modelos/churrasqueira-premium-hibrida-sala.webp', textoAlternativo: 'Vista de frente da Churrasqueira Premium Híbrida embutida no nicho de pedra clara, acima do móvel de frisos, com uma mesa redonda de mármore e cadeiras claras em primeiro plano.' },
+      // Do blog, com os créditos na imagem
+      { imagem: 'img/blog/churrasqueira-hibrida-daniela-dantas.webp', textoAlternativo: 'Churrasqueira Premium Híbrida embutida num nicho de pedra clara com veios, com grelhas, espetos e manivelas, ao lado de uma mesa redonda. Ambiente de Daniela Dantas Arquitetura, foto de Giovanni Bellini.' }
+    ],
+    cores: null, palavrasBlog: ['Linha Premium', 'Churrasqueira Híbrida'],
+    medidas: { altura: '', largura: 'sob medida', peso: '' }
   },
   {
     categoria: 'churrasqueiras', linha: 'premium',
