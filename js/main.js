@@ -1989,14 +1989,19 @@ var DEPOIMENTOS = [
       var nota = document.querySelector('[data-prod-medidas-nota]');
       nota.textContent = md.nota || '';
     }
-    // Versões em lista (churrasqueiras): no lugar da tabela, sem a dica de deslizar
+    // Versões em lista (churrasqueiras), antes da tabela; sem tabela de medidas,
+    // a caixa da tabela e a dica de deslizar somem
     if (pag.medidas && pag.medidas.lista) {
       var ul = el('ul', 'prod-medidas__lista');
       pag.medidas.lista.forEach(function (t) { ul.appendChild(el('li', null, t)); });
-      nota.parentNode.insertBefore(ul, nota);
-      document.querySelector('[data-prod-medidas-caixa]').hidden = true;
-      document.querySelector('.prod-medidas__dica').hidden = true;
-    } else if (pag.medidas) {
+      var dica = document.querySelector('.prod-medidas__dica');
+      dica.parentNode.insertBefore(ul, dica);
+      if (!pag.medidas.linhas) {
+        document.querySelector('[data-prod-medidas-caixa]').hidden = true;
+        dica.hidden = true;
+      }
+    }
+    if (pag.medidas && pag.medidas.linhas) {
       var tabela = document.querySelector('[data-prod-medidas-tabela]');
       var cab = el('tr');
       var canto = el('th', null, md.rotuloLinhas || 'Medida');

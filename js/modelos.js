@@ -30,8 +30,8 @@
    - downloads (opcional): [{ texto, arquivo, tamanho }] manuais do modelo;
      externo: 'texto' para link de outro site, que abre em nova aba (ex.: 3D)
    - versoes.titulo (opcional): título da tabela (padrão: "Medidas da <nome>")
-   - versoes.lista (opcional): [textos] versões em lista, no lugar da tabela
-     (churrasqueiras); dispensa colunas e linhas
+   - versoes.lista (opcional): [textos] versões em lista (churrasqueiras);
+     com colunas e linhas, a tabela de medidas vem logo abaixo da lista
    - palavrasBlog (opcional): termos para achar artigos do blog (padrão: o nome)
    - cores: null para peças em inox, sem opção de cor (a linha "Cores" some)
    - combustíveis das churrasqueiras: 'carvao' | 'gas'
@@ -776,7 +776,8 @@ var MODELOS = [
     descricao: 'O bom churrasco é aquele que os amigos e a família elogiam, e cada um tem seu segredo. O nosso é atender os churrasqueiros mais exigentes, unindo tradição, tecnologia e personalização.',
     texto: [
       'A grelha tem regulagem de altura e vem em duas meias-grelhas, argentina e uruguaia. Também há as opções de barra chata e chapa, que podem ser adicionadas.',
-      'As churrasqueiras a carvão Construflama são produzidas em aço inox 304 escovado e revestidas com placas refratárias. Nossas churrasqueiras são testadas e aprovadas por grandes mestres.'
+      'As churrasqueiras a carvão Construflama são produzidas em aço inox 304 escovado. A caixa-braseiro é dupla, com isolamento térmico entre as caixas e revestimento interno de placas refratárias, e o porta-espetos tem três níveis de altura.',
+      'Nossas churrasqueiras são testadas e aprovadas por grandes mestres.'
     ].concat(PREMIUM.slice(0, 2)),
     combustiveis: ['carvao'],
     imagem: 'img/modelos/churrasqueira-premium-carvao.webp',
@@ -790,7 +791,7 @@ var MODELOS = [
       { video: 'DcQ6LH8DzW4', textoAlternativo: 'Vídeo da Churrasqueira Premium a carvão Construflama' }
     ],
     versoes: {
-      titulo: 'Versões da Churrasqueira Premium a carvão',
+      titulo: 'Versões e medidas da Churrasqueira Premium a carvão',
       lista: [
         'Espetos em balanço e manivela lateral',
         'Espetos em balanço e manivela frontal',
@@ -800,15 +801,26 @@ var MODELOS = [
         'Espetos em balanço, sem cavalete',
         'Porta-espetos, sem cavalete'
       ],
-      // TODO: confirmar a unidade dos tamanhos (provavelmente centímetros de largura)
-      nota: 'Tamanhos: 60, 70, 80, 90, 100 e 110. A equipe confirma as medidas do seu projeto.'
+      // Manual "Churrasqueira carvão Linha Premium" (2023): B, A, peso e F × G
+      rotuloLinhas: 'Modelo',
+      colunas: ['Largura total', 'Profundidade total', 'Peso', 'Recorte do nicho'],
+      linhas: [
+        { rotulo: 'CH-60', valores: ['605 mm', '505 mm', '50 kg', '565 × 465 mm'] },
+        { rotulo: 'CH-70', valores: ['705 mm', '505 mm', '56 kg', '665 × 465 mm'] },
+        { rotulo: 'CH-80', valores: ['805 mm', '505 mm', '62 kg', '765 × 465 mm'] },
+        { rotulo: 'CH-90', valores: ['905 mm', '505 mm', '68 kg', '865 × 465 mm'] },
+        { rotulo: 'CH-100', valores: ['1.005 mm', '505 mm', '74 kg', '965 × 465 mm'] },
+        { rotulo: 'CH-110', valores: ['1.105 mm', '505 mm', '80 kg', '1.065 × 465 mm'] }
+      ],
+      nota: 'Do manual técnico (2023). O recorte do nicho é a abertura na bancada (largura × profundidade). A equipe confirma as medidas do seu projeto.'
     },
     downloads: [
+      { texto: 'Baixar manual técnico', arquivo: 'catalogos/manual-churrasqueira-premium-carvao.pdf', tamanho: '177 KB' },
       // Modelo 3D da versão com espetos em balanço
       { texto: 'Baixar 3D', externo: 'SketchUp', arquivo: 'https://3dwarehouse.sketchup.com/model/74a00529-677e-4e3b-a392-6ddb4745eb67/CHURRASQUEIRA-PREMIUM-CARV%C3%83O-PORTA-ESPETO-BALAN%C3%87O' }
     ],
     cores: null, palavrasBlog: ['Linha Premium'],
-    medidas: { altura: '', largura: '60 a 110', peso: '' }
+    medidas: { altura: '', largura: '60,5 a 110,5 cm', peso: '50 a 80 kg' }
   },
   {
     categoria: 'churrasqueiras', linha: 'premium',

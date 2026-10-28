@@ -201,6 +201,15 @@ Atualizado sempre que um novo problema aparecer.
     diferentes;
   - o vídeo da galeria não tem título nem explicação.
 
+### Manual da Churrasqueira a carvão Linha Premium (2023)
+- **"CH-1100"** em vez de CH-110, nas duas tabelas.
+- **A altura da caixa muda entre os desenhos:** 275 mm na vista de frente e
+  260 mm na vista de lado. O novo site não mostra a altura até confirmar.
+- **As letras das medidas (A, B, C, D, E) não têm legenda:** só dá para
+  entender olhando o desenho; C, D e E não são explicadas em lugar nenhum.
+- Português: "construflama" com minúscula e "refratarias" sem acento.
+- **O site não oferece este manual** na página da Premium a carvão.
+
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz
   29.328 BTU/h = 13,50 kW e 36.096 BTU/h = 16,27 kW; o certo seria cerca de
