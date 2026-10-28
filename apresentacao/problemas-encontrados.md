@@ -193,6 +193,13 @@ Atualizado sempre que um novo problema aparecer.
   - o texto só fala da versão a gás, mas a página vende a gás e a carvão;
   - repete outra vez a frase sem verbo "O design e a tecnologia, juntos,
     oferecendo…" e o "Fazer um bom churrasco é uma arte…" da Soft a gás.
+- **Página da Premium a carvão:**
+  - texto copiado da Soft a carvão, com o mesmo "Disponíveis no modelo cooktop
+    e clean" sem explicação;
+  - "podem ter porta espetos (também na opção de porta espetos em balanço)"
+    confunde: nos tipos, "porta-espeto" e "espetos em balanço" são opções
+    diferentes;
+  - o vídeo da galeria não tem título nem explicação.
 
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz

@@ -772,13 +772,43 @@ var MODELOS = [
   {
     categoria: 'churrasqueiras', linha: 'premium',
     nome: 'Churrasqueira Premium a carvão', slug: 'a-carvao',
-    texto: PREMIUM,
+    // Do site da Construflama (página da Churrasqueira Premium a carvão)
+    descricao: 'O bom churrasco é aquele que os amigos e a família elogiam, e cada um tem seu segredo. O nosso é atender os churrasqueiros mais exigentes, unindo tradição, tecnologia e personalização.',
+    texto: [
+      'A grelha tem regulagem de altura e vem em duas meias-grelhas, argentina e uruguaia. Também há as opções de barra chata e chapa, que podem ser adicionadas.',
+      'As churrasqueiras a carvão Construflama são produzidas em aço inox 304 escovado e revestidas com placas refratárias. Nossas churrasqueiras são testadas e aprovadas por grandes mestres.'
+    ].concat(PREMIUM.slice(0, 2)),
     combustiveis: ['carvao'],
     imagem: 'img/modelos/churrasqueira-premium-carvao.webp',
-    textoAlternativo: 'Churrasqueira Premium a carvão em aço inox: caixa retangular com duas grelhas, espetos em balanço e cavalete com manivela no alto.',
+    textoAlternativo: 'Churrasqueira Premium a carvão em aço inox escovado: caixa retangular com meia-grelha argentina e meia-grelha uruguaia, quatro espetos em balanço e cavalete com manivela lateral no alto.',
+    ambiente: { imagem: 'img/modelos/churrasqueira-premium-carvao-lado.webp',
+      textoAlternativo: 'Churrasqueira Premium a carvão sobre uma bancada de mármore claro, com grelhas suspensas por correntes, manivela e seis espetos.' },
+    fotos: [
+      { imagem: 'img/modelos/churrasqueira-premium-carvao-frente.webp', textoAlternativo: 'Churrasqueira Premium a carvão de frente, sobre uma bancada de mármore claro: cavalete com manivela à esquerda, correntes que erguem as grelhas, seis espetos e as meias-grelhas uruguaia e argentina.' },
+      { imagem: 'img/modelos/churrasqueira-premium-carvao-lado.webp', textoAlternativo: 'Churrasqueira Premium a carvão vista de lado, com a plaqueta Construflama no alto do cavalete, as correntes, seis espetos e as duas meias-grelhas sobre a caixa de placas refratárias.' },
+      { imagem: 'img/modelos/churrasqueira-premium-carvao-grelhas.webp', textoAlternativo: 'Detalhe das meias-grelhas da Churrasqueira Premium a carvão: a uruguaia, de barras redondas, e a argentina, de canaletas em V, sobre as placas refratárias, com os espetos acima.' },
+      { video: 'DcQ6LH8DzW4', textoAlternativo: 'Vídeo da Churrasqueira Premium a carvão Construflama' }
+    ],
+    versoes: {
+      titulo: 'Versões da Churrasqueira Premium a carvão',
+      lista: [
+        'Espetos em balanço e manivela lateral',
+        'Espetos em balanço e manivela frontal',
+        'Espetos em balanço e volante',
+        'Porta-espetos e manivela frontal',
+        'Porta-espetos e volante',
+        'Espetos em balanço, sem cavalete',
+        'Porta-espetos, sem cavalete'
+      ],
+      // TODO: confirmar a unidade dos tamanhos (provavelmente centímetros de largura)
+      nota: 'Tamanhos: 60, 70, 80, 90, 100 e 110. A equipe confirma as medidas do seu projeto.'
+    },
+    downloads: [
+      // Modelo 3D da versão com espetos em balanço
+      { texto: 'Baixar 3D', externo: 'SketchUp', arquivo: 'https://3dwarehouse.sketchup.com/model/74a00529-677e-4e3b-a392-6ddb4745eb67/CHURRASQUEIRA-PREMIUM-CARV%C3%83O-PORTA-ESPETO-BALAN%C3%87O' }
+    ],
     cores: null, palavrasBlog: ['Linha Premium'],
-    prototipo: true, etiqueta: 'Descrição e medidas em breve',
-    medidas: { altura: '', largura: '', peso: '' }
+    medidas: { altura: '', largura: '60 a 110', peso: '' }
   },
   {
     categoria: 'churrasqueiras', linha: 'premium',
