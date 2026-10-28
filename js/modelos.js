@@ -54,6 +54,15 @@ var SOFT = [
   'Disponível nos tamanhos 60, 70, 80, 90, 100 e 110.'
 ];
 
+// Texto comum da linha Premium: artigo "Descubra qual é a sua churrasqueira
+// dos sonhos!" (blog)
+var PREMIUM = [
+  'Para quem busca uma churrasqueira confiável, resistente e com design sofisticado, a Linha Premium é a escolha certa. Produzida 100% em aço inox 304 com chapas de 5 mm, tem estrutura tubular cortada a laser, sem emendas nem rebites aparentes.',
+  'Perfeita para uso intenso e frequente, tem grelhas elevatórias por corrente, com trava para ajustes precisos, e espetos maciços em chapa de 3 mm de aço inox 304. O acabamento a torna ideal tanto para residências de alto padrão quanto para ambientes comerciais sofisticados.',
+  // TODO: confirmar a unidade (provavelmente centímetros de largura)
+  'Disponível nos tamanhos 60, 70, 80, 90, 100 e 110.'
+];
+
 var MODELOS = [
   {
     categoria: 'lareiras', linha: 'esculturais',
@@ -696,5 +705,76 @@ var MODELOS = [
     },
     cores: null, palavrasBlog: ['Linha Soft'],
     medidas: { altura: '', largura: '60 a 110', peso: '' }
+  },
+
+  /* ---------------- Churrasqueiras Premium ----------------
+     Fonte: site da Construflama (lista da linha Premium) e o blog. Faltam a
+     página de cada modelo, as fotos em tamanho original e as medidas. */
+  {
+    categoria: 'churrasqueiras', linha: 'premium',
+    nome: 'Churrasqueira Premium Híbrida', slug: 'hibrida',
+    // Do blog ("Churrasqueira Híbrida Construflama: tecnologia e tradição lado a lado")
+    descricao: 'A churrasqueira que assa a gás ou a carvão: não é preciso escolher na hora da compra.',
+    texto: [
+      'Com duas caixas-braseiro independentes, cada grelha bipartida funciona separadamente a gás ou a carvão, com controle total sobre o ponto de cada preparo.',
+      'Manta térmica e paredes de inox com camada dupla permitem usar gás e carvão ao mesmo tempo, com segurança. No gás, os bicos injetores cobertos com pedras vulcânicas distribuem o calor de forma uniforme.',
+      'A área de queima e a extensão total são personalizáveis, e a manivela pode ser trocada por um volante.'
+    ].concat(PREMIUM.slice(0, 1)),
+    combustiveis: ['carvao', 'gas'],
+    imagem: '',
+    ambiente: { imagem: 'img/blog/churrasqueira-hibrida-daniela-dantas.webp',
+      textoAlternativo: 'Churrasqueira Premium Híbrida embutida num nicho de pedra clara com veios, com grelhas, espetos e manivelas, ao lado de uma mesa redonda. Ambiente de Daniela Dantas Arquitetura, foto de Giovanni Bellini.' },
+    fotos: [
+      { imagem: 'img/blog/churrasqueira-hibrida-daniela-dantas.webp', textoAlternativo: 'Churrasqueira Premium Híbrida embutida num nicho de pedra clara com veios, com grelhas, espetos e manivelas, acima de um móvel do mesmo revestimento, ao lado de uma mesa redonda. Ambiente de Daniela Dantas Arquitetura, foto de Giovanni Bellini.' }
+    ],
+    cores: null, palavrasBlog: ['Linha Premium'],
+    prototipo: true, etiqueta: 'Descrição e medidas em breve',
+    medidas: { altura: '', largura: '', peso: '' }
+  },
+  {
+    categoria: 'churrasqueiras', linha: 'premium',
+    nome: 'Churrasqueira Premium Clean', slug: 'clean',
+    texto: PREMIUM,
+    combustiveis: [],   // TODO: confirmar se é a carvão ou a gás
+    imagem: 'img/modelos/churrasqueira-premium-clean.webp',
+    textoAlternativo: 'Churrasqueira Premium Clean em aço inox: caixa retangular sem cavalete, com duas grelhas e três botões na frente.',
+    cores: null, palavrasBlog: ['Linha Premium'],
+    prototipo: true, etiqueta: 'Descrição e medidas em breve',
+    medidas: { altura: '', largura: '', peso: '' }
+  },
+  {
+    categoria: 'churrasqueiras', linha: 'premium',
+    nome: 'Churrasqueira Premium a carvão', slug: 'a-carvao',
+    texto: PREMIUM,
+    combustiveis: ['carvao'],
+    imagem: 'img/modelos/churrasqueira-premium-carvao.webp',
+    textoAlternativo: 'Churrasqueira Premium a carvão em aço inox: caixa retangular com duas grelhas, espetos em balanço e cavalete com manivela no alto.',
+    cores: null, palavrasBlog: ['Linha Premium'],
+    prototipo: true, etiqueta: 'Descrição e medidas em breve',
+    medidas: { altura: '', largura: '', peso: '' }
+  },
+  {
+    categoria: 'churrasqueiras', linha: 'premium',
+    nome: 'Churrasqueira Premium a gás', slug: 'a-gas',
+    texto: PREMIUM,
+    combustiveis: ['gas'],
+    imagem: 'img/modelos/churrasqueira-premium-gas.webp',
+    textoAlternativo: 'Churrasqueira Premium a gás em aço inox: caixa retangular com duas grelhas, três botões na frente, espetos em balanço e cavalete com manivela.',
+    cores: null, palavrasBlog: ['Linha Premium'],
+    prototipo: true, etiqueta: 'Descrição e medidas em breve',
+    medidas: { altura: '', largura: '', peso: '' }
+  },
+  {
+    categoria: 'churrasqueiras', linha: 'premium',
+    nome: 'Churrasqueira Premium com tampa Infinity', slug: 'com-tampa-infinity',
+    texto: PREMIUM,
+    combustiveis: [],   // TODO: confirmar se é a carvão ou a gás
+    // Sem foto do produto em fundo branco: o site usa a foto de projeto
+    imagem: '',
+    ambiente: { imagem: 'img/modelos/churrasqueira-premium-infinity.webp',
+      textoAlternativo: 'Churrasqueira Premium com tampa Infinity, fechada, embutida numa bancada de pedra clara sobre armários cor de terracota, com três botões na frente.' },
+    cores: null, palavrasBlog: ['Linha Premium'],
+    prototipo: true, etiqueta: 'Descrição e medidas em breve',
+    medidas: { altura: '', largura: '', peso: '' }
   }
 ];

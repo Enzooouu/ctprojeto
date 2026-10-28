@@ -165,6 +165,18 @@ Atualizado sempre que um novo problema aparecer.
     tecnologia, juntos, oferecendo o mais alto padrão de eficiência.");
   - é a única da linha sem o botão "Baixar 3D".
 
+### Site atual: churrasqueiras Premium
+- **Mesma descrição genérica da Soft** ("Fazer um bom churrasco é uma
+  arte…"), sem nada que diferencie a Premium; o que a diferencia (chapa de
+  5 mm, estrutura tubular, espetos maciços) só aparece no blog.
+- **Manivela ou volante?** O artigo "Parrilla ou churrasqueira" diz que a
+  Premium usa volante; o "Descubra a sua churrasqueira dos sonhos" diz
+  manivela; os filtros do site têm as duas opções.
+- **Fotos sem padrão na lista:** a Híbrida e a com tampa Infinity aparecem com
+  foto de projeto; as outras três, com foto do produto em fundo branco.
+- **Filtros com os mesmos problemas da Soft** (maiúsculas no meio da frase,
+  "porta espetos" e "porta-espeto").
+
 ### Manual da Lareira a gás LRG 060/200 (revisão 13, julho de 2021)
 - **Potência com gás natural errada do LRG-150 em diante:** o manual diz
   29.328 BTU/h = 13,50 kW e 36.096 BTU/h = 16,27 kW; o certo seria cerca de
