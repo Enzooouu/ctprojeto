@@ -200,6 +200,13 @@ Atualizado sempre que um novo problema aparecer.
     confunde: nos tipos, "porta-espeto" e "espetos em balanço" são opções
     diferentes;
   - o vídeo da galeria não tem título nem explicação.
+- **Página da Premium a gás:**
+  - texto copiado da Soft a gás, de novo com "O design e a tecnologia,
+    juntos, oferecendo…", e com erro de concordância: "A camada de pedras
+    vulcânicas sobre as chamas funcionam";
+  - as fotos de projeto mostram dois botões pretos, e a foto do produto, três
+    botões de inox: não fica claro se é o mesmo modelo;
+  - uma das fotos de projeto está em baixa resolução (borrada).
 
 ### Manual da Churrasqueira a carvão Linha Premium (2023)
 - **"CH-1100"** em vez de CH-110, nas duas tabelas.

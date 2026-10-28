@@ -825,13 +825,43 @@ var MODELOS = [
   {
     categoria: 'churrasqueiras', linha: 'premium',
     nome: 'Churrasqueira Premium a gás', slug: 'a-gas',
-    texto: PREMIUM,
+    // Do site da Construflama (página da Churrasqueira Premium a gás)
+    descricao: 'Fazer um bom churrasco é uma arte. Por isso, criamos uma linha de churrasqueiras a gás que mantém o sabor original e traz muita comodidade: acendimento automático, controle da intensidade do calor, grelha com regulagem de altura e porta-espetos, em balanço ou tradicional.',
+    texto: [
+      'A camada de pedras vulcânicas sobre as chamas funciona como um braseiro, que chega à temperatura ideal em poucos minutos e garante o sabor que você espera, no ponto que deseja.',
+      'As churrasqueiras a gás Construflama são produzidas em aço inox 304 escovado, em diversos tamanhos e estilos, com opção de meias-grelhas uruguaia, argentina, de barra chata ou chapa.'
+    ].concat(PREMIUM.slice(0, 2)),
     combustiveis: ['gas'],
     imagem: 'img/modelos/churrasqueira-premium-gas.webp',
-    textoAlternativo: 'Churrasqueira Premium a gás em aço inox: caixa retangular com duas grelhas, três botões na frente, espetos em balanço e cavalete com manivela.',
+    textoAlternativo: 'Churrasqueira Premium a gás em aço inox escovado: caixa retangular com meia-grelha argentina e meia-grelha uruguaia, três botões na frente, quatro espetos em balanço e cavalete com manivela e correntes.',
+    // As fotos de projeto do site mostram dois botões pretos, e a do produto,
+    // três de inox (na lista de problemas)
+    ambiente: { imagem: 'img/modelos/churrasqueira-premium-gas-bancada.webp',
+      textoAlternativo: 'Churrasqueira Premium a gás embutida numa bancada cinza, diante de uma parede de tijolos, ao lado de uma tábua de madeira e de moedores de pimenta laranja.' },
+    fotos: [
+      { imagem: 'img/modelos/churrasqueira-premium-gas-tijolos.webp', textoAlternativo: 'Churrasqueira Premium a gás diante de uma parede de tijolos, sob uma coifa de inox: cavalete com correntes, quatro espetos, grelhas e dois botões pretos na frente.' },
+      { imagem: 'img/modelos/churrasqueira-premium-gas-bancada.webp', textoAlternativo: 'Churrasqueira Premium a gás embutida numa bancada cinza, com pedras vulcânicas na caixa, dois botões pretos, cavalete e espetos, diante de uma parede de tijolos, ao lado de uma tábua de madeira e de moedores de pimenta laranja.' }
+    ],
+    versoes: {
+      titulo: 'Versões da Churrasqueira Premium a gás',
+      lista: [
+        'Espetos em balanço e manivela lateral',
+        'Espetos em balanço e manivela frontal',
+        'Espetos em balanço e volante',
+        'Porta-espetos e manivela frontal',
+        'Porta-espetos e volante',
+        'Espetos em balanço, sem cavalete',
+        'Porta-espetos, sem cavalete'
+      ],
+      // TODO: medidas de cada tamanho quando chegar o manual da versão a gás
+      nota: 'Tamanhos: 60, 70, 80, 90, 100 e 110. A equipe confirma as medidas do seu projeto.'
+    },
+    downloads: [
+      // Modelo 3D da versão com porta-espeto e manivela frontal
+      { texto: 'Baixar 3D', externo: 'SketchUp', arquivo: 'https://3dwarehouse.sketchup.com/model/e2fce3f5-caff-424e-b95b-1f7998cb4069/CHURRASQUEIRA-PREMIUM-G%C3%81S-PORTA-ESPETO-FRONTAL' }
+    ],
     cores: null, palavrasBlog: ['Linha Premium'],
-    prototipo: true, etiqueta: 'Descrição e medidas em breve',
-    medidas: { altura: '', largura: '', peso: '' }
+    medidas: { altura: '', largura: '60 a 110', peso: '' }
   },
   {
     categoria: 'churrasqueiras', linha: 'premium',
