@@ -866,14 +866,34 @@ var MODELOS = [
   {
     categoria: 'churrasqueiras', linha: 'premium',
     nome: 'Churrasqueira Premium com tampa Infinity', slug: 'com-tampa-infinity',
-    texto: PREMIUM,
-    combustiveis: [],   // TODO: confirmar se é a carvão ou a gás
-    // Sem foto do produto em fundo branco: o site usa a foto de projeto
+    // O site não tem texto nesta página: só o que as fotos mostram e o texto
+    // da linha Premium (blog)
+    texto: [
+      'A Churrasqueira Premium com tampa Infinity tem tampa com termômetro, grelha auxiliar sob a tampa, meias-grelhas uruguaia e argentina, três botões de controle e botão de acendimento. Está disponível a gás ou a carvão.'
+    ].concat(PREMIUM.slice(0, 1)),
+    combustiveis: ['carvao', 'gas'],
+    // Sem foto do produto em fundo branco: só fotos no showroom
     imagem: '',
-    ambiente: { imagem: 'img/modelos/churrasqueira-premium-infinity.webp',
-      textoAlternativo: 'Churrasqueira Premium com tampa Infinity, fechada, embutida numa bancada de pedra clara sobre armários cor de terracota, com três botões na frente.' },
-    cores: null, palavrasBlog: ['Linha Premium'],
-    prototipo: true, etiqueta: 'Descrição e medidas em breve',
-    medidas: { altura: '', largura: '', peso: '' }
+    ambiente: { imagem: 'img/modelos/churrasqueira-premium-infinity-fechada.webp',
+      textoAlternativo: 'Churrasqueira Premium com tampa Infinity, fechada, embutida numa bancada de mármore claro sobre armários cor de terracota.' },
+    fotos: [
+      { imagem: 'img/modelos/churrasqueira-premium-infinity-fechada.webp', textoAlternativo: 'Churrasqueira Premium com tampa Infinity fechada, em inox escovado, com termômetro redondo na tampa e três botões na frente, embutida numa bancada de mármore claro sobre armários cor de terracota.' },
+      { imagem: 'img/modelos/churrasqueira-premium-infinity-aberta.webp', textoAlternativo: 'A mesma churrasqueira com a tampa aberta: grelha auxiliar sob a tampa e, embaixo, a meia-grelha uruguaia e a meia-grelha argentina, com os três botões na frente.' },
+      { imagem: 'img/modelos/churrasqueira-premium-infinity-botoes.webp', textoAlternativo: 'Detalhe dos três botões de controle em inox recartilhado da Churrasqueira Premium com tampa Infinity, ao lado da meia-grelha argentina.' },
+      { imagem: 'img/modelos/churrasqueira-premium-infinity-grelhas.webp', textoAlternativo: 'Detalhe das grelhas da Churrasqueira Premium com tampa Infinity: a uruguaia, de barras redondas, a argentina, de canaletas, a grelha auxiliar acima, os três botões e o botão de acendimento (start).' },
+      { video: 'Q3hwlE1cSUQ', textoAlternativo: 'Vídeo da Churrasqueira Premium com tampa Infinity Construflama' }
+    ],
+    versoes: {
+      titulo: 'Versões da Churrasqueira Premium com tampa Infinity',
+      lista: ['A gás', 'A carvão'],
+      // TODO: confirmar a unidade dos tamanhos (provavelmente centímetros de largura)
+      nota: 'Tamanhos: 60, 70, 80, 90, 100 e 110. A equipe confirma as medidas do seu projeto.'
+    },
+    downloads: [
+      { texto: 'Baixar 3D a gás', externo: 'SketchUp', arquivo: 'https://3dwarehouse.sketchup.com/model/1a549913-4fe8-4a0f-889f-10f647624d00/CHURRASQUEIRA-GAS-INFINITY' },
+      { texto: 'Baixar 3D a carvão', externo: 'SketchUp', arquivo: 'https://3dwarehouse.sketchup.com/model/e54ac1cb-ab09-4a7e-a07b-2fdf78d565a1/CHURRASQUEIRA-CARV%C3%83O-INFINITY' }
+    ],
+    cores: null, palavrasBlog: ['Linha Premium', 'Infinity'],
+    medidas: { altura: '', largura: '60 a 110', peso: '' }
   }
 ];

@@ -207,6 +207,12 @@ Atualizado sempre que um novo problema aparecer.
   - as fotos de projeto mostram dois botões pretos, e a foto do produto, três
     botões de inox: não fica claro se é o mesmo modelo;
   - uma das fotos de projeto está em baixa resolução (borrada).
+- **Página da Premium com tampa Infinity sem nenhum texto:** só fotos, vídeo,
+  os botões de tamanho e tipo e os dois "Baixar 3D". O cliente não fica
+  sabendo o que a tampa, o termômetro e a grelha auxiliar fazem, nem a
+  diferença entre a versão a gás e a carvão (as fotos só mostram a a gás).
+- **Nome diferente:** "Churrasqueira Infinity" no blog (receita de Natal) e
+  "Churrasqueira Premium com Tampa Infinity" no site.
 
 ### Manual da Churrasqueira a carvão Linha Premium (2023)
 - **"CH-1100"** em vez de CH-110, nas duas tabelas.
