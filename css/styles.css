@@ -698,7 +698,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
    uma linha fina de anotação ligando o nome ao produto. As fotos se
    dissolvem no fundo escuro e se sobrepõem levemente.
    -------------------------------------------------------------------------- */
-.vitrine { position: relative; padding-bottom: clamp(7rem, 4rem + 7vw, 13rem); background: var(--cinza-escuro-profundo); color: var(--bege); }
+.vitrine { position: relative; overflow-x: clip; padding-bottom: clamp(7rem, 4rem + 7vw, 13rem); background: var(--cinza-escuro-profundo); color: var(--bege); }
 /* Passagem do escuro para o bege da seção seguinte */
 .vitrine::after { content: ""; position: absolute; inset: auto 0 0; height: clamp(10rem, 6rem + 10vw, 18rem); pointer-events: none;
   background: linear-gradient(to bottom, rgba(30,27,25,0) 0%, rgba(30,27,25,.6) 14%, #2B2522 30%, #4F4339 46%, #8C7C6B 62%, #C3B4A0 78%, #E2D7C5 90%, var(--bege) 100%); }
@@ -767,13 +767,12 @@ a.brand:hover .brand__mark { color: var(--bege); }
   .vt--direita .vt__foto { left: 0; --mh: linear-gradient(to left, transparent 0, #000 34%); }
   .vt--esquerda .vt__foto { right: 0; --mh: linear-gradient(to right, transparent 0, #000 34%); }
   .vt--cheia .vt__foto { --mh: linear-gradient(#000, #000); }
-  /* Na foto que ocupa a largura toda, uma sombra leve atrás do texto */
-  .vt--cheia.vt--direita .vt__foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to left, rgba(20,16,13,.72), rgba(20,16,13,.35) 34%, transparent 56%); }
-  .vt--cheia.vt--esquerda .vt__foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(20,16,13,.72), rgba(20,16,13,.35) 34%, transparent 56%); }
-  .vt__conteudo { position: absolute; inset: 0; margin: 0 auto; height: 100%; padding-bottom: 0; }
-  .vt__texto { position: absolute; top: var(--topo, 25%); width: clamp(22rem, 34%, 25rem); }
-  .vt--direita .vt__texto { right: var(--gutter); }
-  .vt--esquerda .vt__texto { left: var(--gutter); }
+  /* A legenda fica perto do produto (posição calculada pelo JS). Atrás dela,
+     só uma sombra difusa, sem caixa, para o texto ler bem sobre a foto */
+  .vt__conteudo { position: absolute; inset: 0; max-width: none; margin: 0; padding: 0; height: 100%; }
+  .vt__texto { position: absolute; top: var(--topo, 25%); left: 55%; width: clamp(23.5rem, 28vw, 25rem); }
+  .vt__texto::before { content: ""; position: absolute; z-index: -1; inset: -6rem -7rem; pointer-events: none;
+    background: radial-gradient(closest-side, rgba(20, 16, 13, .86), rgba(20, 16, 13, .7) 45%, rgba(20, 16, 13, .3) 75%, transparent); }
 }
 /* Entrada: a foto aproxima de leve, o texto sobe e a linha se desenha */
 @media (prefers-reduced-motion: no-preference) {

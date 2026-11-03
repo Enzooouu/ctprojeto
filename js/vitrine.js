@@ -10,13 +10,14 @@
    - info: [textos] informações curtas e reais do produto
    - produto / colecao: links reais (página do produto e da coleção)
    - imagem / textoAlternativo: foto do ambiente
-   - lado: 'direita' | 'esquerda', onde fica o texto (alternar)
+   - lado: 'direita' | 'esquerda', de que lado do produto fica a legenda
+     (alternar); se não couber, ela passa para o outro lado
    - largura: % da largura da tela que a foto ocupa no computador (100 =
-     largura toda; menos que isso, a foto fica do lado oposto ao texto e se
-     dissolve no fundo escuro embaixo do texto)
+     largura toda; menos que isso, a foto fica do lado oposto ao texto)
    - foco: object-position da foto no computador; focoCelular, no celular
    - ponto: [x, y] onde está o produto na foto, de 0 a 1 (fim da linha)
-   - topo: altura do texto na seção, no computador (% da altura)
+   - distancia (opcional): espaço em px entre o ponto e a legenda (padrão 150);
+     maior para produtos largos
    ========================================================================== */
 var VITRINE = [
   {
@@ -29,8 +30,8 @@ var VITRINE = [
     colecao: 'colecao.html?c=lareiras',
     imagem: 'img/vitrine/lareira-balaio-sala.webp',
     textoAlternativo: 'Lareira Balaio preta acesa no canto de uma sala revestida de madeira clara, com o cilindro suspenso sobre o prato redondo, ao lado de um sofá curvo laranja e de uma parede de placas brancas em relevo.',
-    lado: 'direita', largura: 70, foco: '40% 50%', focoCelular: '40% 50%',
-    ponto: [0.4, 0.6], topo: 24
+    lado: 'direita', largura: 100, foco: '50% 55%', focoCelular: '40% 50%',
+    ponto: [0.4, 0.6]
   },
   {
     categoria: 'Churrasqueiras',
@@ -42,8 +43,8 @@ var VITRINE = [
     colecao: 'colecao.html?c=churrasqueiras',
     imagem: 'img/vitrine/churrasqueira-soft-tampa-cozinha.webp',
     textoAlternativo: 'Cozinha de armários rosados com bancada branca, vaso de planta, cuba de inox e adega; à direita, a Churrasqueira Soft com tampa a gás, com três botões, sob uma coifa de inox.',
-    lado: 'esquerda', largura: 70, foco: '70% 50%', focoCelular: '78% 50%',
-    ponto: [0.8, 0.49], topo: 26
+    lado: 'esquerda', largura: 100, foco: '50% 50%', focoCelular: '78% 50%',
+    ponto: [0.8, 0.49], distancia: 260
   },
   {
     categoria: 'Coifas',
@@ -55,8 +56,8 @@ var VITRINE = [
     colecao: 'colecao.html?c=coifas',
     imagem: 'img/vitrine/coifa-cilindrica-cozinha.webp',
     textoAlternativo: 'Coifa cilíndrica laranja suspensa sobre uma ilha de cozinha arredondada com torneira dourada, numa cozinha em tons de terracota com prateleira de vasos e luminárias pendentes.',
-    lado: 'direita', largura: 72, foco: '30% 50%', focoCelular: '24% 50%',
-    ponto: [0.24, 0.3], topo: 26
+    lado: 'direita', largura: 100, foco: '50% 40%', focoCelular: '24% 50%',
+    ponto: [0.24, 0.3]
   },
   {
     categoria: 'Parrillas',
@@ -68,8 +69,8 @@ var VITRINE = [
     colecao: 'colecao.html?c=parrillas',
     imagem: 'img/vitrine/parrillas-churrascada.webp',
     textoAlternativo: 'Fileira de parrillas profissionais de inox com rodas de regulagem e braseiros Churrascada, sobre um balcão de madeira escura com lenha empilhada embaixo, sob uma luminária de filamento.',
-    lado: 'esquerda', largura: 70, foco: '45% 50%', focoCelular: '42% 50%',
-    ponto: [0.425, 0.45], topo: 24
+    lado: 'esquerda', largura: 100, foco: '50% 45%', focoCelular: '42% 50%',
+    ponto: [0.425, 0.45]
   },
   {
     categoria: 'Fornos de pizza',
@@ -81,7 +82,7 @@ var VITRINE = [
     colecao: 'colecao.html?c=fornos-de-pizza',
     imagem: 'img/vitrine/forno-a-lenha-cozinha.webp',
     textoAlternativo: 'Forno a lenha branco em formato de cúpula, com porta preta e chaminé, numa área gourmet com parede de tijolinhos, pás de pizza penduradas, luminária de palha e cooktop com panela de cobre.',
-    lado: 'direita', largura: 70, foco: '60% 55%', focoCelular: '68% 60%',
-    ponto: [0.68, 0.7], topo: 22
+    lado: 'direita', largura: 100, foco: '50% 65%', focoCelular: '68% 60%',
+    ponto: [0.68, 0.7]
   }
 ];

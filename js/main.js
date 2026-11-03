@@ -767,26 +767,46 @@ var DEPOIMENTOS = [
         y: b.top + (b.height - nh * e) * (isNaN(pos[1]) ? .5 : pos[1]) + it.v.ponto[1] * nh * e
       };
     }
+    // Computador: a legenda fica ao lado do produto, do lado escolhido em
+    // "lado", na altura dele; se não couber, passa para o outro lado
+    function posicionarLegenda(it, px, py, W, H) {
+      var txt = it.nome.parentNode;
+      var w = txt.offsetWidth, h = txt.offsetHeight, folga = it.v.distancia || 150;
+      var margem = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gutter')) || 40;
+      if (isNaN(margem) || margem < 16) margem = 40;
+      var cabeDir = px + folga + w <= W - margem, cabeEsq = px - folga - w >= margem;
+      var esq = it.v.lado === 'esquerda';
+      if (esq && !cabeEsq && cabeDir) esq = false;
+      if (!esq && !cabeDir && cabeEsq) esq = true;
+      var x = esq ? px - folga - w : px + folga;
+      x = Math.max(margem, Math.min(W - margem - w, x));
+      var y = Math.max(H * .12, Math.min(H * .86 - h, py - h * .3));
+      txt.style.left = x + 'px';
+      txt.style.top = y + 'px';
+      txt.classList.toggle('vt__texto--esq', esq);
+      return esq;
+    }
     function desenhar(it) {
       var p = noProduto(it);
       if (!p) return;
       var a = it.art.getBoundingClientRect();
-      var r = document.createRange();
-      r.selectNodeContents(it.nome);
-      var t = r.getBoundingClientRect();
       var px = p.x - a.left, py = p.y - a.top;
-      var bloco = it.nome.parentNode.getBoundingClientRect(), d;
+      var txt = it.nome.parentNode, d;
       if (innerWidth < 900) {
+        txt.style.left = txt.style.top = '';
         // Celular: desce do produto e dobra num traço curto acima do texto
-        var yt = bloco.top - a.top - 16, xt = Math.max(bloco.left - a.left, Math.min(px - 56, px));
+        var bloco = txt.getBoundingClientRect();
+        var yt = bloco.top - a.top - 16, xt = Math.max(bloco.left - a.left, px - 56);
         d = 'M' + px + ' ' + py + 'V' + yt + 'H' + xt;
       } else {
-        // Computador: começa na borda do texto, na linha de base do nome, com
-        // um ombro horizontal curto, e desce em diagonal até o produto
-        var esq = it.v.lado === 'esquerda', yb = t.bottom - a.top - 6;
-        var x0 = esq ? bloco.right - a.left + 18 : bloco.left - a.left - 18;
-        var x1 = x0 + (esq ? 1 : -1) * 64;
-        if (esq ? px < x1 + 40 : px > x1 - 40) x1 = x0;   // produto muito perto: sem ombro
+        var esq = posicionarLegenda(it, px, py, a.width, a.height);
+        var r = document.createRange();
+        r.selectNodeContents(it.nome);
+        var t = r.getBoundingClientRect(), bl = txt.getBoundingClientRect();
+        // Do produto, uma diagonal curta até um ombro na altura do nome
+        var yb = t.bottom - a.top - 6;
+        var x0 = esq ? bl.right - a.left + 16 : bl.left - a.left - 16;
+        var x1 = x0 + (esq ? 1 : -1) * 48;
         d = 'M' + x0 + ' ' + yb + 'H' + x1 + 'L' + px + ' ' + py;
       }
       it.caminho.setAttribute('d', d);
