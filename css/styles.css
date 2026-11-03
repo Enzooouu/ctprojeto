@@ -698,11 +698,16 @@ a.brand:hover .brand__mark { color: var(--bege); }
    uma linha fina de anotação ligando o nome ao produto. As fotos se
    dissolvem no fundo escuro e se sobrepõem levemente.
    -------------------------------------------------------------------------- */
-.vitrine { position: relative; padding-bottom: clamp(4rem, 3rem + 4vw, 7rem); background: var(--cinza-escuro-profundo); color: var(--bege); }
+.vitrine { position: relative; padding-bottom: clamp(7rem, 4rem + 7vw, 13rem); background: var(--cinza-escuro-profundo); color: var(--bege); }
 /* Passagem do escuro para o bege da seção seguinte */
-.vitrine::after { content: ""; position: absolute; inset: auto 0 0; height: clamp(4rem, 3rem + 4vw, 7rem); background: linear-gradient(to bottom, var(--cinza-escuro-profundo), var(--bege)); }
+.vitrine::after { content: ""; position: absolute; inset: auto 0 0; height: clamp(10rem, 6rem + 10vw, 18rem); pointer-events: none;
+  background: linear-gradient(to bottom, rgba(30,27,25,0) 0%, rgba(30,27,25,.6) 14%, #2B2522 30%, #4F4339 46%, #8C7C6B 62%, #C3B4A0 78%, #E2D7C5 90%, var(--bege) 100%); }
 .vt { position: relative; }
 .vt + .vt { margin-top: -9vw; }
+/* Abaixo da faixa de encontro, a seção cobre a foto anterior com o fundo
+   escuro: ela não aparece mais atrás do texto quando a foto nova é estreita */
+.vt + .vt::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(30,27,25,0) 0, var(--cinza-escuro-profundo) var(--sobre, 9vw)); }
 .vitrine { scroll-margin-top: var(--header-h); }
 /* Costura entre duas fotos: uma faixa que desfoca e escurece o encontro,
    para uma foto dissolver na outra sem linha reta */
@@ -721,7 +726,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
 .vt:first-child .vt__costura { display: none; }
 @media (min-width: 900px) {
   .vt__costura { inset: -1.5vw 0 auto; height: 8vw; }
-  .vt + .vt { margin-top: -13vw; }
+  .vt + .vt { margin-top: -13vw; --sobre: 13vw; }
 }
 .vt__foto {
   position: relative;
