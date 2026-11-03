@@ -152,7 +152,7 @@ var CATEGORIAS = [
   }
 ];
 
-/* PRODUTOS fica em js/produtos.js (carregado antes deste arquivo). */
+/* VITRINE fica em js/vitrine.js (carregado antes deste arquivo). */
 
 /* --------------------------------------------------------------------------
    CATALOGOS para download (seção do especificador). Cada catálogo junta
@@ -683,325 +683,134 @@ var DEPOIMENTOS = [
   })();
 
   /* ------------------------------------------------------------------------
-     E. Produtos em destaque: carrossel grande com loop infinito
-        - Slides vêm de PRODUTOS (js/produtos.js), só os com destaque: true.
-        - Cada slide recebe uma posição relativa ao atual: ativo, anterior,
-          próximo (pontas visíveis nas bordas) ou escondido. Como os
-          escondidos trocam de lado já invisíveis, o loop continua sempre na
-          mesma direção, sem "rebobinar" e sem salto.
-        - Geometria simétrica, medida em pixels na largura real do palco:
-          as pontas esquerda e direita têm sempre a mesma largura e o
-          conjunto imagem + legenda fica centralizado.
-        - Troca sozinho a cada 15 s; pausa com mouse em cima, foco do teclado,
-          aba em segundo plano, arrasto ou carrossel fora da tela.
-          (O mouse em cima NÃO pausa.)
+     E. Vitrine: cada produto numa grande foto (VITRINE, em js/vitrine.js)
+        - O texto fica direto sobre a foto, do lado escolhido em "lado".
+        - Uma linha fina sai de baixo do nome e termina num ponto sobre o
+          produto ("ponto", em fração da foto), como uma anotação de projeto.
+          A posição do ponto acompanha o recorte da foto (object-fit: cover).
+        - No celular a foto fica em cima e a linha desce do produto até o nome.
      ------------------------------------------------------------------------ */
-  (function carrosselDestaque() {
-    var raiz = document.querySelector('[data-destaque]');
-    if (!raiz) return;
-    var secao = raiz.closest('section');
-    var numero = raiz.querySelector('[data-destaque-numero]');
-    var total = raiz.querySelector('[data-destaque-total]');
-    var lista = raiz.querySelector('[data-destaque-slides]');
-    var palco = raiz.querySelector('.destaque__palco');
-    var caixaLegendas = raiz.querySelector('[data-destaque-legendas]');
-    var caixaIndicadores = raiz.querySelector('[data-destaque-indicadores]');
-    var barra = raiz.querySelector('[data-destaque-barra]');
-    var btnAnterior = document.querySelector('[data-destaque-anterior]');
-    var btnProximo = document.querySelector('[data-destaque-proximo]');
-    var DURACAO = 15000; // ms por slide
-    var LINK_ORCAMENTO = 'https://whts.co/Construflama_com';
+  (function montarVitrine() {
+    var raiz = document.querySelector('[data-vitrine]');
+    if (!raiz || typeof VITRINE === 'undefined' || !VITRINE.length) return;
+    var NS = 'http://www.w3.org/2000/svg';
+    var itens = [];
 
-    // Produtos em destaque com categoria/subcategoria válidas
-    var itens = PRODUTOS.filter(function (p) {
-      if (!p.destaque) return false;
-      var cat = buscarCategoria(p.categoria);
-      var ok = cat && cat.subcategorias.some(function (s) { return s.slug === p.subcategoria; });
-      if (!ok) console.warn('Produto ignorado (categoria/subcategoria inexistente):', p.nome);
-      return ok;
+    VITRINE.forEach(function (v, i) {
+      var art = el('article', 'vt vt--' + (v.lado === 'esquerda' ? 'esquerda' : 'direita') + ((v.largura || 100) >= 100 ? ' vt--cheia' : ''));
+      art.setAttribute('aria-labelledby', 'vt-nome-' + i);
+      art.style.setProperty('--larg', (v.largura || 100) + '%');
+      art.style.setProperty('--foco', v.foco || '50% 50%');
+      art.style.setProperty('--foco-cel', v.focoCelular || v.foco || '50% 50%');
+      art.style.setProperty('--topo', (v.topo || 25) + '%');
+
+      var fig = el('figure', 'vt__foto');
+      var img = el('img');
+      img.src = v.imagem;
+      img.alt = v.textoAlternativo;
+      img.loading = i === 0 ? 'eager' : 'lazy';
+      img.decoding = 'async';
+      fig.appendChild(img);
+      art.appendChild(fig);
+
+      var svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('class', 'vt__linha');
+      svg.setAttribute('aria-hidden', 'true');
+      var caminho = document.createElementNS(NS, 'path');
+      caminho.setAttribute('pathLength', '1');
+      var aro = document.createElementNS(NS, 'circle');
+      aro.setAttribute('class', 'vt__aro'); aro.setAttribute('r', '9');
+      var ponto = document.createElementNS(NS, 'circle');
+      ponto.setAttribute('class', 'vt__ponto'); ponto.setAttribute('r', '3');
+      svg.appendChild(caminho); svg.appendChild(aro); svg.appendChild(ponto);
+      art.appendChild(svg);
+
+      var cont = el('div', 'container vt__conteudo');
+      var txt = el('div', 'vt__texto');
+      txt.appendChild(el('p', 'vt__cat', v.categoria));
+      var nome = el('h3', 'vt__nome', v.nome);
+      nome.id = 'vt-nome-' + i;
+      txt.appendChild(nome);
+      txt.appendChild(el('p', 'vt__desc', v.descricao));
+      if (v.info && v.info.length) {
+        var ul = el('ul', 'vt__info');
+        v.info.forEach(function (t) { ul.appendChild(el('li', null, t)); });
+        txt.appendChild(ul);
+      }
+      var acoes = el('div', 'vt__acoes');
+      var conhecer = el('a', 'btn btn--primary', 'Conhecer produto');
+      conhecer.href = v.produto;
+      conhecer.appendChild(srOnly(': ' + v.nome));
+      var ver = el('a', 'btn btn--ghost', 'Ver categoria');
+      ver.href = v.colecao;
+      ver.appendChild(srOnly(': ' + v.categoria));
+      acoes.appendChild(conhecer); acoes.appendChild(ver);
+      txt.appendChild(acoes);
+      cont.appendChild(txt);
+      art.appendChild(cont);
+      raiz.appendChild(art);
+      itens.push({ v: v, art: art, img: img, nome: nome, caminho: caminho, aro: aro, ponto: ponto });
     });
-    if (!itens.length) { raiz.closest('section').hidden = true; return; }
 
-    var m = itens.length;
-    // O loop sem salto precisa de 5 slides (anterior, atual, próximo e 2 escondidos).
-    // Com menos produtos, a lista de slides é repetida; legendas e traços usam só os reais.
-    var n = m * Math.ceil(5 / m);
-    var atual = 0;       // índice "virtual": cresce ou diminui sem limite
-    var timerTroca = null;
-    var anunciar = false;
-
-    // --- Montagem -----------------------------------------------------------
-    var slides = [];
-    for (var k = 0; k < n; k++) {
-      var p = itens[k % m];
-      var cat = buscarCategoria(p.categoria);
-      var li = el('li', 'destaque__slide');
-      li.setAttribute('aria-roledescription', 'slide');
-      li.setAttribute('aria-label', ((k % m) + 1) + ' de ' + m + ': ' + p.nome);
-
-      var midia = el('div', 'destaque__midia destaque__midia--' + (p.fundo || 'a'));
-      var imagem = el('div', 'destaque__imagem');
-      if (p.imagem) {
-        // Foto real: recortada na proporção fixa do slide (16:10)
-        var img = el('img');
-        img.src = p.imagem;
-        img.alt = p.textoAlternativo || p.nome;
-        img.width = 1600; img.height = 1000;
-        img.decoding = 'async';
-        if (k > 1) img.loading = 'lazy';
-        imagem.appendChild(img);
+    // Onde o produto aparece na tela, respeitando o recorte da foto
+    function noProduto(it) {
+      var b = it.img.getBoundingClientRect();
+      var nw = it.img.naturalWidth, nh = it.img.naturalHeight;
+      if (!nw || !b.width) return null;
+      var pos = getComputedStyle(it.img).objectPosition.split(' ').map(function (t) { return parseFloat(t) / 100; });
+      var e = Math.max(b.width / nw, b.height / nh);
+      return {
+        x: b.left + (b.width - nw * e) * pos[0] + it.v.ponto[0] * nw * e,
+        y: b.top + (b.height - nh * e) * (isNaN(pos[1]) ? .5 : pos[1]) + it.v.ponto[1] * nh * e
+      };
+    }
+    function desenhar(it) {
+      var p = noProduto(it);
+      if (!p) return;
+      var a = it.art.getBoundingClientRect();
+      var r = document.createRange();
+      r.selectNodeContents(it.nome);
+      var t = r.getBoundingClientRect();
+      var px = p.x - a.left, py = p.y - a.top;
+      var x0 = t.left - a.left, x1 = t.right - a.left, y = t.bottom - a.top + 8, d;
+      if (innerWidth < 900) {
+        // Celular: desce do produto e corre logo acima do bloco de texto
+        var yt = it.nome.parentNode.getBoundingClientRect().top - a.top - 14;
+        d = 'M' + px + ' ' + py + 'V' + yt + 'H' + x0;
       } else {
-        // TODO: trocar pelo campo "imagem" quando houver foto do produto
-        imagem.appendChild(icone(cat.ilustracao, 'destaque__ilustracao'));
+        // Computador: um traço sob o nome e, a partir da ponta voltada para o
+        // produto, uma diagonal que termina no ponto sobre ele
+        // produto; a dobra fica fora da coluna de texto, para não cruzar as letras
+        var bloco = it.nome.parentNode.getBoundingClientRect(), esq = it.v.lado === 'esquerda';
+        var perto = esq ? x1 : x0, longe = esq ? x0 : x1;
+        var dobra = esq ? Math.max(perto, bloco.right - a.left + 28) : Math.min(perto, bloco.left - a.left - 28);
+        if (esq ? px < dobra : px > dobra) dobra = perto;
+        d = 'M' + longe + ' ' + y + 'H' + dobra + 'L' + px + ' ' + py;
       }
-      midia.appendChild(imagem);
-      if (p.exemplo) midia.appendChild(el('span', 'tag-exemplo', 'Exemplo'));
-      li.appendChild(midia);
-      lista.appendChild(li);
-      slides.push(li);
+      it.caminho.setAttribute('d', d);
+      [it.aro, it.ponto].forEach(function (c) { c.setAttribute('cx', px); c.setAttribute('cy', py); });
     }
+    function desenharTudo() { itens.forEach(desenhar); }
+    itens.forEach(function (it) { it.img.addEventListener('load', function () { desenhar(it); }); });
+    desenharTudo();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(desenharTudo);
+    var espera;
+    window.addEventListener('resize', function () { clearTimeout(espera); espera = setTimeout(desenharTudo, 120); });
 
-    var legendas = itens.map(function (p) {
-      var cat = buscarCategoria(p.categoria);
-      var div = el('div', 'destaque__legenda');
-      div.appendChild(el('p', 'destaque__cat', cat.nome));
-      div.appendChild(el('h3', 'destaque__nome', p.nome));
-      if (p.descricao) div.appendChild(el('p', 'destaque__desc', p.descricao));
-      var acoes = el('div', 'destaque__acoes');
-      var cta = el('a', 'btn btn--primary destaque__cta', 'Pedir orçamento');
-      cta.href = LINK_ORCAMENTO;
-      cta.target = '_blank';
-      cta.rel = 'noopener';
-      cta.appendChild(srOnly(': ' + p.nome));
-      acoes.appendChild(cta);
-      var verColecao = el('a', 'text-link destaque__colecao', 'Ver a coleção');
-      verColecao.href = ancoraColecao(cat);
-      verColecao.appendChild(srOnly(' de ' + cat.nome));
-      acoes.appendChild(verColecao);
-      div.appendChild(acoes);
-      // Índice de cascata: categoria, nome, descrição e botões entram em sequência
-      Array.prototype.forEach.call(div.children, function (filho, i) { filho.style.setProperty('--i', i); });
-      caixaLegendas.appendChild(div);
-      return div;
-    });
-
-    var tracos = itens.map(function (p, j) {
-      var b = el('button', 'destaque__traco');
-      b.type = 'button';
-      b.setAttribute('aria-label', 'Mostrar ' + p.nome);
-      b.appendChild(el('span'));
-      b.addEventListener('click', function () { irPara(j); });
-      caixaIndicadores.appendChild(b);
-      return b;
-    });
-
-    if (total) total.textContent = String(m);
-
-    // --- Geometria ----------------------------------------------------------
-    // Mede o palco e calcula: largura do conteúdo (imagem + legenda), margem
-    // lateral e largura da imagem. A ponta visível de cada lado = margem - gap.
-    var g = { sw: 0, gap: 24, margem: 0, conteudo: 0, w: 0, peek: 0 };
-
-    function medir() {
-      var sw = lista.clientWidth;                       // largura real (sem a barra de rolagem)
-      var celular = sw < 1100;                      // igual ao CSS (max-width: 1099px)
-      var gutter = Math.min(40, Math.max(16, 8 + sw * 0.03)); // mesmo --gutter do CSS
-      var gap = celular ? 10 : Math.round(Math.min(28, Math.max(16, sw * 0.016)));
-      var conteudo;
-      if (celular) {
-        var pontaMin = Math.min(30, Math.max(14, sw * 0.045));
-        // Em tablets a imagem empilhada não passa de 760px (senão toma a tela toda)
-        conteudo = Math.min(sw - 2 * (pontaMin + gap), 760);
-      } else {
-        // Alinha à grade do site (contêiner) e, em telas muito largas, cresce até 1400px
-        var conteiner = Math.min(sw, 1216) - 2 * gutter;
-        conteudo = Math.max(conteiner, Math.min(sw - 2 * (220 + gap), 1400));
-        conteudo = Math.min(conteudo, sw - 2 * (64 + gap)); // ponta mínima de 64px de cada lado
-      }
-      var margem = (sw - conteudo) / 2;
-      g = { sw: sw, gap: gap, margem: margem, conteudo: conteudo,
-            w: Math.round(celular ? conteudo : conteudo * 0.6), peek: margem - gap };
-      // As mesmas medidas valem para o título da seção e para a grade (imagem + legenda)
-      secao.style.setProperty('--d-margem', margem + 'px');
-      secao.style.setProperty('--d-conteudo', conteudo + 'px');
-      secao.style.setProperty('--d-w', g.w + 'px');
-      secao.style.setProperty('--d-gap', gap + 'px');
-      secao.style.setProperty('--d-ponta', g.peek + 'px');
+    // Entrada de cada seção quando ela chega na tela
+    if ('IntersectionObserver' in window && !reduceMotion.matches) {
+      var obs = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          desenhar(itens.filter(function (it) { return it.art === e.target; })[0]);
+          e.target.classList.add('is-visible');
+          obs.unobserve(e.target);
+        });
+      }, { threshold: .3 });
+      itens.forEach(function (it) { obs.observe(it.art); });
+    } else {
+      itens.forEach(function (it) { it.art.classList.add('is-visible'); });
     }
-
-    function xDaPosicao(o) {
-      if (o === 0) return g.margem;                                  // ativo
-      if (o === -1) return g.margem - g.gap - g.w;                   // ponta esquerda (mostra g.peek)
-      if (o === 1) return g.sw - g.peek;                             // ponta direita (mostra g.peek)
-      return o < 0 ? g.margem - g.gap - g.w * 1.45 : g.sw + g.w * 0.15; // escondidos, fora da tela
-    }
-
-    // --- Posicionamento ------------------------------------------------------
-    function mod(a, b) { return ((a % b) + b) % b; }
-
-    function posicionar() {
-      slides.forEach(function (s, i) {
-        var o = mod(i - atual, n);
-        if (o > n / 2) o -= n;                       // menor distância até o atual
-        s.style.setProperty('--x', xDaPosicao(o) + 'px');
-        s.dataset.pos = o === 0 ? 'atual' : o === -1 ? 'anterior' : o === 1 ? 'proximo' : 'oculto';
-        s.setAttribute('aria-hidden', o === 0 ? 'false' : 'true');
-      });
-      if (numero) numero.textContent = String(mod(atual, m) + 1);
-      var real = mod(atual, m);
-      legendas.forEach(function (l, j) {
-        var ativa = j === real;
-        l.classList.toggle('is-ativa', ativa);
-        l.inert = !ativa;                              // sem foco/leitura nas legendas ocultas
-        l.setAttribute('aria-hidden', String(!ativa));
-      });
-      tracos.forEach(function (b, j) {
-        if (j === real) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
-      });
-      // Só anuncia a troca para leitores de tela quando foi a pessoa que mudou
-      caixaLegendas.setAttribute('aria-live', anunciar ? 'polite' : 'off');
-    }
-
-    function ir(novo, origem) {
-      // Marca a troca em andamento (o brilho apaga enquanto as imagens deslizam)
-      raiz.classList.add('is-trocando');
-      clearTimeout(timerTroca);
-      timerTroca = setTimeout(function () { raiz.classList.remove('is-trocando'); }, 850);
-      // Direção da troca: a legenda nova entra pelo lado de onde vem o slide
-      raiz.dataset.direcao = novo >= atual ? 'proximo' : 'anterior';
-      atual = novo;
-      anunciar = origem !== 'auto';
-      decorrido = 0;
-      posicionar();
-    }
-    function proximo(origem) { ir(atual + 1, origem || 'usuario'); }
-    function anterior() { ir(atual - 1, 'usuario'); }
-    // Traço clicado: vai pelo caminho mais curto (do último para o primeiro, segue em frente)
-    function irPara(j) {
-      var d = mod(j - mod(atual, m), m);
-      if (d > m / 2) d -= m;
-      if (d !== 0) ir(atual + d, 'usuario');
-    }
-
-    btnAnterior.addEventListener('click', anterior);
-    btnProximo.addEventListener('click', function () { proximo(); });
-
-    // Clique nas pontas visíveis leva ao slide anterior/seguinte
-    lista.addEventListener('click', function (e) {
-      if (arrastou) return;
-      var s = e.target.closest('.destaque__slide');
-      if (!s) return;
-      if (s.dataset.pos === 'anterior') anterior();
-      else if (s.dataset.pos === 'proximo') proximo();
-    });
-
-    // Teclado: setas esquerda/direita com o foco em qualquer parte do carrossel
-    raiz.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') { e.preventDefault(); proximo(); }
-      else if (e.key === 'ArrowLeft') { e.preventDefault(); anterior(); }
-    });
-
-    // --- Pausas ----------------------------------------------------------------
-    var pausas = { foco: false, aba: document.hidden, arrasto: false, foraDaTela: false };
-    function focoDeTeclado(alvo) {
-      try { return alvo.matches(':focus-visible'); } catch (err) { return true; }
-    }
-    function pausado() {
-      return pausas.foco || pausas.aba || pausas.arrasto || pausas.foraDaTela;
-    }
-    var regiaoControles = [raiz, btnAnterior.parentNode];
-    regiaoControles.forEach(function (r) {
-      // Só o foco de TECLADO pausa (:focus-visible); clicar numa seta não congela o avanço
-      r.addEventListener('focusin', function (e) { pausas.foco = focoDeTeclado(e.target); });
-      r.addEventListener('focusout', function (e) {
-        var destino = e.relatedTarget;
-        pausas.foco = !!destino && regiaoControles.some(function (x) { return x.contains(destino); }) && focoDeTeclado(destino);
-      });
-    });
-    document.addEventListener('visibilitychange', function () { pausas.aba = document.hidden; });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) {
-        es.forEach(function (e) { pausas.foraDaTela = !e.isIntersecting; });
-      }, { threshold: 0.25 }).observe(palco);
-    }
-
-    // --- Avanço automático + barra de progresso -------------------------------
-    var decorrido = 0;
-    var anteriorT = null;
-    var automatico = !reduceMotion.matches;
-    raiz.classList.toggle('sem-automatico', !automatico);
-
-    function quadro(t) {
-      var dt = anteriorT === null ? 0 : Math.min(t - anteriorT, 100); // limita saltos (ex.: aba voltando)
-      anteriorT = t;
-      var parado = pausado();
-      if (!parado) {
-        decorrido += dt;
-        if (decorrido >= DURACAO) proximo('auto');
-      }
-      barra.style.transform = 'scaleX(' + Math.min(1, decorrido / DURACAO).toFixed(4) + ')';
-      raiz.classList.toggle('is-pausado', parado);
-      window.requestAnimationFrame(quadro);
-    }
-
-    // --- Arrastar (dedo no celular; mouse também funciona) -----------------------
-    var inicioX = 0, inicioY = 0, dx = 0, arrastando = false, arrastou = false, ponteiro = null;
-
-    palco.addEventListener('pointerdown', function (e) {
-      if (e.button !== 0 || e.target.closest('a, button, .destaque__legendas')) return;
-      ponteiro = e.pointerId;
-      inicioX = e.clientX; inicioY = e.clientY; dx = 0;
-      arrastando = false; arrastou = false;
-    });
-    palco.addEventListener('pointermove', function (e) {
-      if (e.pointerId !== ponteiro) return;
-      dx = e.clientX - inicioX;
-      var dy = e.clientY - inicioY;
-      if (!arrastando) {
-        if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)) return; // gesto vertical = rolar a página
-        arrastando = true;
-        pausas.arrasto = true;
-        lista.classList.add('is-arrastando');
-        try { palco.setPointerCapture(e.pointerId); } catch (err) { /* ok */ }
-      }
-      lista.style.setProperty('--arrasto', dx + 'px');
-    });
-    function soltar() {
-      if (ponteiro === null) return;
-      ponteiro = null;
-      if (!arrastando) return;
-      arrastando = false;
-      arrastou = true;                       // ignora o "click" que vem logo depois
-      setTimeout(function () { arrastou = false; }, 0);
-      pausas.arrasto = false;
-      lista.classList.remove('is-arrastando');
-      lista.style.setProperty('--arrasto', '0px');
-      var limite = Math.min(80, palco.clientWidth * 0.12);
-      if (dx <= -limite) proximo();
-      else if (dx >= limite) anterior();
-    }
-    palco.addEventListener('pointerup', soltar);
-    palco.addEventListener('pointercancel', soltar);
-    palco.addEventListener('dragstart', function (e) { e.preventDefault(); });
-
-    // Primeira medição sem animação (os slides já nascem no lugar)
-    lista.classList.add('is-arrastando');
-    medir();
-    posicionar();
-    lista.getBoundingClientRect();
-    lista.classList.remove('is-arrastando');
-
-    // Ao redimensionar, remede e reposiciona sem animar
-    var timerMedida = null;
-    window.addEventListener('resize', function () {
-      lista.classList.add('is-arrastando');
-      medir();
-      posicionar();
-      clearTimeout(timerMedida);
-      timerMedida = setTimeout(function () { lista.classList.remove('is-arrastando'); }, 120);
-    });
-
-    if (automatico) window.requestAnimationFrame(quadro);
   })();
 
   /* ------------------------------------------------------------------------

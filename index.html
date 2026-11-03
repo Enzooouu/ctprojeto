@@ -206,45 +206,27 @@
   <main id="conteudo">
 
     <!-- ============================================================
-         2. HERO: a parede da sala com uma lareira linear embutida.
-         A lareira é feita só com CSS (sem imagem).
+         2. HERO: texto à direita e, à esquerda, a foto de um projeto real
+         que se dissolve no fundo escuro.
          ============================================================ -->
     <section class="hero" id="inicio" aria-labelledby="hero-titulo">
-      <div class="container hero__content">
-        <h1 class="hero__title" id="hero-titulo">O fogo como parte da arquitetura.</h1>
-        <p class="hero__lead">Lareiras, churrasqueiras, coifas, parrillas e fornos de alto padrão, pensados junto com o seu projeto, do primeiro desenho à primeira chama.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary btn--lg" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
-          <a class="btn btn--ghost btn--lg" href="#colecoes">Ver coleções</a>
-        </div>
-      </div>
-
-      <div class="firebox" aria-hidden="true">
-        <div class="firebox__opening">
-          <div class="flames">
-            <span class="flame" style="--x:2%;  --h:55%; --d:1.7s; --t:-.2s"></span>
-            <span class="flame" style="--x:8%;  --h:72%; --d:1.3s; --t:-.9s"></span>
-            <span class="flame" style="--x:14%; --h:64%; --d:1.9s; --t:-.4s"></span>
-            <span class="flame" style="--x:20%; --h:82%; --d:1.5s; --t:-1.1s"></span>
-            <span class="flame" style="--x:26%; --h:60%; --d:1.8s; --t:-.6s"></span>
-            <span class="flame" style="--x:32%; --h:76%; --d:1.4s; --t:-.1s"></span>
-            <span class="flame" style="--x:38%; --h:88%; --d:1.6s; --t:-.8s"></span>
-            <span class="flame" style="--x:44%; --h:70%; --d:2s;   --t:-.3s"></span>
-            <span class="flame" style="--x:50%; --h:92%; --d:1.5s; --t:-1.3s"></span>
-            <span class="flame" style="--x:56%; --h:74%; --d:1.7s; --t:-.5s"></span>
-            <span class="flame" style="--x:62%; --h:86%; --d:1.3s; --t:-1s"></span>
-            <span class="flame" style="--x:68%; --h:66%; --d:1.9s; --t:-.7s"></span>
-            <span class="flame" style="--x:74%; --h:80%; --d:1.6s; --t:-.2s"></span>
-            <span class="flame" style="--x:80%; --h:62%; --d:1.4s; --t:-1.2s"></span>
-            <span class="flame" style="--x:86%; --h:74%; --d:1.8s; --t:-.4s"></span>
-            <span class="flame" style="--x:92%; --h:58%; --d:1.5s; --t:-.9s"></span>
+      <figure class="hero__foto">
+        <img src="img/blog/sala-clareira-pipe-fendi.webp" width="1024" height="682" fetchpriority="high"
+             alt="Lareira Pipe na cor Fendi presa à parede de madeira escura, ao lado de um sofá curvo, na Sala Clareira da Sala 2 Arquitetura.">
+      </figure>
+      <div class="container hero__grade">
+        <div class="hero__content">
+          <h1 class="hero__title" id="hero-titulo">O fogo como parte da arquitetura.</h1>
+          <p class="hero__lead">Lareiras, churrasqueiras, coifas, parrillas e fornos de alto padrão, pensados junto com o seu projeto, do primeiro desenho à primeira chama.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--lg" href="https://whts.co/Construflama_com" target="_blank" rel="noopener">Solicitar orçamento</a>
+            <a class="btn btn--ghost btn--lg" href="#colecoes">Ver coleções</a>
           </div>
-          <div class="firebox__bed"></div>
         </div>
       </div>
 
       <!-- ============================================================
-           3. FAIXA DE CONFIANÇA: a "soleira" de pedra sob a lareira
+           3. FAIXA DE CONFIANÇA
            ============================================================ -->
       <div class="hearth">
         <ul class="container hearth__list">
@@ -265,52 +247,13 @@
     </section>
 
     <!-- ============================================================
-         4. PRODUTOS EM DESTAQUE: carrossel grande, logo depois do hero.
-         Slides, legendas, traços e contador são gerados por js/main.js a
-         partir de PRODUTOS (js/produtos.js), só os com destaque: true.
-         Geometria simétrica: as pontas das imagens anterior e seguinte têm
-         sempre a mesma largura dos dois lados, em qualquer tela.
+         4. VITRINE: cada produto numa grande foto, com o texto sobre ela
+         e uma linha fina que liga o nome ao produto.
+         Seções geradas por js/main.js a partir de VITRINE (js/vitrine.js).
          ============================================================ -->
-    <section class="section featured" id="destaques" aria-labelledby="destaques-titulo">
-      <div class="destaque-largura">
-        <div class="featured__head" data-reveal="stagger">
-          <div>
-            <h2 class="section-title" id="destaques-titulo">Produtos em destaque</h2>
-            <p class="section-lead">Peças que arquitetos mais especificam com a gente.</p>
-          </div>
-          <div class="carousel-controls">
-            <button class="carousel-btn" type="button" data-destaque-anterior aria-controls="destaque-slides">
-              <svg class="icon" aria-hidden="true"><use href="#i-anterior"/></svg>
-              <span class="sr-only">Produto anterior</span>
-            </button>
-            <button class="carousel-btn" type="button" data-destaque-proximo aria-controls="destaque-slides">
-              <svg class="icon" aria-hidden="true"><use href="#i-proximo"/></svg>
-              <span class="sr-only">Próximo produto</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Troca sozinho a cada 15 s; pausa com mouse em cima, foco do teclado ou aba oculta -->
-      <div class="destaque" data-destaque data-reveal tabindex="0"
-           role="region" aria-roledescription="carrossel" aria-labelledby="destaques-titulo">
-        <div class="destaque__palco">
-          <div class="destaque__brilho" aria-hidden="true"></div>
-          <ul class="destaque__slides" id="destaque-slides" data-destaque-slides></ul>
-          <div class="destaque-largura destaque__grade">
-            <div class="destaque__quadro">
-              <!-- Reserva a área da imagem ativa (16:10) para o layout não pular -->
-              <div class="destaque__espaco" aria-hidden="true"></div>
-              <div class="destaque__progresso" aria-hidden="true"><span data-destaque-barra></span></div>
-              <div class="destaque__navegacao">
-                <div class="destaque__indicadores" data-destaque-indicadores role="group" aria-label="Escolher produto"></div>
-                <p class="destaque__contador" aria-hidden="true"><span data-destaque-numero>1</span><span class="destaque__total" data-destaque-total></span></p>
-              </div>
-            </div>
-            <div class="destaque__legendas" data-destaque-legendas></div>
-          </div>
-        </div>
-      </div>
+    <section class="vitrine" aria-labelledby="vitrine-titulo">
+      <h2 class="sr-only" id="vitrine-titulo">Produtos Construflama</h2>
+      <div data-vitrine></div>
     </section>
 
     <!-- ============================================================
@@ -524,7 +467,7 @@
   <!-- Aviso discreto para links que ainda não existem no protótipo -->
   <div class="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/produtos.js" defer></script>
+  <script src="js/vitrine.js" defer></script>
   <script src="js/lojas.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
