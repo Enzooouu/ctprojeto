@@ -712,6 +712,9 @@ var DEPOIMENTOS = [
       img.decoding = 'async';
       fig.appendChild(img);
       art.appendChild(fig);
+      var costura = el('div', 'vt__costura');
+      costura.setAttribute('aria-hidden', 'true');
+      art.appendChild(costura);
 
       var svg = document.createElementNS(NS, 'svg');
       svg.setAttribute('class', 'vt__linha');

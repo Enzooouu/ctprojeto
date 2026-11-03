@@ -703,6 +703,25 @@ a.brand:hover .brand__mark { color: var(--bege); }
 .vitrine::after { content: ""; position: absolute; inset: auto 0 0; height: clamp(4rem, 3rem + 4vw, 7rem); background: linear-gradient(to bottom, var(--cinza-escuro-profundo), var(--bege)); }
 .vt { position: relative; }
 .vt + .vt { margin-top: -9vw; }
+.vitrine { scroll-margin-top: var(--header-h); }
+/* Costura entre duas fotos: uma faixa que desfoca e escurece o encontro,
+   para uma foto dissolver na outra sem linha reta */
+.vt__costura {
+  position: absolute;
+  inset: -6vw 0 auto;
+  height: 22vw;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(20, 16, 13, .82) 50%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 35%, #000 65%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 35%, #000 65%, transparent);
+}
+.vt:first-child .vt__costura { display: none; }
+@media (min-width: 900px) {
+  .vt__costura { inset: -3vw 0 auto; height: 12vw; }
+}
 .vt__foto {
   position: relative;
   height: min(92vw, 34rem);
@@ -716,7 +735,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
 .vt__linha path { fill: none; stroke: rgba(245, 239, 229, .88); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .vt__ponto { fill: var(--bege-claro); }
 .vt__aro { fill: none; stroke: rgba(245, 239, 229, .55); stroke-width: 1; }
-.vt__conteudo { position: relative; z-index: 2; margin-top: -4.5rem; }
+.vt__conteudo { position: relative; z-index: 2; margin-top: -3rem; padding-bottom: calc(9vw + 2.5rem); }
 .vt__texto { max-width: 34rem; text-shadow: 0 1px 18px rgba(10, 8, 6, .55); }
 .vt__cat { color: var(--laranja-claro); font-size: var(--fs-sm); font-weight: 600; letter-spacing: .03em; }
 .vt__nome { margin-top: .35rem; padding-bottom: .7rem; font-family: var(--fonte-destaque); font-weight: 400; font-size: clamp(1.9rem, 1rem + 1.8vw, 3rem); line-height: 1.05; color: var(--bege-claro); }
@@ -740,7 +759,7 @@ a.brand:hover .brand__mark { color: var(--bege); }
   /* Na foto que ocupa a largura toda, uma sombra leve atrás do texto */
   .vt--cheia.vt--direita .vt__foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to left, rgba(20,16,13,.72), rgba(20,16,13,.35) 34%, transparent 56%); }
   .vt--cheia.vt--esquerda .vt__foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(20,16,13,.72), rgba(20,16,13,.35) 34%, transparent 56%); }
-  .vt__conteudo { position: absolute; inset: 0; margin: 0 auto; height: 100%; }
+  .vt__conteudo { position: absolute; inset: 0; margin: 0 auto; height: 100%; padding-bottom: 0; }
   .vt__texto { position: absolute; top: var(--topo, 25%); width: clamp(22rem, 34%, 25rem); }
   .vt--direita .vt__texto { right: var(--gutter); }
   .vt--esquerda .vt__texto { left: var(--gutter); }
