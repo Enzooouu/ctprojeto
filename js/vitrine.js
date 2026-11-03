@@ -21,42 +21,42 @@
 var VITRINE = [
   {
     categoria: 'Lareiras',
-    nome: 'Lareira Cone',
-    // Descrição do site (página da Lareira Cone)
-    descricao: 'Uma de nossas lareiras mais queridas quando o assunto é arquitetura. Seu design diferenciado já brilhou em várias mostras pelo Brasil, como Belo Horizonte e São Paulo.',
+    nome: 'Lareira Balaio',
+    // Descrição do site (página da Lareira Balaio)
+    descricao: 'Desenhada pelo arquiteto Quintino Facci, a Lareira Escultural Balaio proporciona um ambiente aconchegante e sofisticado.',
     info: ['A lenha, a álcool ou a gás', 'Preta, marrom ou branca'],
-    produto: 'produto.html?c=lareiras&l=esculturais&m=cone',
+    produto: 'produto.html?c=lareiras&l=esculturais&m=balaio',
     colecao: 'colecao.html?c=lareiras',
-    imagem: 'img/blog/casa-cosentino-cone.webp',
-    textoAlternativo: 'Lareira Cone marrom suspensa no centro de um living de pé-direito alto, com painel colorido, sofá mostarda, poltrona laranja e janela em arco, na Casa Cosentino.',
-    lado: 'direita', largura: 100, foco: '40% 45%', focoCelular: '60% 50%',
-    ponto: [0.585, 0.6], topo: 20
+    imagem: 'img/vitrine/lareira-balaio-sala.webp',
+    textoAlternativo: 'Lareira Balaio preta acesa no canto de uma sala revestida de madeira clara, com o cilindro suspenso sobre o prato redondo, ao lado de um sofá curvo laranja e de uma parede de placas brancas em relevo.',
+    lado: 'direita', largura: 70, foco: '40% 50%', focoCelular: '40% 50%',
+    ponto: [0.4, 0.6], topo: 24
   },
   {
     categoria: 'Churrasqueiras',
-    nome: 'Churrasqueira Premium Híbrida',
-    // Site (página da Premium Híbrida) e artigo do blog sobre ela
-    descricao: 'Escolha entre o sabor clássico do carvão e a praticidade do gás em um único equipamento, com duas caixas-braseiro independentes.',
-    info: ['Gás e carvão, até ao mesmo tempo', 'Aço inox 304', 'Tamanho personalizável'],
-    produto: 'produto.html?c=churrasqueiras&l=premium&m=hibrida',
+    nome: 'Churrasqueira Soft com tampa',
+    // Site (página da Soft com tampa) e lista da linha Soft
+    descricao: 'Design e tecnologia juntos, com o mais alto padrão de eficiência, para cozinhas e áreas gourmet.',
+    info: ['A gás, a carvão ou infravermelho', 'Aço inox 304', 'Tamanhos de 60 a 110'],
+    produto: 'produto.html?c=churrasqueiras&l=soft&m=com-tampa',
     colecao: 'colecao.html?c=churrasqueiras',
-    imagem: 'img/modelos/churrasqueira-premium-hibrida-nicho.webp',
-    textoAlternativo: 'Churrasqueira Premium Híbrida num nicho de vidro e pedra clara com veios, com cavalete, manivelas, grelhas e espetos, sobre um móvel de frisos.',
-    lado: 'esquerda', largura: 74, foco: '60% 50%', focoCelular: '62% 50%',
-    ponto: [0.6, 0.6], topo: 22
+    imagem: 'img/vitrine/churrasqueira-soft-tampa-cozinha.webp',
+    textoAlternativo: 'Cozinha de armários rosados com bancada branca, vaso de planta, cuba de inox e adega; à direita, a Churrasqueira Soft com tampa a gás, com três botões, sob uma coifa de inox.',
+    lado: 'esquerda', largura: 70, foco: '70% 50%', focoCelular: '78% 50%',
+    ponto: [0.8, 0.49], topo: 26
   },
   {
     categoria: 'Coifas',
-    nome: 'Coifa para churrasqueira',
-    // Descrição da linha e artigo "Cálculo de exaustão" do blog
-    descricao: 'Acompanha a churrasqueira e mantém a área gourmet livre da fumaça, sem perder o protagonismo no ambiente.',
+    nome: 'Coifa cilíndrica',
+    // Descrição da linha Cozinha e artigo "Cálculo de exaustão" do blog
+    descricao: 'Formas e cores que transformam a coifa em peça de design, integrada à arquitetura da cozinha.',
     info: ['Projeto com cálculo de exaustão', 'Visita técnica para definir a tubulação'],
-    produto: 'colecao.html?c=coifas#linha-churrasqueira',
+    produto: 'colecao.html?c=coifas#linha-cozinha',
     colecao: 'colecao.html?c=coifas',
-    imagem: 'img/linhas/coifas-churrasqueira.webp',
-    textoAlternativo: 'Coifa metálica em formato de pirâmide sobre a churrasqueira, numa área gourmet com parede de tijolos, forno de pizza, mesa redonda e cadeiras de madeira.',
-    lado: 'direita', largura: 100, foco: '45% 40%', focoCelular: '48% 40%',
-    ponto: [0.49, 0.27], topo: 20
+    imagem: 'img/vitrine/coifa-cilindrica-cozinha.webp',
+    textoAlternativo: 'Coifa cilíndrica laranja suspensa sobre uma ilha de cozinha arredondada com torneira dourada, numa cozinha em tons de terracota com prateleira de vasos e luminárias pendentes.',
+    lado: 'direita', largura: 72, foco: '30% 50%', focoCelular: '24% 50%',
+    ponto: [0.24, 0.3], topo: 26
   },
   {
     categoria: 'Parrillas',
@@ -66,22 +66,22 @@ var VITRINE = [
     info: ['Firebox lateral para carvão ou lenha', 'Aço inox 304'],
     produto: 'colecao.html?c=parrillas#linha-profissional',
     colecao: 'colecao.html?c=parrillas',
-    imagem: 'img/linhas/parrillas-profissional.webp',
-    textoAlternativo: 'Duas parrillas metálicas com rodas de regulagem e um braseiro ao centro com brasas acesas e faíscas, diante de uma parede de blocos.',
-    lado: 'esquerda', largura: 72, foco: '50% 50%', focoCelular: '50% 50%',
-    ponto: [0.5, 0.46], topo: 26
+    imagem: 'img/vitrine/parrillas-churrascada.webp',
+    textoAlternativo: 'Fileira de parrillas profissionais de inox com rodas de regulagem e braseiros Churrascada, sobre um balcão de madeira escura com lenha empilhada embaixo, sob uma luminária de filamento.',
+    lado: 'esquerda', largura: 70, foco: '45% 50%', focoCelular: '42% 50%',
+    ponto: [0.425, 0.45], topo: 24
   },
   {
     categoria: 'Fornos de pizza',
-    nome: 'Forno de pizza portátil',
-    // Descrição da linha e artigo "Forno de pizza portátil" do blog
-    descricao: 'Compacto e com pedra para pizza, leva o forno para a bancada da área gourmet sem precisar de obra.',
-    info: ['100% aço inox 304', 'Termômetro embutido', 'Encaixa sobre a grelha da churrasqueira'],
-    produto: 'colecao.html?c=fornos-de-pizza#linha-portatil',
+    nome: 'Forno a lenha',
+    // Descrição da linha e artigo "Cura do forno de pizza" do blog
+    descricao: 'O forno em cúpula, com porta e chaminé, para pizzas de sabor tradicional e para fazer do preparo um encontro.',
+    info: ['Cúpula com porta e chaminé', 'Cura com fogo baixo antes do primeiro uso'],
+    produto: 'colecao.html?c=fornos-de-pizza#linha-a-lenha',
     colecao: 'colecao.html?c=fornos-de-pizza',
-    imagem: 'img/linhas/fornos-portatil.webp',
-    textoAlternativo: 'Forno portátil metálico com a marca Construflama, aberto na frente e com pedra redonda para pizza, sobre bancada de pedra clara.',
-    lado: 'direita', largura: 70, foco: '50% 55%', focoCelular: '50% 60%',
-    ponto: [0.58, 0.62], topo: 26
+    imagem: 'img/vitrine/forno-a-lenha-cozinha.webp',
+    textoAlternativo: 'Forno a lenha branco em formato de cúpula, com porta preta e chaminé, numa área gourmet com parede de tijolinhos, pás de pizza penduradas, luminária de palha e cooktop com panela de cobre.',
+    lado: 'direita', largura: 70, foco: '60% 55%', focoCelular: '68% 60%',
+    ponto: [0.68, 0.7], topo: 22
   }
 ];

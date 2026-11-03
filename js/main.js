@@ -722,9 +722,9 @@ var DEPOIMENTOS = [
       var caminho = document.createElementNS(NS, 'path');
       caminho.setAttribute('pathLength', '1');
       var aro = document.createElementNS(NS, 'circle');
-      aro.setAttribute('class', 'vt__aro'); aro.setAttribute('r', '9');
+      aro.setAttribute('class', 'vt__aro'); aro.setAttribute('r', '8');
       var ponto = document.createElementNS(NS, 'circle');
-      ponto.setAttribute('class', 'vt__ponto'); ponto.setAttribute('r', '3');
+      ponto.setAttribute('class', 'vt__ponto'); ponto.setAttribute('r', '2.5');
       svg.appendChild(caminho); svg.appendChild(aro); svg.appendChild(ponto);
       art.appendChild(svg);
 
@@ -775,20 +775,19 @@ var DEPOIMENTOS = [
       r.selectNodeContents(it.nome);
       var t = r.getBoundingClientRect();
       var px = p.x - a.left, py = p.y - a.top;
-      var x0 = t.left - a.left, x1 = t.right - a.left, y = t.bottom - a.top + 8, d;
+      var bloco = it.nome.parentNode.getBoundingClientRect(), d;
       if (innerWidth < 900) {
-        // Celular: desce do produto e corre logo acima do bloco de texto
-        var yt = it.nome.parentNode.getBoundingClientRect().top - a.top - 14;
-        d = 'M' + px + ' ' + py + 'V' + yt + 'H' + x0;
+        // Celular: desce do produto e dobra num traço curto acima do texto
+        var yt = bloco.top - a.top - 16, xt = Math.max(bloco.left - a.left, Math.min(px - 56, px));
+        d = 'M' + px + ' ' + py + 'V' + yt + 'H' + xt;
       } else {
-        // Computador: um traço sob o nome e, a partir da ponta voltada para o
-        // produto, uma diagonal que termina no ponto sobre ele
-        // produto; a dobra fica fora da coluna de texto, para não cruzar as letras
-        var bloco = it.nome.parentNode.getBoundingClientRect(), esq = it.v.lado === 'esquerda';
-        var perto = esq ? x1 : x0, longe = esq ? x0 : x1;
-        var dobra = esq ? Math.max(perto, bloco.right - a.left + 28) : Math.min(perto, bloco.left - a.left - 28);
-        if (esq ? px < dobra : px > dobra) dobra = perto;
-        d = 'M' + longe + ' ' + y + 'H' + dobra + 'L' + px + ' ' + py;
+        // Computador: começa na borda do texto, na linha de base do nome, com
+        // um ombro horizontal curto, e desce em diagonal até o produto
+        var esq = it.v.lado === 'esquerda', yb = t.bottom - a.top - 6;
+        var x0 = esq ? bloco.right - a.left + 18 : bloco.left - a.left - 18;
+        var x1 = x0 + (esq ? 1 : -1) * 64;
+        if (esq ? px < x1 + 40 : px > x1 - 40) x1 = x0;   // produto muito perto: sem ombro
+        d = 'M' + x0 + ' ' + yb + 'H' + x1 + 'L' + px + ' ' + py;
       }
       it.caminho.setAttribute('d', d);
       [it.aro, it.ponto].forEach(function (c) { c.setAttribute('cx', px); c.setAttribute('cy', py); });

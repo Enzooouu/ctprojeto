@@ -738,9 +738,14 @@ a.brand:hover .brand__mark { color: var(--bege); }
 }
 .vt__foto img { width: 100%; height: 100%; object-fit: cover; object-position: var(--foco-cel, 50% 50%); }
 .vt__linha { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 1; }
-.vt__linha path { fill: none; stroke: rgba(245, 239, 229, .88); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.vt__linha { filter: drop-shadow(0 0 1.5px rgba(10, 8, 6, .55)); }
+.vt__linha path { fill: none; stroke: rgba(245, 239, 229, .92); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
 .vt__ponto { fill: var(--bege-claro); }
-.vt__aro { fill: none; stroke: rgba(245, 239, 229, .55); stroke-width: 1; }
+.vt__aro { fill: none; stroke: rgba(245, 239, 229, .7); stroke-width: 1; transform-box: fill-box; transform-origin: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .vt.is-visible .vt__aro { animation: vtPulso 2.8s 2.2s ease-in-out infinite; }
+}
+@keyframes vtPulso { 0%, 100% { transform: scale(1); opacity: .7; } 50% { transform: scale(1.35); opacity: .25; } }
 .vt__conteudo { position: relative; z-index: 2; margin-top: -3rem; padding-bottom: calc(9vw + 2.5rem); }
 .vt__texto { max-width: 34rem; text-shadow: 0 1px 18px rgba(10, 8, 6, .55); }
 .vt__cat { color: var(--laranja-claro); font-size: var(--fs-sm); font-weight: 600; letter-spacing: .03em; }
