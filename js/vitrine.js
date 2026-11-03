@@ -16,6 +16,8 @@
      largura toda; menos que isso, a foto fica do lado oposto ao texto)
    - foco: object-position da foto no computador; focoCelular, no celular
    - ponto: [x, y] onde está o produto na foto, de 0 a 1 (fim da linha)
+   - marca (opcional): { grande, pequeno, x, y } frase institucional em letra
+     grande numa área livre da foto; x e y em fração da seção (computador)
    - distancia (opcional): espaço em px entre o ponto e a legenda (padrão 150);
      maior para produtos largos
    ========================================================================== */
@@ -30,7 +32,8 @@ var VITRINE = [
     colecao: 'colecao.html?c=lareiras',
     imagem: 'img/vitrine/lareira-balaio-sala.webp',
     textoAlternativo: 'Lareira Balaio preta acesa no canto de uma sala revestida de madeira clara, com o cilindro suspenso sobre o prato redondo, ao lado de um sofá curvo laranja e de uma parede de placas brancas em relevo.',
-    lado: 'direita', largura: 100, foco: '50% 55%', focoCelular: '40% 50%',
+    lado: 'esquerda', largura: 100, foco: '50% 55%', focoCelular: '40% 50%',
+    marca: { grande: '+40 anos', pequeno: 'de mercado', x: 0.6, y: 0.13 },
     ponto: [0.4, 0.6]
   },
   {
@@ -70,6 +73,7 @@ var VITRINE = [
     imagem: 'img/vitrine/parrillas-churrascada.webp',
     textoAlternativo: 'Fileira de parrillas profissionais de inox com rodas de regulagem e braseiros Churrascada, sobre um balcão de madeira escura com lenha empilhada embaixo, sob uma luminária de filamento.',
     lado: 'esquerda', largura: 100, foco: '50% 45%', focoCelular: '42% 50%',
+    marca: { grande: 'Showroom', pequeno: 'em São Paulo', x: 0.6, y: 0.6 },
     ponto: [0.425, 0.45]
   },
   {
@@ -83,6 +87,7 @@ var VITRINE = [
     imagem: 'img/vitrine/forno-a-lenha-cozinha.webp',
     textoAlternativo: 'Forno a lenha branco em formato de cúpula, com porta preta e chaminé, numa área gourmet com parede de tijolinhos, pás de pizza penduradas, luminária de palha e cooktop com panela de cobre.',
     lado: 'direita', largura: 100, foco: '50% 65%', focoCelular: '68% 60%',
+    marca: { grande: 'Entrega', pequeno: 'em todo o Brasil', x: 0.04, y: 0.5 },
     ponto: [0.68, 0.7]
   }
 ];

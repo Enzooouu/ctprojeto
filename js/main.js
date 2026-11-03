@@ -729,6 +729,15 @@ var DEPOIMENTOS = [
       art.appendChild(svg);
 
       var cont = el('div', 'container vt__conteudo');
+      if (v.marca) {
+        // Frase institucional em letra grande, numa área livre da foto
+        var marca = el('p', 'vt__marca');
+        marca.style.setProperty('--mx', (v.marca.x * 100) + '%');
+        marca.style.setProperty('--my', (v.marca.y * 100) + '%');
+        marca.appendChild(el('span', 'vt__marca-grande', v.marca.grande));
+        marca.appendChild(el('span', 'vt__marca-pequeno', v.marca.pequeno));
+        cont.appendChild(marca);
+      }
       var txt = el('div', 'vt__texto');
       txt.appendChild(el('p', 'vt__cat', v.categoria));
       var nome = el('h3', 'vt__nome', v.nome);
@@ -795,7 +804,8 @@ var DEPOIMENTOS = [
       if (innerWidth < 900) {
         txt.style.left = txt.style.top = '';
         // Celular: desce do produto e dobra num traço curto acima do texto
-        var bloco = txt.getBoundingClientRect();
+        var marcaEl = it.art.querySelector('.vt__marca');
+        var bloco = (marcaEl || txt).getBoundingClientRect();
         var yt = bloco.top - a.top - 16, xt = Math.max(bloco.left - a.left, px - 56);
         d = 'M' + px + ' ' + py + 'V' + yt + 'H' + xt;
       } else {

@@ -676,24 +676,6 @@ a.brand:hover .brand__mark { color: var(--bege); }
 }
 
 /* --------------------------------------------------------------------------
-   6. Faixa de confiança: uma linha discreta no pé da hero
-   -------------------------------------------------------------------------- */
-.hearth { position: relative; border-top: 1px solid rgba(236, 226, 210, .12); }
-.hearth__list { display: grid; gap: var(--sp-3); padding-block: var(--sp-5); }
-.hearth__item {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-  color: rgba(245, 239, 229, .82);
-  font-size: var(--fs-sm);
-  letter-spacing: .01em;
-}
-.hearth__icon { width: 1.4rem; height: 1.4rem; flex: none; color: var(--laranja-claro); }
-@media (min-width: 768px) {
-  .hearth__list { grid-template-columns: repeat(3, auto); justify-content: space-between; }
-}
-
-/* --------------------------------------------------------------------------
    6b. Vitrine: cada produto numa grande foto, com o texto sobre a imagem e
    uma linha fina de anotação ligando o nome ao produto. As fotos se
    dissolvem no fundo escuro e se sobrepõem levemente.
@@ -773,6 +755,17 @@ a.brand:hover .brand__mark { color: var(--bege); }
   .vt__texto { position: absolute; top: var(--topo, 25%); left: 55%; width: clamp(23.5rem, 28vw, 25rem); }
   .vt__texto::before { content: ""; position: absolute; z-index: -1; inset: -6rem -7rem; pointer-events: none;
     background: radial-gradient(closest-side, rgba(20, 16, 13, .86), rgba(20, 16, 13, .7) 45%, rgba(20, 16, 13, .3) 75%, transparent); }
+}
+/* Frases da empresa (+40 anos, showroom, entrega) em letra grande sobre a foto */
+.vt__marca { position: relative; display: grid; gap: .2rem; margin: 0 0 var(--sp-5); color: var(--bege-claro); text-shadow: 0 2px 30px rgba(10, 8, 6, .7), 0 1px 3px rgba(10, 8, 6, .5); pointer-events: none; }
+.vt__marca-grande { font-family: var(--fonte-destaque); font-size: clamp(2.4rem, 1.4rem + 3.4vw, 5.4rem); line-height: .95; letter-spacing: -.01em; }
+.vt__marca-pequeno { color: rgba(245, 239, 229, .86); font-size: clamp(1rem, .9rem + .5vw, 1.35rem); letter-spacing: .02em; }
+@media (min-width: 900px) {
+  .vt__marca { position: absolute; left: var(--mx); top: var(--my); margin: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js .vt__marca { opacity: 0; transform: translateY(18px); transition: opacity 1.1s .3s var(--ease-out), transform 1.1s .3s var(--ease-out); }
+  .js .vt.is-visible .vt__marca { opacity: 1; transform: none; }
 }
 /* Entrada: a foto aproxima de leve, o texto sobe e a linha se desenha */
 @media (prefers-reduced-motion: no-preference) {
@@ -2519,7 +2512,6 @@ html.transicao.transicao--clara::after { opacity: 0; }
   .js .collection-grid[data-reveal="stagger"].is-visible > * { transform: none; }
 
   /* Soleira do hero: os três itens entram depois que a lareira acende */
-  .hearth__item { animation: rise .9s var(--ease-out) both; animation-delay: calc(1.2s + var(--i, 0) * 120ms); }
 }
 
 @media (prefers-reduced-motion: reduce) {
