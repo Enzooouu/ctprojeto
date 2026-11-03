@@ -712,15 +712,16 @@ a.brand:hover .brand__mark { color: var(--bege); }
   height: 22vw;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(to bottom, transparent, rgba(20, 16, 13, .82) 50%, transparent);
-  -webkit-backdrop-filter: blur(14px);
-          backdrop-filter: blur(14px);
+  background: linear-gradient(to bottom, transparent, rgba(20, 16, 13, .4) 50%, transparent);
+  -webkit-backdrop-filter: blur(7px);
+          backdrop-filter: blur(7px);
   -webkit-mask-image: linear-gradient(to bottom, transparent, #000 35%, #000 65%, transparent);
           mask-image: linear-gradient(to bottom, transparent, #000 35%, #000 65%, transparent);
 }
 .vt:first-child .vt__costura { display: none; }
 @media (min-width: 900px) {
-  .vt__costura { inset: -3vw 0 auto; height: 12vw; }
+  .vt__costura { inset: -1.5vw 0 auto; height: 8vw; }
+  .vt + .vt { margin-top: -13vw; }
 }
 .vt__foto {
   position: relative;
